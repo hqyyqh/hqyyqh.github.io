@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="概述：安装 neper 前需要安装的 组件 包括  gcc, g++, 2. cmake, 3. gsl, 4. nlopt, 5. povray, 6. gmsh, 7. imagemagick   这里记录了两种环境安装 neper 的过程（基本相同）：1.  Win10 下的 Linux 子系统（WSL）2. 桌面发行版 Deepin">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【安装记录】neper 多晶体网格生成软件">
+<meta property="og:url" content="https://pencilq.com/22/index.html">
+<meta property="og:site_name" content="小铅笔 &amp; jeff">
+<meta property="og:description" content="概述：安装 neper 前需要安装的 组件 包括  gcc, g++, 2. cmake, 3. gsl, 4. nlopt, 5. povray, 6. gmsh, 7. imagemagick   这里记录了两种环境安装 neper 的过程（基本相同）：1.  Win10 下的 Linux 子系统（WSL）2. 桌面发行版 Deepin">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://image.pencilq.com/images/2019/05/04/gene_gene-min.png">
+<meta property="og:updated_time" content="2019-08-27T13:58:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【安装记录】neper 多晶体网格生成软件">
+<meta name="twitter:description" content="概述：安装 neper 前需要安装的 组件 包括  gcc, g++, 2. cmake, 3. gsl, 4. nlopt, 5. povray, 6. gmsh, 7. imagemagick   这里记录了两种环境安装 neper 的过程（基本相同）：1.  Win10 下的 Linux 子系统（WSL）2. 桌面发行版 Deepin">
+<meta name="twitter:image" content="https://image.pencilq.com/images/2019/05/04/gene_gene-min.png">
+  <link rel="canonical" href="https://pencilq.com/22/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>【安装记录】neper 多晶体网格生成软件 | 小铅笔 & jeff</title>
+  <meta name="generator" content="Hexo 3.9.0">
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小铅笔 & jeff</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-cloud-storage">
+      
+    
+
+    <a href="https://onedrive.pencilq.com" rel="noopener" target="_blank"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>云盘</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a class="book-mark-link book-mark-link-fixed" href="#"></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小铅笔 & jeff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小铅笔 & jeff">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">【安装记录】neper 多晶体网格生成软件
+
+          
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-04 15:16:59" itemprop="dateCreated datePublished" datetime="2019-05-04T15:16:59+08:00">2019-05-04</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-08-27 21:58:32" itemprop="dateModified" datetime="2019-08-27T21:58:32+08:00">2019-08-27</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://image.pencilq.com/images/2019/05/04/gene_gene-min.png" alt></p>
+<blockquote>
+<p>概述：安装 <code>neper</code> 前需要安装的 <code>组件</code> 包括</p>
+<ol>
+<li>gcc, g++, 2. cmake, 3. gsl, 4. nlopt, 5. povray, 6. gmsh, 7. imagemagick </li>
+</ol>
+<p>这里记录了两种环境安装 neper 的过程（基本相同）：1.  Win10 下的 Linux 子系统（WSL）2. 桌面发行版 Deepin</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="WSL-安装-neper"><a href="#WSL-安装-neper" class="headerlink" title="WSL 安装 neper"></a>WSL 安装 neper</h2><h4 id="下载-neper，解压，复制到根目录"><a href="#下载-neper，解压，复制到根目录" class="headerlink" title="下载 neper，解压，复制到根目录"></a>下载 <a href="http://neper.sourceforge.net/" target="_blank" rel="noopener">neper</a>，解压，复制到根目录</h4><h4 id="进入-neper-src-目录"><a href="#进入-neper-src-目录" class="headerlink" title="进入 neper/src/ 目录"></a>进入 neper/src/ 目录</h4><h4 id="mkdir-build-amp-amp-cd-buid-amp-amp-cmake"><a href="#mkdir-build-amp-amp-cd-buid-amp-amp-cmake" class="headerlink" title="mkdir build &amp;&amp; cd buid &amp;&amp; cmake .."></a><code>mkdir build &amp;&amp; cd buid &amp;&amp; cmake ..</code></h4><ul>
+<li><p>提示 <code>cmake</code> not found </p>
+</li>
+<li><p>执行 <code>sudo apt install cmake</code></p>
+</li>
+</ul>
+<h4 id="再次执行-cmake"><a href="#再次执行-cmake" class="headerlink" title="再次执行 cmake .."></a>再次执行 <code>cmake ..</code></h4><ul>
+<li>提示 </li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">No CMAKE_CXX_COMPILER could be found.</span><br><span class="line"></span><br><span class="line">  Tell CMake <span class="built_in">where</span> to find the compiler by setting either the environment </span><br><span class="line">  variable <span class="string">"CXX"</span> or the CMake cache entry CMAKE_CXX_COMPILER to the full path</span><br><span class="line">  to the compiler, or to the compiler name <span class="keyword">if</span> it is <span class="keyword">in</span> the PATH.</span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行 <code>sudo apt install g++</code> ，可能还需要 <code>sudo apt install gcc</code></li>
+</ul>
+<h4 id="再次执行-cmake-1"><a href="#再次执行-cmake-1" class="headerlink" title="再次执行 cmake .."></a>再次执行 <code>cmake ..</code></h4><ul>
+<li><p>提示 </p>
+</li>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FindGSL.cmake: gsl-config/pkg-config gsl not found. Please <span class="built_in">set</span></span><br><span class="line">it manually. GSL_CONFIG=GSL_CONFIG-NOTFOUND</span><br><span class="line">CMake Error at cmake/FindGSL.cmake:178 (MESSAGE):</span><br><span class="line">  GSL required, please specify it<span class="string">'s location.</span></span><br><span class="line"><span class="string">Call Stack (most recent call first):</span></span><br><span class="line"><span class="string">  contrib/ut/CMakeLists.txt:94 (find_package)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载安装 <a href="http://mirrors.ustc.edu.cn/gnu/gsl/" target="_blank" rel="noopener">GSL</a>，在 GSL 目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ./configure</span><br><span class="line">sudo make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="再次执行-cmake-2"><a href="#再次执行-cmake-2" class="headerlink" title="再次执行 cmake .."></a>再次执行 <code>cmake ..</code></h4><ul>
+<li><p>提示</p>
+</li>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CMake Error at /usr/share/cmake-3.10/Modules/FindPackageHandleStandardArgs.cmake:137 (message): </span><br><span class="line">  Could NOT find NLOPT (missing: NLOPT_LIBRARY NLOPT_INCLUDE_DIRS)</span><br><span class="line">Call Stack (most recent call first):</span><br><span class="line">  /usr/share/cmake-3.10/Modules/FindPackageHandleStandardArgs.cmake:378 (_FPHSA_FAILURE_MESSAGE)</span><br><span class="line">  cmake/FindNLOPT.cmake:35 (find_package_handle_standard_args)</span><br><span class="line">  contrib/orilib/CMakeLists.txt:115 (find_package)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 NLOPT，<code>sudo apt-get install libnlopt.dev</code></p>
+</li>
+</ul>
+<h4 id="再次执行-cmake-，成功"><a href="#再次执行-cmake-，成功" class="headerlink" title="再次执行 cmake ..，成功"></a>再次执行 <code>cmake ..</code>，成功</h4><h4 id="执行-make-j-多线程加快编译速度"><a href="#执行-make-j-多线程加快编译速度" class="headerlink" title="执行 make -j 多线程加快编译速度"></a>执行 <code>make -j</code> 多线程加快编译速度</h4><h4 id="执行-sudo-make-install，完成安装"><a href="#执行-sudo-make-install，完成安装" class="headerlink" title="执行 sudo make install，完成安装"></a>执行 <code>sudo make install</code>，完成安装</h4><h4 id="运行官方例子gene-gene-sh-提示"><a href="#运行官方例子gene-gene-sh-提示" class="headerlink" title="运行官方例子gene_gene.sh 提示"></a>运行官方例子<code>gene_gene.sh</code> 提示</h4><p>例子 <code>sudo sh ./gene_gene.sh</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">NEPER=<span class="string">"neper --rcfile none"</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$NEPER</span> -T -n 1000 -domain <span class="string">"cube(1,1,1)"</span>       -o gene_gene_1</span><br><span class="line"><span class="variable">$NEPER</span> -T -n 1000 -domain <span class="string">"cylinder(1,1,200)"</span> -o gene_gene_2</span><br><span class="line"><span class="variable">$NEPER</span> -T -n 1000 -domain <span class="string">"sphere(1,1000)"</span>    -o gene_gene_3</span><br><span class="line"></span><br><span class="line">C=<span class="string">"-datacellcol id -datacelltrs 0.5 -cameraangle 12 -imagesize 600:600"</span></span><br><span class="line"><span class="variable">$NEPER</span> -V gene_gene_1.tess <span class="variable">$C</span> -<span class="built_in">print</span> gene_gene_1</span><br><span class="line"><span class="variable">$NEPER</span> -V gene_gene_2.tess <span class="variable">$C</span> -showedge <span class="string">"cyl==0"</span>   -cameraangle 11 -<span class="built_in">print</span> gene_gene_2</span><br><span class="line"><span class="variable">$NEPER</span> -V gene_gene_3.tess <span class="variable">$C</span> -showedge <span class="string">"polynb&gt;1"</span> -cameraangle 9  -<span class="built_in">print</span> gene_gene_3</span><br><span class="line"></span><br><span class="line">convert +append gene_gene_?.png gene_gene.png</span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+<p><strong>错误提示</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Error  : Povray not found! Make sure it is available at the <span class="built_in">command</span> line </span><br><span class="line">         <span class="keyword">then</span> run Neper again.</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装 povray，执行  <code>sudo apt-get install povray</code></li>
+<li>安装 gmsh <code>sudo apt-get install libgmsh-dev</code></li>
+</ul>
+<h4 id="运行官方例子gene-gene-sh-再提示-convert-not-found"><a href="#运行官方例子gene-gene-sh-再提示-convert-not-found" class="headerlink" title="运行官方例子gene_gene.sh 再提示 convert: not found"></a>运行官方例子<code>gene_gene.sh</code> 再提示 <code>convert: not found</code></h4><ul>
+<li>安装 imagemagick <code>sudo apt-get install imagemagick</code></li>
+<li>完成</li>
+</ul>
+<h4 id="测试：在-build-目录下执行-make-test，可以在-build-目录下找到相应的生成文件"><a href="#测试：在-build-目录下执行-make-test，可以在-build-目录下找到相应的生成文件" class="headerlink" title="测试：在 build 目录下执行 make test，可以在 build 目录下找到相应的生成文件"></a>测试：在 <code>build</code> 目录下执行 <code>make test</code>，可以在 <code>build</code> 目录下找到相应的生成文件</h4><hr>
+<h2 id="Deepin-下安装-neper"><a href="#Deepin-下安装-neper" class="headerlink" title="Deepin 下安装 neper"></a>Deepin 下安装 neper</h2><p>在安装neper之前， 需要安装<strong>GSL</strong>(GNU Scientific Library) ，下载地址：<a href="http://mirrors.ustc.edu.cn/gnu/gsl/" target="_blank" rel="noopener">点击打开链接</a> 和<strong>NLOPT</strong>（不需下载） 。下载<strong>Neper</strong>。</p>
+<h4 id="将GSL和Neper的安装包解压到根目录"><a href="#将GSL和Neper的安装包解压到根目录" class="headerlink" title="将GSL和Neper的安装包解压到根目录"></a>将GSL和Neper的安装包解压到<strong>根目录</strong></h4><h4 id="更新编译器"><a href="#更新编译器" class="headerlink" title="更新编译器"></a>更新编译器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt install gcc</span><br><span class="line">sudo apt install g++</span><br></pre></td></tr></table></figure>
+<h4 id="安装GSL：cd-到GSL-目录下"><a href="#安装GSL：cd-到GSL-目录下" class="headerlink" title="安装GSL：cd 到GSL 目录下"></a>安装GSL：cd 到GSL 目录下</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ./configure </span><br><span class="line">sudo make </span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<h4 id="安装NLOPT"><a href="#安装NLOPT" class="headerlink" title="安装NLOPT"></a>安装NLOPT</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libnlopt.dev</span><br></pre></td></tr></table></figure>
+<h4 id="安装CMAKE"><a href="#安装CMAKE" class="headerlink" title="安装CMAKE"></a>安装CMAKE</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install cmake</span><br></pre></td></tr></table></figure>
+<h4 id="安装neper"><a href="#安装neper" class="headerlink" title="安装neper"></a>安装neper</h4><p>cd 到 neper 下的src文件中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Build </span><br><span class="line">cmake ..</span><br><span class="line">make </span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<h4 id="安装Gmsh"><a href="#安装Gmsh" class="headerlink" title="安装Gmsh"></a>安装Gmsh</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libgmsh-dev</span><br></pre></td></tr></table></figure>
+<h4 id="安装PoV-Ray"><a href="#安装PoV-Ray" class="headerlink" title="安装PoV-Ray"></a>安装PoV-Ray</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install povray</span><br></pre></td></tr></table></figure>
+<h4 id="测试安装"><a href="#测试安装" class="headerlink" title="测试安装"></a>测试安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>参考链接：<a href="https://blog.csdn.net/u011211153/article/details/79274248" target="_blank" rel="noopener">Neper 在 Linux（ubuntu）下的安装方法</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+      
+
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/21/" rel="next" title="阿里云 Centos 7.3 安装 Jupyter Notebook">
+                  <i class="fa fa-chevron-left"></i> 阿里云 Centos 7.3 安装 Jupyter Notebook
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/23/" rel="prev" title="Matlab 新手日常">
+                  Matlab 新手日常 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zOTQxNi8xNTk0Mw=="></div>
+  </div>
+  
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#WSL-安装-neper"><span class="nav-number">1.</span> <span class="nav-text">WSL 安装 neper</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载-neper，解压，复制到根目录"><span class="nav-number">1.0.1.</span> <span class="nav-text">下载 neper，解压，复制到根目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进入-neper-src-目录"><span class="nav-number">1.0.2.</span> <span class="nav-text">进入 neper/src/ 目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mkdir-build-amp-amp-cd-buid-amp-amp-cmake"><span class="nav-number">1.0.3.</span> <span class="nav-text">mkdir build &amp;&amp; cd buid &amp;&amp; cmake ..</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#再次执行-cmake"><span class="nav-number">1.0.4.</span> <span class="nav-text">再次执行 cmake ..</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#再次执行-cmake-1"><span class="nav-number">1.0.5.</span> <span class="nav-text">再次执行 cmake ..</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#再次执行-cmake-2"><span class="nav-number">1.0.6.</span> <span class="nav-text">再次执行 cmake ..</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#再次执行-cmake-，成功"><span class="nav-number">1.0.7.</span> <span class="nav-text">再次执行 cmake ..，成功</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行-make-j-多线程加快编译速度"><span class="nav-number">1.0.8.</span> <span class="nav-text">执行 make -j 多线程加快编译速度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行-sudo-make-install，完成安装"><span class="nav-number">1.0.9.</span> <span class="nav-text">执行 sudo make install，完成安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行官方例子gene-gene-sh-提示"><span class="nav-number">1.0.10.</span> <span class="nav-text">运行官方例子gene_gene.sh 提示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行官方例子gene-gene-sh-再提示-convert-not-found"><span class="nav-number">1.0.11.</span> <span class="nav-text">运行官方例子gene_gene.sh 再提示 convert: not found</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试：在-build-目录下执行-make-test，可以在-build-目录下找到相应的生成文件"><span class="nav-number">1.0.12.</span> <span class="nav-text">测试：在 build 目录下执行 make test，可以在 build 目录下找到相应的生成文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deepin-下安装-neper"><span class="nav-number">2.</span> <span class="nav-text">Deepin 下安装 neper</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#将GSL和Neper的安装包解压到根目录"><span class="nav-number">2.0.1.</span> <span class="nav-text">将GSL和Neper的安装包解压到根目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新编译器"><span class="nav-number">2.0.2.</span> <span class="nav-text">更新编译器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装GSL：cd-到GSL-目录下"><span class="nav-number">2.0.3.</span> <span class="nav-text">安装GSL：cd 到GSL 目录下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装NLOPT"><span class="nav-number">2.0.4.</span> <span class="nav-text">安装NLOPT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装CMAKE"><span class="nav-number">2.0.5.</span> <span class="nav-text">安装CMAKE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装neper"><span class="nav-number">2.0.6.</span> <span class="nav-text">安装neper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Gmsh"><span class="nav-number">2.0.7.</span> <span class="nav-text">安装Gmsh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装PoV-Ray"><span class="nav-number">2.0.8.</span> <span class="nav-text">安装PoV-Ray</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试安装"><span class="nav-number">2.0.9.</span> <span class="nav-text">测试安装</span></a></li></ol></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">小铅笔 & jeff</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span>
+        
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:hqysmail@gmail.com" title="E-Mail &rarr; mailto:hqysmail@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备18138470号 </a>
+  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小铅笔 & jeff</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js?v=7.3.0"></script>
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+<script src="/js/next-boot.js?v=7.3.0"></script><script src="/js/bookmark.js?v=7.3.0"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes: 0,
+          toolbar: 0,
+          statusbar: 0,
+          pagemode: 'thumbs',
+          view: 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+</body>
+</html>

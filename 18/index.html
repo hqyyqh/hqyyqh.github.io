@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="转自仿真科技论坛，点击进入原网址，作者师访  首先做一点说明，这里所说的子程序大致分为两类：一类是用户子程序，即可以被用户修改的、多以 User 或 u 开头的、可以在安装文件夹下找到（如下图所示）的、需要重新编译连接的 Fortran 子程序；另一类是一般的子程序，ANSYS 提供给用户方便 ansys 二次开发的，包括子程序（subroutine，无返回值，使用时需要 external 声明">
+<meta name="keywords" content="软件,二次开发,ANSYS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ansys 二次开发系列之三：UPFs 几乎所有子程序的简单介绍">
+<meta property="og:url" content="https://pencilq.com/18/index.html">
+<meta property="og:site_name" content="小铅笔 &amp; jeff">
+<meta property="og:description" content="转自仿真科技论坛，点击进入原网址，作者师访  首先做一点说明，这里所说的子程序大致分为两类：一类是用户子程序，即可以被用户修改的、多以 User 或 u 开头的、可以在安装文件夹下找到（如下图所示）的、需要重新编译连接的 Fortran 子程序；另一类是一般的子程序，ANSYS 提供给用户方便 ansys 二次开发的，包括子程序（subroutine，无返回值，使用时需要 external 声明">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fvcz313xeuj30m00hxdi0.jpg">
+<meta property="og:updated_time" content="2019-04-29T13:36:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ansys 二次开发系列之三：UPFs 几乎所有子程序的简单介绍">
+<meta name="twitter:description" content="转自仿真科技论坛，点击进入原网址，作者师访  首先做一点说明，这里所说的子程序大致分为两类：一类是用户子程序，即可以被用户修改的、多以 User 或 u 开头的、可以在安装文件夹下找到（如下图所示）的、需要重新编译连接的 Fortran 子程序；另一类是一般的子程序，ANSYS 提供给用户方便 ansys 二次开发的，包括子程序（subroutine，无返回值，使用时需要 external 声明">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fvcz313xeuj30m00hxdi0.jpg">
+  <link rel="canonical" href="https://pencilq.com/18/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Ansys 二次开发系列之三：UPFs 几乎所有子程序的简单介绍 | 小铅笔 & jeff</title>
+  <meta name="generator" content="Hexo 3.9.0">
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小铅笔 & jeff</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-cloud-storage">
+      
+    
+
+    <a href="https://onedrive.pencilq.com" rel="noopener" target="_blank"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>云盘</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a class="book-mark-link book-mark-link-fixed" href="#"></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/18/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小铅笔 & jeff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小铅笔 & jeff">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">Ansys 二次开发系列之三：UPFs 几乎所有子程序的简单介绍
+
+          
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-24 23:30:48" itemprop="dateCreated datePublished" datetime="2018-08-24T23:30:48+08:00">2018-08-24</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-04-29 21:36:19" itemprop="dateModified" datetime="2019-04-29T21:36:19+08:00">2019-04-29</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p><strong>转自仿真科技论坛</strong>，<a href="http://forum.simwe.com/thread-1021888-1-1.html" target="_blank" rel="noopener">点击进入原网址，作者师访</a></p>
+</blockquote>
+<p>首先做一点说明，这里所说的子程序大致分为两类：一类是用户子程序，即可以被用户修改的、多以 User 或 u 开头的、可以在安装文件夹下找到（如下图所示）的、需要重新编译连接的 Fortran 子程序；另一类是一般的子程序，ANSYS 提供给用户方便 ansys 二次开发的，包括子程序（subroutine，无返回值，使用时需要 external 声明语句）和函数（Function，有返回值，使用时不需要 External 声明语句）。</p>
+<a id="more"></a>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fvcz313xeuj30m00hxdi0.jpg" alt></p>
+<h2 id="材料本构模型开发用户子程序"><a href="#材料本构模型开发用户子程序" class="headerlink" title="材料本构模型开发用户子程序"></a>材料本构模型开发用户子程序</h2><ol>
+<li><strong>usermat</strong>：在所有用于本构模型开发的子程序中，usermat 是使用范围最广的子程序，单元的每个积分点在每个载荷子步的每次迭代均会调用 usermat。usermat 支持所有最新技术单元（Current-technology Elements），最新技术单元区别于传统单元。</li>
+<li><strong>UserHyper</strong>：虽然 usermat 功能强大，但其无法用于开发超弹性材料，若想实现超弹性材料本构的开发，必须利用 UserHyper 用户子程序。</li>
+<li><strong>usercreep</strong> 及 usercr：ANSYS 提供了两个用户子程序 usercreep 及 usercr 来定义用户蠕变方程，这两个用户子程序可用来模拟材料的时间相关粘塑性 / 蠕变行为。usercreep 利用隐式时间积分算法，而 usercr 利用的是显示时间积分算法。usercreep 用于较长时间段的蠕变分析，如岩石及金属的长期蠕变分析；usercr 用于瞬态蠕变分析。</li>
+<li><strong>user_tbelastic</strong>：用来定义线弹性材料特征，允许将弹性材料参数定义成温度或坐标的函数，支持大多数最新技术单元。user_tbelastic 仅仅用于定义弹性阶段的材料本构，它可用来与许多非线性材料模型联合使用，例如 BISO、BKIN、MISO、KINH、NLSIO、PLASTIC、CHABOCHE、CAST IRON、CREEP、EDP（Drucker-Prager 模型）、SMA（形状记忆合金）、PRONY 及 GURSON 等。</li>
+<li><strong>userpl</strong>：如果用户想利用传统单元定义塑性或粘塑性本构关系，则可以使用 userpl。适用于 LINK1、LINK8、PIPE20、BEAM23、BEAM24、PLANE42、SOLID45、PIPE60、SOLID62、SOLID65、PLANE82、SOLID92 及 SOLID95。</li>
+<li><strong>usersw</strong>：用户膨胀子程序 usersw 用于编写用户自定义的膨胀律，其调用方式是设置 C72=10。</li>
+<li><strong>UserVisLaw</strong>：定义粘性模型，仅用于 FLUID141 及 FLUID142 单元。</li>
+<li><strong>userfic</strong>：用于定义用户摩擦模型，用于接触单元：CONTA171、CONTA172、CONTA173、CONTA174、CONTA175、CONTA176、CONTA177、CONTA178。</li>
+<li><strong>userfc</strong>：定义层合板类材料的破坏准则。</li>
+</ol>
+<h2 id="单元开发用户子程序"><a href="#单元开发用户子程序" class="headerlink" title="单元开发用户子程序"></a>单元开发用户子程序</h2><p>开发单元有两种方法：用户子程序（1）和（2）联合使用是一种方法，通过 UserElem 用户子程序可以方便的建立新单元，ElemGetMat 为新单元处理材料本构部分，难度适中；（3）和（4）联合使用是另外一种方法，该方法直接访问 ANSYS 单元相关数据库和文件，难度较大。</p>
+<ol>
+<li><strong>UserElem</strong>：从 ANSYS 11.0 开始新增的。使用该子程序创建单元无需直接访问 ANSYS 数据库。</li>
+<li><strong>ElemGetMat</strong>：用于调用 ANSYS 标准结构材料库，与 UserElem 结合使用。</li>
+<li><strong>uec100-uec105</strong>：在通过直接访问单元相关数据库和文件的方式创建单元时，用于定义单元特征参数。</li>
+<li><strong>uel100-uel105</strong>：在通过直接访问单元相关数据库和文件的方式创建单元时，用于计算各种单元矩阵（刚度矩阵、比热矩阵等）、单元载荷向量（力载荷、热流载荷等）以及所有单元输出变量。此外还要完成单元输出过程，计算需要保存的各个变量并储存在结果文件中。</li>
+</ol>
+<h2 id="单元开发支持子程序"><a href="#单元开发支持子程序" class="headerlink" title="单元开发支持子程序"></a>单元开发支持子程序</h2><p>以下子程序（注意不是用户子程序）用于单元开发：</p>
+<ol>
+<li><strong>nminfo</strong>：给单元特征向量定义单元名称，输入变量为单元特征向量 ielc（见 \ ANSYS Inc\v120\ansys\customize\include 文件夹下的 echprm.inc），单元参考名称，输出变量为加入了单元参考名称的单元特征向量。</li>
+<li><strong>svgidx</strong>：获得保存的变量的索引。</li>
+<li><strong>svrget</strong>：获得单元保存的变量。</li>
+<li><strong>mreuse</strong>：决定在迭代过程中哪些单元矩阵及向量可被重复使用，哪些单元矩阵及向量需要重新计算。</li>
+<li><strong>rvrget</strong>：获得单元实常数。</li>
+<li><strong>propev</strong>：计算一组材料特性参数。</li>
+<li><strong>prope1</strong>：计算某一个材料特性参数，若要计算多个材料参数，可使用 propev 子程序。</li>
+<li><strong>pstev1</strong>：计算 1 维单元的材料特性参数。</li>
+<li><strong>plast1</strong>：更新单元塑性历史，用于具有一个应力（应变）分量的单元，包括 LINK1、LINK8、BEAM23、BEAM24 和 SOLID65（增强型）单元。</li>
+<li><strong>plast3</strong>：更新单元塑性历史，用于具有 4 或 6 应力（应变）分量的单元，包括 PLANE02、PLANE13、PIPE20、SHELL43、SHELL51、PIPE60、SOLID62、SOLID65、SHELL91、SHELL93、SHELL143、SOLID191。</li>
+<li><strong>creep1</strong>：更新单元蠕变历史，用于 1 维单元，包括 LINK1、LINK8、BEAM23、BEAM24 和 SOLID65 单元。</li>
+<li><strong>creep3</strong>：更新单元蠕变历史，用于 3 维单元，包括 PLANE02、PLANE13、PIPE20、PLANE42、SHELL43、SOLID45、SHELL51、PIPE60、SOLID62、SOLID65、PLANE82、SHELL91、SOLID92、SHELL93、SOLID95、SHELL143 及 SOLID191。</li>
+<li><strong>swell1</strong>：更新单元的膨胀历史，用于 1 维单元，包括 LINK1、LINK8、BEAM23、BEAM24。</li>
+<li><strong>swell3</strong>：更新单元的膨胀历史，用于 3 维单元，包括 PLANE02、PLANE13、PIPE20、PLANE42、SHELL43、SOLID45、SHELL51、PIPE60、SOLID62、PLANE82、SHELL91、SOLID92、SHELL93、SOLID95、SHELL143 和 SOLID191。</li>
+<li><strong>usereo</strong>：在不可累加杂项数据（NMISC）中存储数据。</li>
+<li><strong>eldwrtL</strong>：将单元数据写入文件。</li>
+<li><strong>eldwrnL</strong>：将单元不可累加杂项数据写入结果文件。</li>
+<li><strong>tmpget</strong>：子程序 temget 用于定义当前温度载荷。</li>
+<li><strong>prsget</strong>：定义当前压力载荷。</li>
+<li><strong>cnvget</strong>：定义当前对流载荷。</li>
+<li><strong>prinst</strong>：可用于计算主应力和应力强度。其输入输出输出变量只有一个 s（长度为 11 的数组），s(1)、s(2)、s(3)、s(4)、s(5) 和 s(6) 分别存放σx 、σy 、σz 、σxy 、σyz 和 σzx，经子程序计算后输出主应力σ1、σ2 和σ3 保存在 s(7)、s(8) 和 s(9) 内，应力强度保存在 s(10) 内，s(11) 内输出的是 Mises 等效应力。也可用来计算主应变（ε1 、ε2 和ε3 ）的大小。提醒大家，这是一个很重要的子程序。</li>
+</ol>
+<h2 id="修改和监视已存在单元的用户子程序"><a href="#修改和监视已存在单元的用户子程序" class="headerlink" title="修改和监视已存在单元的用户子程序"></a>修改和监视已存在单元的用户子程序</h2><ol>
+<li><strong>userou</strong>：用于存储用户提供的单元输出，对于需要将单元数据存入 nmisc 记录的所有单元，都要调用该用户子程序。该子程序通过 USRCAL 命令激活：USRCAL,USEROU</li>
+<li><strong>useran</strong>：单元坐标系控制，修改 shell43、shell63、shell91、shell93、shell99，以及 solid46、solid64、solid191 单元材料性能参数和应力的方向，可通过单元关键选项调用。</li>
+<li><strong>userrc</strong>：对 COMBIN7 和 COMBIN37 单元的参数进行操作。当设置单元的 keyopt(9) = 1 时调用该子程序，且 C1 或 C3 必须为非零值。</li>
+<li><strong>UElMatx</strong>：访问单元矩阵和载荷向量，如频域分析的载荷向量等。主要目的是监视（或修改）单元矩阵和载荷向量。</li>
+<li><strong>UTHICK</strong>：定义 SHELL181、SHELL208、SHELL209 以及 SHELL281 单元的初始厚度。</li>
+<li><strong>Us_Surf_Str</strong>：获取 PLANE2、PLANE42、PLANE82 以及 SOLID45、SOLID92 和 SOLOD95 单元的单元面应力。</li>
+<li><strong>uflex</strong>：计算单元 PIPE288 和 PIPE289 的柔性系数。当输入单元的轴向柔性系数为 - 10 时调用该用户子程序。</li>
+<li><strong>usflex</strong>：计算单元 PIPE16、PIPE17、PIPE18 和 PIPE60 的柔性系数。当输入单元的轴向柔性系数为负数时调用该用户子程序。</li>
+</ol>
+<h2 id="载荷用户子程序"><a href="#载荷用户子程序" class="headerlink" title="载荷用户子程序"></a>载荷用户子程序</h2><p>以下用户子程序用于定义载荷：</p>
+<ol>
+<li><strong>usrefl</strong>：可将一些标量表示的载荷（如温度、流量、热生成量、含水量等）修改成用户定义的值，该子程序在每个使用标量场载荷的载荷步及载荷子步内、每次平衡迭代过程中均会被调用，在进入该子程序之前，已获得 ANSYS 输入的单元或节点值信息。</li>
+<li><strong>userpr</strong>：用于改变单元压力，该子程序在每个使用单元压力的载荷步及载荷子步内、每次平衡迭代过程中均会被调用，每个单元调用一次。在进入该子程序之前，已获得 ANSYS 输入的单元或节点值信息。</li>
+<li><strong>usercv</strong>：用于改变单元面对流信息，该子程序在每个载荷步及载荷子步内的每次平衡迭代过程中均会被调用，每个单元调用一次。在进入该子程序之前，已获得标准 ANSYS 输入的对流面信息，因此利用这些信息可以随意按照用户意愿修改对流信息。</li>
+<li><strong>userfx</strong>：用于改变单元面热流信息，该子程序在每个载荷步及载荷子步内的每次平衡迭代过程中均会被调用，每个单元调用一次。仅在热流载荷形成阶段调用，热流计算阶段不调用。</li>
+</ol>
+<h2 id="计算干预用户子程序"><a href="#计算干预用户子程序" class="headerlink" title="计算干预用户子程序"></a>计算干预用户子程序</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>用户子程序</th>
+<th>对应的情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UAnBeg</td>
+<td>ANSYS 启动时执行</td>
+</tr>
+<tr>
+<td>USolBeg</td>
+<td>求解开始前执行</td>
+</tr>
+<tr>
+<td>ULdBeg</td>
+<td>载荷步开始前执行</td>
+</tr>
+<tr>
+<td>USsBeg</td>
+<td>载荷子步开始前执行</td>
+</tr>
+<tr>
+<td>UItBeg</td>
+<td>迭代步开始前执行</td>
+</tr>
+<tr>
+<td>UItFin</td>
+<td>迭代步结束后执行</td>
+</tr>
+<tr>
+<td>USsFin</td>
+<td>载荷子步结束后执行</td>
+</tr>
+<tr>
+<td>ULdFin</td>
+<td>载荷步结束后执行</td>
+</tr>
+<tr>
+<td>USolFin</td>
+<td>求解结束后执行</td>
+</tr>
+<tr>
+<td>UAnFin</td>
+<td>ANSYS 结束前执行</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="访问-ANSYS-数据库的子程序"><a href="#访问-ANSYS-数据库的子程序" class="headerlink" title="访问 ANSYS 数据库的子程序"></a>访问 ANSYS 数据库的子程序</h2><p>这部分内容包括选择或获得节点及单元的子程序、节点信息相关子程序、单元特征相关子程序、耦合及约束相关子程序、节点载荷子程序、单元载荷子程序、结果信息子程序，由于内容较多，参见附件：<br><a class="btn" href="http://ojmc2vx9l.bkt.clouddn.com/%E8%AE%BF%E9%97%AEANSYS%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AD%90%E7%A8%8B%E5%BA%8F.pdf" target="_blank" rel="noopener"><i class="fa fa-download fa-lg fa-fw"></i>附件1</a></p>
+<h2 id="方便用户开发的子程序"><a href="#方便用户开发的子程序" class="headerlink" title="方便用户开发的子程序"></a>方便用户开发的子程序</h2><p>内容包括通用子程序、向量操作子程序和矩阵操作子程序，见附件：<br><a class="btn" href="http://ojmc2vx9l.bkt.clouddn.com/%E6%96%B9%E4%BE%BF%E7%94%A8%E6%88%B7%E5%BC%80%E5%8F%91%E7%9A%84%E5%AD%90%E7%A8%8B%E5%BA%8F.pdf" target="_blank" rel="noopener"><i class="fa fa-download fa-lg fa-fw"></i>附件2</a></p>
+<hr>
+    </div>
+
+    
+    
+    
+      
+
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/软件/" rel="tag"># 软件</a>
+            
+              <a href="/tags/二次开发/" rel="tag"># 二次开发</a>
+            
+              <a href="/tags/ANSYS/" rel="tag"># ANSYS</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/17/" rel="next" title="Ansys 二次开发系列之二：ansys-二次开发简单例子">
+                  <i class="fa fa-chevron-left"></i> Ansys 二次开发系列之二：ansys-二次开发简单例子
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/11/" rel="prev" title="力学: 塑性力学三: 知识点总结2">
+                  力学: 塑性力学三: 知识点总结2 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zOTQxNi8xNTk0Mw=="></div>
+  </div>
+  
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#材料本构模型开发用户子程序"><span class="nav-number">1.</span> <span class="nav-text">材料本构模型开发用户子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单元开发用户子程序"><span class="nav-number">2.</span> <span class="nav-text">单元开发用户子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单元开发支持子程序"><span class="nav-number">3.</span> <span class="nav-text">单元开发支持子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改和监视已存在单元的用户子程序"><span class="nav-number">4.</span> <span class="nav-text">修改和监视已存在单元的用户子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#载荷用户子程序"><span class="nav-number">5.</span> <span class="nav-text">载荷用户子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算干预用户子程序"><span class="nav-number">6.</span> <span class="nav-text">计算干预用户子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问-ANSYS-数据库的子程序"><span class="nav-number">7.</span> <span class="nav-text">访问 ANSYS 数据库的子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方便用户开发的子程序"><span class="nav-number">8.</span> <span class="nav-text">方便用户开发的子程序</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">小铅笔 & jeff</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span>
+        
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:hqysmail@gmail.com" title="E-Mail &rarr; mailto:hqysmail@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备18138470号 </a>
+  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小铅笔 & jeff</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js?v=7.3.0"></script>
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+<script src="/js/next-boot.js?v=7.3.0"></script><script src="/js/bookmark.js?v=7.3.0"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes: 0,
+          toolbar: 0,
+          statusbar: 0,
+          pagemode: 'thumbs',
+          view: 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Allow: /categories/
+Allow: /tags/
+Allow: /archives/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+
+Sitemap: https://pencilq.com/sitemap.xml
+Sitemap: https://pencilq.com/baidusitemap.xml
