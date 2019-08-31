@@ -57,7 +57,7 @@
 </script>
 
   <meta name="description" content="转自仿真科技论坛，点击进入原网址，作者师访  本部分给出Win7系统下UPFs二次开发环境设置方法。本部分所提供的方法仅用于个人研究学习，商业用途请购买正版软件，并按照软件商提供的方法操作。">
-<meta name="keywords" content="软件,二次开发,ANSYS">
+<meta name="keywords" content="二次开发,软件,ANSYS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ansys 二次开发系列之一：ANSYS15-0-Win764位安装及UPFs二次开发环境设置">
 <meta property="og:url" content="https://pencilq.com/19/index.html">
@@ -65,9 +65,9 @@
 <meta property="og:description" content="转自仿真科技论坛，点击进入原网址，作者师访  本部分给出Win7系统下UPFs二次开发环境设置方法。本部分所提供的方法仅用于个人研究学习，商业用途请购买正版软件，并按照软件商提供的方法操作。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://image.pencilq.com/images/2019/05/02/006tNbRwgy1fukikzwp9ej30g903cglm.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fukiledqsvj308w01pa9z.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fum02b881wj309804imx6.jpg">
-<meta property="og:updated_time" content="2019-05-02T14:34:41.000Z">
+<meta property="og:image" content="https://image.pencilq.com/images/2019/08/31/link-license.jpg">
+<meta property="og:image" content="https://image.pencilq.com/images/2019/08/31/ansys-install.jpg">
+<meta property="og:updated_time" content="2019-08-31T14:18:21.566Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ansys 二次开发系列之一：ANSYS15-0-Win764位安装及UPFs二次开发环境设置">
 <meta name="twitter:description" content="转自仿真科技论坛，点击进入原网址，作者师访  本部分给出Win7系统下UPFs二次开发环境设置方法。本部分所提供的方法仅用于个人研究学习，商业用途请购买正版软件，并按照软件商提供的方法操作。">
@@ -293,7 +293,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-05-02 22:34:41" itemprop="dateModified" datetime="2019-05-02T22:34:41+08:00">2019-05-02</time>
+                <time title="修改时间：2019-08-31 22:18:21" itemprop="dateModified" datetime="2019-08-31T22:18:21+08:00">2019-08-31</time>
               </span>
             
           
@@ -362,7 +362,7 @@
 </li>
 <li><p>当编译程序询问 Do you want to link the Wind Turbine Aeroelasticlibrary with Mechanical APDL? (Y or N): 时，输入<strong>Y</strong>。编译连接完成后，将出现 “LINK WASSUCCESSFUL!” 的提示。最后，当编译程序询问 Do you want to copythe runtime DLLs? (Y or N): ，在第一次编译时需要输入<strong>Y</strong>，程序将自动把 ansys.exe 运行所需的 <code>D:\Program Files\ANSYS Inc\v150\ansys\bin\winx64</code> 下的dll动态链接库文件拷贝到编译目录下，以后的编译过程中无需再次拷贝。 </p>
 </li>
-<li><p>编译完成后，运行运行生成的 <code>ANSYS.exe</code>，出现 This ANSYS was linked by License 即为成功编译。<br><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fukiledqsvj308w01pa9z.jpg" alt></p>
+<li><p>编译完成后，运行运行生成的 <code>ANSYS.exe</code>，出现 This ANSYS was linked by License 即为成功编译。<br><img src="https://image.pencilq.com/images/2019/08/31/link-license.jpg" alt></p>
 </li>
 </ul>
 <h2 id="6-安装设置失败的解决办法！！！"><a href="#6-安装设置失败的解决办法！！！" class="headerlink" title="6. 安装设置失败的解决办法！！！"></a>6. 安装设置失败的解决办法！！！</h2><ol>
@@ -373,10 +373,10 @@
 <li><p>提示”转换到coff期间失败“。原因：系统中存在多个不同版本的 cvtres.exe 文件从而产生冲突。共有4个解决方案（优先尝试解决方案1和方案2）。</p>
 <p><strong>解决方案1</strong>：<code>C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin</code> 和<code>C:\Windows\Microsoft.NET\Framework\v4.0.30319</code>   这两个文件夹里 的 cvtres.exe 冲突，删除前者。 </p>
 <p><strong>解决方案2</strong>：搜索c盘下的cvtres.exe文件，仅保留 <code>C:\Windows\Microsoft.NET\Framework64\v4.0.30319</code> 下的cvtres.exe，其余搜到的cvtres.exe全部删除！</p>
-<p><strong>解决方案3</strong>：重装系统，安装Win7官方原版镜像，ANSYS安装时仅仅选择二次开发必要的组件，即：<br><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fum02b881wj309804imx6.jpg" alt><br><strong>解决方案4</strong>：直接将 Win7 升级到 Win10 可解决该问题。</p>
-</li>
+<p><strong>解决方案3</strong>：重装系统，安装Win7官方原版镜像，ANSYS安装时仅仅选择二次开发必要的组件，即：<br><img src="https://image.pencilq.com/images/2019/08/31/ansys-install.jpg" alt><br><strong>解决方案4</strong>：直接将 Win7 升级到 Win10 可解决该问题。</p>
+<hr></li>
 </ol>
-<hr>
+
     </div>
 
     
@@ -393,9 +393,9 @@
           
           <div class="post-tags">
             
-              <a href="/tags/软件/" rel="tag"># 软件</a>
-            
               <a href="/tags/二次开发/" rel="tag"># 二次开发</a>
+            
+              <a href="/tags/软件/" rel="tag"># 软件</a>
             
               <a href="/tags/ANSYS/" rel="tag"># ANSYS</a>
             
@@ -407,8 +407,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/1/" rel="next" title="Hello World">
-                  <i class="fa fa-chevron-left"></i> Hello World
+                <a href="/15/" rel="next" title="Mathematica: 自定义中文词云">
+                  <i class="fa fa-chevron-left"></i> Mathematica: 自定义中文词云
                 </a>
               
             </div>
@@ -417,8 +417,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/17/" rel="prev" title="Ansys 二次开发系列之二：ansys-二次开发简单例子">
-                  Ansys 二次开发系列之二：ansys-二次开发简单例子 <i class="fa fa-chevron-right"></i>
+                <a href="/18/" rel="prev" title="ANSYS UPFs 子程序简单介绍及实例">
+                  ANSYS UPFs 子程序简单介绍及实例 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -490,7 +490,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -544,9 +544,7 @@
         
           
         
-          
-        
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
