@@ -31,12 +31,12 @@
     exturl: false,
     sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":"flat"},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     bookmark: {"enable":true,"color":"#222","save":"auto"},
     fancybox: true,
     mediumzoom: false,
     lazyload: false,
-    pangu: false,
+    pangu: true,
     algolia: {
       appID: '',
       apiKey: '',
@@ -44,7 +44,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
     path: 'search.xml',
     motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -259,7 +259,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小铅笔 & jeff">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://image.pencilq.com/images/2019/09/01/Avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -393,11 +393,11 @@
           
           <div class="post-tags">
             
-              <a href="/tags/软件/" rel="tag"># 软件</a>
+              <a href="/tags/软件/" rel="tag"><i class="fa fa-tag"></i> 软件</a>
             
-              <a href="/tags/二次开发/" rel="tag"># 二次开发</a>
+              <a href="/tags/二次开发/" rel="tag"><i class="fa fa-tag"></i> 二次开发</a>
             
-              <a href="/tags/ANSYS/" rel="tag"># ANSYS</a>
+              <a href="/tags/ANSYS/" rel="tag"><i class="fa fa-tag"></i> ANSYS</a>
             
           </div>
         
@@ -482,6 +482,9 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="https://image.pencilq.com/images/2019/09/01/Avatar.jpg"
+      alt="小铅笔 & jeff">
   <p class="site-author-name" itemprop="name">小铅笔 & jeff</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -611,6 +614,7 @@
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js?v=7.3.0"></script>
 <script src="/js/schemes/pisces.js?v=7.3.0"></script>
 
