@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>有趣的东西</title>
+      <link href="//10/"/>
+      <url>//10/</url>
+      
+        <content type="html"><![CDATA[<div class="tabs" id="tabsone"><ul class="nav-tabs"><li class="tab active"><a href="#tabsone-1"><i class="fa fa-forward"></i>剪切稀化流体</a></li><li class="tab"><a href="#tabsone-2"><i class="fa fa-forward"></i>眼镜蛇波/炸弹棒</a></li></ul><div class="tab-content"><div class="tab-pane active" id="tabsone-1"><p>洗发水，沐浴露，沼泽</p><p>维基百科 <a href="https://www.wikiwand.com/en/Shear_thinning" target="_blank" rel="noopener">https://www.wikiwand.com/en/Shear_thinning</a></p><div class="video-container"><iframe src="//www.youtube.com/embed/agCf0alxpJY" frameborder="0" allowfullscreen></iframe></div></div><div class="tab-pane" id="tabsone-2"><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?aid=999354&cid=1444859&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe></div></div></div></div>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>在命令行中批处理 pdf</title>
       <link href="//9/"/>
       <url>//9/</url>
