@@ -1798,7 +1798,7 @@ article:last-child .post-eof {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #5213ff;
+  background: #44a4d2;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2965,13 +2965,6 @@ body {
   margin-left: 3px;
   border-radius: 8px;
 }
-@media (max-width: 767px) {
-  .post-block,
-  #posts > article + article .post-block {
-    padding: 25px 0 15px !important;
-    margin: 0 15px 20px;
-  }
-}
 .sub-menu {
   margin-top: 12px;
   border-radius: 8px;
@@ -3023,12 +3016,6 @@ body {
 .comments {
   margin-left: 5px;
   border-radius: 8px;
-}
-@media (max-width: 767px) {
-  .comments {
-    padding: 15px;
-    margin: 0 15px 20px;
-  }
 }
 .v .vlist .vcard .vhead .vsys {
   display: none !important;
