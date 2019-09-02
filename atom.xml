@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pencilq.com/"/>
-  <updated>2019-09-01T13:39:51.116Z</updated>
+  <updated>2019-09-02T11:59:37.830Z</updated>
   <id>https://pencilq.com/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>机器学习资料收集</title>
+    <link href="https://pencilq.com//11/"/>
+    <id>https://pencilq.com//11/</id>
+    <published>2019-09-02T11:50:02.000Z</published>
+    <updated>2019-09-02T11:59:37.830Z</updated>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://github.com/scutan90/DeepLearning-500-questions " target="_blank" rel="noopener"><i class="fa fa-github-square fa-lg fa-fw"></i>深度学习 500 问</a> <a class="btn" href="https://github.com/exacity/deeplearningbook-chinese " target="_blank" rel="noopener"><i class="fa fa-github-square fa-lg fa-fw"></i>深度学习中文版</a><a class="btn" href="https://nndl.github.io/ " target="_blank" rel="noopener"><i class="fa fa-github-square fa-lg fa-fw"></i>神经网络与深度学习</a><a class="btn" href="https://github.com/machinelearningmindset/machine-learning-course " target="_blank" rel="noopener"><i class="fa fa-github-square fa-lg fa-fw"></i>Machine Learning Course with Python</a><a class="btn" href="https://github.com/Mikoto10032/DeepLearning " target="_blank" rel="noopener"><i class="fa fa-github-square fa-lg fa-fw"></i>深度学习入门教程 && 优秀文章</a>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a class=&quot;btn&quot; href=&quot;https://github.com/scutan90/DeepLearning-500-questions &quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;i class=&quot;fa fa-github-square f
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>有趣的东西</title>
     <link href="https://pencilq.com//10/"/>
     <id>https://pencilq.com//10/</id>
     <published>2019-09-01T08:50:04.000Z</published>
-    <updated>2019-09-01T13:39:51.116Z</updated>
+    <updated>2019-09-02T07:24:15.995Z</updated>
     
     <content type="html"><![CDATA[<div class="tabs" id="tabsone"><ul class="nav-tabs"><li class="tab active"><a href="#tabsone-1"><i class="fa fa-forward"></i>剪切稀化流体</a></li><li class="tab"><a href="#tabsone-2"><i class="fa fa-forward"></i>眼镜蛇波/炸弹棒</a></li><li class="tab"><a href="#tabsone-3"><i class="fa fa-forward"></i>气凝胶</a></li></ul><div class="tab-content"><div class="tab-pane active" id="tabsone-1"><p>洗发水，沐浴露，沼泽</p><p>维基百科 <a href="https://www.wikiwand.com/en/Shear_thinning" target="_blank" rel="noopener">https://www.wikiwand.com/en/Shear_thinning</a></p><div class="video-container"><iframe src="//www.youtube.com/embed/agCf0alxpJY" frameborder="0" allowfullscreen></iframe></div></div><div class="tab-pane" id="tabsone-2"><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?aid=999354&cid=1444859&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe></div></div><div class="tab-pane" id="tabsone-3"><div class="video-container"><iframe src="//www.youtube.com/embed/AeJ9q45PfD0" frameborder="0" allowfullscreen></iframe></div></div></div></div>]]></content>
     
@@ -453,27 +474,6 @@ w &amp;= 0
     <summary type="html">
     
       &lt;h2 id=&quot;弹性力学&quot;&gt;&lt;a href=&quot;#弹性力学&quot; class=&quot;headerlink&quot; title=&quot;弹性力学&quot;&gt;&lt;/a&gt;弹性力学&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://image.pencilq.com/images/2019/05/02/5cc705cc54537.png&quot; alt&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>书籍推荐</title>
-    <link href="https://pencilq.com//5/"/>
-    <id>https://pencilq.com//5/</id>
-    <published>2018-08-31T16:00:55.000Z</published>
-    <updated>2019-08-31T13:50:11.096Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="连续介质力学"><a href="#连续介质力学" class="headerlink" title="连续介质力学"></a>连续介质力学</h2><p><a href="https://file.pencilq.com/file_and_note/Continuum%20Mechanics.pdf" target="_blank" rel="noopener">⭐⭐⭐⭐⭐ CONTINUUM MECHANICS</a>: CONCISE THEORY AND PROBLEMS by P. Chadwick</p><p><a href="https://file.pencilq.com/file_and_note/Modern%20Continuum%20mechanics.pdf" target="_blank" rel="noopener">⭐⭐⭐⭐⭐ 近代连续介质力学 赵亚溥</a></p><p><a href="https://file.pencilq.com/file_and_note/A%20First%20Course%20in%20Continuum%20Mechanics%20(3rd" target="_blank" rel="noopener">⭐⭐⭐ 连续介质力学初级教程（英语）冯元桢</a>%20en.pdf)</p><p><a href="https://file.pencilq.com/file_and_note/A%20First%20Course%20in%20Continuum%20Mechanics%20(3rd" target="_blank" rel="noopener">⭐⭐⭐ 连续介质力学初级教程（中文）冯元桢</a>%20zh.pdf)</p><hr>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;连续介质力学&quot;&gt;&lt;a href=&quot;#连续介质力学&quot; class=&quot;headerlink&quot; title=&quot;连续介质力学&quot;&gt;&lt;/a&gt;连续介质力学&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://file.pencilq.com/file_and_note/Contin
-      
     
     </summary>
     
