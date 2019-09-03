@@ -33,7 +33,7 @@
     sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":"flat"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
-    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: true,
     mediumzoom: false,
     lazyload: false,
@@ -57,18 +57,18 @@
   };
 </script>
 
-  <meta name="description" content="需求：近期有一批图由于图例太小，需要重新绘制，但只有 pdf 文件解决方案：用 PPT 画图例，再通过 PDF-XChange 将新图例覆盖上去。问题来了：LaTeX 编译时无法显示我覆盖的图片。于是推测直接写入的图片是注释的形式，而 LaTeX 编译时会忽略这部分。 测试：将带注释的 pdf 重新打印后，LaTeX 编译得到了想要的效果。所以最后的解决方案是将 pdf 全部另存一遍就好了。需要另">
+  <meta name="description" content="需求：近期有一批图由于图例太小，需要重新绘制，但只有 pdf 文件 解决方案：用 PPT 画图例，再通过 PDF-XChange 将新图例覆盖上去。             问题来了：LaTeX 编译时无法显示我覆盖的图片。于是推测直接写入的图片是注释的形式，而 LaTeX 编译时会忽略这部分。            测试：将带注释的 pdf 重新打印后，LaTeX 编译得到了想要的效果。所以最后">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在命令行中批处理 pdf">
 <meta property="og:url" content="https://pencilq.com/9/index.html">
 <meta property="og:site_name" content="小铅笔 &amp; jeff">
-<meta property="og:description" content="需求：近期有一批图由于图例太小，需要重新绘制，但只有 pdf 文件解决方案：用 PPT 画图例，再通过 PDF-XChange 将新图例覆盖上去。问题来了：LaTeX 编译时无法显示我覆盖的图片。于是推测直接写入的图片是注释的形式，而 LaTeX 编译时会忽略这部分。 测试：将带注释的 pdf 重新打印后，LaTeX 编译得到了想要的效果。所以最后的解决方案是将 pdf 全部另存一遍就好了。需要另">
+<meta property="og:description" content="需求：近期有一批图由于图例太小，需要重新绘制，但只有 pdf 文件 解决方案：用 PPT 画图例，再通过 PDF-XChange 将新图例覆盖上去。             问题来了：LaTeX 编译时无法显示我覆盖的图片。于是推测直接写入的图片是注释的形式，而 LaTeX 编译时会忽略这部分。            测试：将带注释的 pdf 重新打印后，LaTeX 编译得到了想要的效果。所以最后">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://image.pencilq.com/images/2019/09/01/64006a47a40a198135a90d.jpg">
-<meta property="og:updated_time" content="2019-09-02T16:29:36.381Z">
+<meta property="og:updated_time" content="2019-09-03T01:23:13.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在命令行中批处理 pdf">
-<meta name="twitter:description" content="需求：近期有一批图由于图例太小，需要重新绘制，但只有 pdf 文件解决方案：用 PPT 画图例，再通过 PDF-XChange 将新图例覆盖上去。问题来了：LaTeX 编译时无法显示我覆盖的图片。于是推测直接写入的图片是注释的形式，而 LaTeX 编译时会忽略这部分。 测试：将带注释的 pdf 重新打印后，LaTeX 编译得到了想要的效果。所以最后的解决方案是将 pdf 全部另存一遍就好了。需要另">
+<meta name="twitter:description" content="需求：近期有一批图由于图例太小，需要重新绘制，但只有 pdf 文件 解决方案：用 PPT 画图例，再通过 PDF-XChange 将新图例覆盖上去。             问题来了：LaTeX 编译时无法显示我覆盖的图片。于是推测直接写入的图片是注释的形式，而 LaTeX 编译时会忽略这部分。            测试：将带注释的 pdf 重新打印后，LaTeX 编译得到了想要的效果。所以最后">
 <meta name="twitter:image" content="https://image.pencilq.com/images/2019/09/01/64006a47a40a198135a90d.jpg">
   <link rel="canonical" href="https://pencilq.com/9/">
 
@@ -234,7 +234,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <a class="book-mark-link book-mark-link-fixed" href="#"></a>
 
 
     <main id="main" class="main">
@@ -290,7 +289,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-03 00:29:36" itemprop="dateModified" datetime="2019-09-03T00:29:36+08:00">2019-09-03</time>
+                <time title="修改时间：2019-09-03 09:23:13" itemprop="dateModified" datetime="2019-09-03T09:23:13+08:00">2019-09-03</time>
               </span>
             
           
@@ -306,12 +305,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>需求：近期有一批图由于图例太小，需要重新绘制，但只有 pdf 文件<br>解决方案：用 PPT 画图例，再通过 PDF-XChange 将新图例覆盖上去。<br>问题来了：LaTeX 编译时无法显示我覆盖的图片。于是推测直接写入的图片是注释的形式，而 LaTeX 编译时会忽略这部分。</p>
+        <p><code>需求</code>：近期有一批图由于图例太小，需要重新绘制，但只有 pdf 文件</p>
+<p><code>解决方案</code>：用 PPT 画图例，再通过 PDF-XChange 将新图例覆盖上去。<br><div class="note warning">
+            <p>问题来了：LaTeX 编译时无法显示我覆盖的图片。于是推测直接写入的图片是注释的形式，而 LaTeX 编译时会忽略这部分。</p>
+          </div></p>
 <p>测试：将带注释的 pdf 重新打印后，LaTeX 编译得到了想要的效果。所以最后的解决方案是将 pdf 全部另存一遍就好了。需要另存的 pdf 数量约 90 个，一个个操作繁琐难当。下面主要记录这次 pdf 批处理的坑爹过程。<br><a id="more"></a></p>
 <h2 id="imagemagick"><a href="#imagemagick" class="headerlink" title="imagemagick"></a>imagemagick</h2><p>首先想到的是 imagemagick。但是直接运行命令</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">magick <span class="built_in">convert</span> input.pdf output.pdf</span><br></pre></td></tr></table></figure>
-<p>但是提示 <span class="label danger">convert: PDFDelegateFailed \`系统找不到指定的文件</span>。按照<a href="https://xbuba.com/questions/48834749" target="_blank" rel="noopener"><span class="label warning">这里</span></a>的说法，是因为我计算机中的 64 位 imagemagick 和 32 位的 gs 不兼容。但几经尝试仍无法解决，遂放弃这个方案。</p>
-<h2 id="mupdf"><a href="#mupdf" class="headerlink" title="mupdf"></a>mupdf</h2><p>mupdf 是在查找解决方法的时候找到的新工具，处理 pdf 更加得心应手，按照<a href="https://mupdf.com/docs/manual-mutool-convert.html" target="_blank" rel="noopener">官方文档</a>，最简单用法</p>
+<p>但是提示 <span class="label danger">convert: PDFDelegateFailed \`系统找不到指定的文件</span>。按照 <a href="https://xbuba.com/questions/48834749" target="_blank" rel="noopener">这里 <i class="fa fa-external-link fa-fw"></i></a>的说法，是因为我计算机中的 64 位 imagemagick 和 32 位的 gs 不兼容。但几经尝试仍无法解决，遂放弃这个方案。</p>
+<h2 id="mupdf"><a href="#mupdf" class="headerlink" title="mupdf"></a>mupdf</h2><p>mupdf 是在查找解决方法的时候找到的新工具，处理 pdf 更加得心应手，查看 <a href="https://mupdf.com/docs/manual-mutool-convert.html" target="_blank" rel="noopener">官方文档 <i class="fa fa-external-link fa-fw"></i></a>，最简单用法</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mutool <span class="built_in">convert</span> [options] -o output input [pages]</span><br></pre></td></tr></table></figure>
 <p>对于 pdf 另存，最简单的即以下命令（output 参数放在前面🤣）</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mutool <span class="built_in">convert</span> -o output.pdf input.pdf</span><br></pre></td></tr></table></figure>
@@ -550,7 +552,7 @@
 <script src="/js/utils.js?v=7.4.0"></script>
 <script src="/js/schemes/pisces.js?v=7.4.0"></script>
 
-<script src="/js/next-boot.js?v=7.4.0"></script><script src="/js/bookmark.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
