@@ -396,7 +396,7 @@
       <link href="//1/"/>
       <url>//1/</url>
       
-        <content type="html"><![CDATA[<p>Markdown 链接 <code>[text](link)</code> 中，link 包含 <code>()</code> 会导致转义失败，使用 <code>%28</code> 代替 <code>(</code>，<code>29</code> 代替 <code>)</code>。</p><blockquote><p><a href="https://gohom.win/2015/12/24/MD-bracket/" target="_blank" rel="noopener">Markdown 链接括号的问题 <i class="fa fa-external-link fa-fw"></i> </a></p></blockquote><p><a href="https://cniter.github.io/posts/6315717b.html" target="_blank" rel="noopener">FFmpeg剪切与合并命令使用小结 <i class="fa fa-external-link fa-fw"></i></a></p>]]></content>
+        <content type="html"><![CDATA[<p>Markdown 链接 <code>[text](link)</code> 中，link 包含 <code>()</code> 会导致转义失败，使用 <code>%28</code> 代替 <code>(</code>，<code>29</code> 代替 <code>)</code>。</p><blockquote><p><a href="https://gohom.win/2015/12/24/MD-bracket/" target="_blank" rel="noopener">Markdown 链接括号的问题 <i class="fa fa-external-link fa-fw"></i> </a></p></blockquote><p><a href="https://cniter.github.io/posts/6315717b.html" target="_blank" rel="noopener">FFmpeg剪切与合并命令使用小结 <i class="fa fa-external-link fa-fw"></i></a></p><p>期刊影响因子查询</p><p><a href="http://www.letpub.com.cn/index.php?page=journalapp" target="_blank" rel="noopener">letpub <i class="fa fa-external-link fa-fw"></i></a> </p><p><a href="http://sci.justscience.cn" target="_blank" rel="noopener">sci 期刊 中文核心 <i class="fa fa-external-link fa-fw"></i></a></p>]]></content>
       
       
       
