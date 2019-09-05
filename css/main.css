@@ -1774,7 +1774,7 @@ article:last-child .post-eof {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #349d54;
+  background: #ff1309;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -3004,6 +3004,22 @@ body {
 }
 .posts-expand .post-title {
   font-weight: 900;
+  font-size: 1.75em;
+}
+.post-body h2 {
+  font-size: 1.4em;
+}
+.post-body h3 {
+  font-size: 1.25em;
+}
+.post-body h4 {
+  font-size: 1.15em;
+}
+.post-body h5 {
+  font-size: 1.15em;
+}
+.post-body h6 {
+  font-size: 1.15em;
 }
 .posts-collapse .post-title a {
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -3018,10 +3034,6 @@ body {
 code {
   background: none;
   color: #dd4b39;
-}
-blockquote p,
-.post-body .note {
-  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, STKaiti, KaiTi, SimKai, DFKai-SB, 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .posts-expand .post-body img {
   border: 0px;
