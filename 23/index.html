@@ -36,7 +36,7 @@
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: true,
     mediumzoom: false,
-    lazyload: false,
+    lazyload: true,
     pangu: true,
     algolia: {
       appID: '',
@@ -65,12 +65,10 @@
 <meta property="og:site_name" content="小铅笔 &amp; jeff">
 <meta property="og:description" content="从 Matlab Figure 中重新提取数据            How do I extract data from MATLAB figures?              matlab 线型总结（查看帮助文档 plot 函数）            画图线型、符号及颜色汇总              寻找数据的波峰波谷            寻找峰值（波峰，波谷">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://image.pencilq.com/images/2019/05/20/test.png">
 <meta property="og:updated_time" content="2019-09-03T08:52:11.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Matlab 笔记">
 <meta name="twitter:description" content="从 Matlab Figure 中重新提取数据            How do I extract data from MATLAB figures?              matlab 线型总结（查看帮助文档 plot 函数）            画图线型、符号及颜色汇总              寻找数据的波峰波谷            寻找峰值（波峰，波谷">
-<meta name="twitter:image" content="https://image.pencilq.com/images/2019/05/20/test.png">
   <link rel="canonical" href="https://pencilq.com/23/">
 
 
@@ -350,7 +348,7 @@
 <p>一些特殊的字符，比如 <code>℃</code>，会导致字体失效。示例代码。</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">A = peaks(<span class="number">15</span>);</span><br><span class="line">imagesc(A);</span><br><span class="line">set(gca, <span class="string">'FontName'</span>, <span class="string">'Times New Roman'</span>, <span class="string">'FontSize'</span>, <span class="number">20</span>);</span><br><span class="line">xlabel(<span class="string">'x ℃'</span>);</span><br><span class="line">ylabel(<span class="string">'Times New Roman Font ℃'</span>);</span><br><span class="line">title(<span class="string">'Title ℃'</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'test.pdf'</span>,<span class="string">'-dpdf'</span>)</span><br><span class="line">print(<span class="string">'test.png'</span>,<span class="string">'-dpng'</span>)</span><br></pre></td></tr></table></figure>
 <p>可以看到导出的 pdf 字体发生了变化。（左边 png，右边 pdf ）</p>
-<p><img src="https://image.pencilq.com/images/2019/05/20/test.png" alt></p>
+<p><img alt data-src="https://image.pencilq.com/images/2019/05/20/test.png"></p>
 <div class="note default">
             <p>变量类型转换</p>
           </div>
@@ -576,6 +574,7 @@
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js?v=7.4.0"></script>
 <script src="/js/schemes/pisces.js?v=7.4.0"></script>

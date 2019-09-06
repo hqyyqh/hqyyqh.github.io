@@ -36,7 +36,7 @@
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: true,
     mediumzoom: false,
-    lazyload: false,
+    lazyload: true,
     pangu: true,
     algolia: {
       appID: '',
@@ -65,14 +65,10 @@
 <meta property="og:site_name" content="小铅笔 &amp; jeff">
 <meta property="og:description" content="转自仿真科技论坛，点击进入原网址，作者师访  本部分给出Win7系统下UPFs二次开发环境设置方法。本部分所提供的方法仅用于个人研究学习，商业用途请购买正版软件，并按照软件商提供的方法操作。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://image.pencilq.com/images/2019/05/02/006tNbRwgy1fukikzwp9ej30g903cglm.jpg">
-<meta property="og:image" content="https://image.pencilq.com/images/2019/08/31/link-license.jpg">
-<meta property="og:image" content="https://image.pencilq.com/images/2019/08/31/ansys-install.jpg">
 <meta property="og:updated_time" content="2019-08-31T14:18:21.566Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ansys 二次开发系列之一：ANSYS15-0-Win764位安装及UPFs二次开发环境设置">
 <meta name="twitter:description" content="转自仿真科技论坛，点击进入原网址，作者师访  本部分给出Win7系统下UPFs二次开发环境设置方法。本部分所提供的方法仅用于个人研究学习，商业用途请购买正版软件，并按照软件商提供的方法操作。">
-<meta name="twitter:image" content="https://image.pencilq.com/images/2019/05/02/006tNbRwgy1fukikzwp9ej30g903cglm.jpg">
   <link rel="canonical" href="https://pencilq.com/19/">
 
 
@@ -324,7 +320,7 @@
 <ol>
 <li>安装<code>ansys</code>，将ANSYS15.0安装在D盘。 <a href="http://forum.simwe.com/forum.php?mod=attachment&amp;aid=NDM3ODkyfDA0Y2NkNzJmfDE1MzE0NDQ4MTd8NzgzMjAxfDEwMjE4ODg%3D" target="_blank" rel="noopener">ansys15.0种子</a> ，破解文件 <a href="http://forum.simwe.com/forum.php?mod=attachment&amp;aid=NDM3ODkxfGNmYzc1NjQxfDE1MzE0NDQ4MTd8NzgzMjAxfDEwMjE4ODg%3D" target="_blank" rel="noopener">ansys_crack</a> </li>
 </ol>
-<p>安装方法如下（注意安装过程中别忘了选择安装<strong>customalize文件夹</strong>）：<br><img src="https://image.pencilq.com/images/2019/05/02/006tNbRwgy1fukikzwp9ej30g903cglm.jpg" alt></p>
+<p>安装方法如下（注意安装过程中别忘了选择安装<strong>customalize文件夹</strong>）：<br><img alt data-src="https://image.pencilq.com/images/2019/05/02/006tNbRwgy1fukikzwp9ej30g903cglm.jpg"></p>
 <p>​     <strong>Step 1</strong> If you have installed an earlier version of ANSYS, please make sure to uninstall it, the ANSYS License Manager in especial (This can be done by deleting the”\ANSYS Inc\Shared Files” folder, if it can not be deleted,then end the related processes in the task manager and try again!).</p>
 <p>​     <strong>Step 2</strong> Install only ANSYS products on disk D, do not install ANSYS License Manager. <strong>When askfor Hostname 1</strong>, just select <strong>Skip this configuration!</strong></p>
 <p>​     <strong>Step 3</strong>  After installation, Put <strong>ansyslmd.ini</strong> and license.dat into the followingdirectory:<br> <code>D:\Program Files\ANSYS Inc\SharedFiles\Licensing\</code><br> Modify thesecond line of the <strong>ansyslmd.ini</strong> into the following line:<br> <code>LICKEYFIL=D:\Program Files\ANSYS Inc\SharedFiles\Licensing\license.dat</code></p>
@@ -361,7 +357,7 @@
 </li>
 <li><p>当编译程序询问 Do you want to link the Wind Turbine Aeroelasticlibrary with Mechanical APDL? (Y or N): 时，输入<strong>Y</strong>。编译连接完成后，将出现 “LINK WASSUCCESSFUL!” 的提示。最后，当编译程序询问 Do you want to copythe runtime DLLs? (Y or N): ，在第一次编译时需要输入<strong>Y</strong>，程序将自动把 ansys.exe 运行所需的 <code>D:\Program Files\ANSYS Inc\v150\ansys\bin\winx64</code> 下的dll动态链接库文件拷贝到编译目录下，以后的编译过程中无需再次拷贝。 </p>
 </li>
-<li><p>编译完成后，运行运行生成的 <code>ANSYS.exe</code>，出现 This ANSYS was linked by License 即为成功编译。<br><img src="https://image.pencilq.com/images/2019/08/31/link-license.jpg" alt></p>
+<li><p>编译完成后，运行运行生成的 <code>ANSYS.exe</code>，出现 This ANSYS was linked by License 即为成功编译。<br><img alt data-src="https://image.pencilq.com/images/2019/08/31/link-license.jpg"></p>
 </li>
 </ul>
 <h2 id="6-安装设置失败的解决办法！！！"><a href="#6-安装设置失败的解决办法！！！" class="headerlink" title="6. 安装设置失败的解决办法！！！"></a>6. 安装设置失败的解决办法！！！</h2><ol>
@@ -372,7 +368,7 @@
 <li><p>提示”转换到coff期间失败“。原因：系统中存在多个不同版本的 cvtres.exe 文件从而产生冲突。共有4个解决方案（优先尝试解决方案1和方案2）。</p>
 <p><strong>解决方案1</strong>：<code>C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin</code> 和<code>C:\Windows\Microsoft.NET\Framework\v4.0.30319</code>   这两个文件夹里 的 cvtres.exe 冲突，删除前者。 </p>
 <p><strong>解决方案2</strong>：搜索c盘下的cvtres.exe文件，仅保留 <code>C:\Windows\Microsoft.NET\Framework64\v4.0.30319</code> 下的cvtres.exe，其余搜到的cvtres.exe全部删除！</p>
-<p><strong>解决方案3</strong>：重装系统，安装Win7官方原版镜像，ANSYS安装时仅仅选择二次开发必要的组件，即：<br><img src="https://image.pencilq.com/images/2019/08/31/ansys-install.jpg" alt><br><strong>解决方案4</strong>：直接将 Win7 升级到 Win10 可解决该问题。</p>
+<p><strong>解决方案3</strong>：重装系统，安装Win7官方原版镜像，ANSYS安装时仅仅选择二次开发必要的组件，即：<br><img alt data-src="https://image.pencilq.com/images/2019/08/31/ansys-install.jpg"><br><strong>解决方案4</strong>：直接将 Win7 升级到 Win10 可解决该问题。</p>
 <hr></li>
 </ol>
 
@@ -588,6 +584,7 @@
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js?v=7.4.0"></script>
 <script src="/js/schemes/pisces.js?v=7.4.0"></script>

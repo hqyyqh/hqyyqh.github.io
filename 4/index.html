@@ -36,7 +36,7 @@
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: true,
     mediumzoom: false,
-    lazyload: false,
+    lazyload: true,
     pangu: true,
     algolia: {
       appID: '',
@@ -64,18 +64,10 @@
 <meta property="og:site_name" content="小铅笔 &amp; jeff">
 <meta property="og:description" content="数学模型瑞利 (Lord Rayleigh) 研究了弹性力学线性化方程的如下形式解答：  \begin{equation} \begin{split} u &amp;= A e^{-by} exp[ik(x-ct)] \\ v &amp;= B e^{-by} exp[ik(x-ct)] \\ w &amp;= 0 \end{split} \end{equation}">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://image.pencilq.com/images/2019/08/29/wave.png">
-<meta property="og:image" content="https://image.pencilq.com/images/2019/08/29/path-of-one-point.png">
-<meta property="og:image" content="https://image.pencilq.com/images/2019/08/29/animate-point.gif">
-<meta property="og:image" content="https://image.pencilq.com/images/2019/08/29/path-of-one-point.png">
-<meta property="og:image" content="https://image.pencilq.com/images/2019/08/29/animate-all-point.gif">
-<meta property="og:image" content="https://image.pencilq.com/images/2019/08/29/all_point_animate.gif">
-<meta property="og:image" content="https://image.pencilq.com/images/2019/08/29/solve.png">
 <meta property="og:updated_time" content="2019-08-29T01:09:42.926Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mathematica-绘制瑞利波">
 <meta name="twitter:description" content="数学模型瑞利 (Lord Rayleigh) 研究了弹性力学线性化方程的如下形式解答：  \begin{equation} \begin{split} u &amp;= A e^{-by} exp[ik(x-ct)] \\ v &amp;= B e^{-by} exp[ik(x-ct)] \\ w &amp;= 0 \end{split} \end{equation}">
-<meta name="twitter:image" content="https://image.pencilq.com/images/2019/08/29/wave.png">
   <link rel="canonical" href="https://pencilq.com/4/">
 
 
@@ -340,7 +332,7 @@ u &= A (e^{-0.8475ky}-0.5773e^{-3933ky}) \cos k(x-c_Rt) \\
 v &= B (-0.8475e^{-0.8475ky}+1.46793e^{-3933ky}) \sin k(x-c_Rt) \\
 w &= 0
 \end{split}</script><p>常数 $c_R$ 称为瑞利波速。</p>
-<p>对应于数学模型的波形长什么样子？<br><img src="https://image.pencilq.com/images/2019/08/29/wave.png" alt></p>
+<p>对应于数学模型的波形长什么样子？<br><img alt data-src="https://image.pencilq.com/images/2019/08/29/wave.png"></p>
 <p>初步观察：$u, \; v$ 分别为 $\cos,\; \sin$ ，初步判断出质点的运动轨迹为一个椭圆：</p>
 <script type="math/tex; mode=display">
 \frac{u^2}{a^2} + \frac{v^2}{b^2} = 1</script><h2 id="Mathematica-go！"><a href="#Mathematica-go！" class="headerlink" title="Mathematica go！"></a>Mathematica go！</h2><h3 id="输入数学模型"><a href="#输入数学模型" class="headerlink" title="输入数学模型"></a>输入数学模型</h3><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">c1 = <span class="number">-0.8475</span>;</span><br><span class="line">c2 = <span class="number">-0.5773</span>;</span><br><span class="line">c3 = <span class="number">-0.3933</span>;</span><br><span class="line">c4 = <span class="number">1.4679</span>;</span><br><span class="line">u[x_, y_, t_] = ( <span class="keyword">Exp</span>[c1 y] + c2 <span class="keyword">Exp</span>[c3 y]) <span class="keyword">Cos</span>[x - t];</span><br><span class="line">v[x_, y_, t_] = ( c1 <span class="keyword">Exp</span>[c1 y] + c4 <span class="keyword">Exp</span>[c3 y]) <span class="keyword">Sin</span>[x - t];</span><br></pre></td></tr></table></figure>
@@ -348,24 +340,24 @@ w &= 0
 <h3 id="坐标原点的运动"><a href="#坐标原点的运动" class="headerlink" title="坐标原点的运动"></a>坐标原点的运动</h3><p>循序渐进，先来看看一个点的运动（当然预期的是一个椭圆）</p>
 <p>简单地画个图</p>
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ParametricPlot</span>[&#123;u[x, y, t], v[x, y, t]&#125; /. &#123;x -&gt; <span class="number">0</span>, y -&gt; <span class="number">0</span>&#125;, &#123;t, <span class="number">0</span>, <span class="number">2</span> <span class="keyword">Pi</span>&#125;, <span class="keyword">PlotRange</span> -&gt; &#123;&#123;<span class="number">-1</span>, <span class="number">1</span>&#125;, &#123;<span class="number">-1</span>, <span class="number">1</span>&#125;&#125;]</span><br></pre></td></tr></table></figure>
-<p><img src="https://image.pencilq.com/images/2019/08/29/path-of-one-point.png" alt></p>
+<p><img alt data-src="https://image.pencilq.com/images/2019/08/29/path-of-one-point.png"></p>
 <div class="note warning"><p>这是初始时刻位于原点的质点的运动轨迹；图中 y 轴与题中 y 轴方向相反，最后再进行处理</p></div>
 
 <p>加个函数动起来</p>
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Manipulate</span>[<span class="keyword">ParametricPlot</span>[&#123;u[x, y, t], v[x, y, t]&#125; /. &#123;x -&gt; <span class="number">0</span>, y -&gt; <span class="number">0</span>&#125;, &#123;t, <span class="number">0</span>, a&#125;, <span class="keyword">PlotRange</span> -&gt; &#123;&#123;<span class="number">-1</span>, <span class="number">1</span>&#125;, &#123;<span class="number">-1</span>, <span class="number">1</span>&#125;&#125;], &#123;a, <span class="number">0.001</span>, <span class="number">2</span> <span class="keyword">Pi</span>&#125;]</span><br></pre></td></tr></table></figure>
-<p><img src="https://image.pencilq.com/images/2019/08/29/animate-point.gif" alt></p>
+<p><img alt data-src="https://image.pencilq.com/images/2019/08/29/animate-point.gif"></p>
 <h3 id="所有质点的运动轨迹"><a href="#所有质点的运动轨迹" class="headerlink" title="所有质点的运动轨迹"></a>所有质点的运动轨迹</h3><p>使用 <code>Table</code> 函数列出要观察的质点，(t = 0 时刻)</p>
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ListPlot</span>@<span class="keyword">Table</span>[&#123;x + u[x, y, <span class="number">0</span>], y + v[x, y, <span class="number">0</span>]&#125;, &#123;x, <span class="number">-4</span>, <span class="number">4</span>, <span class="number">0.5</span>&#125;, &#123;y, <span class="number">0</span>, <span class="number">5</span>, <span class="number">0.5</span>&#125;]</span><br></pre></td></tr></table></figure>
-<p><img src="https://image.pencilq.com/images/2019/08/29/path-of-one-point.png" alt></p>
+<p><img alt data-src="https://image.pencilq.com/images/2019/08/29/path-of-one-point.png"></p>
 <p>观察所有质点随时间的运动，把 <code>u[x, y, 0]</code> 和 <code>v[x, y, 0]</code> 中的参数改为 <code>[x, y, t]</code>，动起来</p>
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Manipulate</span>[</span><br><span class="line"> <span class="keyword">ListPlot</span>[<span class="keyword">Table</span>[&#123;x + u[x, y, t], y + v[x, y, t]&#125;, &#123;x, <span class="number">-4</span>, <span class="number">4</span>, <span class="number">0.5</span>&#125;, &#123;y,</span><br><span class="line">      <span class="number">0</span>, <span class="number">5</span>, <span class="number">0.5</span>&#125;] /. &#123;t -&gt; a&#125;, <span class="keyword">PlotRange</span> -&gt; &#123;&#123;<span class="number">-5</span>, <span class="number">5</span>&#125;, &#123;<span class="number">-1</span>, <span class="number">6</span>&#125;&#125;], &#123;a, </span><br><span class="line">  <span class="keyword">Pi</span>/<span class="number">20</span>, <span class="number">2</span> <span class="keyword">Pi</span>&#125;]</span><br></pre></td></tr></table></figure>
-<p><img src="https://image.pencilq.com/images/2019/08/29/animate-all-point.gif" alt></p>
+<p><img alt data-src="https://image.pencilq.com/images/2019/08/29/animate-all-point.gif"></p>
 <p>在图中，接近地表的质点<code>顺时针</code>运动，远离地表的质点<code>逆时针运动</code></p>
 <p>更进一步地，在动画中显示完整的轨迹<br><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">fig1 = <span class="keyword">Table</span>[</span><br><span class="line">   <span class="keyword">ParametricPlot</span>[&#123;x + u[x, y, t], y + v[x, y, t]&#125;, &#123;t, <span class="number">0</span>, <span class="number">2</span> <span class="keyword">Pi</span>&#125;, </span><br><span class="line">    <span class="keyword">PlotRange</span> -&gt; &#123;&#123;<span class="number">-5</span>, <span class="number">5</span>&#125;, &#123;<span class="number">-1</span>, <span class="number">6</span>&#125;&#125;, <span class="keyword">Axes</span> -&gt; <span class="keyword">False</span>, </span><br><span class="line">    <span class="keyword">PlotStyle</span> -&gt; &#123;<span class="keyword">Black</span>, <span class="keyword">Thin</span>&#125;], &#123;x, <span class="number">-4</span>, <span class="number">4</span>, <span class="number">1</span>&#125;, &#123;y, <span class="number">0</span>, <span class="number">5</span>, <span class="number">1</span>&#125;] // <span class="keyword">Show</span>;</span><br><span class="line"><span class="keyword">Manipulate</span>[</span><br><span class="line"> fig2 = <span class="keyword">ListPlot</span>[</span><br><span class="line">   <span class="keyword">Table</span>[&#123;x + u[x, y, t], y + v[x, y, t]&#125;, &#123;y, <span class="number">0</span>, <span class="number">5</span>, <span class="number">1</span>&#125;, &#123;x, <span class="number">-4</span>, <span class="number">4</span>, </span><br><span class="line">      <span class="number">0.2</span>&#125;] /. &#123;t -&gt; a&#125;, <span class="keyword">PlotRange</span> -&gt; &#123;&#123;<span class="number">-5</span>, <span class="number">5</span>&#125;, &#123;<span class="number">-1</span>, <span class="number">6</span>&#125;&#125;, </span><br><span class="line">   <span class="keyword">Axes</span> -&gt; <span class="keyword">False</span>, <span class="keyword">PlotStyle</span> -&gt; &#123;&#123;<span class="keyword">Red</span>, <span class="keyword">Thin</span>, <span class="keyword">Dashed</span>&#125;&#125;, <span class="keyword">Joined</span> -&gt; <span class="keyword">True</span>];</span><br><span class="line"> fig3 = <span class="keyword">ListPlot</span>[</span><br><span class="line">   <span class="keyword">Table</span>[&#123;x + u[x, y, t], y + v[x, y, t]&#125;, &#123;y, <span class="number">0</span>, <span class="number">5</span>, <span class="number">1</span>&#125;, &#123;x, <span class="number">-4</span>, <span class="number">4</span>, </span><br><span class="line">      <span class="number">1</span>&#125;] /. &#123;t -&gt; a&#125;, <span class="keyword">PlotRange</span> -&gt; &#123;&#123;<span class="number">-5</span>, <span class="number">5</span>&#125;, &#123;<span class="number">-1</span>, <span class="number">6</span>&#125;&#125;, <span class="keyword">Axes</span> -&gt; <span class="keyword">False</span>,</span><br><span class="line">    <span class="keyword">PlotStyle</span> -&gt; &#123;&#123;<span class="keyword">Red</span>, <span class="keyword">Thin</span>&#125;&#125;]; </span><br><span class="line"> <span class="keyword">Show</span>[fig1, fig2, fig3] // <span class="keyword">Rotate</span>[#, <span class="number">180</span> <span class="keyword">Degree</span>] &amp;, &#123;a, <span class="keyword">Pi</span>/<span class="number">10.</span>, <span class="number">2</span> <span class="keyword">Pi</span>, </span><br><span class="line">  <span class="keyword">Pi</span>/<span class="number">20</span>&#125;]</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://image.pencilq.com/images/2019/08/29/all_point_animate.gif" alt></p>
+<p><img alt data-src="https://image.pencilq.com/images/2019/08/29/all_point_animate.gif"></p>
 <h3 id="运动轨迹分析"><a href="#运动轨迹分析" class="headerlink" title="运动轨迹分析"></a>运动轨迹分析</h3><p>从哪一个深度开始，质点椭圆运动方向开始发生变化呢？观察模型，可以发现，在初始时刻，$\cos, \sin$的系数同号；当两个系数异号，质点椭圆运动方向相反。<br>绘图估计一下临界点在哪个位置，进行求解</p>
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Plot</span>[( <span class="keyword">Exp</span>[c1 y] + c2 <span class="keyword">Exp</span>[c3 y]) ( c1 <span class="keyword">Exp</span>[c1 y] + c4 <span class="keyword">Exp</span>[c3 y]), &#123;y, </span><br><span class="line">  <span class="number">0</span>, <span class="number">2</span>&#125;]</span><br><span class="line"><span class="keyword">Solve</span>[&#123;( <span class="keyword">Exp</span>[c1 y] + c2 <span class="keyword">Exp</span>[c3 y]) ( c1 <span class="keyword">Exp</span>[c1 y] + c4 <span class="keyword">Exp</span>[c3 y]) == </span><br><span class="line">   <span class="number">0</span>, <span class="number">0</span> &lt; y &lt; <span class="number">2</span>&#125;, y, <span class="keyword">Reals</span>]</span><br></pre></td></tr></table></figure>
-<p><img src="https://image.pencilq.com/images/2019/08/29/solve.png" alt></p>
+<p><img alt data-src="https://image.pencilq.com/images/2019/08/29/solve.png"></p>
 
     </div>
 
@@ -566,6 +558,7 @@ w &= 0
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js?v=7.4.0"></script>
 <script src="/js/schemes/pisces.js?v=7.4.0"></script>

@@ -36,7 +36,7 @@
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: true,
     mediumzoom: false,
-    lazyload: false,
+    lazyload: true,
     pangu: true,
     algolia: {
       appID: '',
@@ -64,12 +64,10 @@
 <meta property="og:site_name" content="小铅笔 &amp; jeff">
 <meta property="og:description" content="需求：近期有一批图由于图例太小，需要重新绘制，但只有 pdf 文件 解决方案：用 PPT 画图例，再通过 PDF-XChange 将新图例覆盖上去。             问题来了：LaTeX 编译时无法显示我覆盖的图片。于是推测直接写入的图片是注释的形式，而 LaTeX 编译时会忽略这部分。            测试：将带注释的 pdf 重新打印后，LaTeX 编译得到了想要的效果。所以最后">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://image.pencilq.com/images/2019/09/01/64006a47a40a198135a90d.jpg">
 <meta property="og:updated_time" content="2019-09-03T01:23:13.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在命令行中批处理 pdf">
 <meta name="twitter:description" content="需求：近期有一批图由于图例太小，需要重新绘制，但只有 pdf 文件 解决方案：用 PPT 画图例，再通过 PDF-XChange 将新图例覆盖上去。             问题来了：LaTeX 编译时无法显示我覆盖的图片。于是推测直接写入的图片是注释的形式，而 LaTeX 编译时会忽略这部分。            测试：将带注释的 pdf 重新打印后，LaTeX 编译得到了想要的效果。所以最后">
-<meta name="twitter:image" content="https://image.pencilq.com/images/2019/09/01/64006a47a40a198135a90d.jpg">
   <link rel="canonical" href="https://pencilq.com/9/">
 
 
@@ -325,7 +323,7 @@
 <div class="note success">
             <p>The following single page image formats are also supported: PNG, PNM, PAM, PBM, PKM. Each page is written to a separate file.</p>
           </div>
-<p><img src="https://image.pencilq.com/images/2019/09/01/64006a47a40a198135a90d.jpg" alt></p>
+<p><img alt data-src="https://image.pencilq.com/images/2019/09/01/64006a47a40a198135a90d.jpg"></p>
 <p>直接试一下 pdf to png to jpg to pdf，然后再删掉 png 和 jpg</p>
 <p>第一步 pdf 转 png: mupdf</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">rem 关闭输出</span></span><br><span class="line">@<span class="built_in">echo</span> off </span><br><span class="line"><span class="comment">rem 获取当前目录下的所有 pdf 文件</span></span><br><span class="line"><span class="keyword">for</span> /f <span class="variable">%%i</span> <span class="keyword">in</span> ('<span class="built_in">dir</span> /b *.pdf') <span class="keyword">do</span> (</span><br><span class="line"><span class="comment">	rem 输出 pdf 文件名</span></span><br><span class="line">	@<span class="built_in">echo</span> <span class="variable">%%i</span></span><br><span class="line"><span class="comment">	rem 使用 mutool  pdf 转 png</span></span><br><span class="line">	mutool <span class="built_in">convert</span> -o <span class="variable">%%~</span>ni.png <span class="variable">%%i</span></span><br><span class="line">	)</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure>
@@ -548,6 +546,7 @@
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js?v=7.4.0"></script>
 <script src="/js/schemes/pisces.js?v=7.4.0"></script>

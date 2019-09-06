@@ -36,7 +36,7 @@
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: true,
     mediumzoom: false,
-    lazyload: false,
+    lazyload: true,
     pangu: true,
     algolia: {
       appID: '',
@@ -64,12 +64,10 @@
 <meta property="og:site_name" content="小铅笔 &amp; jeff">
 <meta property="og:description" content="转自仿真科技论坛，点击进入原网址，作者师访  首先做一点说明，这里所说的子程序大致分为两类：一类是用户子程序，即可以被用户修改的、多以 User 或 u 开头的、可以在安装文件夹下找到（如下图所示）的、需要重新编译连接的 Fortran 子程序；另一类是一般的子程序，ANSYS 提供给用户方便 ansys 二次开发的，包括子程序（subroutine，无返回值，使用时需要 external 声明">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://image.pencilq.com/images/2019/08/31/UPFs-subroutine.jpg">
 <meta property="og:updated_time" content="2019-08-31T14:40:05.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ANSYS UPFs 子程序简单介绍及实例">
 <meta name="twitter:description" content="转自仿真科技论坛，点击进入原网址，作者师访  首先做一点说明，这里所说的子程序大致分为两类：一类是用户子程序，即可以被用户修改的、多以 User 或 u 开头的、可以在安装文件夹下找到（如下图所示）的、需要重新编译连接的 Fortran 子程序；另一类是一般的子程序，ANSYS 提供给用户方便 ansys 二次开发的，包括子程序（subroutine，无返回值，使用时需要 external 声明">
-<meta name="twitter:image" content="https://image.pencilq.com/images/2019/08/31/UPFs-subroutine.jpg">
   <link rel="canonical" href="https://pencilq.com/18/">
 
 
@@ -310,7 +308,7 @@
 </blockquote>
 <p>首先做一点说明，这里所说的子程序大致分为两类：一类是用户子程序，即可以被用户修改的、多以 User 或 u 开头的、可以在安装文件夹下找到（如下图所示）的、需要重新编译连接的 Fortran 子程序；另一类是一般的子程序，ANSYS 提供给用户方便 ansys 二次开发的，包括子程序（subroutine，无返回值，使用时需要 external 声明语句）和函数（Function，有返回值，使用时不需要 External 声明语句）。</p>
 <a id="more"></a>
-<p><img src="https://image.pencilq.com/images/2019/08/31/UPFs-subroutine.jpg" alt></p>
+<p><img alt data-src="https://image.pencilq.com/images/2019/08/31/UPFs-subroutine.jpg"></p>
 <h2 id="材料本构模型开发用户子程序"><a href="#材料本构模型开发用户子程序" class="headerlink" title="材料本构模型开发用户子程序"></a>材料本构模型开发用户子程序</h2><ol>
 <li><strong>usermat</strong>：在所有用于本构模型开发的子程序中，usermat 是使用范围最广的子程序，单元的每个积分点在每个载荷子步的每次迭代均会调用 usermat。usermat 支持所有最新技术单元（Current-technology Elements），最新技术单元区别于传统单元。</li>
 <li><strong>UserHyper</strong>：虽然 usermat 功能强大，但其无法用于开发超弹性材料，若想实现超弹性材料本构的开发，必须利用 UserHyper 用户子程序。</li>
@@ -724,6 +722,7 @@
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js?v=7.4.0"></script>
 <script src="/js/schemes/pisces.js?v=7.4.0"></script>
