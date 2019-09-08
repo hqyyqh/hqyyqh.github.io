@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pencilq.com/"/>
-  <updated>2019-09-06T12:46:52.000Z</updated>
+  <updated>2019-09-08T09:22:02.498Z</updated>
   <id>https://pencilq.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>matebook14 Linux</title>
+    <link href="https://pencilq.com//12/"/>
+    <id>https://pencilq.com//12/</id>
+    <published>2019-09-08T09:08:53.000Z</published>
+    <updated>2019-09-08T09:22:02.498Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote class="blockquote-center"><p>中午睡醒人迷糊<br>打开知乎惊坐起</p></blockquote><a id="more"></a><p><img alt data-src="https://image.pencilq.com/images/2019/09/08/matebook14-zhihu.jpg"></p><p><img alt data-src="https://image.pencilq.com/images/2019/09/08/caozuo.gif"></p><blockquote class="blockquote-center"><p>就让我先以身试水吧</p></blockquote><p><img alt data-src="https://image.pencilq.com/images/2019/09/08/weisuo.gif"><br><img alt data-src="https://image.pencilq.com/images/2019/09/08/xiadan.jpg"></p><p>附上邪恶的链接：</p><p><a href="https://consumer.huawei.com/cn/support/laptops/matebook-14/" target="_blank" rel="noopener">Matebook 14 驱动下载 <i class="fa fa-link fa-fw"></i></a><br><a href="https://zsaxi.com/4196" target="_blank" rel="noopener">MateBook 14 第三方 Linux 版 开箱评测 <i class="fa fa-link fa-fw"></i></a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;p&gt;中午睡醒人迷糊&lt;br&gt;打开知乎惊坐起&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>制作原木滴胶的失败过程</title>
@@ -60,7 +79,7 @@
     <link href="https://pencilq.com//10/"/>
     <id>https://pencilq.com//10/</id>
     <published>2019-09-01T08:50:04.000Z</published>
-    <updated>2019-09-08T04:08:14.062Z</updated>
+    <updated>2019-09-08T04:08:14.000Z</updated>
     
     <content type="html"><![CDATA[<div class="tabs" id="tabsone"><ul class="nav-tabs"><li class="tab active"><a href="#tabsone-1"><i class="fa fa-forward"></i>克罗地亚的双头蛇</a></li></ul><div class="tab-content"><div class="tab-pane active" id="tabsone-1"><video src="https://file.pencilq.com/videos/Two-Headed%20Snake%20Found%20In%20Croatia-sTpIRbrOruA.mkv" preload="metadata" controls playsinline poster>Sorry, your browser does not support the video tag.</video><p><a href="https://www.youtube.com/watch?v=sTpIRbrOruA" target="_blank" rel="noopener">Two-Headed Snake Found In Croatia <i class="fa fa-youtube-square fa-fw"></i></a></p></div></div></div><a id="more"></a><div class="tabs" id="tabsone"><ul class="nav-tabs"><li class="tab active"><a href="#tabsone-1"><i class="fa fa-forward"></i>剪切稀化流体</a></li><li class="tab"><a href="#tabsone-2"><i class="fa fa-forward"></i>眼镜蛇波/炸弹棒</a></li><li class="tab"><a href="#tabsone-3"><i class="fa fa-forward"></i>气凝胶</a></li></ul><div class="tab-content"><div class="tab-pane active" id="tabsone-1"><p>洗发水，沐浴露，沼泽</p><video src="https://file.pencilq.com/videos/Shear%20thinning.mkv" preload="metadata" controls playsinline poster>Sorry, your browser does not support the video tag.</video><p><a href="https://www.wikiwand.com/en/Shear_thinning" target="_blank" rel="noopener">维基百科 <i class="fa fa-wikipedia-w fa-fw"></i> </a><br><a href="https://www.youtube.com/watch?v=agCf0alxpJY" target="_blank" rel="noopener">剪切稀化非牛顿流体 <i class="fa fa-youtube-square fa-fw"></i></a></p></div><div class="tab-pane" id="tabsone-2"><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?aid=999354&cid=1444859&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe></div></div><div class="tab-pane" id="tabsone-3"><p><video src="https://file.pencilq.com/videos/World's%20Lightest%20Solid!-AeJ9q45PfD0.mkv" preload="metadata" controls playsinline poster>Sorry, your browser does not support the video tag.</video><br><a href="https://www.youtube.com/watch?v=AeJ9q45PfD0" target="_blank" rel="noopener">世界上最轻的固体 <i class="fa fa-youtube-square fa-fw"></i></a></p></div></div></div>]]></content>
     
@@ -450,28 +469,6 @@ w &amp;= 0
       <category term="二次开发" scheme="https://pencilq.com/tags/%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/"/>
     
       <category term="ABAQUS" scheme="https://pencilq.com/tags/ABAQUS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SciHub: 桌面版介绍及使用</title>
-    <link href="https://pencilq.com//2/"/>
-    <id>https://pencilq.com//2/</id>
-    <published>2018-09-24T15:44:32.000Z</published>
-    <updated>2019-08-31T12:11:26.473Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p><strong>前言</strong>：谷歌学术镜像，SciHub 镜像及桌面版使用</p></blockquote><a id="more"></a><blockquote><p>推荐 <a href="http://www.4243.net/" target="_blank" rel="noopener">大木虫学术导航</a></p></blockquote><h2 id="sci-hub-科研论文全文下载可用网址-自动更新："><a href="#sci-hub-科研论文全文下载可用网址-自动更新：" class="headerlink" title="sci-hub 科研论文全文下载可用网址 - 自动更新："></a>sci-hub 科研论文全文下载可用网址 - 自动更新：</h2><p><a href="http://tool.yovisun.com/scihub/" target="_blank" rel="noopener">http://tool.yovisun.com/scihub/</a></p><h2 id="SciHub-Desktop："><a href="#SciHub-Desktop：" class="headerlink" title="SciHub Desktop："></a>SciHub Desktop：</h2><p>官方主页：<a href="https://zhuanlan.zhihu.com/p/31809890" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/31809890</a><br>百度云链接：<a href="https://pan.baidu.com/s/1kVb2pJh" target="_blank" rel="noopener">https://pan.baidu.com/s/1kVb2pJh</a></p><p><br></p><h2 id="谷歌学术镜像与-SciHub-Desktop-简单使用说明"><a href="#谷歌学术镜像与-SciHub-Desktop-简单使用说明" class="headerlink" title="谷歌学术镜像与 SciHub Desktop 简单使用说明"></a>谷歌学术镜像与 SciHub Desktop 简单使用说明</h2><h4 id="打开谷歌学术镜像-https-ac-scmor-com-，-随意挑一个可用的网址。"><a href="#打开谷歌学术镜像-https-ac-scmor-com-，-随意挑一个可用的网址。" class="headerlink" title="打开谷歌学术镜像 https://ac.scmor.com/ ， 随意挑一个可用的网址。"></a>打开<a href="https://ac.scmor.com/" target="_blank" rel="noopener">谷歌学术镜像</a> <code>https://ac.scmor.com/</code> ， 随意挑一个可用的网址。</h4><p><img alt data-src="https://image.pencilq.com/images/2019/08/31/5cc7044c47a8b.png"></p><h4 id="搜索，获取复制-DOI"><a href="#搜索，获取复制-DOI" class="headerlink" title="搜索，获取复制 DOI"></a>搜索，获取复制 DOI</h4><p><img alt data-src="https://image.pencilq.com/images/2019/08/31/5cc70456b1194.png"></p><p><img alt data-src="https://image.pencilq.com/images/2019/08/31/5cc7045d84602.png"></p><p><img alt data-src="https://image.pencilq.com/images/2019/08/31/5cc704641bce2.png"></p><h4 id="在-scihub-desktop-中输入doi，点击-Fetch-PDF，会自动弹出浏览器进行下载。一次不行多点几次"><a href="#在-scihub-desktop-中输入doi，点击-Fetch-PDF，会自动弹出浏览器进行下载。一次不行多点几次" class="headerlink" title="在 scihub-desktop 中输入doi，点击 Fetch PDF，会自动弹出浏览器进行下载。一次不行多点几次"></a>在 scihub-desktop 中输入doi，点击 Fetch PDF，会自动弹出浏览器进行下载。一次不行多点几次</h4><p><img alt data-src="https://image.pencilq.com/images/2019/08/31/5cc7046c4eb16.png"></p><blockquote><p>SciHub Desktop <a href="https://pan.baidu.com/s/1kVb2pJh" target="_blank" rel="noopener">官方百度云链接</a></p></blockquote><hr>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;：谷歌学术镜像，SciHub 镜像及桌面版使用&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="软件" scheme="https://pencilq.com/tags/%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   
