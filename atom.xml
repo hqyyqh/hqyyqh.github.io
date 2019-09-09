@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pencilq.com/"/>
-  <updated>2019-09-08T09:22:02.498Z</updated>
+  <updated>2019-09-09T01:13:30.031Z</updated>
   <id>https://pencilq.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>文献管理软件Citavi使用简介</title>
+    <link href="https://pencilq.com//33/"/>
+    <id>https://pencilq.com//33/</id>
+    <published>2019-09-09T01:05:08.000Z</published>
+    <updated>2019-09-09T01:13:30.031Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="不仅仅是文献管理"><a href="#不仅仅是文献管理" class="headerlink" title="不仅仅是文献管理"></a>不仅仅是文献管理</h2><p>Citavi 除了一般文献管理软件的功能外，还带有知识管理和任务规划功能。免费版一个 project 支持100条文献，可以开多几个 project，或者购买付费版本，有学生优惠。另外自带云端服务器，免费上传附件。我用了一个暑假，感觉非常不错，比 Endnote 和 Zotero 都好。<br><a id="more"></a><br>导师说要做几页PPT介绍这款软件，他上课的时候要展示给学生。下面是PPT：</p><div class="pdf" target="https://file.pencilq.com/file_and_note/Citavi-introduction.pdf" height></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;不仅仅是文献管理&quot;&gt;&lt;a href=&quot;#不仅仅是文献管理&quot; class=&quot;headerlink&quot; title=&quot;不仅仅是文献管理&quot;&gt;&lt;/a&gt;不仅仅是文献管理&lt;/h2&gt;&lt;p&gt;Citavi 除了一般文献管理软件的功能外，还带有知识管理和任务规划功能。免费版一个 project 支持100条文献，可以开多几个 project，或者购买付费版本，有学生优惠。另外自带云端服务器，免费上传附件。我用了一个暑假，感觉非常不错，比 Endnote 和 Zotero 都好。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="科研软件" scheme="https://pencilq.com/tags/%E7%A7%91%E7%A0%94%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>matebook14 Linux</title>
@@ -445,30 +465,6 @@ w &amp;= 0
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Abaqus: 生成泰森多边形</title>
-    <link href="https://pencilq.com//20/"/>
-    <id>https://pencilq.com//20/</id>
-    <published>2018-10-01T15:08:13.000Z</published>
-    <updated>2019-09-02T16:35:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p><strong>前言</strong>： <code>Abaqus</code> 插件 <code>Homtools</code> 安装步骤以及相关功能的使用。<br>技术邻上居然有人高价出售 <code>Homtools</code> 这一款<strong>免费</strong>的插件。此处是<a href="http://homtools.lma.cnrs-mrs.fr/spip/" target="_blank" rel="noopener">插件官网</a></p></blockquote><a id="more"></a><p><img alt data-src="https://image.pencilq.com/images/2019/05/02/img20180922234936.png"></p><h2 id="Abaqus-插件-Homtools-安装步骤"><a href="#Abaqus-插件-Homtools-安装步骤" class="headerlink" title="Abaqus 插件 Homtools 安装步骤"></a>Abaqus 插件 Homtools 安装步骤</h2><p>打开插件主页：<a href="http://homtools.lma.cnrs-mrs.fr/spip/" target="_blank" rel="noopener">http://homtools.lma.cnrs-mrs.fr/spip/</a></p><p>进入下载页面下载之后，解压文件。</p><ol><li>用代码查看软件/记事本打开<code>abaqus_v6.env</code>，<br> abaqus_v6.env文件路径：<br>   <code>\Dassault Systemes\SimulationServices\V6R2016x\win_b64\SMA\site\abaqus_v6.env</code></li><li>复制 <code>Homtools</code> 解压后的文件夹路径，例如：<code>D:\SIMULIA\plugin\homtools0.9</code></li><li>将 <code>plugin_central_dir = &quot;/path/to/homtools/dir&quot;</code> 这句代码，加到<code>abaqus_v6.env</code>文件的首行，<br>并将等号后面的目录替换为 Homtools 文件夹的目录。例如：<br><code>plugin_central_dir = &quot;/path/to/homtools/dir&quot;</code>目录替换成<br><code>plugin_central_dir = &quot;D:\SIMULIA\plugin\homtools0.9&quot;</code><br> <img alt data-src="https://image.pencilq.com/images/2019/05/02/5cc703bff0234.png"></li></ol><hr><h2 id="Homtools-RVE-generation-功能使用步骤"><a href="#Homtools-RVE-generation-功能使用步骤" class="headerlink" title="Homtools RVE generation 功能使用步骤"></a>Homtools <em>RVE generation</em> 功能使用步骤</h2><ol><li><p>打开CAE→在 Part 模块下→点击主菜单 Plug-ins → Homtools → Voronoi cells<br> <img alt data-src="https://image.pencilq.com/images/2019/05/02/5cc703d37fb63.png"></p></li><li><p>插件界面<br> <img alt data-src="https://image.pencilq.com/images/2019/05/02/5cc703dd8a4af.png"></p></li><li><p>生成晶格<br> <img alt data-src="https://image.pencilq.com/images/2019/05/02/5cc703e58265f.png"></p></li><li><p>晶界示意图<br> <img alt data-src="https://image.pencilq.com/images/2019/05/02/5cc703eeb82ec.png"></p></li><li><p>相同参数的情况下，再生成一个，可以看到生成的晶格是随机的。<br> <img alt data-src="https://image.pencilq.com/images/2019/05/02/5cc703f8dfe19.png"></p><p><img alt data-src="https://image.pencilq.com/images/2019/05/02/5cc704120aed2.gif"></p></li></ol><hr>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;： &lt;code&gt;Abaqus&lt;/code&gt; 插件 &lt;code&gt;Homtools&lt;/code&gt; 安装步骤以及相关功能的使用。&lt;br&gt;技术邻上居然有人高价出售 &lt;code&gt;Homtools&lt;/code&gt; 这一款&lt;strong&gt;免费&lt;/strong&gt;的插件。此处是&lt;a href=&quot;http://homtools.lma.cnrs-mrs.fr/spip/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;插件官网&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="二次开发" scheme="https://pencilq.com/tags/%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/"/>
-    
-      <category term="ABAQUS" scheme="https://pencilq.com/tags/ABAQUS/"/>
     
   </entry>
   
