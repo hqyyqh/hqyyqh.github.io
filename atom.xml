@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pencilq.com/"/>
-  <updated>2019-09-13T02:42:19.140Z</updated>
+  <updated>2019-09-15T10:03:48.313Z</updated>
   <id>https://pencilq.com/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>开坑：SciDraw — Mathematica 科学绘图包</title>
+    <link href="https://pencilq.com//35/"/>
+    <id>https://pencilq.com//35/</id>
+    <published>2019-09-15T09:58:16.000Z</published>
+    <updated>2019-09-15T10:03:48.313Z</updated>
+    
+    <content type="html"><![CDATA[<p>调 Mathematica 绘图样式的时候总感觉不够意思（审美无能___*( ￣皿￣)/#____），内置的 PlotTheme 对于论文插图来说也不够精美。</p><p>搜索一番，发现了 Mathematica 的 SciDraw 绘图包，样式深得我心。开坑学习🤣。</p><p><a href="https://scidraw.nd.edu/" target="_blank" rel="noopener">SciDraw</a></p><div class="pdf" target="https://file.pencilq.com/file_and_note/SciDraw-Examples_rev130111.pdf" height></div>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;调 Mathematica 绘图样式的时候总感觉不够意思（审美无能___*( ￣皿￣)/#____），内置的 PlotTheme 对于论文插图来说也不够精美。&lt;/p&gt;
+&lt;p&gt;搜索一番，发现了 Mathematica 的 SciDraw 绘图包，样式深得我心。开坑学习🤣。&lt;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>交叉验证</title>
+    <link href="https://pencilq.com//34/"/>
+    <id>https://pencilq.com//34/</id>
+    <published>2019-09-15T09:57:47.000Z</published>
+    <updated>2019-09-15T10:04:29.659Z</updated>
+    
+    <content type="html"><![CDATA[<div class="note success">            <p>知乎是个好地方，膜大佬。</p>          </div><p><a href="https://zhuanlan.zhihu.com/p/23798202" target="_blank" rel="noopener">【机器学习】统计学习引论</a></p><p><a href="https://zhuanlan.zhihu.com/p/24825503" target="_blank" rel="noopener">【机器学习】Cross-Validation（交叉验证）详解</a></p><p><a href="https://zhuanlan.zhihu.com/p/44872686" target="_blank" rel="noopener">偏差 Bias 和方差 Variance—— 机器学习中的模型选择</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;div class=&quot;note success&quot;&gt;
+            &lt;p&gt;知乎是个好地方，膜大佬。&lt;/p&gt;
+          &lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/23798202&quot; target=&quot;_blan
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Tube 和 Pipe 区别</title>
@@ -418,50 +464,6 @@ w &amp;= 0
     
       <category term="mathematica" scheme="https://pencilq.com/categories/mathematica/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>力学概念</title>
-    <link href="https://pencilq.com//6/"/>
-    <id>https://pencilq.com//6/</id>
-    <published>2018-10-24T16:01:37.000Z</published>
-    <updated>2019-09-06T13:17:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="冯元桢的连续介质力学公理"><a href="#冯元桢的连续介质力学公理" class="headerlink" title="冯元桢的连续介质力学公理"></a>冯元桢的连续介质力学公理</h2><p>冯元桢将经典物理学中的公理均视为连续介质力学的公理，尤其是牛顿第一和第二定律在连续介质力学中的应用。此外，冯元桢还给出了连续介质力学的三个附加公理：</p><h3 id="公理一"><a href="#公理一" class="headerlink" title="公理一"></a>公理一</h3><p> 连续介质在力的作用下仍然保持为连续介质 (A material continuum remains a continuum under the action of forces)。所以，在某一时刻相邻的两个致电在任何时刻都保持相邻。允许物体发生破裂，但断裂面必须被认为是新产生的外表面。在有生命的物体中，允许新的生长。</p><a id="more"></a><h3 id="公理二"><a href="#公理二" class="headerlink" title="公理二"></a>公理二</h3><p>在物体中处处可以定义应力和应变 (The stress and strain described in the textbook can be defined everywhere in the body)。</p><h3 id="公理三"><a href="#公理三" class="headerlink" title="公理三"></a>公理三</h3><p>一点处的应力与该点处的应变和应变随时间的变化(应变)率相关 (The stress at a point is related to the strain and the rate of change of strain with respect to time at the same point)。</p><h2 id="连续介质力学研究范围"><a href="#连续介质力学研究范围" class="headerlink" title="连续介质力学研究范围"></a>连续介质力学研究范围</h2><p><img alt data-src="https://image.pencilq.com/images/2019/05/02/0069RVTdgy1fv6jed6sjtj31kw1g4nlw.jpg"></p><h2 id="各向同性材料弹性常数之间的关系"><a href="#各向同性材料弹性常数之间的关系" class="headerlink" title="各向同性材料弹性常数之间的关系"></a>各向同性材料弹性常数之间的关系</h2><div class="table-container"><table><thead><tr><th></th><th>$\lambda, \; G$</th><th>$E, \; \nu$</th><th>$G, \; \nu$</th><th>$E, \; G$</th><th>$K, \; \nu$</th></tr></thead><tbody><tr><td>$\lambda$</td><td>$\lambda$</td><td>$\dfrac{E \nu}{\left( {1+ \nu} \right) \left( {1-2 \nu} \right)}$</td><td>$\dfrac{2 G \nu}{1- 2 \nu}$</td><td>$\dfrac{G \left( {E - 2 G} \right)}{3 G -E }$</td><td>$\dfrac{3 K \nu}{1+\nu}$</td></tr><tr><td>$G$</td><td>$G$</td><td>$\dfrac{E}{2 \left( {1+ \nu} \right)}$</td><td>$G$</td><td>$G$</td><td>$\dfrac{3K\left( {1- 2\nu} \right)}{2 \left( {1+\nu} \right)}$</td></tr><tr><td>$K$</td><td>$\dfrac{1}{3} \left( {3 \lambda + 2G} \right)$</td><td>$\dfrac{E}{3 \left( {1- 2 \nu} \right)}$</td><td>$\dfrac{2 G \left( {1+\nu} \right)}{3 \left( {1- 2\nu} \right)}$</td><td>$\dfrac{G E}{3 \left( {3 G -E} \right)}$</td><td>$K$</td></tr><tr><td>$E$</td><td>$\dfrac{3 \lambda+2 G}{2 \left( {\lambda +G} \right)}$</td><td>$E$</td><td>$2 G \left( {1+\nu} \right)$</td><td>$E$</td><td>$3K\left( {1-2 \nu} \right)$</td></tr><tr><td>$\nu$</td><td>$\dfrac{\lambda}{2 \left( {\lambda +G} \right)}$</td><td>$\nu$</td><td>$\nu$</td><td>$\dfrac{E}{2 G}-1$</td><td>$\nu$</td></tr></tbody></table></div><h2 id="常见应力等效方式"><a href="#常见应力等效方式" class="headerlink" title="常见应力等效方式"></a>常见应力等效方式</h2><div class="table-container"><table><thead><tr><th style="text-align:center">含义</th><th style="text-align:center">符号</th><th style="text-align:center">含义</th><th style="text-align:center">符号</th></tr></thead><tbody><tr><td style="text-align:center">应力</td><td style="text-align:center">$\sigma_{ij}$</td><td style="text-align:center">应力不变量</td><td style="text-align:center">$J$</td></tr><tr><td style="text-align:center">偏应力</td><td style="text-align:center">$s_{ij}$</td><td style="text-align:center">应力偏量不变量</td><td style="text-align:center">$J’$</td></tr><tr><td style="text-align:center">八面体正应力</td><td style="text-align:center">$\sigma_8$</td><td style="text-align:center">八面体切应力</td><td style="text-align:center">$\tau_8$</td></tr><tr><td style="text-align:center">等效应力</td><td style="text-align:center">$\bar{\sigma}$</td><td style="text-align:center">等效剪应力</td><td style="text-align:center">$\bar{\sigma}$</td></tr></tbody></table></div><p><img alt data-src="https://image.pencilq.com/images/2019/08/31/stress.jpg"></p><h3 id="应力张量"><a href="#应力张量" class="headerlink" title="应力张量"></a>应力张量</h3><p>应力分解：</p><script type="math/tex; mode=display">\sigma_{ij} = \sigma_m \delta_{ij} + s_{ij}</script><h3 id="主应力和应力不变量"><a href="#主应力和应力不变量" class="headerlink" title="主应力和应力不变量"></a>主应力和应力不变量</h3><script type="math/tex; mode=display">\begin{aligned}& \left| {\sigma_{ij} - \lambda \delta_{ij}} \right| = 0 \\\Rightarrow & \lambda^3 - J_1 \lambda^2 - j_2 \lambda - J_3 = 0\end{aligned}</script><p>其中 </p><script type="math/tex; mode=display">\begin{aligned}& J_1 = \sigma_{kk} = \sigma_1 + \sigma_2 + \sigma_3 \\& J_2 = -\dfrac{1}{2} \left( {\sigma_{ii} \sigma_{kk} - \sigma_{ik} \sigma_{ki}} \right) = - \left( {\sigma_1 \sigma_2 + \sigma_2 \sigma_3 + \sigma_3 \sigma_1 } \right) \\ & J_3 = \left| {\sigma_{ij}} \right| = \sigma_1 \sigma_2 \sigma_3\end{aligned}</script><h3 id="应力偏张量"><a href="#应力偏张量" class="headerlink" title="应力偏张量"></a>应力偏张量</h3><script type="math/tex; mode=display">s_j = \sigma_j - \sigma_m</script><p>不变量</p><script type="math/tex; mode=display">J_2' = \left\{\begin{aligned}   & s_{ij}s_{ij}/2 \\   & -(s_1 s_2 + s_2 s_3 + s_3 s_1) = (s_1^2 + s_2^2 + s_3^2)/2 \\   & \left[ {\left( {\sigma_1 - \sigma_2} \right)^2+\left( {\sigma_2 - \sigma_3} \right)^2+\left( {\sigma_3 - \sigma_1} \right)^2} \right] /6    \end{aligned}\right.</script><h3 id="等效应力"><a href="#等效应力" class="headerlink" title="等效应力"></a>等效应力</h3><script type="math/tex; mode=display">\begin{split}   \bar{\sigma} & = \sqrt{3J_2'} \\    & = \sqrt{\dfrac{3}{2}s_{ij}s_{ij} }\\    & = \sqrt{\dfrac{1}{2} \left[ {\left( \sigma_{11}-\sigma_{22} \right)^2 + \left( \sigma_{22}-\sigma_{33} \right)^2 + \left( \sigma_{33}-\sigma_{11} \right)^2 + 6 \left( \sigma_{23}^2+\sigma_{31}^2+\sigma_{12}^2 \right)} \right] }\\    & = \sqrt{\dfrac{1}{2}\left[ {\left( \sigma_{1}-\sigma_{2} \right)^2 + \left( \sigma_{2}-\sigma_{3} \right)^2 + \left( \sigma_{3}-\sigma_{1} \right)^2 } \right] }\end{split}</script><p>可参考<a href="https://en.wikipedia.org/wiki/Von_Mises_yield_criterion" target="_blank" rel="noopener">维基百科</a></p><h2 id="塑性理论框架基础"><a href="#塑性理论框架基础" class="headerlink" title="塑性理论框架基础"></a>塑性理论框架基础</h2><p><img alt data-src="https://image.pencilq.com/images/2019/08/31/006tNbRwgy1fvgarb7x5dj30x90ltq3w.jpg"></p><h2 id="圣维南原理"><a href="#圣维南原理" class="headerlink" title="圣维南原理"></a>圣维南原理</h2><p>是弹性力学中一个重要的原理，它一般意义上有两种提法。</p><h3 id="提法一"><a href="#提法一" class="headerlink" title="提法一"></a>提法一</h3><p>把物体一小部分上的面力，变换为分布不同但静力等效的力，那么只影响近处的应力分布，远处受到的影响可以忽略不计。</p><p><img alt data-src="https://image.pencilq.com/images/2019/09/06/v2-96f08b77d9989813947cf46d9672c72b_hd.jpg"></p><h3 id="提法二"><a href="#提法二" class="headerlink" title="提法二"></a>提法二</h3><p>如果物体一小部分边界上的面力一个是平衡力系，那么就只会使近处产生显著应力 远处可以忽略不计。</p><p><img alt data-src="https://image.pencilq.com/images/2019/09/06/v2-7279b3c79cb2deaf7436110d5968bb17_hd.jpg"></p><p>​理解一下，外力的具体分布只影响作用区域附近的应力分布，即图中虚线以内部分，剩余区域则影响不到。</p><p>​其实就是一种对载荷的处理手段，因为在PDE的边界处，集中力、集中力偶这种形式是非常难以描述的，描述出来也没有办法解答，所以对于小边界（相对次要的边界），可以采用静力学的方法进行等效，一般等效成分布力，使得这个分布力系相对于原来的集中力，集中力偶有相同的静力学特征，即分布力系具有与集中力（偶）对应的相同的主矢、主矩。这么做，对替换力系处有显著的影响，但是对于其余的位置，几乎没有影响。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;冯元桢的连续介质力学公理&quot;&gt;&lt;a href=&quot;#冯元桢的连续介质力学公理&quot; class=&quot;headerlink&quot; title=&quot;冯元桢的连续介质力学公理&quot;&gt;&lt;/a&gt;冯元桢的连续介质力学公理&lt;/h2&gt;&lt;p&gt;冯元桢将经典物理学中的公理均视为连续介质力学的公理，尤其是牛顿第一和第二定律在连续介质力学中的应用。此外，冯元桢还给出了连续介质力学的三个附加公理：&lt;/p&gt;
-&lt;h3 id=&quot;公理一&quot;&gt;&lt;a href=&quot;#公理一&quot; class=&quot;headerlink&quot; title=&quot;公理一&quot;&gt;&lt;/a&gt;公理一&lt;/h3&gt;&lt;p&gt; 连续介质在力的作用下仍然保持为连续介质 (A material continuum remains a continuum under the action of forces)。所以，在某一时刻相邻的两个致电在任何时刻都保持相邻。允许物体发生破裂，但断裂面必须被认为是新产生的外表面。在有生命的物体中，允许新的生长。&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>软件: LaTeX 常用符号</title>
-    <link href="https://pencilq.com//3/"/>
-    <id>https://pencilq.com//3/</id>
-    <published>2018-10-24T15:58:12.000Z</published>
-    <updated>2019-09-06T12:19:36.000Z</updated>
-    
-    <content type="html"><![CDATA[<center><font color="#206CC9">日常困惑的 latex 符号集锦</font></center><p>$\rm{A}$ $\;$ $\rm{B}$ $\;$ $\Gamma$ $\;$ $\Delta$ $\;$ $\rm{E}$ $\;$ $\rm Z$ $\;$ $\rm H$ $\;$ $\Theta$ $\;$ $\rm I$ $\;$ $\rm K$ $\;$ $\Lambda$ $\;$ $\rm M$ $\;$ $\rm N$ $\;$ $\Xi$ $\;$ $\rm O$ $\;$ $\Pi$ $\;$ $\rm P$ $\;$ $\Sigma$ $\;$ $\rm T$ $\;$ $\Upsilon$ $\;$ $\Phi$ $\;$ $\rm X$ $\;$ $\Psi$ $\;$ $\Omega$</p><p>$\alpha$ $\;$ $\beta$ $\;$ $\gamma$ $\;$ $\delta$ $\;$ $\epsilon$ $\;$ $\zeta$ $\;$ $\eta$ $\;$ $\theta$ $\;$ $\iota$ $\;$ $\kappa$ $\;$ $\lambda$ $\;$ $\mu$ $\;$ $\nu$ $\;$ $\xi$ $\;$ $\omicron$ $\;$ $\pi$ $\;$ $\rho$ $\;$ $\sigma$ $\;$ $\tau$ $\;$ $\upsilon$ $\;$ $\phi$ $\;$ $\chi$ $\;$ $\psi$ $\;$ $\omega$</p><a id="more"></a><h2 id="level-1-希腊字母"><a href="#level-1-希腊字母" class="headerlink" title="level 1 希腊字母"></a>level 1 希腊字母</h2><div class="table-container"><table><thead><tr><th style="text-align:center">序号</th><th style="text-align:center">大写</th><th style="text-align:center">小写</th><th style="text-align:center">英文</th></tr></thead><tbody><tr><td style="text-align:center">1</td><td style="text-align:center">$\rm{A}$</td><td style="text-align:center">$\alpha$</td><td style="text-align:center">$alpha$</td></tr><tr><td style="text-align:center">2</td><td style="text-align:center">$\rm B$</td><td style="text-align:center">$\beta$</td><td style="text-align:center">$beta$</td></tr><tr><td style="text-align:center">3</td><td style="text-align:center">$\Gamma$</td><td style="text-align:center">$\gamma$</td><td style="text-align:center">$gamma$</td></tr><tr><td style="text-align:center">4</td><td style="text-align:center">$\Delta$</td><td style="text-align:center">$\delta$</td><td style="text-align:center">$delta$</td></tr><tr><td style="text-align:center">5</td><td style="text-align:center">$\rm E$</td><td style="text-align:center">$\epsilon$  $\varepsilon$</td><td style="text-align:center">$epsilon$  $varepsilon$</td></tr><tr><td style="text-align:center">6</td><td style="text-align:center">$\rm Z$</td><td style="text-align:center">$\zeta$</td><td style="text-align:center">$zeta$</td></tr><tr><td style="text-align:center">7</td><td style="text-align:center">$\rm H$</td><td style="text-align:center">$\eta$</td><td style="text-align:center">$eta$</td></tr><tr><td style="text-align:center">8</td><td style="text-align:center">$\Theta$</td><td style="text-align:center">$\theta$  $\vartheta$</td><td style="text-align:center">$theta$  $vartheta$</td></tr><tr><td style="text-align:center">9</td><td style="text-align:center">$\rm I$</td><td style="text-align:center">$\iota$</td><td style="text-align:center">$iota$</td></tr><tr><td style="text-align:center">10</td><td style="text-align:center">$\rm K$</td><td style="text-align:center">$\kappa$</td><td style="text-align:center">$kappa$</td></tr><tr><td style="text-align:center">11</td><td style="text-align:center">$\Lambda$</td><td style="text-align:center">$\lambda$</td><td style="text-align:center">$lambda$</td></tr><tr><td style="text-align:center">12</td><td style="text-align:center">$\rm M$</td><td style="text-align:center">$\mu$</td><td style="text-align:center">$mu$</td></tr><tr><td style="text-align:center">13</td><td style="text-align:center">$\rm N$</td><td style="text-align:center">$\nu$</td><td style="text-align:center">$nu$</td></tr><tr><td style="text-align:center">14</td><td style="text-align:center">$\Xi$</td><td style="text-align:center">$\xi$</td><td style="text-align:center">$xi$</td></tr><tr><td style="text-align:center">15</td><td style="text-align:center">$\rm O$</td><td style="text-align:center">$\omicron$</td><td style="text-align:center">$omicron$</td></tr><tr><td style="text-align:center">16</td><td style="text-align:center">$\Pi$</td><td style="text-align:center">$\pi$  $\varPi$</td><td style="text-align:center">$pi$  $varpi$</td></tr><tr><td style="text-align:center">17</td><td style="text-align:center">$\rm P$</td><td style="text-align:center">$\rho$  $\varrho$</td><td style="text-align:center">$rho$  $varrho$</td></tr><tr><td style="text-align:center">18</td><td style="text-align:center">$\Sigma$ $\varSigma$</td><td style="text-align:center">$\sigma$  $\varsigma$</td><td style="text-align:center">$varSigma$ $sigma$  $varsigma$</td></tr><tr><td style="text-align:center">19</td><td style="text-align:center">$\rm T$</td><td style="text-align:center">$\tau$</td><td style="text-align:center">$tau$</td></tr><tr><td style="text-align:center">20</td><td style="text-align:center">$\Upsilon$</td><td style="text-align:center">$\upsilon$</td><td style="text-align:center">$upsilon$</td></tr><tr><td style="text-align:center">21</td><td style="text-align:center">$\Phi$</td><td style="text-align:center">$\phi$  $\varphi$</td><td style="text-align:center">$phi$  $varphi$</td></tr><tr><td style="text-align:center">22</td><td style="text-align:center">$\rm X$</td><td style="text-align:center">$\chi$</td><td style="text-align:center">$chi$</td></tr><tr><td style="text-align:center">23</td><td style="text-align:center">$\Psi$</td><td style="text-align:center">$\psi$</td><td style="text-align:center">$psi$</td></tr><tr><td style="text-align:center">24</td><td style="text-align:center">$\Omega$</td><td style="text-align:center">$\omega$</td><td style="text-align:center">$omega$</td></tr></tbody></table></div><h2 id="Level-2-英文字母的一些形式"><a href="#Level-2-英文字母的一些形式" class="headerlink" title="Level 2 英文字母的一些形式"></a>Level 2 英文字母的一些形式</h2><h3 id="花体"><a href="#花体" class="headerlink" title="花体"></a>花体</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 疯掉。。。。到底有什么区别</span></span><br><span class="line"><span class="formula">$<span class="tag">\<span class="name">mathfrak</span></span> X$</span> <span class="formula">$<span class="tag">\<span class="name">mathscr</span><span class="string">&#123;X&#125;</span></span>$</span> <span class="formula">$<span class="tag">\<span class="name">mathcal</span><span class="string">&#123;X&#125;</span></span>$</span></span><br></pre></td></tr></table></figure><p>$\mathfrak X$ $\mathscr{X}$ $\mathcal{X}$</p><h2 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h2><h3 id="矩阵对应元素相乘"><a href="#矩阵对应元素相乘" class="headerlink" title="矩阵对应元素相乘"></a>矩阵对应元素相乘</h3><p><a href="https://www.wikiwand.com/en/Hadamard_product_(matrices)" target="_blank" rel="noopener">https://www.wikiwand.com/en/Hadamard_product_(matrices)</a></p><script type="math/tex; mode=display">(A \circ B )_{i,j} = (A)_{i,j}(B)_{i,j}</script><script type="math/tex; mode=display">\begin{bmatrix}a_{11} & a_{12} & a_{13} \\a_{21} & a_{22} & a_{23} \\a_{31} & a_{32} & a_{33}\end{bmatrix}\circ\begin{bmatrix}b_{11} & b_{12} & b_{13} \\b_{21} & b_{22} & b_{23} \\b_{31} & b_{32} & b_{33}\end{bmatrix}=\begin{bmatrix}a_{11}b_{11} & a_{12}b_{12} & a_{13}b_{13} \\a_{21}b_{21} & a_{22}b_{22} & a_{23}b_{23} \\a_{31}b_{31} & a_{32}b_{32} & a_{33}b_{33}\end{bmatrix}</script><hr>]]></content>
-    
-    <summary type="html">
-    
-      &lt;center&gt;&lt;font color=&quot;#206CC9&quot;&gt;日常困惑的 latex 符号集锦&lt;/font&gt;&lt;/center&gt;
-
-&lt;p&gt;$\rm{A}$ $\;$ $\rm{B}$ $\;$ $\Gamma$ $\;$ $\Delta$ $\;$ $\rm{E}$ $\;$ $\rm Z$ $\;$ $\rm H$ $\;$ $\Theta$ $\;$ $\rm I$ $\;$ $\rm K$ $\;$ $\Lambda$ $\;$ $\rm M$ $\;$ $\rm N$ $\;$ $\Xi$ $\;$ $\rm O$ $\;$ $\Pi$ $\;$ $\rm P$ $\;$ $\Sigma$ $\;$ $\rm T$ $\;$ $\Upsilon$ $\;$ $\Phi$ $\;$ $\rm X$ $\;$ $\Psi$ $\;$ $\Omega$&lt;/p&gt;
-&lt;p&gt;$\alpha$ $\;$ $\beta$ $\;$ $\gamma$ $\;$ $\delta$ $\;$ $\epsilon$ $\;$ $\zeta$ $\;$ $\eta$ $\;$ $\theta$ $\;$ $\iota$ $\;$ $\kappa$ $\;$ $\lambda$ $\;$ $\mu$ $\;$ $\nu$ $\;$ $\xi$ $\;$ $\omicron$ $\;$ $\pi$ $\;$ $\rho$ $\;$ $\sigma$ $\;$ $\tau$ $\;$ $\upsilon$ $\;$ $\phi$ $\;$ $\chi$ $\;$ $\psi$ $\;$ $\omega$&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="备忘" scheme="https://pencilq.com/tags/%E5%A4%87%E5%BF%98/"/>
-    
-      <category term="LaTeX" scheme="https://pencilq.com/tags/LaTeX/"/>
     
   </entry>
   
