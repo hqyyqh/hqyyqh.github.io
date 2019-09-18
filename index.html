@@ -283,7 +283,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-18 09:29:28" itemprop="dateModified" datetime="2019-09-18T09:29:28+08:00">2019-09-18</time>
+                <time title="修改时间：2019-09-18 10:09:48" itemprop="dateModified" datetime="2019-09-18T10:09:48+08:00">2019-09-18</time>
               </span>
             
           
@@ -300,7 +300,7 @@
 
       
           <p>在 Mathematica 中导入 CSV 文件时，开头出现 <code>\:feff</code> 字符串。使用 <code>ToExpression</code> 处理时会出现转换问题。</p>
-<p><img alt data-src="https://image.pencilq.com/images/2019/09/17/20190917215532.png"></p>
+<p><img alt=" " data-src="https://image.pencilq.com/images/2019/09/17/20190917215532.png"></p>
 <p>简单查找了下，发现是因为直接使用 excel 创建 csv 文件时（UTF8 编码），<strong>文件头部被添加了一个不可见字符  BOM (Byte Order Mark) </strong>。该字符用于 Unicode 标识内部编码的排列方式，在 UTF-16、UTF-32 编码里是必须的，而在 UTF-8 里是可选的。<strong>有的语法解析器没有对 BOM 做处理。</strong></p>
           <!--noindex-->
           

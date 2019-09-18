@@ -64,7 +64,7 @@
 <meta property="og:site_name" content="小铅笔 &amp; jeff">
 <meta property="og:description" content="在 Mathematica 中导入 CSV 文件时，开头出现 \:feff 字符串。使用 ToExpression 处理时会出现转换问题。  简单查找了下，发现是因为直接使用 excel 创建 csv 文件时（UTF8 编码），文件头部被添加了一个不可见字符  BOM (Byte Order Mark) 。该字符用于 Unicode 标识内部编码的排列方式，在 UTF-16、UTF-32 编码里是">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-18T01:29:28.630Z">
+<meta property="og:updated_time" content="2019-09-18T02:09:48.447Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mathematica 中的 feff 字符">
 <meta name="twitter:description" content="在 Mathematica 中导入 CSV 文件时，开头出现 \:feff 字符串。使用 ToExpression 处理时会出现转换问题。  简单查找了下，发现是因为直接使用 excel 创建 csv 文件时（UTF8 编码），文件头部被添加了一个不可见字符  BOM (Byte Order Mark) 。该字符用于 Unicode 标识内部编码的排列方式，在 UTF-16、UTF-32 编码里是">
@@ -287,7 +287,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-18 09:29:28" itemprop="dateModified" datetime="2019-09-18T09:29:28+08:00">2019-09-18</time>
+                <time title="修改时间：2019-09-18 10:09:48" itemprop="dateModified" datetime="2019-09-18T10:09:48+08:00">2019-09-18</time>
               </span>
             
           
@@ -304,15 +304,15 @@
 
       
         <p>在 Mathematica 中导入 CSV 文件时，开头出现 <code>\:feff</code> 字符串。使用 <code>ToExpression</code> 处理时会出现转换问题。</p>
-<p><img alt data-src="https://image.pencilq.com/images/2019/09/17/20190917215532.png"></p>
+<p><img alt=" " data-src="https://image.pencilq.com/images/2019/09/17/20190917215532.png"></p>
 <p>简单查找了下，发现是因为直接使用 excel 创建 csv 文件时（UTF8 编码），<strong>文件头部被添加了一个不可见字符  BOM (Byte Order Mark) </strong>。该字符用于 Unicode 标识内部编码的排列方式，在 UTF-16、UTF-32 编码里是必须的，而在 UTF-8 里是可选的。<strong>有的语法解析器没有对 BOM 做处理。</strong></p>
 <a id="more"></a>
 <p>明确原因后，直接用 vscode 打开瞧一瞧</p>
-<p><img alt data-src="https://image.pencilq.com/images/2019/09/18/20190918092024.png"></p>
+<p><img alt=" " data-src="https://image.pencilq.com/images/2019/09/18/20190918092024.png"></p>
 <p>果然，<code>UTF-8 with BOM</code></p>
-<p><img alt data-src="https://image.pencilq.com/images/2019/09/18/20190918092422.png"></p>
+<p><img alt=" " data-src="https://image.pencilq.com/images/2019/09/18/20190918092422.png"></p>
 <p>直接换成 <code>UTF-8</code> 编码保存。问题解决。</p>
-<p><img alt data-src="https://image.pencilq.com/images/2019/09/18/20190918092203.png"></p>
+<p><img alt=" " data-src="https://image.pencilq.com/images/2019/09/18/20190918092203.png"></p>
 <p>参考链接：<br><a href="http://blog.uouo123.com/post/693.html" target="_blank" rel="noopener">linux 下各种编码问题 ——UTF-8、BOM、的问题 <i class="fa fa-link fa-fw"></i></a></p>
 
     </div>
