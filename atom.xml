@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pencilq.com/"/>
-  <updated>2019-09-18T02:09:48.447Z</updated>
+  <updated>2019-09-18T02:15:24.000Z</updated>
   <id>https://pencilq.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://pencilq.com//37/"/>
     <id>https://pencilq.com//37/</id>
     <published>2019-09-17T13:53:57.000Z</published>
-    <updated>2019-09-18T02:09:48.447Z</updated>
+    <updated>2019-09-18T02:15:24.000Z</updated>
     
     <content type="html"><![CDATA[<p>在 Mathematica 中导入 CSV 文件时，开头出现 <code>\:feff</code> 字符串。使用 <code>ToExpression</code> 处理时会出现转换问题。</p><p><img alt=" " data-src="https://image.pencilq.com/images/2019/09/17/20190917215532.png"></p><p>简单查找了下，发现是因为直接使用 excel 创建 csv 文件时（UTF8 编码），<strong>文件头部被添加了一个不可见字符  BOM (Byte Order Mark) </strong>。该字符用于 Unicode 标识内部编码的排列方式，在 UTF-16、UTF-32 编码里是必须的，而在 UTF-8 里是可选的。<strong>有的语法解析器没有对 BOM 做处理。</strong></p><a id="more"></a><p>明确原因后，直接用 vscode 打开瞧一瞧</p><p><img alt=" " data-src="https://image.pencilq.com/images/2019/09/18/20190918092024.png"></p><p>果然，<code>UTF-8 with BOM</code></p><p><img alt=" " data-src="https://image.pencilq.com/images/2019/09/18/20190918092422.png"></p><p>直接换成 <code>UTF-8</code> 编码保存。问题解决。</p><p><img alt=" " data-src="https://image.pencilq.com/images/2019/09/18/20190918092203.png"></p><p>参考链接：<br><a href="http://blog.uouo123.com/post/693.html" target="_blank" rel="noopener">linux 下各种编码问题 ——UTF-8、BOM、的问题 <i class="fa fa-link fa-fw"></i></a></p>]]></content>
     
@@ -63,9 +63,9 @@
     <link href="https://pencilq.com//35/"/>
     <id>https://pencilq.com//35/</id>
     <published>2019-09-15T09:58:16.000Z</published>
-    <updated>2019-09-15T10:03:48.313Z</updated>
+    <updated>2019-09-18T16:23:13.000Z</updated>
     
-    <content type="html"><![CDATA[<p>调 Mathematica 绘图样式的时候总感觉不够意思（审美无能___*( ￣皿￣)/#____），内置的 PlotTheme 对于论文插图来说也不够精美。</p><p>搜索一番，发现了 Mathematica 的 SciDraw 绘图包，样式深得我心。开坑学习🤣。</p><p><a href="https://scidraw.nd.edu/" target="_blank" rel="noopener">SciDraw</a></p><div class="pdf" target="https://file.pencilq.com/file_and_note/SciDraw-Examples_rev130111.pdf" height></div>]]></content>
+    <content type="html"><![CDATA[<p>调 Mathematica 绘图样式的时候总感觉不够意思（审美无能___*( ￣皿￣)/#____），内置的 PlotTheme 对于论文插图来说也不够精美。</p><p>搜索一番，发现了 Mathematica 的 SciDraw 绘图包，样式深得我心。开坑学习🤣。</p><h2 id="官方地址"><a href="#官方地址" class="headerlink" title="官方地址"></a>官方地址</h2><p>官方地址 <a href="https://scidraw.nd.edu/" target="_blank" rel="noopener">SciDraw  <i class="fa fa-link fa-fw"></i></a></p><div class="pdf" target="https://file.pencilq.com/file_and_note/SciDraw-Examples_rev130111.pdf" height></div><p>网站上最新的版本是 <a href="https://scidraw.nd.edu/beta/" target="_blank" rel="noopener">SciDraw-0.0.7.zip 2015-03-28 22:08 6.9M <i class="fa fa-link fa-fw"></i></a>，为了方便我在本地提供一个<a href="https://file.pencilq.com/file_and_note/SciDraw-0.0.7.zip" target="_blank" rel="noopener">最新备份 <i class="fa fa-link fa-fw"></i></a>。</p><p>安装包内含有 <code>doc</code> 和 <code>packages</code> 两个部分：</p><ul><li><code>doc</code>：帮助文档和官方提供的案例</li><li><code>packages</code>：需要在 Mathematica 中导入的包<ul><li>SciDrawGuide.pdf 帮助手册，必读</li><li>Examples-XXX.nb  案例，可直接参考</li></ul></li></ul><h2 id="在-Mathematica-中导入包"><a href="#在-Mathematica-中导入包" class="headerlink" title="在 Mathematica 中导入包"></a>在 Mathematica 中导入包</h2><h2 id="基本的绘图框架"><a href="#基本的绘图框架" class="headerlink" title="基本的绘图框架"></a>基本的绘图框架</h2>]]></content>
     
     <summary type="html">
     

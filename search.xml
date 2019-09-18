@@ -34,7 +34,7 @@
       <link href="//35/"/>
       <url>//35/</url>
       
-        <content type="html"><![CDATA[<p>调 Mathematica 绘图样式的时候总感觉不够意思（审美无能___*( ￣皿￣)/#____），内置的 PlotTheme 对于论文插图来说也不够精美。</p><p>搜索一番，发现了 Mathematica 的 SciDraw 绘图包，样式深得我心。开坑学习🤣。</p><p><a href="https://scidraw.nd.edu/" target="_blank" rel="noopener">SciDraw</a></p><div class="pdf" target="https://file.pencilq.com/file_and_note/SciDraw-Examples_rev130111.pdf" height></div>]]></content>
+        <content type="html"><![CDATA[<p>调 Mathematica 绘图样式的时候总感觉不够意思（审美无能___*( ￣皿￣)/#____），内置的 PlotTheme 对于论文插图来说也不够精美。</p><p>搜索一番，发现了 Mathematica 的 SciDraw 绘图包，样式深得我心。开坑学习🤣。</p><h2 id="官方地址"><a href="#官方地址" class="headerlink" title="官方地址"></a>官方地址</h2><p>官方地址 <a href="https://scidraw.nd.edu/" target="_blank" rel="noopener">SciDraw  <i class="fa fa-link fa-fw"></i></a></p><div class="pdf" target="https://file.pencilq.com/file_and_note/SciDraw-Examples_rev130111.pdf" height></div><p>网站上最新的版本是 <a href="https://scidraw.nd.edu/beta/" target="_blank" rel="noopener">SciDraw-0.0.7.zip 2015-03-28 22:08 6.9M <i class="fa fa-link fa-fw"></i></a>，为了方便我在本地提供一个<a href="https://file.pencilq.com/file_and_note/SciDraw-0.0.7.zip" target="_blank" rel="noopener">最新备份 <i class="fa fa-link fa-fw"></i></a>。</p><p>安装包内含有 <code>doc</code> 和 <code>packages</code> 两个部分：</p><ul><li><code>doc</code>：帮助文档和官方提供的案例</li><li><code>packages</code>：需要在 Mathematica 中导入的包<ul><li>SciDrawGuide.pdf 帮助手册，必读</li><li>Examples-XXX.nb  案例，可直接参考</li></ul></li></ul><h2 id="在-Mathematica-中导入包"><a href="#在-Mathematica-中导入包" class="headerlink" title="在 Mathematica 中导入包"></a>在 Mathematica 中导入包</h2><h2 id="基本的绘图框架"><a href="#基本的绘图框架" class="headerlink" title="基本的绘图框架"></a>基本的绘图框架</h2>]]></content>
       
       
       
