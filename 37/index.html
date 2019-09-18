@@ -57,19 +57,18 @@
   };
 </script>
 
-  <meta name="description" content="安装步骤 安装过程，安装最新版本 对于新版本 5.3.0 还需要额外开启 allow_remote_access 的选项才可以正常进行远程访问 对于需要 --allow-root 的问题，开启 c.NotebookApp.allow_root = True 即可，参考">
-<meta name="keywords" content="Linux,Python">
+  <meta name="description" content="在 Mathematica 中导入 CSV 文件时，开头出现 \:feff 字符串。使用 ToExpression 处理时会出现转换问题。  简单查找了下，发现是因为直接使用 excel 创建 csv 文件时（UTF8 编码），文件头部被添加了一个不可见字符  BOM (Byte Order Mark) 。该字符用于 Unicode 标识内部编码的排列方式，在 UTF-16、UTF-32 编码里是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阿里云 Centos 7.3 安装 Jupyter Notebook">
-<meta property="og:url" content="https://pencilq.com/21/index.html">
+<meta property="og:title" content="Mathematica 中的 feff 字符">
+<meta property="og:url" content="https://pencilq.com/37/index.html">
 <meta property="og:site_name" content="小铅笔 &amp; jeff">
-<meta property="og:description" content="安装步骤 安装过程，安装最新版本 对于新版本 5.3.0 还需要额外开启 allow_remote_access 的选项才可以正常进行远程访问 对于需要 --allow-root 的问题，开启 c.NotebookApp.allow_root = True 即可，参考">
+<meta property="og:description" content="在 Mathematica 中导入 CSV 文件时，开头出现 \:feff 字符串。使用 ToExpression 处理时会出现转换问题。  简单查找了下，发现是因为直接使用 excel 创建 csv 文件时（UTF8 编码），文件头部被添加了一个不可见字符  BOM (Byte Order Mark) 。该字符用于 Unicode 标识内部编码的排列方式，在 UTF-16、UTF-32 编码里是">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-28T16:23:14.000Z">
+<meta property="og:updated_time" content="2019-09-18T01:29:28.630Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿里云 Centos 7.3 安装 Jupyter Notebook">
-<meta name="twitter:description" content="安装步骤 安装过程，安装最新版本 对于新版本 5.3.0 还需要额外开启 allow_remote_access 的选项才可以正常进行远程访问 对于需要 --allow-root 的问题，开启 c.NotebookApp.allow_root = True 即可，参考">
-  <link rel="canonical" href="https://pencilq.com/21/">
+<meta name="twitter:title" content="Mathematica 中的 feff 字符">
+<meta name="twitter:description" content="在 Mathematica 中导入 CSV 文件时，开头出现 \:feff 字符串。使用 ToExpression 处理时会出现转换问题。  简单查找了下，发现是因为直接使用 excel 创建 csv 文件时（UTF8 编码），文件头部被添加了一个不可见字符  BOM (Byte Order Mark) 。该字符用于 Unicode 标识内部编码的排列方式，在 UTF-16、UTF-32 编码里是">
+  <link rel="canonical" href="https://pencilq.com/37/">
 
 
 <script id="page-configurations">
@@ -83,7 +82,7 @@
   };
 </script>
 
-  <title>阿里云 Centos 7.3 安装 Jupyter Notebook | 小铅笔 & jeff</title>
+  <title>Mathematica 中的 feff 字符 | 小铅笔 & jeff</title>
   
 
 
@@ -249,7 +248,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://pencilq.com/21/">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/37/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小铅笔 & jeff">
@@ -261,7 +260,7 @@
       <meta itemprop="name" content="小铅笔 & jeff">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">阿里云 Centos 7.3 安装 Jupyter Notebook
+        <h2 class="post-title" itemprop="name headline">Mathematica 中的 feff 字符
 
           
         </h2>
@@ -277,7 +276,7 @@
                 
               
 
-              <time title="创建时间：2019-05-01 00:16:59" itemprop="dateCreated datePublished" datetime="2019-05-01T00:16:59+08:00">2019-05-01</time>
+              <time title="创建时间：2019-09-17 21:53:57" itemprop="dateCreated datePublished" datetime="2019-09-17T21:53:57+08:00">2019-09-17</time>
             </span>
           
             
@@ -288,7 +287,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-29 00:23:14" itemprop="dateModified" datetime="2019-08-29T00:23:14+08:00">2019-08-29</time>
+                <time title="修改时间：2019-09-18 09:29:28" itemprop="dateModified" datetime="2019-09-18T09:29:28+08:00">2019-09-18</time>
               </span>
             
           
@@ -304,59 +303,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ol>
-<li><a href="https://www.jianshu.com/p/fff4a61dee7a" target="_blank" rel="noopener">安装过程</a>，安装最新版本</li>
-<li>对于新版本 5.3.0 还需要额外开启 <code>allow_remote_access</code> 的选项才可以正常进行远程访问</li>
-<li>对于需要 <code>--allow-root</code> 的问题，开启 <code>c.NotebookApp.allow_root = True</code> 即可，<a href="https://tuxianchao.github.io/post/%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91centos7%E8%A3%85%E4%B8%AAjupyter/" target="_blank" rel="noopener">参考</a><a id="more"></a></li>
-<li>使用时发现没有安装 <code>numpy</code> 这些常用包，运行 <code>conda update anaconda</code> 报错，<a href="https://support.anaconda.com/customer/en/portal/articles/2797011-updating-anaconda-to-python-3-6" target="_blank" rel="noopener">查询文档</a>，运行 <code>conda install anaconda</code> 即可。</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PackageNotInstalledError: Package is not installed <span class="keyword">in</span> prefix.</span><br><span class="line">      package name: anaconda</span><br></pre></td></tr></table></figure>
-<ul>
-<li>别忘了 <code>conda activate jupyter_notebook</code></li>
-</ul>
-<h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><ol>
-<li>安装完需要重启 <code>jupyter notebook</code></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter_contrib_nbextensions &amp;&amp; jupyter contrib nbextension install</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>相关插件 <a href="https://www.jishuwen.com/d/2Clq" target="_blank" rel="noopener">参考</a></p>
-<blockquote>
-<p>如果出现 <code>autopep8 module not found error</code>，运行 <code>pip install autopep8 --user</code>，<a href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions/issues/1300" target="_blank" rel="noopener">参考</a></p>
-</blockquote>
-</li>
-<li><p>安装 <code>Cpython</code> ，<a href="https://zhuanlan.zhihu.com/p/33696082" target="_blank" rel="noopener">参考</a></p>
-</li>
-</ol>
-<h2 id="界面优化"><a href="#界面优化" class="headerlink" title="界面优化"></a>界面优化</h2><ol>
-<li><a href="https://github.com/merqurio/jupyter_themes" target="_blank" rel="noopener">推荐 </a>（可以随心更换高亮主题，代码字体）</li>
-<li>安装主题（不习惯，对移动端不友好）</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install jupyterthemes</span></span><br><span class="line">pip install jupyterthemes</span><br><span class="line"></span><br><span class="line"><span class="comment"># upgrade to latest version</span></span><br><span class="line">pip install --upgrade jupyterthemes</span><br><span class="line"></span><br><span class="line">jt -t grade3 -f roboto -nf robotosans -tf robotosans -N -T -cellw <span class="number">70</span>% -dfs <span class="number">10</span> -ofs <span class="number">10</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li><a href="https://blog.csdn.net/qq_30565883/article/details/79444750" target="_blank" rel="noopener">配置分享</a></li>
-<li>其它 <a href="https://www.zhihu.com/question/266988943/answer/632279672" target="_blank" rel="noopener">参考</a></li>
-</ol>
-<hr>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jt -t oceans16 -f fira -fs 13 -cellw 90% -ofs 11 -dfs 11 -T</span><br></pre></td></tr></table></figure>
-<h2 id="同步服务器文件夹"><a href="#同步服务器文件夹" class="headerlink" title="同步服务器文件夹"></a>同步服务器文件夹</h2><blockquote>
-<p>文件还是要备一份在本地稳妥。</p>
-</blockquote>
-<ol>
-<li>【不推荐】考虑到自己是坚果云用户，希望能够通过<a href="https://chenyongjun.vip/articles/100" target="_blank" rel="noopener">坚果云实现文件夹同步</a>，但是 使用 <code>JupyterNotebook</code> 的时候会保存失败，丢失内容。（<strong>大坑</strong>，但是作为其他用途或许不错）</li>
-<li>【极力推荐】<strong><a href="http://www.verysync.com/manual/install/#linux" target="_blank" rel="noopener">微力同步</a></strong>，提供了自动安装脚本，使用起来非常稳定，且有版本历史备份。类似应用 <code>resilio sync</code> 在大陆无法正常使用， <code>Syncthing</code> 问题较多，同步经常出问题。</li>
-</ol>
-<p>通过 $\LaTeX$  导出 <code>PDF</code> </p>
-<ol>
-<li>安装 texlive，<a href="https://www.jianshu.com/p/3b3a6f1f11bc" target="_blank" rel="noopener">参考</a></li>
-<li>导出中文 pdf，修改 article 为 ctexart 即可，<a href="https://www.jianshu.com/p/c3f660188766" target="_blank" rel="noopener">参考</a></li>
-</ol>
-<h2 id="在现标签页打开新笔记本"><a href="#在现标签页打开新笔记本" class="headerlink" title="在现标签页打开新笔记本"></a>在现标签页打开新笔记本</h2><p><a href="https://github.com/jupyter/notebook/issues/4115" target="_blank" rel="noopener">参考</a></p>
-<p>在 <code>.jupyter/custom/custom.js</code> 文件中修改或者添加以下部分</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">"base/js/namespace"</span>], <span class="function"><span class="keyword">function</span> (<span class="params">Jupyter</span>) </span>&#123;</span><br><span class="line">  Jupyter._target = <span class="string">'_self'</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="后台运行及结束进程"><a href="#后台运行及结束进程" class="headerlink" title="后台运行及结束进程"></a>后台运行及结束进程</h2><p><a href="https://blog.csdn.net/weixin_42561002/article/details/85382922" target="_blank" rel="noopener">参考</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 后台运行</span></span><br><span class="line">nohup jupyter notebook --allow-root &gt; jupyter.log 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment"># https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/ps.html</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 结束后台应用</span></span><br><span class="line">ps -ef|grep jupyter</span><br><span class="line"><span class="built_in">kill</span> pid</span><br></pre></td></tr></table></figure></p>
-<h2 id="其它遇到的问题"><a href="#其它遇到的问题" class="headerlink" title="其它遇到的问题"></a>其它遇到的问题</h2><ol>
-<li>绑定域名及启用 SSL 会出现连不上内核的情况</li>
-</ol>
+        <p>在 Mathematica 中导入 CSV 文件时，开头出现 <code>\:feff</code> 字符串。使用 <code>ToExpression</code> 处理时会出现转换问题。</p>
+<p><img alt data-src="https://image.pencilq.com/images/2019/09/17/20190917215532.png"></p>
+<p>简单查找了下，发现是因为直接使用 excel 创建 csv 文件时（UTF8 编码），<strong>文件头部被添加了一个不可见字符  BOM (Byte Order Mark) </strong>。该字符用于 Unicode 标识内部编码的排列方式，在 UTF-16、UTF-32 编码里是必须的，而在 UTF-8 里是可选的。<strong>有的语法解析器没有对 BOM 做处理。</strong></p>
+<a id="more"></a>
+<p>明确原因后，直接用 vscode 打开瞧一瞧</p>
+<p><img alt data-src="https://image.pencilq.com/images/2019/09/18/20190918092024.png"></p>
+<p>果然，<code>UTF-8 with BOM</code></p>
+<p><img alt data-src="https://image.pencilq.com/images/2019/09/18/20190918092422.png"></p>
+<p>直接换成 <code>UTF-8</code> 编码保存。问题解决。</p>
+<p><img alt data-src="https://image.pencilq.com/images/2019/09/18/20190918092203.png"></p>
+<p>参考链接：<br><a href="http://blog.uouo123.com/post/693.html" target="_blank" rel="noopener">linux 下各种编码问题 ——UTF-8、BOM、的问题 <i class="fa fa-link fa-fw"></i></a></p>
 
     </div>
 
@@ -369,25 +326,14 @@
       
 
       <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
-            
-              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
-            
-          </div>
-        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/14/" rel="next" title="Visual Studio 技巧：在代码间自由穿梭">
-                  <i class="fa fa-chevron-left"></i> Visual Studio 技巧：在代码间自由穿梭
+                <a href="/36/" rel="next" title="哭唧唧 梯子没了">
+                  <i class="fa fa-chevron-left"></i> 哭唧唧 梯子没了
                 </a>
               
             </div>
@@ -395,10 +341,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/22/" rel="prev" title="安装 neper 多晶体网格生成软件">
-                  安装 neper 多晶体网格生成软件 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -454,8 +396,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装步骤"><span class="nav-number">1.</span> <span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装插件"><span class="nav-number">2.</span> <span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#界面优化"><span class="nav-number">3.</span> <span class="nav-text">界面优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步服务器文件夹"><span class="nav-number">4.</span> <span class="nav-text">同步服务器文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在现标签页打开新笔记本"><span class="nav-number">5.</span> <span class="nav-text">在现标签页打开新笔记本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后台运行及结束进程"><span class="nav-number">6.</span> <span class="nav-text">后台运行及结束进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它遇到的问题"><span class="nav-number">7.</span> <span class="nav-text">其它遇到的问题</span></a></li></ol></div>
-        
       </div>
       <!--/noindex-->
 

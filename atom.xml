@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pencilq.com/"/>
-  <updated>2019-09-16T13:47:15.551Z</updated>
+  <updated>2019-09-18T01:29:28.630Z</updated>
   <id>https://pencilq.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mathematica 中的 feff 字符</title>
+    <link href="https://pencilq.com//37/"/>
+    <id>https://pencilq.com//37/</id>
+    <published>2019-09-17T13:53:57.000Z</published>
+    <updated>2019-09-18T01:29:28.630Z</updated>
+    
+    <content type="html"><![CDATA[<p>在 Mathematica 中导入 CSV 文件时，开头出现 <code>\:feff</code> 字符串。使用 <code>ToExpression</code> 处理时会出现转换问题。</p><p><img alt data-src="https://image.pencilq.com/images/2019/09/17/20190917215532.png"></p><p>简单查找了下，发现是因为直接使用 excel 创建 csv 文件时（UTF8 编码），<strong>文件头部被添加了一个不可见字符  BOM (Byte Order Mark) </strong>。该字符用于 Unicode 标识内部编码的排列方式，在 UTF-16、UTF-32 编码里是必须的，而在 UTF-8 里是可选的。<strong>有的语法解析器没有对 BOM 做处理。</strong></p><a id="more"></a><p>明确原因后，直接用 vscode 打开瞧一瞧</p><p><img alt data-src="https://image.pencilq.com/images/2019/09/18/20190918092024.png"></p><p>果然，<code>UTF-8 with BOM</code></p><p><img alt data-src="https://image.pencilq.com/images/2019/09/18/20190918092422.png"></p><p>直接换成 <code>UTF-8</code> 编码保存。问题解决。</p><p><img alt data-src="https://image.pencilq.com/images/2019/09/18/20190918092203.png"></p><p>参考链接：<br><a href="http://blog.uouo123.com/post/693.html" target="_blank" rel="noopener">linux 下各种编码问题 ——UTF-8、BOM、的问题 <i class="fa fa-link fa-fw"></i></a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在 Mathematica 中导入 CSV 文件时，开头出现 &lt;code&gt;\:feff&lt;/code&gt; 字符串。使用 &lt;code&gt;ToExpression&lt;/code&gt; 处理时会出现转换问题。&lt;/p&gt;
+&lt;p&gt;&lt;img alt data-src=&quot;https://image.pencilq.com/images/2019/09/17/20190917215532.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;简单查找了下，发现是因为直接使用 excel 创建 csv 文件时（UTF8 编码），&lt;strong&gt;文件头部被添加了一个不可见字符  BOM (Byte Order Mark) &lt;/strong&gt;。该字符用于 Unicode 标识内部编码的排列方式，在 UTF-16、UTF-32 编码里是必须的，而在 UTF-8 里是可选的。&lt;strong&gt;有的语法解析器没有对 BOM 做处理。&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>哭唧唧 梯子没了</title>
@@ -440,24 +460,6 @@
       <category term="Linux" scheme="https://pencilq.com/tags/Linux/"/>
     
       <category term="Python" scheme="https://pencilq.com/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Visual Studio 技巧：在代码间自由穿梭</title>
-    <link href="https://pencilq.com//14/"/>
-    <id>https://pencilq.com//14/</id>
-    <published>2018-12-19T03:38:57.000Z</published>
-    <updated>2019-04-29T13:36:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>当你在浏览代码时，看到了一个陌生的函数或者自定义类型，你使用转到定义查看该函数或者类型，然后再也找不回跳转过来的地方了。</p><a id="more"></a><h2 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h2><p>技巧：返回之前跳转的位置<br>使用快捷键 Ctrl+-，可以跳回到之前光标的所在位置。<br>使用快捷键 Ctrl+Shift+-，撤销上面的跳转。<br>使用（ Ctrl+-）跳回去之后，如果想在返回, 可用（Ctrl+Shift+-）撤销跳转</p><h2 id="其他一些提高效率的代码浏览快捷键："><a href="#其他一些提高效率的代码浏览快捷键：" class="headerlink" title="其他一些提高效率的代码浏览快捷键："></a>其他一些提高效率的代码浏览快捷键：</h2><h3 id="页面导航"><a href="#页面导航" class="headerlink" title="页面导航"></a>页面导航</h3><p>PageUp 当前页面上翻一页<br>PageDn 当前页面下翻一页<br>Ctrl + 数字 切换代码标签页<br>Ctrl + 方向键 滚动屏幕<br>Ctrl+G 跳转的制定行<br>F6 转到定义</p><h3 id="光标移动"><a href="#光标移动" class="headerlink" title="光标移动:"></a>光标移动:</h3><p>Ctrl+] 匹配括号<br>将光标移动到行首：Home<br>将光标移动到行末：End<br>Ctrl+PageUp 光标移动到当前页面顶部<br>Ctrl+PageDn 光标移动到当前页面底部<br>Ctrl+Shifit+PageUp 光标从当前位置移动到页面顶部并选中之间的内容<br>Ctrl+Shifit+PageDw 光标从当前位置移动到页面底部并选中之间的内容</p><h3 id="临时调整字体大小"><a href="#临时调整字体大小" class="headerlink" title="临时调整字体大小"></a>临时调整字体大小</h3><p>调大一号 ctrl + 鼠标滚轮上滚<br>调小一号 ctrl + 鼠标滚轮下滚</p><p>本文转载，<a href="https://www.oschina.net/question/54100_17415" target="_blank" rel="noopener">原文地址</a></p><hr>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;当你在浏览代码时，看到了一个陌生的函数或者自定义类型，你使用转到定义查看该函数或者类型，然后再也找不回跳转过来的地方了。&lt;/p&gt;
-    
-    </summary>
-    
     
   </entry>
   
