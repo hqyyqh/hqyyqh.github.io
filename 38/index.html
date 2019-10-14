@@ -64,7 +64,7 @@
 <meta property="og:site_name" content="小铅笔 &amp; jeff">
 <meta property="og:description" content="从本科的材料成形原理教材上认识了应力张量后，它便一直出现在我们的视野里。初始，仅是一个基本定义接受了它，进而有过疑惑，随着矩阵论的学习又有了新的认识。曾经就有记录下对其理解的想法，但因思路尚未完善而一再搁置；直到今天重新想起，并完成了方向余弦作为线性空间的证明，才终于开始详细记录。 根据我对应力张量的阶段性认识，相应分为三部分进行记录。本文介绍第一部分，应力的基本知识和常规认识。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-14T01:13:41.795Z">
+<meta property="og:updated_time" content="2019-10-14T01:24:39.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(转) 应力张量的认识之基本概念">
 <meta name="twitter:description" content="从本科的材料成形原理教材上认识了应力张量后，它便一直出现在我们的视野里。初始，仅是一个基本定义接受了它，进而有过疑惑，随着矩阵论的学习又有了新的认识。曾经就有记录下对其理解的想法，但因思路尚未完善而一再搁置；直到今天重新想起，并完成了方向余弦作为线性空间的证明，才终于开始详细记录。 根据我对应力张量的阶段性认识，相应分为三部分进行记录。本文介绍第一部分，应力的基本知识和常规认识。">
@@ -276,7 +276,7 @@
                 
               
 
-              <time title="创建时间：2019-10-14 08:52:16 / 修改时间：09:13:41" itemprop="dateCreated datePublished" datetime="2019-10-14T08:52:16+08:00">2019-10-14</time>
+              <time title="创建时间：2019-10-14 08:52:16 / 修改时间：09:24:39" itemprop="dateCreated datePublished" datetime="2019-10-14T08:52:16+08:00">2019-10-14</time>
             </span>
           
             
@@ -302,7 +302,7 @@
 <p>为了研究某一点 $P$ 处的应力，用任意截面在 $P$ 点处切开物体，如下图所示。根据定义可以得到 $P$ 点的正应力 $\sigma$ 、切应力 $\tau$ ，他们的合成即为全应力。</p>
 <p><img alt=" " data-src="https://image.pencilq.com/images/2019/10/13/20191013202411.png"></p>
 <p>需要注意的是，一个确定的截面对应了一组正应力和切应力。但是过 $P$ 点有无数的截面，那么如何才能真正描述 $P$  点的应力状态呢？</p>
-<h2 id="应力状态"><a href="#应力状态" class="headerlink" title="应力状态"></a>应力状态</h2><p><code>应力状态</code> 是受力物体某一点各个截面上应力的变化情况。上面已经意识到过一点有无数的截面，只有任意截面上的应力分量都被确定，才能说应力状态是确定的。</p>
+<h3 id="应力状态"><a href="#应力状态" class="headerlink" title="应力状态"></a>应力状态</h3><p><code>应力状态</code> 是受力物体某一点各个截面上应力的变化情况。上面已经意识到过一点有无数的截面，只有任意截面上的应力分量都被确定，才能说应力状态是确定的。</p>
 <p>通常在无数的截面中，任意取三个互相垂直的截面，并以他们的法线方向建立笛卡尔坐标系。也即在P 点截取一个无限小的平行六面体，称为  <code>单元体</code> 。</p>
 <p><img alt=" " data-src="https://image.pencilq.com/images/2019/10/13/20191013202811.png"></p>
 <p>单元体无限小，因此单元体上相互平行的两个平面视为过该点的同一平面，也即他俩的应力是相同的。这样只用三个互相垂直的截面上的应力即可分析问题。</p>
@@ -311,7 +311,7 @@
 <p>问题：既然单元体上相互平行的两个平面视为过该点的同一平面，那为什么上图平行的平面上应力是相反的？</p>
 <p>单元体上相互平行的两个平面视为过该点的同一平面，但是分别是被截开的两部分的平面。截开前他们是重合的，截开后成为了两部分各自的表面，而外表面是有方向的。所以，从各自的方向上来看，应力方向还是相同的。</p>
 </blockquote>
-<h2 id="应力张量"><a href="#应力张量" class="headerlink" title="应力张量"></a>应力张量</h2><p>根据上面单元体上的应力分量，是否可以求出下图所示任意截面上的应力分量？</p>
+<h3 id="应力张量"><a href="#应力张量" class="headerlink" title="应力张量"></a>应力张量</h3><p>根据上面单元体上的应力分量，是否可以求出下图所示任意截面上的应力分量？</p>
 <p><img alt data-src="https://image.pencilq.com/images/2019/10/13/20191013202936.png"></p>
 <p>答案是肯定的。根据三个方向的静力平衡就可以计算得到上图法向为 $\vec{n}=(n_1,n_2,n_3)$  截面上的应力分量。于是，三个互相垂直的截面上的 9 个应力分量可以确定任意截面的应力，也就是说这一点的应力状态被完全确定了。并且，从这三个正交截面的选取上来看，他们和坐标系无关。</p>
 <p>于是，我们把单元体上的九个应力分量作为一个整体来描述 $P$ 点的应力状态，称作  <code>应力张量</code> ，记作</p>
@@ -323,7 +323,7 @@
 \tau_{zx} & \tau_{zy} & \sigma_z
 \end{pmatrix}</script><h2 id="主应力"><a href="#主应力" class="headerlink" title="主应力"></a>主应力</h2><p>如果作用在某一截面上的全应力和这一截面垂直，即该截面上只有正应力，则这一截面称为  <code>主平面</code> ，其法线方向称为应力主方向，该截面的应力称为  <code>主应力</code> 。如果三个坐标轴方向都是主方向，则称这一坐标系为  <code>主轴坐标系</code> 。</p>
 <p>确定方法依然是求解静力平衡方程。</p>
-<h2 id="应力张量不变量"><a href="#应力张量不变量" class="headerlink" title="应力张量不变量"></a>应力张量不变量</h2><p>在求解主应力的过程中会得到以主应力为未知数的三次方程，叫做  <code>状态方程</code> 。</p>
+<h3 id="应力张量不变量"><a href="#应力张量不变量" class="headerlink" title="应力张量不变量"></a>应力张量不变量</h3><p>在求解主应力的过程中会得到以主应力为未知数的三次方程，叫做  <code>状态方程</code> 。</p>
 <script type="math/tex; mode=display">
 \sigma^3-I_1\,\sigma^2+I_2\,\sigma-I_3=0</script><p>状态方程的三个系数由主应力唯一确定，而一点的主应力是唯一的，这样就得到了不随坐标系变化的三个量，叫作  <code>应力张量不变量</code> </p>
 <script type="math/tex; mode=display">
@@ -337,7 +337,7 @@ I_3 &= \sigma_1 \, \sigma_2 \, \sigma_3
 I_1 &= \sigma_x + \sigma_y + \sigma_z \\
 I_2 &= \sigma_x \, \sigma_y + \sigma_y \, \sigma_z + \sigma_z \, \sigma_x - \tau_{xy}^2 - \tau_{yz}^2 - \tau_{zx}^2 \\
 I_3 &= \sigma_x \, \sigma_y \, \sigma_z + 2\,\tau_{xy}\,\tau_{yz}\,\tau_{zx} - \sigma_x\,\tau_{yz}^2 - \sigma_y\,\tau_{zx}^2 - \sigma_z\,\tau_{xy}^2
-\end{align*}</script><h2 id="主切应力"><a href="#主切应力" class="headerlink" title="主切应力"></a>主切应力</h2><p>切应力有极值的截面叫主切应力平面，截面上的切应力叫作  <code>主切应力</code> 。六个主切应力中绝对值最大的叫作最大切应力。通过计算可知，主切应力平面与主应力平面成 45° 夹角。下表是主切应力平面上的正应力、切应力值：</p>
+\end{align*}</script><h3 id="主切应力"><a href="#主切应力" class="headerlink" title="主切应力"></a>主切应力</h3><p>切应力有极值的截面叫主切应力平面，截面上的切应力叫作  <code>主切应力</code> 。六个主切应力中绝对值最大的叫作最大切应力。通过计算可知，主切应力平面与主应力平面成 45° 夹角。下表是主切应力平面上的正应力、切应力值：</p>
 <div class="table-container">
 <table>
 <thead>
@@ -501,7 +501,7 @@ I_3 &= \sigma_x \, \sigma_y \, \sigma_z + 2\,\tau_{xy}\,\tau_{yz}\,\tau_{zx} - \
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#应力"><span class="nav-number">1.</span> <span class="nav-text">应力</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应力状态"><span class="nav-number">2.</span> <span class="nav-text">应力状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应力张量"><span class="nav-number">3.</span> <span class="nav-text">应力张量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主应力"><span class="nav-number">4.</span> <span class="nav-text">主应力</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应力张量不变量"><span class="nav-number">5.</span> <span class="nav-text">应力张量不变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主切应力"><span class="nav-number">6.</span> <span class="nav-text">主切应力</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应力张量分解"><span class="nav-number">7.</span> <span class="nav-text">应力张量分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应力平衡微分方程"><span class="nav-number">8.</span> <span class="nav-text">应力平衡微分方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">9.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关文章"><span class="nav-number">10.</span> <span class="nav-text">相关文章</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#应力"><span class="nav-number">1.</span> <span class="nav-text">应力</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应力状态"><span class="nav-number">1.1.</span> <span class="nav-text">应力状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应力张量"><span class="nav-number">1.2.</span> <span class="nav-text">应力张量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主应力"><span class="nav-number">2.</span> <span class="nav-text">主应力</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应力张量不变量"><span class="nav-number">2.1.</span> <span class="nav-text">应力张量不变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主切应力"><span class="nav-number">2.2.</span> <span class="nav-text">主切应力</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应力张量分解"><span class="nav-number">3.</span> <span class="nav-text">应力张量分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应力平衡微分方程"><span class="nav-number">4.</span> <span class="nav-text">应力平衡微分方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关文章"><span class="nav-number">6.</span> <span class="nav-text">相关文章</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
