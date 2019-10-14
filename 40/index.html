@@ -57,18 +57,18 @@
   };
 </script>
 
-  <meta name="description" content="Cauchy Strain在小变形理论中，柯西应变定义为：  \varepsilon =\frac{1}{2} \left( U^T+ U\right)=\frac{1}{2} (u_{i,j}+u_{j,i})这是在学弹性力学时大家所熟知的应变写法。 弹性力学只关心与应力应变有关的形变（体积改变），而不考虑刚体转动。  小应变理论中的应变定义在连续介质力学中可以用变形梯度张量 $\bf F$ 来">
+  <meta name="description" content="前面两部分分别介绍了应力张量的基础和对其本质的思考，最终得出了应力张量的本质是一个线性变换的结论。这一部分是对上述结论的验证计算和关于严谨性方面的补充证明。 为了加深对应力张量是线性变换的矩阵的理解，进行如下计算： 从线性变换的角度求出变换矩阵（即应力张量），并验证其相似性 。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="格林应变和柯西应变">
-<meta property="og:url" content="https://pencilq.com/7/index.html">
+<meta property="og:title" content="(转) 应力张量的认识之线性变换的证明">
+<meta property="og:url" content="https://pencilq.com/40/index.html">
 <meta property="og:site_name" content="小铅笔 &amp; jeff">
-<meta property="og:description" content="Cauchy Strain在小变形理论中，柯西应变定义为：  \varepsilon =\frac{1}{2} \left( U^T+ U\right)=\frac{1}{2} (u_{i,j}+u_{j,i})这是在学弹性力学时大家所熟知的应变写法。 弹性力学只关心与应力应变有关的形变（体积改变），而不考虑刚体转动。  小应变理论中的应变定义在连续介质力学中可以用变形梯度张量 $\bf F$ 来">
+<meta property="og:description" content="前面两部分分别介绍了应力张量的基础和对其本质的思考，最终得出了应力张量的本质是一个线性变换的结论。这一部分是对上述结论的验证计算和关于严谨性方面的补充证明。 为了加深对应力张量是线性变换的矩阵的理解，进行如下计算： 从线性变换的角度求出变换矩阵（即应力张量），并验证其相似性 。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-31T13:53:39.128Z">
+<meta property="og:updated_time" content="2019-10-14T01:13:55.808Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="格林应变和柯西应变">
-<meta name="twitter:description" content="Cauchy Strain在小变形理论中，柯西应变定义为：  \varepsilon =\frac{1}{2} \left( U^T+ U\right)=\frac{1}{2} (u_{i,j}+u_{j,i})这是在学弹性力学时大家所熟知的应变写法。 弹性力学只关心与应力应变有关的形变（体积改变），而不考虑刚体转动。  小应变理论中的应变定义在连续介质力学中可以用变形梯度张量 $\bf F$ 来">
-  <link rel="canonical" href="https://pencilq.com/7/">
+<meta name="twitter:title" content="(转) 应力张量的认识之线性变换的证明">
+<meta name="twitter:description" content="前面两部分分别介绍了应力张量的基础和对其本质的思考，最终得出了应力张量的本质是一个线性变换的结论。这一部分是对上述结论的验证计算和关于严谨性方面的补充证明。 为了加深对应力张量是线性变换的矩阵的理解，进行如下计算： 从线性变换的角度求出变换矩阵（即应力张量），并验证其相似性 。">
+  <link rel="canonical" href="https://pencilq.com/40/">
 
 
 <script id="page-configurations">
@@ -82,7 +82,7 @@
   };
 </script>
 
-  <title>格林应变和柯西应变 | 小铅笔 & jeff</title>
+  <title>(转) 应力张量的认识之线性变换的证明 | 小铅笔 & jeff</title>
   
 
 
@@ -248,7 +248,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://pencilq.com/7/">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/40/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小铅笔 & jeff">
@@ -260,7 +260,7 @@
       <meta itemprop="name" content="小铅笔 & jeff">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">格林应变和柯西应变
+        <h2 class="post-title" itemprop="name headline">(转) 应力张量的认识之线性变换的证明
 
           
         </h2>
@@ -276,19 +276,11 @@
                 
               
 
-              <time title="创建时间：2018-10-03 00:00:32" itemprop="dateCreated datePublished" datetime="2018-10-03T00:00:32+08:00">2018-10-03</time>
+              <time title="创建时间：2019-10-14 08:53:11 / 修改时间：09:13:55" itemprop="dateCreated datePublished" datetime="2019-10-14T08:53:11+08:00">2019-10-14</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-31 21:53:39" itemprop="dateModified" datetime="2019-08-31T21:53:39+08:00">2019-08-31</time>
-              </span>
             
           
 
@@ -303,58 +295,83 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Cauchy-Strain"><a href="#Cauchy-Strain" class="headerlink" title="Cauchy Strain"></a>Cauchy Strain</h2><p>在小变形理论中，柯西应变定义为：</p>
+        <p>前面两部分分别介绍了应力张量的基础和对其本质的思考，最终得出了应力张量的本质是一个线性变换的结论。这一部分是对上述结论的验证计算和关于严谨性方面的补充证明。</p>
+<p>为了加深对应力张量是线性变换的矩阵的理解，进行如下计算： <strong>从线性变换的角度求出变换矩阵（即应力张量），并验证其相似性</strong> 。</p>
+<a id="more"></a>
+<p>为了计算方便又不失一般性，取如下图所示的计算条件：</p>
+<p><img alt data-src="https://image.pencilq.com/images/2019/10/13/20191013213440.png"></p>
+<p> $S_1$ 、 $S_2$  分别为全局绝对坐标系 $S$  下的两个局部坐标系（他们由截取P 点的两两相互垂直的平面的法向决定）， $S_1$  和全局坐标系重合， $S_2$  为全局坐标系绕z 轴逆时针旋转 90° 得到。 $P$  点应力状态在 $S_1$ 、 $S_2$  系下，分别用一个应力张量表示，并且是相似的。接下来就从线性变换角度进行计算说明。</p>
+<h2 id="局部坐标系的基及过渡矩阵"><a href="#局部坐标系的基及过渡矩阵" class="headerlink" title="局部坐标系的基及过渡矩阵"></a>局部坐标系的基及过渡矩阵</h2><p>根据局部坐标轴在全局坐标系下的方向余弦容易得到他们的基分别为：</p>
 <script type="math/tex; mode=display">
-\varepsilon =\frac{1}{2} \left( U^T+ U\right)=\frac{1}{2} (u_{i,j}+u_{j,i})</script><p>这是在学弹性力学时大家所熟知的应变写法。</p>
-<p>弹性力学只关心与应力应变有关的形变（体积改变），而<strong>不考虑刚体转动。</strong> </p>
-<p><strong>小应变理论</strong>中的应变定义在连续介质力学中可以用变形梯度张量 $\bf F$ 来表示</p>
+\alpha = \left(\alpha_1,\,\alpha_2,\,\alpha_3\right) = \begin{pmatrix} 1 & 0 & 0 \\  0 & 1 & 0 \\  0 & 0 & 1 \end{pmatrix} \\  \beta = \left(\beta_1,\,\beta_2,\,\beta_3\right) = \begin{pmatrix} 0 & -1 & 0 \\  1 & 0 & 0 \\  0 & 0 & 1 \end{pmatrix}</script><p>$\beta$基到 $\beta$ 基的过渡矩阵 $W$ 满足</p>
 <script type="math/tex; mode=display">
-\varepsilon_{ij} = \frac{1}{2} (u_{i,j} + u_{j,i})=\frac{1}{2} (F_{ij} + F_{ji}) - \delta_{ij}</script><a id="more"></a>
-<p>应变在面对转动时会遇到问题，因为</p>
+ \alpha = \beta\,W^{-1}</script><p>同理 $\beta$ 基到$\beta$基的过渡矩阵 $W^{-1}$ 满足</p>
 <script type="math/tex; mode=display">
-\pmb \varepsilon = \frac{1}{2}(\pmb F+\pmb F^T)-\pmb I= \frac{1}{2}(\pmb R \cdot \pmb U+\pmb U^T \cdot \pmb R^T)-\pmb I</script><ul>
-<li>不存在转动时，即 $\pmb R=\pmb I$ 时，有 $\pmb{\varepsilon} = {\mathbf U} - {\mathbf I}$ ，此时应变 $\pmb \varepsilon$ 仅仅与形变有关。</li>
-<li>存在刚体转动时$\pmb R \ne \pmb I$，上式中的 $\pmb R$ 就会对应变产生影响，即刚体转动产生应变，这显然不对。</li>
+\alpha = \beta\,W^{-1}</script><p>解得：</p>
+<script type="math/tex; mode=display">
+W = \alpha^{-1}\,\beta = \begin{pmatrix} 0 & -1 & 0 \\  1 & 0 & 0 \\  0 & 0 & 1 \end{pmatrix} \\  W^{-1} = \beta^{-1}\,\alpha = \begin{pmatrix} 0 & 1 & 0 \\  -1 & 0 & 0 \\  0 & 0 & 1 \end{pmatrix}</script><h2 id="线性变换在基下的矩阵"><a href="#线性变换在基下的矩阵" class="headerlink" title="线性变换在基下的矩阵"></a>线性变换在基下的矩阵</h2><p>设全局坐标系描述下，应力张量表示为</p>
+<script type="math/tex; mode=display">
+\sigma = \begin{pmatrix} \sigma_{11} & \sigma_{12} & \sigma_{13} \\  \sigma_{21} & \sigma_{22} & \sigma_{23} \\  \sigma_{31} & \sigma_{32} & \sigma_{33} \end{pmatrix}</script><p>设 $T$  表示应力张量对应的线性变换， $T(\alpha_1)$ 表示 $\alpha_1$ 截面上的应力，显然</p>
+<script type="math/tex; mode=display">
+T(\alpha_1) = \left(\sigma_{11},\,\sigma_{12},\,\sigma_{13}\right)^T</script><p>$T(\beta_1)$ 表示 $S_2$  坐标系下 $\beta_1$  截面上的应力，对应的是全局坐标系下 $y$ 截面的应力</p>
+<script type="math/tex; mode=display">
+T(\beta_1) = \left(\sigma_{21},\,\sigma_{22},\,\sigma_{23}\right)^T</script><p>类似处理其他截面的应力，进而得到</p>
+<script type="math/tex; mode=display">
+T(\alpha) = T\left(\alpha_1,\,\alpha_2,\,\alpha_3\right) = \begin{pmatrix} \sigma_{11} & \sigma_{21} & \sigma_{31} \\  \sigma_{12} & \sigma_{22} & \sigma_{32} \\  \sigma_{13} & \sigma_{23} & \sigma_{33} \end{pmatrix} \\  T(\beta) = T\left(\beta_1,\,\beta_2,\,\beta_3\right) = \begin{pmatrix} \sigma_{21} & -\sigma_{11} & \sigma_{31} \\  \sigma_{22} & -\sigma_{12} & \sigma_{32} \\  \sigma_{23} & -\sigma_{13} & \sigma_{33} \end{pmatrix}</script><p>根据 $T(\alpha) = \alpha\,A$ ， $T(\beta) = \beta\,B$ ，得到线性变换在基 $\alpha, \beta $ 下的矩阵分别为</p>
+<script type="math/tex; mode=display">
+A = \alpha^{-1}\,T(\alpha) = \begin{pmatrix} \sigma_{11} & \sigma_{21} & \sigma_{31} \\  \sigma_{12} & \sigma_{22} & \sigma_{32} \\  \sigma_{13} & \sigma_{23} & \sigma_{33} \end{pmatrix} \\  B = \beta^{-1}\,T(\beta) = \begin{pmatrix} \sigma_{22} & -\sigma_{12} & \sigma_{32} \\  -\sigma_{21} & \sigma_{11} & -\sigma_{31} \\  \sigma_{23} & -\sigma_{13} & \sigma_{33} \end{pmatrix}</script><p>也就是 $P$  点在 $S_1$ 、 $S_2$  坐标系下的应力张量。由于表示上的缘故，这里为转置关系。</p>
+<h2 id="相似关系"><a href="#相似关系" class="headerlink" title="相似关系"></a>相似关系</h2><p>验证可知 $W^{-1}\,A\,W=B$，即 $A \sim B$ </p>
+<script type="math/tex; mode=display">
+\begin{align*} W^{-1}\,A\,W &= \begin{pmatrix} 0 & 1 & 0 \\  -1 & 0 & 0 \\  0 & 0 & 1 \end{pmatrix}\, \begin{pmatrix} \sigma_{11} & \sigma_{21} & \sigma_{31} \\  \sigma_{12} & \sigma_{22} & \sigma_{32} \\  \sigma_{13} & \sigma_{23} & \sigma_{33} \end{pmatrix}\, \begin{pmatrix} 0 & -1 & 0 \\  1 & 0 & 0 \\  0 & 0 & 1 \end{pmatrix}\\  &=\begin{pmatrix} \sigma_{22} & -\sigma_{12} & \sigma_{32} \\  -\sigma_{21} & \sigma_{11} & -\sigma_{31} \\  \sigma_{23} & -\sigma_{13} & \sigma_{33} \end{pmatrix}\\  &= B \end{align*}</script><p>至此，可以清晰看出不同坐标系下应力张量与不同基下线性变换矩阵的等价关系。</p>
+<h2 id="线性空间的证明"><a href="#线性空间的证明" class="headerlink" title="线性空间的证明"></a>线性空间的证明</h2><p>上述关于线性变换的理解都是基于 $\sigma_{ij}\,n_j=p_i$ 的形式而推出的，显得还不够严谨。比如，没有证明截面位置、截面应力可以做成一个线性空间，也没有证明从截面位置到截面应力的变换是线性变换。</p>
+<p>本着彻底打通这条思路的心思，下面开始这两个问题的分析。</p>
+<h2 id="线性空间的定义"><a href="#线性空间的定义" class="headerlink" title="线性空间的定义"></a>线性空间的定义</h2><p>设 $V$ 是一个非空集合， $R$ 为实数域。如果对于 $V$  中任意两个元素 $\alpha,\,\beta, V$ ，中总有唯一的一个元素 $\gamma$  与之对应，称为 $\alpha$  与 $\beta$ 的和，记作 $\gamma = \alpha+\beta$ ；又对于 $R$  中任一数 $\lambda$  与 $V$  中任一元素$\alpha$ ， $V$  中总有唯一的一个元素 $\delta$ 与之对应，称为 $\lambda$ 与 $\alpha$ 的积，记作 $\delta = \lambda\,\alpha$ 。</p>
+<p>并且这两种运算满足以下八条运算规律（其中 $\alpha,\,\beta,\,\gamma \in V$ ， $\lambda,\,\mu \in R$ ）：</p>
+<p>&gt;</p>
+<ul>
+<li>$\alpha+\beta=\beta+\alpha$ </li>
+<li>$(\alpha+\beta)+\gamma=\alpha+(\beta+\gamma)$ </li>
+<li>在 $V$  中存在零元素0，对任何$\alpha$ 都满足 $\alpha+0=\alpha$</li>
+<li>对任何$\alpha$，都有$\alpha$ 的负元素 $\beta$ 满足 $\alpha+\beta=0$ </li>
+<li>$1 \cdot \alpha=\alpha$ </li>
+<li>$\lambda(\mu \alpha)=(\lambda \mu) \alpha$ </li>
+<li>$(\lambda+\mu) \alpha=\lambda \alpha+\mu \alpha$ </li>
+<li>$\lambda(\alpha+\beta)=\lambda \alpha+\lambda \beta$ </li>
 </ul>
-<p>实际上小应变理论里独用了一个张量来处理刚体转动问题 </p>
+<p>那么， $V$  就称为实数域 $R$  上的线性空间（或向量空间）。</p>
+<h2 id="线性空间的证明-1"><a href="#线性空间的证明-1" class="headerlink" title="线性空间的证明"></a>线性空间的证明</h2><p>截面应力空间显然是一个线性空间，因为它是一个一般的三维向量空间。对于截面位置空间，需要证明其对于某种定义的加法和乘法运算封闭，且满足上述运算律。</p>
+<p>截面位置空间是由方向余弦描述的，</p>
 <script type="math/tex; mode=display">
-{\begin{bmatrix} du \\ dv \\ dw \end{bmatrix}}
-\, = \,
-{\begin{bmatrix}
-0 & -\omega_z & \omega_y \\
-\omega_x & 0 & -\omega_x \\
--\omega_y & \omega_x & 0
-\end{bmatrix}}
-{\begin{bmatrix}
-dx \\ dy \\ dz
-\end{bmatrix}}
-\, + \,
-{\begin{bmatrix}
-\varepsilon _x & \frac{1}{2} \gamma _{xy} & \frac{1}{2}\gamma _{xz}\\
-\frac{1}{2}\gamma _{yx} & \varepsilon _y & \frac{1}{2}\gamma _{yz}\\
-\frac{1}{2}\gamma _{zx} & \frac{1}{2} \gamma _{zy} & \varepsilon _z
-\end{bmatrix}}
-{\begin{bmatrix}
-dx \\ dy \\ dz
-\end{bmatrix}}</script><h2 id="Green-Strain"><a href="#Green-Strain" class="headerlink" title="Green Strain"></a>Green Strain</h2><p>而格林应变不受转动矩阵的影响。</p>
-<p>由位移公式 $u=x-X$，有</p>
+\begin{align*} \alpha &= \left(n_1,\,n_2,\,n_3\right) = \left(\cos\langle{\vec{n},\,x}\rangle,\,\cos\langle{\vec{n},\,y}\rangle,\,\cos\langle{\vec{n},\,z}\rangle\right) \\  \beta &= \left(m_1,\,m_2,\,m_3\right) = \left(\cos\langle{\vec{m},\,x}\rangle,\,\cos\langle{\vec{m},\,y}\rangle,\,\cos\langle{\vec{m},\,z}\rangle\right) \end{align*}</script><p>其中， $\langle{\vec{n},\,x}\rangle$ 表示截面法线与  $x$  轴的夹角，其余以此类推。</p>
+<p>$n_{1}, n_{2}, n_{3}$ 取值范围为$[-1,1]$，且满足$n_{1}^{2}+n_{2}^{2}+n_{3}^{2}=1$。显然常规的加法和数乘运算不满足封闭条件。</p>
+<p>考虑到截面空间的描述特征，采用 <strong>球坐标系下角度的代数加法和数乘运算</strong> 来定义。</p>
+<p><img alt=" " data-src="https://image.pencilq.com/images/2019/10/13/20191013215502.png"></p>
+<p>球坐标系下，</p>
 <script type="math/tex; mode=display">
-{\bf F} = \frac{\partial}{\partial \bf X} \left({\bf X} + {\bf u}\right)
-= { \partial {\bf X} \over \partial {\bf X} } + { \partial {\bf u} \over \partial {\bf X} }
-= {\bf I} + \frac{\partial{\bf u}}{\partial{\bf X}}</script><p>这里的 $\bf U$（体积改变、旋转）并不是 $\bf R \cdot \bf U$ 的 $\bf U$（体积改变）</p>
-<p>有限应变理论中，格林应变</p>
+\begin{align*} \alpha &= \left(n_1,\,n_2,\,n_3\right) = \left(\sin\varphi_1\,\cos\theta_1,\,\sin\varphi_1\,\sin\theta_1,\,\cos\varphi_1\right) \\  \beta &= \left(m_1,\,m_2,\,m_3\right) = \left(\sin\varphi_2\,\cos\theta_2,\,\sin\varphi_2\,\sin\theta_2,\,\cos\varphi_2\right) \end{align*}</script><p>定义加法和数乘运算</p>
 <script type="math/tex; mode=display">
-{\bf E} = {1 \over 2} \left( {\bf F}^T \cdot {\bf F} - {\bf I} \right)</script><p>其中，</p>
+\begin{align*} \alpha + \beta &\triangleq \Biggl(\sin(\varphi_1+\varphi_2)\,\cos(\theta_1+\theta_2),\,\sin(\varphi_1+\varphi_2)\,\sin(\theta_1+\theta_2),\,\cos(\varphi_1-\varphi_2)\Biggr) \\  \lambda\,\alpha &\triangleq \Biggl(\sin(\lambda\,\varphi_1)\,\cos(\lambda\,\theta_1),\,\sin(\lambda\,\varphi_1)\,\sin(\lambda\,\theta_1),\,\cos(\lambda\,\varphi_1)\Biggr) \end{align*}</script><p>在这种加法和数乘运算的定义下，显然对元素是封闭的，并且简单验证就可知同时满足加法的两个运算律、数乘的三个运算律。</p>
+<blockquote>
+<p>零元素：取$\varphi=\theta=0$ 可得零元素 $(0,0,1)$<br>负元素：取$\beta=\left(-\sin \varphi_{1} \cos \theta_{1},-\sin \varphi_{1} \sin \theta_{1}, \cos \varphi_{1}\right)$，可得$\alpha+\beta=(0,0,1)$ 为零元素<br>单位 1：显然 1 即为单位元素</p>
+</blockquote>
+<p>综上可知，截面位置对于如上定义的运算可以作为一个线性空间。</p>
+<h2 id="线性变换的证明"><a href="#线性变换的证明" class="headerlink" title="线性变换的证明"></a>线性变换的证明</h2><p>线性变换的证明只需证明变换满足线性运算，对于此变换$T(n)=\sigma n$满足</p>
 <script type="math/tex; mode=display">
-{\bf F}^T \cdot {\bf F}=\left( {\bf R} \cdot {\bf U} \right)^T \cdot \left( {\bf R} \cdot {\bf U} \right) = {\bf U}^T \cdot {\bf U}</script><p>因此格林应变只与形变有关。其中 $\bf R$ 就是坐标变换矩阵</p>
-<script type="math/tex; mode=display">
-\bf R^T \cdot \bf R = \bf I</script><p>将</p>
-<script type="math/tex; mode=display">
-{\bf E} = \dfrac{1}{2} \left({\bf F}^T \cdot {\bf F} - {\bf I} \right)</script><p>写成分量形式，有</p>
-<script type="math/tex; mode=display">
-E_{ij} = {1 \over 2} \left( {\partial \, u_i \over \partial X_j} + {\partial \, u_j \over \partial X_i} + {\partial \, u_k \over \partial X_i} {\partial \, u_k \over \partial X_j} \right)</script><p>和柯西应变 $\varepsilon_{i,j}$ 比较可以发现，差别其实仅仅在于格林应变多了一个第三项，该项是二次项。该项保证了格林应变不受转动的影响。（不过在大变形下就会导致格林应变偏离工程应变 $e = \dfrac{\Delta L}{L}$）实际上，把格林应变放到小应变假设下，就可以省去二阶以上的高阶项，就有 $E \approx \varepsilon$ 。</p>
-<p>所以，格林应变的优势就是在于将转动与形变分离开来，只关注形变。</p>
+\begin{align*} T(\alpha + \beta) &= \sigma\,(\alpha+\beta) = \sigma\,\alpha+\sigma\,\beta = T(\alpha)+T(\beta) \\  T(\lambda\,\alpha) &= \sigma(\lambda\,\alpha) = \lambda\,(\sigma\,\alpha) = \lambda\,T(\alpha) \end{align*}</script><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文是对关于应力张量与线性变换之间等价关系的验证和证明，主要是线性空间与线性变换的内容，由此也可体会相关知识的贯通性。主要知识点：</p>
+<p>&gt;</p>
+<ul>
+<li>线性变换对应矩阵的求法。</li>
+<li>线性空间的证明方法：对定义的加法和数乘运算封闭且满足八条运算规则。</li>
+</ul>
+<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><p><a href="https://pencilq.com/38">(转) 应力张量的认识之基本概念</a><br><a href="https://pencilq.com/39">(转) 应力张量的认识之线性变换</a></p>
 <hr>
+<p>转载声明：</p>
+<ul>
+<li>本文转自：<a href="https://dothinking.github.io/blog/2013/07/31/%E5%BA%94%E5%8A%9B%E5%BC%A0%E9%87%8F%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E7%9A%84%E8%AF%81%E6%98%8E.html" target="_blank" rel="noopener">格致</a></li>
+<li>由原授权网址 <code>huangqy.pw</code> （已弃用）搬运至 <a href="https://pencilq.com">pencilq.com</a></li>
+<li>对文章内容有任何质疑或建议，请邮件联系 <a href="mailto:train8808@gmail.com" target="_blank" rel="noopener">train8808@gmail.com</a></li>
+</ul>
+
     </div>
 
     
@@ -372,8 +389,8 @@ E_{ij} = {1 \over 2} \left( {\partial \, u_i \over \partial X_j} + {\partial \, 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/20/" rel="next" title="Abaqus: 生成泰森多边形">
-                  <i class="fa fa-chevron-left"></i> Abaqus: 生成泰森多边形
+                <a href="/39/" rel="next" title="(转) 应力张量的认识之线性变换">
+                  <i class="fa fa-chevron-left"></i> (转) 应力张量的认识之线性变换
                 </a>
               
             </div>
@@ -381,10 +398,6 @@ E_{ij} = {1 \over 2} \left( {\partial \, u_i \over \partial X_j} + {\partial \, 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/3/" rel="prev" title="软件: LaTeX 常用符号">
-                  软件: LaTeX 常用符号 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -440,7 +453,7 @@ E_{ij} = {1 \over 2} \left( {\partial \, u_i \over \partial X_j} + {\partial \, 
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cauchy-Strain"><span class="nav-number">1.</span> <span class="nav-text">Cauchy Strain</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Green-Strain"><span class="nav-number">2.</span> <span class="nav-text">Green Strain</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#局部坐标系的基及过渡矩阵"><span class="nav-number">1.</span> <span class="nav-text">局部坐标系的基及过渡矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性变换在基下的矩阵"><span class="nav-number">2.</span> <span class="nav-text">线性变换在基下的矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相似关系"><span class="nav-number">3.</span> <span class="nav-text">相似关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性空间的证明"><span class="nav-number">4.</span> <span class="nav-text">线性空间的证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性空间的定义"><span class="nav-number">5.</span> <span class="nav-text">线性空间的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性空间的证明-1"><span class="nav-number">6.</span> <span class="nav-text">线性空间的证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性变换的证明"><span class="nav-number">7.</span> <span class="nav-text">线性变换的证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关文章"><span class="nav-number">9.</span> <span class="nav-text">相关文章</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
