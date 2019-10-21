@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://pencilq.com/2/</loc>
+    
+    <lastmod>2019-10-21T15:33:18.004Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://pencilq.com/42/</loc>
     
     <lastmod>2019-10-21T13:58:34.232Z</lastmod>
@@ -222,13 +229,6 @@
     <loc>https://pencilq.com/7/</loc>
     
     <lastmod>2019-08-31T13:53:39.128Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://pencilq.com/2/</loc>
-    
-    <lastmod>2019-08-31T12:11:26.473Z</lastmod>
     
   </url>
   
