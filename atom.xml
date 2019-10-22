@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pencilq.com/"/>
-  <updated>2019-10-21T13:58:34.232Z</updated>
+  <updated>2019-10-22T01:33:59.961Z</updated>
   <id>https://pencilq.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>塞伦盖蒂国家公园</title>
+    <link href="https://pencilq.com//43/"/>
+    <id>https://pencilq.com//43/</id>
+    <published>2019-10-22T01:31:47.000Z</published>
+    <updated>2019-10-22T01:33:59.961Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://zh.wikipedia.org/zh-hans/%E5%A1%9E%E4%BC%A6%E7%9B%96%E8%92%82%E5%9B%BD%E5%AE%B6%E5%85%AC%E5%9B%AD" target="_blank" rel="noopener">塞伦盖蒂国家公园 <i class="fa fa-link fa-fw"></i></a></p><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?aid=71970237&cid=124694703&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe></div>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/zh-hans/%E5%A1%9E%E4%BC%A6%E7%9B%96%E8%92%82%E5%9B%BD%E5%AE%B6%E5%85%AC%E5%9B%AD&quot; target=&quot;_blank&quot; rel=&quot;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Clausius–Duhem 不等式推导</title>
@@ -420,26 +441,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>获取知网学位论文 pdf 版本</title>
-    <link href="https://pencilq.com//25/"/>
-    <id>https://pencilq.com//25/</id>
-    <published>2019-07-12T03:16:36.000Z</published>
-    <updated>2019-09-04T16:47:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="海外版知网"><a href="#海外版知网" class="headerlink" title="海外版知网"></a>海外版知网</h2><p>⭐⭐⭐⭐⭐<br><a href="http://new.oversea.cnki.net/index/" target="_blank" rel="noopener">海外版 <i class="fa fa-external-link fa-fw"></i></a> 知网提供 pdf 格式的学位论文下载<br><a id="more"></a></p><h2 id="油猴脚本"><a href="#油猴脚本" class="headerlink" title="油猴脚本"></a>油猴脚本</h2><p>⭐⭐⭐⭐</p><ol><li>安装油猴脚本 <a href="https://www.tampermonkey.net/" target="_blank" rel="noopener">Tampermonkey <i class="fa fa-external-link fa-fw"></i></a>，Chrome 浏览器直接在应用商店<a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" rel="noopener">安装插件 <i class="fa fa-external-link fa-fw"></i></a>。如果无法访问外网，在<a href="https://chrome-extension-downloader.com/" target="_blank" rel="noopener">chrome-extension-downloader <i class="fa fa-external-link fa-fw"></i></a>输入 Tampermonkey 的 ID <code>dhdgffkkebhmkfjojejmpbldmpobfkfo</code> 下载离线插件进行安装。</li><li>安装 CNKI PDF 下载脚本，打开 <a href="https://greasyfork.org/zh-CN/scripts/368399-cnki-pdf-download" target="_blank" rel="noopener">脚本下载页面 <i class="fa fa-external-link fa-fw"></i></a>，按照提示进行安装即可。</li><li>访问知网的学位论文下载页面，可以看到 PDF 的下载选项。</li></ol><h2 id="caj2pdf-gui"><a href="#caj2pdf-gui" class="headerlink" title="caj2pdf_gui"></a>caj2pdf_gui</h2><p>⭐⭐⭐<br><a href="https://github.com/JeziL/caj2pdf" target="_blank" rel="noopener">caj2pdf <i class="fa fa-external-link fa-fw"></i></a> 可以将 caj 转换成 pdf。<a href="https://github.com/ElonH/caj2pdf_gui" target="_blank" rel="noopener">GUI 版本 <i class="fa fa-external-link fa-fw"></i></a>使用更直观。</p><p><a href="https://github.com/ElonH/caj2pdf_gui/releases" target="_blank" rel="noopener">下载 <i class="fa fa-external-link fa-fw"></i></a> 后直接运行选择 caj 文件即可转换。具体使用看<a href="https://github.com/ElonH/caj2pdf_gui" target="_blank" rel="noopener">项目 cai2pdf_gui主页 <i class="fa fa-external-link fa-fw"></i></a>。</p><h2 id="caj2pdf-命令行"><a href="#caj2pdf-命令行" class="headerlink" title="caj2pdf 命令行"></a>caj2pdf 命令行</h2><p>⭐⭐⭐<br>安装环境及用法查看 <a href="https://github.com/JeziL/caj2pdf" target="_blank" rel="noopener">caj2pdf 项目主页</a>。在批量处理 caj 文件时比较方便，可参考 <a href="https://pencilq.com/9/">在命令行中批处理 pdf <i class="fa fa-external-link fa-fw"></i></a> 自行编写脚本。</p><h2 id="批量下载知网期刊-pdf"><a href="#批量下载知网期刊-pdf" class="headerlink" title="批量下载知网期刊 pdf"></a>批量下载知网期刊 pdf</h2><p>某日需要在知网上批量下载 pdf 的时候，发现知网提供了官方的下载工具 <a href="http://estudy.cnki.net/" target="_blank" rel="noopener">CNKI E-Study <i class="fa -fa-external-link fa-fw"></i></a>。</p><p>在知网选中多个搜索条目后，直接点击批量下载，下载保存后缀为 <code>.eln</code> 的文件，直接用 CNKI E-study 打开导入。</p><p>在<strong>下载设置</strong>界面选择默认下载 pdf，选中所需的文献<strong>下载全文</strong>。</p><p><img alt data-src="https://image.pencilq.com/images/2019/09/05/cnki_Estudy.jpg"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;海外版知网&quot;&gt;&lt;a href=&quot;#海外版知网&quot; class=&quot;headerlink&quot; title=&quot;海外版知网&quot;&gt;&lt;/a&gt;海外版知网&lt;/h2&gt;&lt;p&gt;⭐⭐⭐⭐⭐&lt;br&gt;&lt;a href=&quot;http://new.oversea.cnki.net/index/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;海外版 &lt;i class=&quot;fa fa-external-link fa-fw&quot;&gt;&lt;/i&gt;&lt;/a&gt; 知网提供 pdf 格式的学位论文下载&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="技巧" scheme="https://pencilq.com/tags/%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
