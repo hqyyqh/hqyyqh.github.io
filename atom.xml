@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pencilq.com/"/>
-  <updated>2019-10-22T01:33:59.961Z</updated>
+  <updated>2019-10-25T08:06:08.756Z</updated>
   <id>https://pencilq.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>拉普拉斯算子的极坐标表示</title>
+    <link href="https://pencilq.com//44/"/>
+    <id>https://pencilq.com//44/</id>
+    <published>2019-10-25T07:50:53.000Z</published>
+    <updated>2019-10-25T08:06:08.756Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>二维极坐标：</strong></p><script type="math/tex; mode=display">\begin{equation}\Delta f = \left(\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}\right) f =\left(\frac{\partial^{2}}{\partial r^{2}}+\frac{1}{r} \frac{\partial}{\partial r}+\frac{1}{r^{2}} \frac{\partial^{2}}{\partial \theta^{2}}\right) f\end{equation}</script><p><strong>球坐标</strong></p><script type="math/tex; mode=display">\begin{equation}\begin{aligned}\Delta u &=\frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}}+\frac{\partial^{2} u}{\partial z^{2}} \\ &=\frac{1}{r} \frac{\partial^{2}(r u)}{\partial r^{2}}+\frac{1}{r^{2} \sin \theta} \frac{\partial}{\partial \theta}\left(\sin \theta \frac{\partial u}{\partial \theta}\right)+\frac{1}{r^{2} \sin ^{2} \theta} \frac{\partial^{2} u}{\partial \phi^{2}} \end{aligned}\end{equation}</script><a id="more"></a><h2 id="二维极坐标表示"><a href="#二维极坐标表示" class="headerlink" title="二维极坐标表示"></a>二维极坐标表示</h2><p><img alt=" " data-src="https://image.pencilq.com/images/2019/10/25/2d-laplace.jpg"></p><h2 id="球坐标表示"><a href="#球坐标表示" class="headerlink" title="球坐标表示"></a>球坐标表示</h2><p><img alt=" " data-src="https://image.pencilq.com/images/2019/10/25/laplace1_compressa4ba4f37905b414f.png"></p><p><img alt=" " data-src="https://image.pencilq.com/images/2019/10/25/laplace2_compressba1bc7951377591f.png"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;二维极坐标：&lt;/strong&gt;&lt;/p&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+\begin{equation}
+\Delta f = \left(\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}\right) f =\left(\frac{\partial^{2}}{\partial r^{2}}+\frac{1}{r} \frac{\partial}{\partial r}+\frac{1}{r^{2}} \frac{\partial^{2}}{\partial \theta^{2}}\right) f
+\end{equation}&lt;/script&gt;&lt;p&gt;&lt;strong&gt;球坐标&lt;/strong&gt;&lt;/p&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+\begin{equation}
+\begin{aligned}
+\Delta u &amp;=\frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}}+\frac{\partial^{2} u}{\partial z^{2}} \\ 
+&amp;=\frac{1}{r} \frac{\partial^{2}(r u)}{\partial r^{2}}+\frac{1}{r^{2} \sin \theta} \frac{\partial}{\partial \theta}\left(\sin \theta \frac{\partial u}{\partial \theta}\right)+\frac{1}{r^{2} \sin ^{2} \theta} \frac{\partial^{2} u}{\partial \phi^{2}} 
+\end{aligned}
+\end{equation}&lt;/script&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>塞伦盖蒂国家公园</title>
@@ -415,29 +444,6 @@
 &lt;li&gt;访问域名，按照提示操作&lt;/li&gt;
 &lt;li&gt;如果服务启动失败：检查 fileinfo 模块是否成功安装（内存太小会导致 fileinfo 无法安装，可以适当增大 swap 分区 1024M）&lt;/li&gt;
 &lt;/ul&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>sublimetext 相关配置</title>
-    <link href="https://pencilq.com//27/"/>
-    <id>https://pencilq.com//27/</id>
-    <published>2019-07-24T02:24:22.000Z</published>
-    <updated>2019-09-02T16:35:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="SublimeText-3207-破解"><a href="#SublimeText-3207-破解" class="headerlink" title="SublimeText 3207 破解"></a>SublimeText 3207 破解</h2><blockquote><p>参考 <a href="https://www.xiaomcm.com/249.html" target="_blank" rel="noopener">https://www.xiaomcm.com/249.html</a></p></blockquote><h2 id="添加-Windows-右键-Sublime-Text-打开文件夹"><a href="#添加-Windows-右键-Sublime-Text-打开文件夹" class="headerlink" title="添加 Windows 右键 Sublime Text 打开文件夹"></a>添加 Windows 右键 Sublime Text 打开文件夹</h2><blockquote><p><a href="https://gist.github.com/roundand/9367852" target="_blank" rel="noopener">https://gist.github.com/roundand/9367852</a></p></blockquote><a id="more"></a><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">SET</span> st3Path=D:\Program Files\Sublime Text <span class="number">3</span>\sublime_text.exe</span><br><span class="line"></span><br><span class="line"><span class="comment">rem add it for all file types</span></span><br><span class="line">@reg add "HKEY_CLASSES_ROOT\*\shell\Open with Sublime Text <span class="number">3</span>"         /t REG_SZ /v "" /d "Open with Sublime Text <span class="number">3</span>"   /f</span><br><span class="line">@reg add "HKEY_CLASSES_ROOT\*\shell\Open with Sublime Text <span class="number">3</span>"         /t REG_EXPAND_SZ /v "Icon" /d "<span class="variable">%st3Path%</span>,<span class="number">0</span>" /f</span><br><span class="line">@reg add "HKEY_CLASSES_ROOT\*\shell\Open with Sublime Text <span class="number">3</span>\command" /t REG_SZ /v "" /d "<span class="variable">%st3Path%</span> \"<span class="variable">%%1</span>\"" /f</span><br><span class="line"></span><br><span class="line"><span class="comment">rem add it for folders</span></span><br><span class="line">@reg add "HKEY_CLASSES_ROOT\Folder\shell\Open with Sublime Text <span class="number">3</span>"         /t REG_SZ /v "" /d "Open with Sublime Text <span class="number">3</span>"   /f</span><br><span class="line">@reg add "HKEY_CLASSES_ROOT\Folder\shell\Open with Sublime Text <span class="number">3</span>"         /t REG_EXPAND_SZ /v "Icon" /d "<span class="variable">%st3Path%</span>,<span class="number">0</span>" /f</span><br><span class="line">@reg add "HKEY_CLASSES_ROOT\Folder\shell\Open with Sublime Text <span class="number">3</span>\command" /t REG_SZ /v "" /d "<span class="variable">%st3Path%</span> \"<span class="variable">%%1</span>\"" /f</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure><p>修改路径 st3Path，保存为 xxx.bat，以管理员身份运行，运行后即可在菜单看到相应选项。打开目录树 <code>先按 ctrl+k 再 ctrl+b</code><br><img alt data-src="https://image.pencilq.com/images/2019/07/03/sublimetext3-folder.png"></p><h2 id="修改菜单栏及侧栏字体大小"><a href="#修改菜单栏及侧栏字体大小" class="headerlink" title="修改菜单栏及侧栏字体大小"></a>修改菜单栏及侧栏字体大小</h2><p><a href="https://www.jianshu.com/p/906c48f2da5c" target="_blank" rel="noopener">https://www.jianshu.com/p/906c48f2da5c</a></p><h2 id="LaTeX-Tools-预览公式失败的问题"><a href="#LaTeX-Tools-预览公式失败的问题" class="headerlink" title="LaTeX-Tools 预览公式失败的问题"></a>LaTeX-Tools 预览公式失败的问题</h2><blockquote><p>参考 <a href="https://github.com/SublimeText/LaTeXTools/issues/1148#issuecomment-314762160" target="_blank" rel="noopener">https://github.com/SublimeText/LaTeXTools/issues/1148#issuecomment-314762160</a></p></blockquote><p>新建环境变量 <code>GS_LIB</code>，根据 texlive 安装路径进行修改 <code>path\to\texlive\tlpkg\tlgs\Resource\Init;path\to\texlive\tlpkg\tlgs\kanji</code>，重启 Sublime Text。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;SublimeText-3207-破解&quot;&gt;&lt;a href=&quot;#SublimeText-3207-破解&quot; class=&quot;headerlink&quot; title=&quot;SublimeText 3207 破解&quot;&gt;&lt;/a&gt;SublimeText 3207 破解&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;参考 &lt;a href=&quot;https://www.xiaomcm.com/249.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.xiaomcm.com/249.html&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;添加-Windows-右键-Sublime-Text-打开文件夹&quot;&gt;&lt;a href=&quot;#添加-Windows-右键-Sublime-Text-打开文件夹&quot; class=&quot;headerlink&quot; title=&quot;添加 Windows 右键 Sublime Text 打开文件夹&quot;&gt;&lt;/a&gt;添加 Windows 右键 Sublime Text 打开文件夹&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://gist.github.com/roundand/9367852&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://gist.github.com/roundand/9367852&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
     
     </summary>
     
