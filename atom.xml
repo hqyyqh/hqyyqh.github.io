@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pencilq.com/"/>
-  <updated>2019-10-25T08:21:00.019Z</updated>
+  <updated>2019-10-25T09:38:37.882Z</updated>
   <id>https://pencilq.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Triaxiality function 的推导</title>
+    <link href="https://pencilq.com//45/"/>
+    <id>https://pencilq.com//45/</id>
+    <published>2019-10-25T09:32:17.000Z</published>
+    <updated>2019-10-25T09:38:37.882Z</updated>
+    
+    <content type="html"><![CDATA[<div class="note success">            <p>Triaxiality function  $R_v$ 常被用于描述构件在多轴状态下的情形。在各向同性情况下，其表达式为：</p><script type="math/tex; mode=display">R_v = \dfrac{2(1+\nu)}{3} + 3(1-2\nu) \left(\dfrac{\sigma_m}{\sigma_{eq}} \right)^2</script><p>以下为该表达式的简单推导。</p>          </div><a id="more"></a><p>各向同性损伤应变能释放率</p><script type="math/tex; mode=display">Y=\frac{1}{2}\varepsilon^e:\frac{\partial E_D}{\partial D}:\varepsilon^e</script><p>由 $E_D = (1-D)E \Rightarrow  \dfrac{\partial E_D}{\partial D}=-E ,\quad \sigma= (1-D)E:\varepsilon$,</p><script type="math/tex; mode=display">-Y=\frac{1}{1-D}\frac{1}{2}\varepsilon^e:\sigma</script><p>由 $\varepsilon^e_{ij} = e^e_{ij}+\varepsilon^e_m \delta_{ij} ,\quad \sigma = s_{ij}+\sigma_m \delta_{ij}$，将应力和应变进行分解</p><script type="math/tex; mode=display">-Y = \frac{1}{(1-D)} \left( e^e_{ij} +\varepsilon^e_{m}\delta_{ij} \right) \left( s_{ij} +\sigma_m\delta_{ij} \right)</script><p>由偏应力偏应变的关系 $s_{ij} =2 \mu e^e_{ij} \Rightarrow e^e_{ij} = \dfrac{1+\nu}{E_D}s_{ij}$、球应力和球应变关系 $\sigma_{kk} = 3K\varepsilon^e_m \Rightarrow \varepsilon^e_m = \dfrac{1-2\nu}{E_D} \sigma_m$</p><script type="math/tex; mode=display">\begin{aligned}-Y &= \frac{1}{2 (1-D)^2}\left( \frac{1+\nu}{E}s_{ij} + \frac{1-2\nu}{E}\sigma_m\delta_{ij} \right) \left( s_{ij} +\sigma_m\delta_{ij} \right) \\&= \frac{1}{2 (1-D)^2} \left(  \frac{1+\nu}{E}s_{ij} s_{ij} + \frac{1+\nu}{E}  \sigma_ms_{ij} \delta_{ij} + \frac{1-2\nu}{E}\sigma_m s_{ij} \delta_{ij} + \frac{1-2\nu}{E}\sigma^2_m\delta_{ij}\delta_{ij} \right) \\&= \frac{1}{2 (1-D)^2} \left( \frac{1+\nu}{E}s_{ij} s_{ij} + \frac{3(1-2\nu)}{E}\sigma^2_m \right)\end{aligned}</script><p>由等效应力 $\sigma_{eq} = \sqrt{\dfrac{3}{2} s_{ij} s_{ij}} \Rightarrow s_{ij}s_{ij} = \dfrac{2}{3} \sigma^2_{eq}$</p><script type="math/tex; mode=display">\begin{aligned}-Y &= \frac{\sigma_{eq}^2}{2E(1-D)} \left[ \frac{2(1+\nu)}{3} + 3(1-2\nu) \left(\frac{\sigma_m}{\sigma_{eq}} \right)^2 \right] \\&= \frac{\sigma_{eq}^2}{2E(1-D)} R_v\end{aligned}</script><p>其中$R_v = \dfrac{2(1+\nu)}{3} + 3(1-2\nu) \left(\dfrac{\sigma_m}{\sigma_{eq}} \right)^2$ 则为 Triaxiality function。</p><hr><p>参考文献：</p><p>Zhang W, Cai Y. Continuum damage mechanics and numerical applications[M]. Springer Science &amp; Business Media, 2010. (Sec 3.6）</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;div class=&quot;note success&quot;&gt;
+            &lt;p&gt;Triaxiality function  $R_v$ 常被用于描述构件在多轴状态下的情形。在各向同性情况下，其表达式为：&lt;/p&gt;&lt;script type=&quot;math/tex; mode=display&quot;&gt;R_v = \dfrac{2(1+\nu)}{3} + 3(1-2\nu) \left(\dfrac{\sigma_m}{\sigma_{eq}} \right)^2&lt;/script&gt;&lt;p&gt;以下为该表达式的简单推导。&lt;/p&gt;
+          &lt;/div&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>拉普拉斯算子的极坐标表示</title>
@@ -416,34 +436,6 @@
         &lt;blockquote&gt;
 &lt;p&gt;搬运地址: &lt;a href=&quot;https://www.youtube.com/playlist?list=PLcn75M47p2vIa54zF5IkcF2rIax02E8pQ&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http
       
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>自建 rss 服务——tinytinyrss</title>
-    <link href="https://pencilq.com//29/"/>
-    <id>https://pencilq.com//29/</id>
-    <published>2019-08-14T02:24:22.000Z</published>
-    <updated>2019-08-31T16:31:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="通过宝塔面板搭建-ttrss-服务"><a href="#通过宝塔面板搭建-ttrss-服务" class="headerlink" title="通过宝塔面板搭建 ttrss 服务"></a>通过宝塔面板搭建 ttrss 服务</h2><blockquote><p>参考 <a href="https://wzfou.com/rss-yuedu/" target="_blank" rel="noopener">https://wzfou.com/rss-yuedu/</a></p></blockquote><ul><li>安装 LNMP 环境</li><li>安装 PHP fileinfo 模块</li><li>创建网站，绑定域名，创建数据库</li><li>上传 <a href="https://git.tt-rss.org/fox/tt-rss" target="_blank" rel="noopener">ttrss</a> 程序到网站根目录</li><li>访问域名，按照提示操作</li><li>如果服务启动失败：检查 fileinfo 模块是否成功安装（内存太小会导致 fileinfo 无法安装，可以适当增大 swap 分区 1024M）</li></ul><a id="more"></a><h2 id="安装插件和主题"><a href="#安装插件和主题" class="headerlink" title="安装插件和主题"></a>安装插件和主题</h2><h3 id="获取全文插件"><a href="#获取全文插件" class="headerlink" title="获取全文插件"></a>获取全文插件</h3><h2 id="后台定时更新"><a href="#后台定时更新" class="headerlink" title="后台定时更新"></a>后台定时更新</h2><h3 id="获取全文插件-1"><a href="#获取全文插件-1" class="headerlink" title="获取全文插件"></a>获取全文插件</h3><h3 id="Feedly-主题"><a href="#Feedly-主题" class="headerlink" title="Feedly 主题"></a>Feedly 主题</h3><h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><ul><li>安卓</li><li>IOS</li><li>WIN10</li><li>MACOS</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;通过宝塔面板搭建-ttrss-服务&quot;&gt;&lt;a href=&quot;#通过宝塔面板搭建-ttrss-服务&quot; class=&quot;headerlink&quot; title=&quot;通过宝塔面板搭建 ttrss 服务&quot;&gt;&lt;/a&gt;通过宝塔面板搭建 ttrss 服务&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;参考 &lt;a href=&quot;https://wzfou.com/rss-yuedu/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://wzfou.com/rss-yuedu/&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;安装 LNMP 环境&lt;/li&gt;
-&lt;li&gt;安装 PHP fileinfo 模块&lt;/li&gt;
-&lt;li&gt;创建网站，绑定域名，创建数据库&lt;/li&gt;
-&lt;li&gt;上传 &lt;a href=&quot;https://git.tt-rss.org/fox/tt-rss&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ttrss&lt;/a&gt; 程序到网站根目录&lt;/li&gt;
-&lt;li&gt;访问域名，按照提示操作&lt;/li&gt;
-&lt;li&gt;如果服务启动失败：检查 fileinfo 模块是否成功安装（内存太小会导致 fileinfo 无法安装，可以适当增大 swap 分区 1024M）&lt;/li&gt;
-&lt;/ul&gt;
     
     </summary>
     
