@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>弹性力学的15个基本方程</title>
+      <link href="//47/"/>
+      <url>//47/</url>
+      
+        <content type="html"><![CDATA[<p>在三维情况下，控制线弹性边值问题的基本方程有15个</p><ol><li>平衡微分方程 $\sigma_{i j, i}+F_{b j}=0$ 共3个：<script type="math/tex; mode=display">\begin{array}{l}{\frac{\partial \sigma_{x}}{\partial x}+\frac{\partial \tau_{y x}}{\partial y}+\frac{\partial \tau_{z x}}{\partial z}+F_{b x}=0} \\ {\frac{\partial \tau_{x y}}{\partial x}+\frac{\partial \sigma_{y}}{\partial y}+\frac{\partial \tau_{z y}}{\partial z}+F_{b y}=0} \\ {\frac{\partial \tau_{z}}{\partial x}+\frac{\partial \tau_{y z}}{\partial y}+\frac{\partial \sigma_{z}}{\partial z}+F_{b z}=0}\end{array}</script><a id="more"></a></li><li><p>几何方程 $\varepsilon_{i j}=\frac{1}{2}\left(u_{i},_{j}+u_{j},_{i}\right)$ 共6个：</p><script type="math/tex; mode=display">\varepsilon_{x}=\frac{\partial u}{\partial x}, \quad \varepsilon_{y}=\frac{\partial v}{\partial y}, \quad \varepsilon_{z}=\frac{\partial w}{\partial z}</script><script type="math/tex; mode=display">\gamma_{x y}=\frac{\partial v}{\partial x}+\frac{\partial u}{\partial y}, \quad \gamma_{y z}=\frac{\partial w}{\partial y}+\frac{\partial v}{\partial z}, \quad \gamma_{z x}=\frac{\partial u}{\partial z}+\frac{\partial w}{\partial x}</script></li></ol><ol><li><p>本构方程 $\varepsilon_{i j}=\frac{1}{2 G} \sigma_{i j}-\delta_{i j} \frac{v}{E} \Theta$ 共6个：</p><script type="math/tex; mode=display">\begin{aligned} \varepsilon_{x} &=\frac{1}{E}\left[\sigma_{x}-v\left(\sigma_{y}+\sigma_{z}\right)\right]=\frac{1}{E}\left[(1+v) \sigma_{x}-v \Theta\right] \\ \varepsilon_{y} &=\frac{1}{E}\left[\sigma_{y}-v\left(\sigma_{x}+\sigma_{z}\right)\right]=\frac{1}{E}\left[(1+v) \sigma_{y}-v \Theta\right] \\ \varepsilon_{z} &=\frac{1}{E}\left[\sigma_{z}-v\left(\sigma_{x}+\sigma_{y}\right)\right]=\frac{1}{E}\left[(1+v) \sigma_{z}-v \Theta\right] \end{aligned}</script><script type="math/tex; mode=display">\begin{aligned} \gamma_{x y} &=\frac{\tau_{x y}}{G} \\ \gamma_{y z} &=\frac{\tau_{y z}}{G} \\ \gamma_{x z} &=\frac{\tau_{x z}}{G} \end{aligned}</script></li></ol><p>其中，拉梅系数 $\lambda=\frac{\mu E}{(1+\mu)(1-2 \mu)}$，剪切模量 $G=\frac{E}{2(1+\mu)}$，体积应变 $\theta=\varepsilon_{x}+\varepsilon_{y}+\varepsilon_{z}$，体积应力 $\theta=\varepsilon_{x}+\varepsilon_{y}+\varepsilon_{z}$，</p><p>弹性力学的任务就是在给定的边界条件下，就十五个未知量求解十五个基本方程。求解弹性力学问题时，并不需要同时求解十五个基本未知量，可以做必要的简化。为简化求解的难度，仅选取部分未知量作为基本未知量。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>学术导航网站</title>
       <link href="//46/"/>
       <url>//46/</url>
@@ -580,9 +593,9 @@
       
         <tags>
             
-            <tag> 软件 </tag>
-            
             <tag> 二次开发 </tag>
+            
+            <tag> 软件 </tag>
             
             <tag> ANSYS </tag>
             
