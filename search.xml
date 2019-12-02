@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>mma 随手画</title>
+      <link href="//48/"/>
+      <url>//48/</url>
+      
+        <content type="html"><![CDATA[<p><img alt=" " data-src="https://image.pencilq.com/images/2019/12/02/mma.gif"></p><a id="more"></a><p>Mathematica 代码</p><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">f[x_] := -(x - <span class="number">1</span>)^<span class="number">2</span> + <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Manipulate</span>[</span><br><span class="line"> <span class="keyword">Show</span>[<span class="keyword">Plot</span>[f[x], &#123;x, <span class="number">0</span>, <span class="number">4</span>&#125;, <span class="keyword">AxesOrigin</span> -&gt; &#123;<span class="number">0</span>, <span class="number">-5</span>&#125;, <span class="keyword">AspectRatio</span> -&gt; <span class="number">1</span>, </span><br><span class="line">   <span class="keyword">PlotRange</span> -&gt; &#123;<span class="number">-5</span>, <span class="number">4</span>&#125;, <span class="keyword">PlotTheme</span> -&gt; <span class="string">"Scientific"</span>], </span><br><span class="line">  <span class="keyword">Graphics</span>[&#123;<span class="keyword">LightBlue</span>, <span class="keyword">Triangle</span>[&#123;&#123;<span class="number">0</span>, <span class="number">3</span>&#125;, &#123;a, f[a]&#125;, &#123;<span class="number">3</span>, <span class="number">0</span>&#125;&#125;]&#125;]], &#123;a, </span><br><span class="line">  <span class="number">0</span>, <span class="number">4</span>, <span class="number">0.001</span>&#125;]</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>弹性力学的15个基本方程</title>
       <link href="//47/"/>
       <url>//47/</url>
