@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pencilq.com/"/>
-  <updated>2019-12-02T07:52:57.239Z</updated>
+  <updated>2019-12-05T02:08:28.374Z</updated>
   <id>https://pencilq.com/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>向量和张量运算总结</title>
+    <link href="https://pencilq.com//49/"/>
+    <id>https://pencilq.com//49/</id>
+    <published>2019-12-05T01:58:48.000Z</published>
+    <updated>2019-12-05T02:08:28.374Z</updated>
+    
+    <content type="html"><![CDATA[<p>文件原地址：<a href="http://www.mate.tue.nl/~peters/4K400/VectTensColMat.pdf" target="_blank" rel="noopener">http://www.mate.tue.nl/~peters/4K400/VectTensColMat.pdf</a></p><a id="more"></a><div class="pdf" target="https://file.pencilq.com/file_and_note/Vector%C2%A0and%C2%A0Tensor%C2%A0Algebra%C2%A0.pdf" height></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;文件原地址：&lt;a href=&quot;http://www.mate.tue.nl/~peters/4K400/VectTensColMat.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.mate.tue.nl/~peters/4K400/VectTensColMat.pdf&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>mma 随手画</title>
@@ -414,26 +432,6 @@
     
       &lt;a class=&quot;btn&quot; href=&quot;https://github.com/scutan90/DeepLearning-500-questions &quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;i class=&quot;fa fa-github-square fa-lg fa-fw&quot;&gt;&lt;/i&gt;深度学习 500 问&lt;/a&gt;
 &lt;p&gt;-&lt;br&gt;&lt;a class=&quot;btn&quot; href=&quot;https://github.com/exacity/deeplearningbook-chinese &quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;i class=&quot;fa fa-github-square fa-lg fa-fw&quot;&gt;&lt;/i&gt;深度学习中文版&lt;/a&gt;&lt;br&gt;-&lt;br&gt;&lt;a class=&quot;btn&quot; href=&quot;https://nndl.github.io/ &quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;i class=&quot;fa fa-github-square fa-lg fa-fw&quot;&gt;&lt;/i&gt;神经网络与深度学习&lt;/a&gt;&lt;br&gt;-
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>有趣的东西</title>
-    <link href="https://pencilq.com//10/"/>
-    <id>https://pencilq.com//10/</id>
-    <published>2019-09-01T08:50:04.000Z</published>
-    <updated>2019-09-09T11:06:39.000Z</updated>
-    
-    <content type="html"><![CDATA[<div class="tabs" id="tabsone"><ul class="nav-tabs"><li class="tab active"><a href="#tabsone-1"><i class="fa fa-forward"></i>克罗地亚的双头蛇</a></li></ul><div class="tab-content"><div class="tab-pane active" id="tabsone-1"><video src="https://file.pencilq.com/videos/Two-Headed%20Snake%20Found%20In%20Croatia-sTpIRbrOruA.mkv" preload="metadata" controls playsinline poster>Sorry, your browser does not support the video tag.</video><p><a href="https://www.youtube.com/watch?v=sTpIRbrOruA" target="_blank" rel="noopener">Two-Headed Snake Found In Croatia <i class="fa fa-youtube-square fa-fw"></i></a></p></div></div></div><a id="more"></a><div class="tabs" id="tabsone"><ul class="nav-tabs"><li class="tab active"><a href="#tabsone-1"><i class="fa fa-forward"></i>剪切稀化流体</a></li><li class="tab"><a href="#tabsone-2"><i class="fa fa-forward"></i>眼镜蛇波/炸弹棒</a></li><li class="tab"><a href="#tabsone-3"><i class="fa fa-forward"></i>气凝胶</a></li></ul><div class="tab-content"><div class="tab-pane active" id="tabsone-1"><p>洗发水，沐浴露，沼泽</p><video src="https://file.pencilq.com/videos/Shear%20thinning.mkv" preload="metadata" controls playsinline poster>Sorry, your browser does not support the video tag.</video><p><a href="https://www.wikiwand.com/en/Shear_thinning" target="_blank" rel="noopener">维基百科 <i class="fa fa-wikipedia-w fa-fw"></i> </a><br><a href="https://www.youtube.com/watch?v=agCf0alxpJY" target="_blank" rel="noopener">剪切稀化非牛顿流体 <i class="fa fa-youtube-square fa-fw"></i></a></p></div><div class="tab-pane" id="tabsone-2"><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?aid=999354&cid=1444859&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe></div></div><div class="tab-pane" id="tabsone-3"><p><video src="https://file.pencilq.com/videos/World's%20Lightest%20Solid!-AeJ9q45PfD0.mkv" preload="metadata" controls playsinline poster>Sorry, your browser does not support the video tag.</video><br><a href="https://www.youtube.com/watch?v=AeJ9q45PfD0" target="_blank" rel="noopener">世界上最轻的固体 <i class="fa fa-youtube-square fa-fw"></i></a></p></div></div></div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;div class=&quot;tabs&quot; id=&quot;tabsone&quot;&gt;&lt;ul class=&quot;nav-tabs&quot;&gt;&lt;li class=&quot;tab active&quot;&gt;&lt;a href=&quot;#tabsone-1&quot;&gt;&lt;i class=&quot;fa fa-forward&quot;&gt;&lt;/i&gt;克罗地亚的双头蛇&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;div class=&quot;tab-content&quot;&gt;&lt;div class=&quot;tab-pane active&quot; id=&quot;tabsone-1&quot;&gt;&lt;video src=&quot;https://file.pencilq.com/videos/Two-Headed%20Snake%20Found%20In%20Croatia-sTpIRbrOruA.mkv&quot; preload=&quot;metadata&quot; controls playsinline poster&gt;Sorry, your browser does not support the video tag.&lt;/video&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=sTpIRbrOruA&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Two-Headed Snake Found In Croatia &lt;i class=&quot;fa fa-youtube-square fa-fw&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
     
     </summary>
     

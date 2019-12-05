@@ -57,19 +57,18 @@
   };
 </script>
 
-  <meta name="description" content="前言： Abaqus 插件 Homtools 安装步骤以及相关功能的使用。技术邻上居然有人高价出售 Homtools 这一款免费的插件。此处是插件官网">
-<meta name="keywords" content="二次开发,ABAQUS">
+  <meta name="description" content="文件原地址：http://www.mate.tue.nl/~peters/4K400/VectTensColMat.pdf">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Abaqus: 生成泰森多边形">
-<meta property="og:url" content="https://pencilq.com/20/index.html">
+<meta property="og:title" content="向量和张量运算总结">
+<meta property="og:url" content="https://pencilq.com/49/index.html">
 <meta property="og:site_name" content="小铅笔 &amp; jeff">
-<meta property="og:description" content="前言： Abaqus 插件 Homtools 安装步骤以及相关功能的使用。技术邻上居然有人高价出售 Homtools 这一款免费的插件。此处是插件官网">
+<meta property="og:description" content="文件原地址：http://www.mate.tue.nl/~peters/4K400/VectTensColMat.pdf">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-02T16:35:32.000Z">
+<meta property="og:updated_time" content="2019-12-05T02:08:28.374Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Abaqus: 生成泰森多边形">
-<meta name="twitter:description" content="前言： Abaqus 插件 Homtools 安装步骤以及相关功能的使用。技术邻上居然有人高价出售 Homtools 这一款免费的插件。此处是插件官网">
-  <link rel="canonical" href="https://pencilq.com/20/">
+<meta name="twitter:title" content="向量和张量运算总结">
+<meta name="twitter:description" content="文件原地址：http://www.mate.tue.nl/~peters/4K400/VectTensColMat.pdf">
+  <link rel="canonical" href="https://pencilq.com/49/">
 
 
 <script id="page-configurations">
@@ -83,7 +82,7 @@
   };
 </script>
 
-  <title>Abaqus: 生成泰森多边形 | 小铅笔 & jeff</title>
+  <title>向量和张量运算总结 | 小铅笔 & jeff</title>
   
 
 
@@ -249,7 +248,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://pencilq.com/20/">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/49/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小铅笔 & jeff">
@@ -261,7 +260,7 @@
       <meta itemprop="name" content="小铅笔 & jeff">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">Abaqus: 生成泰森多边形
+        <h2 class="post-title" itemprop="name headline">向量和张量运算总结
 
           
         </h2>
@@ -277,19 +276,11 @@
                 
               
 
-              <time title="创建时间：2018-10-01 23:08:13" itemprop="dateCreated datePublished" datetime="2018-10-01T23:08:13+08:00">2018-10-01</time>
+              <time title="创建时间：2019-12-05 09:58:48 / 修改时间：10:08:28" itemprop="dateCreated datePublished" datetime="2019-12-05T09:58:48+08:00">2019-12-05</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-03 00:35:32" itemprop="dateModified" datetime="2019-09-03T00:35:32+08:00">2019-09-03</time>
-              </span>
             
           
 
@@ -304,33 +295,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <blockquote>
-<p><strong>前言</strong>： <code>Abaqus</code> 插件 <code>Homtools</code> 安装步骤以及相关功能的使用。<br>技术邻上居然有人高价出售 <code>Homtools</code> 这一款<strong>免费</strong>的插件。此处是<a href="http://homtools.lma.cnrs-mrs.fr/spip/" target="_blank" rel="noopener">插件官网</a></p>
-</blockquote>
+        <p>文件原地址：<a href="http://www.mate.tue.nl/~peters/4K400/VectTensColMat.pdf" target="_blank" rel="noopener">http://www.mate.tue.nl/~peters/4K400/VectTensColMat.pdf</a></p>
 <a id="more"></a>
-<p><img alt data-src="https://image.pencilq.com/images/2019/05/02/img20180922234936.png"></p>
-<h2 id="Abaqus-插件-Homtools-安装步骤"><a href="#Abaqus-插件-Homtools-安装步骤" class="headerlink" title="Abaqus 插件 Homtools 安装步骤"></a>Abaqus 插件 Homtools 安装步骤</h2><p>打开插件主页：<a href="http://homtools.lma.cnrs-mrs.fr/spip/" target="_blank" rel="noopener">http://homtools.lma.cnrs-mrs.fr/spip/</a></p>
-<p>进入下载页面下载之后，解压文件。</p>
-<ol>
-<li>用代码查看软件/记事本打开<code>abaqus_v6.env</code>，<br> abaqus_v6.env文件路径：<br>   <code>\Dassault Systemes\SimulationServices\V6R2016x\win_b64\SMA\site\abaqus_v6.env</code></li>
-<li>复制 <code>Homtools</code> 解压后的文件夹路径，例如：<code>D:\SIMULIA\plugin\homtools0.9</code></li>
-<li>将 <code>plugin_central_dir = &quot;/path/to/homtools/dir&quot;</code> 这句代码，加到<code>abaqus_v6.env</code>文件的首行，<br>并将等号后面的目录替换为 Homtools 文件夹的目录。例如：<br><code>plugin_central_dir = &quot;/path/to/homtools/dir&quot;</code>目录替换成<br><code>plugin_central_dir = &quot;D:\SIMULIA\plugin\homtools0.9&quot;</code><br> <img alt data-src="https://image.pencilq.com/images/2019/05/02/5cc703bff0234.png"></li>
-</ol>
-<hr>
-<h2 id="Homtools-RVE-generation-功能使用步骤"><a href="#Homtools-RVE-generation-功能使用步骤" class="headerlink" title="Homtools RVE generation 功能使用步骤"></a>Homtools <em>RVE generation</em> 功能使用步骤</h2><ol>
-<li><p>打开CAE→在 Part 模块下→点击主菜单 Plug-ins → Homtools → Voronoi cells<br> <img alt data-src="https://image.pencilq.com/images/2019/05/02/5cc703d37fb63.png"></p>
-</li>
-<li><p>插件界面<br> <img alt data-src="https://image.pencilq.com/images/2019/05/02/5cc703dd8a4af.png"></p>
-</li>
-<li><p>生成晶格<br> <img alt data-src="https://image.pencilq.com/images/2019/05/02/5cc703e58265f.png"></p>
-</li>
-<li><p>晶界示意图<br> <img alt data-src="https://image.pencilq.com/images/2019/05/02/5cc703eeb82ec.png"></p>
-</li>
-<li><p>相同参数的情况下，再生成一个，可以看到生成的晶格是随机的。<br> <img alt data-src="https://image.pencilq.com/images/2019/05/02/5cc703f8dfe19.png"></p>
-<p><img alt data-src="https://image.pencilq.com/images/2019/05/02/5cc704120aed2.gif"></p>
-</li>
-</ol>
-<hr>
+<div class="pdf" target="https://file.pencilq.com/file_and_note/Vector%C2%A0and%C2%A0Tensor%C2%A0Algebra%C2%A0.pdf" height></div>
     </div>
 
     
@@ -342,25 +309,14 @@
       
 
       <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/二次开发/" rel="tag"><i class="fa fa-tag"></i> 二次开发</a>
-            
-              <a href="/tags/ABAQUS/" rel="tag"><i class="fa fa-tag"></i> ABAQUS</a>
-            
-          </div>
-        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2/" rel="next" title="SciHub: 桌面版介绍及使用">
-                  <i class="fa fa-chevron-left"></i> SciHub: 桌面版介绍及使用
+                <a href="/48/" rel="next" title="mma 随手画">
+                  <i class="fa fa-chevron-left"></i> mma 随手画
                 </a>
               
             </div>
@@ -368,10 +324,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/7/" rel="prev" title="格林应变和柯西应变">
-                  格林应变和柯西应变 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -427,8 +379,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abaqus-插件-Homtools-安装步骤"><span class="nav-number">1.</span> <span class="nav-text">Abaqus 插件 Homtools 安装步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homtools-RVE-generation-功能使用步骤"><span class="nav-number">2.</span> <span class="nav-text">Homtools RVE generation 功能使用步骤</span></a></li></ol></div>
-        
       </div>
       <!--/noindex-->
 
