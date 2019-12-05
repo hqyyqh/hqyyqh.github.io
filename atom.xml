@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pencilq.com/"/>
-  <updated>2019-12-05T02:08:28.374Z</updated>
+  <updated>2019-12-05T03:09:47.958Z</updated>
   <id>https://pencilq.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://pencilq.com//49/"/>
     <id>https://pencilq.com//49/</id>
     <published>2019-12-05T01:58:48.000Z</published>
-    <updated>2019-12-05T02:08:28.374Z</updated>
+    <updated>2019-12-05T03:09:47.958Z</updated>
     
-    <content type="html"><![CDATA[<p>文件原地址：<a href="http://www.mate.tue.nl/~peters/4K400/VectTensColMat.pdf" target="_blank" rel="noopener">http://www.mate.tue.nl/~peters/4K400/VectTensColMat.pdf</a></p><a id="more"></a><div class="pdf" target="https://file.pencilq.com/file_and_note/Vector%C2%A0and%C2%A0Tensor%C2%A0Algebra%C2%A0.pdf" height></div>]]></content>
+    <content type="html"><![CDATA[<p>文件原地址：<a href="http://www.mate.tue.nl/~peters/4K400/VectTensColMat.pdf" target="_blank" rel="noopener">http://www.mate.tue.nl/~peters/4K400/VectTensColMat.pdf</a></p><a id="more"></a><p>要注意 A:B 的两种定义</p><blockquote><p>参考 <a href="https://www.researchgate.net/post/Related_to_Tensor_double_dot_product_What_is_the_double_dot_AB_product_between_tensors_Aij_and_Blm" target="_blank" rel="noopener">Tensor_double_dot_product</a></p></blockquote><p>(i)   Reddy:   A:B := Trace(A<em>B) = A(ij)B(ji)<br>(ii)   Holzapfel A:B := Trace(A</em>transpose(B)) = A(ij)B(ij)</p><div class="pdf" target="https://file.pencilq.com/file_and_note/Vector%C2%A0and%C2%A0Tensor%C2%A0Algebra%C2%A0.pdf" height></div>]]></content>
     
     <summary type="html">
     
