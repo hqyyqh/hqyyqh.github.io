@@ -57,17 +57,17 @@
   };
 </script>
 
-  <meta name="description" content="Mathematica 自动保存对所有笔记本开启运行后自动保存，详情参考  1CurrentValue[$FrontEnd, &quot;NotebookAutoSave&quot;] = True  在 Mathemtica 中导入 csv 表格后，发现最后多了几百个空值行。在知乎发现相似的问题，按照 melody  的回答成功解决。              选中你想开始删除的那堆空白行的首行，同时点键盘 ctr">
+  <meta name="description" content="Mathematica 行向量与列向量对比一下数据结构，列向量为3×1，行向量为3 1234567Vectora = &amp;#123;&amp;#123;u&amp;#125;, &amp;#123;v&amp;#125;, &amp;#123;w&amp;#125;&amp;#125;(*一个列向量*);VectorA = &amp;#123;U, V, W&amp;#125;(*一个行向量*);Dimensions[Vectora]Dimensions[VectorA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hello World">
 <meta property="og:url" content="https://pencilq.com/1/index.html">
 <meta property="og:site_name" content="小铅笔 &amp; jeff">
-<meta property="og:description" content="Mathematica 自动保存对所有笔记本开启运行后自动保存，详情参考  1CurrentValue[$FrontEnd, &quot;NotebookAutoSave&quot;] = True  在 Mathemtica 中导入 csv 表格后，发现最后多了几百个空值行。在知乎发现相似的问题，按照 melody  的回答成功解决。              选中你想开始删除的那堆空白行的首行，同时点键盘 ctr">
+<meta property="og:description" content="Mathematica 行向量与列向量对比一下数据结构，列向量为3×1，行向量为3 1234567Vectora = &amp;#123;&amp;#123;u&amp;#125;, &amp;#123;v&amp;#125;, &amp;#123;w&amp;#125;&amp;#125;(*一个列向量*);VectorA = &amp;#123;U, V, W&amp;#125;(*一个行向量*);Dimensions[Vectora]Dimensions[VectorA">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-21T15:52:08.000Z">
+<meta property="og:updated_time" content="2019-12-08T08:53:09.567Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Mathematica 自动保存对所有笔记本开启运行后自动保存，详情参考  1CurrentValue[$FrontEnd, &quot;NotebookAutoSave&quot;] = True  在 Mathemtica 中导入 csv 表格后，发现最后多了几百个空值行。在知乎发现相似的问题，按照 melody  的回答成功解决。              选中你想开始删除的那堆空白行的首行，同时点键盘 ctr">
+<meta name="twitter:description" content="Mathematica 行向量与列向量对比一下数据结构，列向量为3×1，行向量为3 1234567Vectora = &amp;#123;&amp;#123;u&amp;#125;, &amp;#123;v&amp;#125;, &amp;#123;w&amp;#125;&amp;#125;(*一个列向量*);VectorA = &amp;#123;U, V, W&amp;#125;(*一个行向量*);Dimensions[Vectora]Dimensions[VectorA">
   <link rel="canonical" href="https://pencilq.com/1/">
 
 
@@ -287,7 +287,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-21 23:52:08" itemprop="dateModified" datetime="2019-09-21T23:52:08+08:00">2019-09-21</time>
+                <time title="修改时间：2019-12-08 16:53:09" itemprop="dateModified" datetime="2019-12-08T16:53:09+08:00">2019-12-08</time>
               </span>
             
           
@@ -303,11 +303,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Mathematica-自动保存"><a href="#Mathematica-自动保存" class="headerlink" title="Mathematica 自动保存"></a>Mathematica 自动保存</h2><p>对所有笔记本开启运行后自动保存，详情参考 <a href="https://mathematica.stackexchange.com/a/14036/63168" target="_blank" rel="noopener"><i class="fa fa-link fa-fw"></i></a></p>
+        <h2 id="Mathematica-行向量与列向量"><a href="#Mathematica-行向量与列向量" class="headerlink" title="Mathematica 行向量与列向量"></a>Mathematica 行向量与列向量</h2><p>对比一下数据结构，列向量为3×1，行向量为3</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Vectora = &#123;&#123;u&#125;, &#123;v&#125;, &#123;w&#125;&#125;<span class="comment">(*一个列向量*)</span>;</span><br><span class="line">VectorA = &#123;U, V, W&#125;<span class="comment">(*一个行向量*)</span>;</span><br><span class="line"><span class="keyword">Dimensions</span>[Vectora]</span><br><span class="line"><span class="keyword">Dimensions</span>[VectorA]</span><br><span class="line"></span><br><span class="line"><span class="keyword">Out</span>[<span class="number">1</span>]= &#123;<span class="number">3</span>, <span class="number">1</span>&#125;</span><br><span class="line"><span class="keyword">Out</span>[<span class="number">2</span>]= &#123;<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>在MMa里头，行向量是一维数据结构，使用Transpose函数是无法将其转置的，若要进行转置，需将行向量转为矩阵</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Transpose</span>[VectorA]<span class="comment">(*无法将其转置*)</span></span><br><span class="line"><span class="keyword">Dimensions</span>[&#123;VectorA&#125;]<span class="comment">(*将其转换为矩阵后，维数是1×3*)</span></span><br><span class="line"><span class="keyword">Transpose</span>[&#123;VectorA&#125;]<span class="comment">(*转换为矩阵之后就可以转置*)</span></span><br><span class="line"></span><br><span class="line"> ···<span class="keyword">Transpose</span>&#123;U,V,W&#125; 的前两层无法转置.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Out</span>[<span class="number">3</span>]= <span class="keyword">Transpose</span>[&#123;U, V, W&#125;]</span><br><span class="line"><span class="keyword">Out</span>[<span class="number">4</span>]= &#123;<span class="number">1</span>, <span class="number">3</span>&#125;</span><br><span class="line"><span class="keyword">Out</span>[<span class="number">5</span>]= &#123;&#123;U&#125;, &#123;V&#125;, &#123;W&#125;&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>下面对比一下他们的运算：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vectora.&#123;VectorA&#125;<span class="comment">(*3×1点乘1×3将得到3×3的矩阵*)</span></span><br><span class="line">&#123;VectorA&#125;.Vectora<span class="comment">(*1×3点乘3×1将得到1×1的标量*)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Out</span>[<span class="number">6</span>]= &#123;&#123;u U, u V, u W&#125;, &#123;U v, v V, v W&#125;, &#123;U w, V w, w W&#125;&#125;</span><br><span class="line"><span class="keyword">Out</span>[<span class="number">7</span>]= &#123;&#123;u U + v V + w W&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Mathematica-自动保存"><a href="#Mathematica-自动保存" class="headerlink" title="Mathematica 自动保存"></a>Mathematica 自动保存</h2><p>对所有笔记本开启运行后自动保存，详情参考 <a href="https://mathematica.stackexchange.com/a/14036/63168" target="_blank" rel="noopener"><i class="fa fa-link fa-fw"></i></a></p>
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CurrentValue</span>[<span class="keyword">$FrontEnd</span>, <span class="string">"NotebookAutoSave"</span>] = <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
 <h2 id><a href="#" class="headerlink" title=" "></a> </h2><p>在 Mathemtica 中导入 csv 表格后，发现最后多了几百个空值行。在知乎发现相似的问题，按照 <a href="https://www.zhihu.com/question/25121978/answer/94400178" target="_blank" rel="noopener">melody <i class="fa fa-link fa-fw"></i></a> 的回答成功解决。</p>
 <div class="note success">
-            <ol><li>选中你想开始删除的那堆空白行的首行，同时点键盘 ctrl+shift + 向下箭头（如果多余空白行在右侧，那就向右键头），全选全部无用空格行；</li><li>第二，右键删除；</li><li>第三，重点来了！删除后啥都先别干，一定要点保存！然后关闭 excel 表格，重新打开。</li><li>done！第三步不做的话，excel 自己又填充回来！</li></ol><a id="more"></a>
+            <ol><li>选中你想开始删除的那堆空白行的首行，同时点键盘 ctrl+shift + 向下箭头（如果多余空白行在右侧，那就向右键头），全选全部无用空格行；</li><li>第二，右键删除；</li><li>第三，重点来了！删除后啥都先别干，一定要点保存！然后关闭 excel 表格，重新打开。</li><li>done！第三步不做的话，excel 自己又填充回来！</li></ol>
           </div>
 <blockquote>
 <p>作者：melody<br>链接：<a href="https://www.zhihu.com/question/25121978/answer/94400178" target="_blank" rel="noopener">https://www.zhihu.com/question/25121978/answer/94400178</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
@@ -405,7 +412,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mathematica-自动保存"><span class="nav-number">1.</span> <span class="nav-text">Mathematica 自动保存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">3.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-2"><span class="nav-number">4.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-3"><span class="nav-number">5.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-4"><span class="nav-number">6.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-5"><span class="nav-number">7.</span> <span class="nav-text"> </span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mathematica-行向量与列向量"><span class="nav-number">1.</span> <span class="nav-text">Mathematica 行向量与列向量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mathematica-自动保存"><span class="nav-number">2.</span> <span class="nav-text">Mathematica 自动保存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">4.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-2"><span class="nav-number">5.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-3"><span class="nav-number">6.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-4"><span class="nav-number">7.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-5"><span class="nav-number">8.</span> <span class="nav-text"> </span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
