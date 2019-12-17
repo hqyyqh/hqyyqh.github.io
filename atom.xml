@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pencilq.com/"/>
-  <updated>2019-12-14T16:10:32.106Z</updated>
+  <updated>2019-12-17T00:42:10.418Z</updated>
   <id>https://pencilq.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2019 中科院期刊分区</title>
+    <link href="https://pencilq.com//53/"/>
+    <id>https://pencilq.com//53/</id>
+    <published>2019-12-17T00:37:39.000Z</published>
+    <updated>2019-12-17T00:42:10.418Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://file.pencilq.com/file_and_note/2019年中科院期刊分区.xlsx" target="_blank" rel="noopener">下载链接 <i class="fa fa-table fa-fw" aria-hidden="true"></i> </a></p><iframe width="1000" height="500" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?resid=370B449BF63734D4%2139679&authkey=%21AP9pVtjJ89Wxv4o&em=2&AllowTyping=True&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True"></iframe>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://file.pencilq.com/file_and_note/2019年中科院期刊分区.xlsx&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下载链接 &lt;i class=&quot;fa fa-table fa-fw&quot; aria-
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>好用的文献翻译工具整理</title>
@@ -432,26 +453,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>文献管理软件Citavi使用简介</title>
-    <link href="https://pencilq.com//33/"/>
-    <id>https://pencilq.com//33/</id>
-    <published>2019-09-09T01:05:08.000Z</published>
-    <updated>2019-09-09T11:25:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="不仅仅是文献管理"><a href="#不仅仅是文献管理" class="headerlink" title="不仅仅是文献管理"></a>不仅仅是文献管理</h2><p>Citavi 除了一般文献管理软件的功能外，还带有知识管理和任务规划功能。免费版一个 project 支持100条文献，可以开多几个 project，或者购买付费版本，有学生优惠。另外自带云端服务器，免费上传附件。我用了一个暑假，感觉非常不错，比 Endnote 和 Zotero 都好。</p><a id="more"></a><p>导师说要做几页PPT介绍这款软件，他上课的时候要展示给学生。下面是PPT：</p><div class="pdf" target="https://file.pencilq.com/file_and_note/Citavi-introduction.pdf" height></div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;不仅仅是文献管理&quot;&gt;&lt;a href=&quot;#不仅仅是文献管理&quot; class=&quot;headerlink&quot; title=&quot;不仅仅是文献管理&quot;&gt;&lt;/a&gt;不仅仅是文献管理&lt;/h2&gt;&lt;p&gt;Citavi 除了一般文献管理软件的功能外，还带有知识管理和任务规划功能。免费版一个 project 支持100条文献，可以开多几个 project，或者购买付费版本，有学生优惠。另外自带云端服务器，免费上传附件。我用了一个暑假，感觉非常不错，比 Endnote 和 Zotero 都好。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="科研软件" scheme="https://pencilq.com/tags/%E7%A7%91%E7%A0%94%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   
