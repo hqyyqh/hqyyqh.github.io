@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pencilq.com/"/>
-  <updated>2020-03-01T06:25:38.901Z</updated>
+  <updated>2020-03-13T11:46:58.055Z</updated>
   <id>https://pencilq.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>知乎维基一键复制LaTeX公式</title>
+    <link href="https://pencilq.com//57/"/>
+    <id>https://pencilq.com//57/</id>
+    <published>2020-03-13T11:42:21.000Z</published>
+    <updated>2020-03-13T11:46:58.055Z</updated>
+    
+    <content type="html"><![CDATA[<p>油猴脚本 <a href="https://greasyfork.org/zh-CN/scripts/397740" target="_blank" rel="noopener">https://greasyfork.org/zh-CN/scripts/397740</a></p><p><img alt=" " data-src="https://image.pencilq.com/images/2020/03/13/copy_latex_compress.jpg"></p><a id="more"></a><p>如果需要在 <code>wikiwand.com</code>使用，可以按照下面简单修改</p><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">// ==UserScript==</span><br><span class="line">// @name         一键复制公式</span><br><span class="line">// @namespace    http://tampermonkey.net/</span><br><span class="line">// @version      0.3</span><br><span class="line">// @description  Click to copy equation in Wikipedia</span><br><span class="line">// @author       flaribbit</span><br><span class="line">// @match        http://*.wikipedia.org/*</span><br><span class="line">// @match        https://*.wikipedia.org/*</span><br><span class="line"><span class="addition">+ // @match        http://*.wikiwand.com/*</span></span><br><span class="line"><span class="addition">+ // @match        https://*.wikiwand.com/*</span></span><br><span class="line">// @match        https://www.zhihu.com/question/*</span><br><span class="line">// @match        https://zhuanlan.zhihu.com/p/*</span><br><span class="line">// @grant        none</span><br><span class="line">// ==/UserScript==</span><br><span class="line"></span><br><span class="line">(function() &#123;</span><br><span class="line">    'use strict';</span><br><span class="line">    window.tempbox=document.createElement("input");</span><br><span class="line">    document.body.appendChild(window.tempbox);</span><br><span class="line">    let host=document.location.host;</span><br><span class="line">    let el=document.createElement("style");</span><br><span class="line">    el.innerText="@keyframes aniclick&#123;0%&#123;background:#03A9F400&#125;20%&#123;background:#03A9F47F&#125;100%&#123;background:#03A9F400&#125;&#125;";</span><br><span class="line">    document.head.appendChild(el);</span><br><span class="line">    let clearAnimation=function()&#123;</span><br><span class="line">        this.style.animation="";</span><br><span class="line">    &#125;</span><br><span class="line"><span class="deletion">-    if(host.search('wikipedia')&gt;=0)&#123;</span></span><br><span class="line"><span class="addition">+    if (host.search('wikipedia') &gt;= 0 || host.search('wikiwand') &gt;= 0)&#123;</span></span><br><span class="line">        let copyTex=function()&#123;</span><br><span class="line">            window.tempbox.value='$'+this.alt+'$';</span><br><span class="line">            window.tempbox.select();</span><br><span class="line">            document.execCommand('copy');</span><br><span class="line">            this.style.animation="aniclick .4s";</span><br><span class="line">        &#125;</span><br><span class="line">        let eqs=document.getElementsByClassName("mwe-math-fallback-image-inline");</span><br><span class="line">        for(let i=0;i&lt;eqs.length;i++)&#123;</span><br><span class="line">            eqs[i].onclick=copyTex;</span><br><span class="line">            eqs[i].addEventListener("animationend",clearAnimation);</span><br><span class="line">            eqs[i].title='点击即可复制公式';</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;else if(host.search('zhihu')&gt;=0)&#123;</span><br><span class="line">        let copyTex=function()&#123;</span><br><span class="line">            window.tempbox.value='$'+this.getAttribute("data-formula")+'$';</span><br><span class="line">            window.tempbox.select();</span><br><span class="line">            document.execCommand('copy');</span><br><span class="line">            this.style.animation="aniclick .4s";</span><br><span class="line">        &#125;</span><br><span class="line">        let ref=function()&#123;</span><br><span class="line">            if(document.visibilityState=="visible")&#123;</span><br><span class="line">                let eqs=document.querySelectorAll("img[alt]");</span><br><span class="line">                for(let i=0;i&lt;eqs.length;i++)&#123;</span><br><span class="line">                    eqs[i].onclick=copyTex;</span><br><span class="line">                    eqs[i].addEventListener("animationend",clearAnimation);</span><br><span class="line">                    eqs[i].title='点击即可复制公式';</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(document.location.href.search('question')&gt;=0)&#123;</span><br><span class="line">            setInterval(ref,1000);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            ref();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;油猴脚本 &lt;a href=&quot;https://greasyfork.org/zh-CN/scripts/397740&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://greasyfork.org/zh-CN/scripts/397740&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot; &quot; data-src=&quot;https://image.pencilq.com/images/2020/03/13/copy_latex_compress.jpg&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>聚 BT - 聚合最优质的 BT、磁力资源</title>
@@ -425,28 +444,6 @@
       &lt;p&gt;在 Mathematica 中导入 CSV 文件时，开头出现 &lt;code&gt;\:feff&lt;/code&gt; 字符串。使用 &lt;code&gt;ToExpression&lt;/code&gt; 处理时会出现转换问题。&lt;/p&gt;
 &lt;p&gt;&lt;img alt=&quot; &quot; data-src=&quot;https://image.pencilq.com/images/2019/09/17/20190917215532.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;简单查找了下，发现是因为直接使用 excel 创建 csv 文件时（UTF8 编码），&lt;strong&gt;文件头部被添加了一个不可见字符  BOM (Byte Order Mark) &lt;/strong&gt;。该字符用于 Unicode 标识内部编码的排列方式，在 UTF-16、UTF-32 编码里是必须的，而在 UTF-8 里是可选的。&lt;strong&gt;有的语法解析器没有对 BOM 做处理。&lt;/strong&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>哭唧唧 梯子没了</title>
-    <link href="https://pencilq.com//36/"/>
-    <id>https://pencilq.com//36/</id>
-    <published>2019-09-16T12:48:53.000Z</published>
-    <updated>2019-09-16T12:48:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<div class="note danger">            <p>【2019年国家网络安全宣传周公益短信】2019年国家网络安全宣传周是9月16日-22日。没有网络安全就没有国家安全，就没有经济社会的稳定运行，广大人民群众利益也难以得到保障。网络安全为人民，网络安全靠人民，积极参与网络安全发展，提升网络安全意识，共筑网络安全防线。【工业和信息化部】</p>          </div><p>暂时靠 vultr 的小鸡撑着😭<br>🤣算了，vultr 小鸡也挂了。。。。换机场。。。</p><p><img alt data-src="https://image.pencilq.com/images/2019/09/16/vpsban.jpg"></p><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img alt data-src="https://image.pencilq.com/images/2019/09/16/ku1.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img alt data-src="https://image.pencilq.com/images/2019/09/16/ku2.jpg"></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img alt data-src="https://image.pencilq.com/images/2019/09/16/ku3.jpg"></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img alt data-src="https://image.pencilq.com/images/2019/09/16/ku4.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img alt data-src="https://image.pencilq.com/images/2019/09/16/ku5.jpg"></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img alt data-src="https://image.pencilq.com/images/2019/09/16/ku6.jpg"></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img alt data-src="https://image.pencilq.com/images/2019/09/16/ku7.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img alt data-src="https://image.pencilq.com/images/2019/09/16/ku7.png"></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img alt data-src="https://image.pencilq.com/images/2019/09/16/ku9.jpg"></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img alt data-src="https://image.pencilq.com/images/2019/09/16/ku10.jpg"></div></div></div></div>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;div class=&quot;note danger&quot;&gt;
-            &lt;p&gt;【2019年国家网络安全宣传周公益短信】2019年国家网络安全宣传周是9月16日-22日。没有网络安全就没有国家安全，就没有经济社会的稳定运行，广大人民群众利益也难以得到保障。网络安全为人民，网络安
-      
     
     </summary>
     
