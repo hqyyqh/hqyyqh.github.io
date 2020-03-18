@@ -57,17 +57,17 @@
   };
 </script>
 
-  <meta name="description" content="原来ABAQUS也支持矢量图输出呢，例如.eps，.svg。打印输出当前页面快捷键Ctrl+P，选择需要的格式，点击OK即可将文件输出到工作目录。 ![ (https://image.pencilq.com/images/2020/03/18/ABAQUSPrintImageFormat.png)">
+  <meta name="description" content="原来ABAQUS也支持矢量图输出呢，例如.eps，.svg。打印输出当前页面快捷键Ctrl+P，选择需要的格式，点击OK即可将文件输出到工作目录。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ABAQUS矢量图像输出">
 <meta property="og:url" content="https://pencilq.com/59/index.html">
 <meta property="og:site_name" content="小铅笔 &amp; jeff">
-<meta property="og:description" content="原来ABAQUS也支持矢量图输出呢，例如.eps，.svg。打印输出当前页面快捷键Ctrl+P，选择需要的格式，点击OK即可将文件输出到工作目录。 ![ (https://image.pencilq.com/images/2020/03/18/ABAQUSPrintImageFormat.png)">
+<meta property="og:description" content="原来ABAQUS也支持矢量图输出呢，例如.eps，.svg。打印输出当前页面快捷键Ctrl+P，选择需要的格式，点击OK即可将文件输出到工作目录。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-18T16:01:22.659Z">
+<meta property="og:updated_time" content="2020-03-18T16:13:51.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ABAQUS矢量图像输出">
-<meta name="twitter:description" content="原来ABAQUS也支持矢量图输出呢，例如.eps，.svg。打印输出当前页面快捷键Ctrl+P，选择需要的格式，点击OK即可将文件输出到工作目录。 ![ (https://image.pencilq.com/images/2020/03/18/ABAQUSPrintImageFormat.png)">
+<meta name="twitter:description" content="原来ABAQUS也支持矢量图输出呢，例如.eps，.svg。打印输出当前页面快捷键Ctrl+P，选择需要的格式，点击OK即可将文件输出到工作目录。">
   <link rel="canonical" href="https://pencilq.com/59/">
 
 
@@ -287,7 +287,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-19 00:01:22" itemprop="dateModified" datetime="2020-03-19T00:01:22+08:00">2020-03-19</time>
+                <time title="修改时间：2020-03-19 00:13:51" itemprop="dateModified" datetime="2020-03-19T00:13:51+08:00">2020-03-19</time>
               </span>
             
           
@@ -304,21 +304,16 @@
 
       
         <p>原来ABAQUS也支持矢量图输出呢，例如.eps，.svg。打印输出当前页面快捷键Ctrl+P，选择需要的格式，点击OK即可将文件输出到工作目录。</p>
-<p>![ (<a href="https://image.pencilq.com/images/2020/03/18/ABAQUSPrintImageFormat.png" target="_blank" rel="noopener">https://image.pencilq.com/images/2020/03/18/ABAQUSPrintImageFormat.png</a>)</p>
+<p><img alt=" " data-src="https://image.pencilq.com/images/2020/03/18/ABAQUSPrintImageFormat.png"></p>
 <a id="more"></a>
-<p>以下是ABAQUS6.6的手册，取自<a href="https://classes.engineering.wustl.edu/2009/spring/mase5513/abaqus/docs/v6.6/books/usi/default.htm?startat=pt01ch08s01s01.html" target="_blank" rel="noopener">https://classes.engineering.wustl.edu/2009/spring/mase5513/abaqus/docs/v6.6/books/usi/default.htm?startat=pt01ch08s01s01.html</a></p>
+<p>以下是<a href="https://classes.engineering.wustl.edu/2009/spring/mase5513/abaqus/docs/v6.6/books/usi/default.htm?startat=pt01ch08s01s01.html" target="_blank" rel="noopener">ABAQUS6.6的手册</a></p>
 <p>ABAQUS/CAE allows you to print images directly to a Windows printer. The printer driver creates and sends the necessary information to the printer in whatever format is required.</p>
 <p>If Windows printer drivers are not available or if you are using another platform, you can use a print command to create and send a PostScript file directly to a PostScript printer. You can also save images in a PostScript (PS), Encapsulated PostScript (EPS), Tag Image File Format (TIFF), Portable Network Graphics (PNG), or Scalable Vector Graphics (SVG) file. The following list describes these file formats:</p>
-<p><strong>PostScript</strong></p>
-<p>PostScript is the recognized standard for desktop publishing. PostScript is actually a programming language whose instructions and data are usually stored in an ASCII format that can be transferred easily between operating systems. The PostScript format is used when you use a print command to print to a PostScript printer or when you save the image in a PostScript file. When you select the PostScript format, ABAQUS/CAE generates either a compressed raster representation or a vector representation of your image. For efficiency when producing raster images, you should minimize the size of your image and limit the resolution of the image to, at most, the resolution of the device on which the image is to be printed or displayed.</p>
-<p><strong>Encapsulated PostScript</strong></p>
-<p>Encapsulated PostScript (EPS) is a variation of PostScript that describes a single graphic designed to be included in a larger document without modification. EPS files are identical to PostScript files except for some information that describes the size and positioning of the image. As a result, the above discussion about vector and raster representations of your image applies equally to the EPS format. Most word processing and graphics applications support the inclusion of EPS files.</p>
-<p><strong>TIFF</strong></p>
-<p>Tag Image File Format (TIFF) is a well-established raster image format that is recognized by many software applications. The TIFF format supports both color and greyscale. By default, ABAQUS/CAE limits TIFF images of viewports to 8-bit color (256 colors). However, you can also use 24-bit color (on Windows) or the system color setting (on Linux).</p>
-<p><strong>PNG</strong></p>
-<p>Portable Network Graphics (PNG) is an industry standard for storing raster images. The use of PNG files has been popularized by the World Wide Web, and PNG images are displayed by most popular web browsers running on a variety of operating systems. A PNG file consists of color information and a compressed raster representation of the image. By default, ABAQUS/CAE limits PNG images of viewports to 8-bit color (256 colors). However, you can also use 24-bit color (on Windows) or the system color setting (on Linux).</p>
-<p><strong>SVG</strong></p>
-<p>Scalable Vector Graphics (SVG) is an industry-standard vector graphics language written in XML.</p>
+<h2 id="PostScript"><a href="#PostScript" class="headerlink" title="PostScript"></a>PostScript</h2><p>PostScript is the recognized standard for desktop publishing. PostScript is actually a programming language whose instructions and data are usually stored in an ASCII format that can be transferred easily between operating systems. The PostScript format is used when you use a print command to print to a PostScript printer or when you save the image in a PostScript file. When you select the PostScript format, ABAQUS/CAE generates either a compressed raster representation or a vector representation of your image. For efficiency when producing raster images, you should minimize the size of your image and limit the resolution of the image to, at most, the resolution of the device on which the image is to be printed or displayed.</p>
+<h2 id="Encapsulated-PostScript"><a href="#Encapsulated-PostScript" class="headerlink" title="Encapsulated PostScript"></a>Encapsulated PostScript</h2><p>Encapsulated PostScript (EPS) is a variation of PostScript that describes a single graphic designed to be included in a larger document without modification. EPS files are identical to PostScript files except for some information that describes the size and positioning of the image. As a result, the above discussion about vector and raster representations of your image applies equally to the EPS format. Most word processing and graphics applications support the inclusion of EPS files.</p>
+<h2 id="TIFF"><a href="#TIFF" class="headerlink" title="TIFF"></a>TIFF</h2><p>Tag Image File Format (TIFF) is a well-established raster image format that is recognized by many software applications. The TIFF format supports both color and greyscale. By default, ABAQUS/CAE limits TIFF images of viewports to 8-bit color (256 colors). However, you can also use 24-bit color (on Windows) or the system color setting (on Linux).</p>
+<h2 id="PNG"><a href="#PNG" class="headerlink" title="PNG"></a>PNG</h2><p>Portable Network Graphics (PNG) is an industry standard for storing raster images. The use of PNG files has been popularized by the World Wide Web, and PNG images are displayed by most popular web browsers running on a variety of operating systems. A PNG file consists of color information and a compressed raster representation of the image. By default, ABAQUS/CAE limits PNG images of viewports to 8-bit color (256 colors). However, you can also use 24-bit color (on Windows) or the system color setting (on Linux).</p>
+<h2 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h2><p>Scalable Vector Graphics (SVG) is an industry-standard vector graphics language written in XML.</p>
 
     </div>
 
@@ -405,6 +400,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PostScript"><span class="nav-number">1.</span> <span class="nav-text">PostScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encapsulated-PostScript"><span class="nav-number">2.</span> <span class="nav-text">Encapsulated PostScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TIFF"><span class="nav-number">3.</span> <span class="nav-text">TIFF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PNG"><span class="nav-number">4.</span> <span class="nav-text">PNG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVG"><span class="nav-number">5.</span> <span class="nav-text">SVG</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
         <!-- add qq music to sidebar https://deletelibrary.com/blog/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90.html-->
