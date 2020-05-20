@@ -64,7 +64,7 @@
 <meta property="og:site_name" content="小铅笔 &amp; jeff">
 <meta property="og:description" content="记录和比较 LaTeX 公式的转换和输入方法  第一部分为核心内容：1）使用 Pandoc 将 LaTeX 公式转 Word公式；2）使用 Mathpix 实时编辑预览公式。 第二部分简单对比下其它公式输入或者转换工具（如 Mathtype）的效果。 第三部分对比其它工具（如Typora）的公式实时预览效果。 第四部分为相关链接。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-20T14:00:18.937Z">
+<meta property="og:updated_time" content="2020-05-20T14:18:05.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于LaTeX公式转换和输入的那些事">
 <meta name="twitter:description" content="记录和比较 LaTeX 公式的转换和输入方法  第一部分为核心内容：1）使用 Pandoc 将 LaTeX 公式转 Word公式；2）使用 Mathpix 实时编辑预览公式。 第二部分简单对比下其它公式输入或者转换工具（如 Mathtype）的效果。 第三部分对比其它工具（如Typora）的公式实时预览效果。 第四部分为相关链接。">
@@ -276,7 +276,7 @@
                 
               
 
-              <time title="创建时间：2020-05-20 15:07:15 / 修改时间：22:00:18" itemprop="dateCreated datePublished" datetime="2020-05-20T15:07:15+08:00">2020-05-20</time>
+              <time title="创建时间：2020-05-20 15:07:15 / 修改时间：22:18:05" itemprop="dateCreated datePublished" datetime="2020-05-20T15:07:15+08:00">2020-05-20</time>
             </span>
           
             
@@ -320,6 +320,8 @@
 \end{array}
 \right]</script><h3 id="使用Pandoc-LaTeX转Word"><a href="#使用Pandoc-LaTeX转Word" class="headerlink" title="使用Pandoc LaTeX转Word"></a>使用Pandoc LaTeX转Word</h3><p><a href="https://github.com/jgm/pandoc/releases" target="_blank" rel="noopener">下载</a>安装版或者便携版的pandoc，在命令行中使用<code>pandoc input.tex -o output.docx</code>可以直接将<code>.tex</code>文件转换为<code>.docx</code>文件。注意：如果出现公式转换失败，则可能是 LaTeX 语法使用不当造成的，此时可以根据 cmd 的报错进行修改。</p>
 <p><img alt="直接在命令行中转换" data-src="https://image.pencilq.com/images/2020/05/20/pandoc1.gif"></p>
+<p>如果有些地方需要修改，可以在 Word 中转换公式的形式，修改更方便</p>
+<p><img alt="在Word中转换公式的形式" data-src="https://image.pencilq.com/images/2020/05/20/word-eq-edit.gif"></p>
 <p>为了方便，顺手写了一个 bat 脚本，可以直接将 tex 文件拖动到 bat 上进行转换。</p>
 <blockquote>
 <p>复制下面代码，另存为 <code>xxx.bat</code> 文件即可。<br>也可以直接<a href="https://www.jianguoyun.com/p/DfA8YkkQytvsBhjc25oD" target="_blank" rel="noopener">下载打包了 Pandoc 的文件</a> (访问密码 : 4d1v3w)</p>
