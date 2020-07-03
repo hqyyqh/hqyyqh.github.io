@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+  <link rel="alternate" href="/atom.xml" title="小铅笔 & jeff" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Mathematica 导出数据总是遇到很多坑，总结一下。 个人日常喜欢导出 .csv 格式的文件，即数值用逗号分隔。 常用方法: Export 函数在 mathemtica 中，最常用的导出函数莫过于 Export。试举一例 先来创建一组数据 1data = Table[&amp;#123;a, 10^-7 a&amp;#125;, &amp;#123;a, 1., 10, 1&amp;#125;]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mathematica 导出科学计数法数据">
+<meta property="og:url" content="https://pencilq.com/62/index.html">
+<meta property="og:site_name" content="小铅笔 &amp; jeff">
+<meta property="og:description" content="Mathematica 导出数据总是遇到很多坑，总结一下。 个人日常喜欢导出 .csv 格式的文件，即数值用逗号分隔。 常用方法: Export 函数在 mathemtica 中，最常用的导出函数莫过于 Export。试举一例 先来创建一组数据 1data = Table[&amp;#123;a, 10^-7 a&amp;#125;, &amp;#123;a, 1., 10, 1&amp;#125;]">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-28T14:22:34.709Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mathematica 导出科学计数法数据">
+<meta name="twitter:description" content="Mathematica 导出数据总是遇到很多坑，总结一下。 个人日常喜欢导出 .csv 格式的文件，即数值用逗号分隔。 常用方法: Export 函数在 mathemtica 中，最常用的导出函数莫过于 Export。试举一例 先来创建一组数据 1data = Table[&amp;#123;a, 10^-7 a&amp;#125;, &amp;#123;a, 1., 10, 1&amp;#125;]">
+  <link rel="canonical" href="https://pencilq.com/62/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Mathematica 导出科学计数法数据 | 小铅笔 & jeff</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小铅笔 & jeff</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">力学, 分享</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/62/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小铅笔 & jeff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://image.pencilq.com/images/2019/11/03/pic.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小铅笔 & jeff">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">Mathematica 导出科学计数法数据
+
+          
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-03 21:07:48" itemprop="dateCreated datePublished" datetime="2020-04-03T21:07:48+08:00">2020-04-03</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-28 22:22:34" itemprop="dateModified" datetime="2020-04-28T22:22:34+08:00">2020-04-28</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Mathematica 导出数据总是遇到很多坑，总结一下。</p>
+<p>个人日常喜欢导出 <code>.csv</code> 格式的文件，即数值用逗号分隔。</p>
+<h2 id="常用方法-Export-函数"><a href="#常用方法-Export-函数" class="headerlink" title="常用方法: Export 函数"></a>常用方法: Export 函数</h2><p>在 mathemtica 中，最常用的导出函数莫过于 <code>Export</code>。试举一例</p>
+<p>先来创建一组数据</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = <span class="keyword">Table</span>[&#123;a, <span class="number">10</span>^<span class="number">-7</span> a&#125;, &#123;a, <span class="number">1.</span>, <span class="number">10</span>, <span class="number">1</span>&#125;]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;1., 1.*10^-7&#125;, &#123;2., 2.*10^-7&#125;, &#123;3., 3.*10^-7&#125;, &#123;4., 4.*10^-7&#125;, &#123;5., </span><br><span class="line">  5.*10^-7&#125;, &#123;6., 6.*10^-7&#125;, &#123;7., 7.*10^-7&#125;, &#123;8., 8.*10^-7&#125;, &#123;9., </span><br><span class="line">  9.*10^-7&#125;, &#123;10., 1.*10^-6&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>使用 <code>Export</code> 函数导出</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SetDirectory</span>[<span class="keyword">NotebookDirectory</span>[]];</span><br><span class="line"><span class="keyword">Export</span>[<span class="string">"test.csv"</span>, data];</span><br></pre></td></tr></table></figure>
+<p><code>test.csv</code>文件内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.,1.e-7</span><br><span class="line">2.,2.e-7</span><br><span class="line">3.,3.e-7</span><br><span class="line">4.,4.e-7</span><br><span class="line">5.,5.e-7</span><br><span class="line">6.,6.e-7</span><br><span class="line">7.,7.e-7</span><br><span class="line">8.,8.e-7</span><br><span class="line">9.,9.e-7</span><br><span class="line">10.,1.e-6</span><br></pre></td></tr></table></figure>
+<p>到目前为止都没什么问题，Export 函数能够自动转换 <code>8.e-7</code> 这类科学计数法表示的数据。</p>
+<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><p>使用 Export 可以直接导出一个变量，那么在必须要迭代的程序中（并且不知道迭代次数），如何把结果累积在一个变量中呢？跟很多程序语言类似，<code>Append</code> 或者 <code>AppendTo</code> 可以追加内容到一个列表中。这个函数众所周知的问题，就是在数据量太大的时候异常卡慢。我们可以比较一下。</p>
+<p>定义一个测试函数，输出不同迭代次数下，使用 <code>AppendTo</code> 追加，以及最终导出数据所需时间</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">testfunc[num_] := </span><br><span class="line"> <span class="keyword">Block</span>[&#123;data = &#123;&#125;, i, time&#125;, i = <span class="number">1</span>; </span><br><span class="line">  <span class="keyword">AbsoluteTiming</span>[</span><br><span class="line">    <span class="keyword">Do</span>[list = &#123;i, <span class="number">10.</span>^<span class="number">-7</span> i&#125;; <span class="keyword">AppendTo</span>[data, list]; i++, num];</span><br><span class="line">    <span class="keyword">Export</span>[<span class="string">"test.csv"</span>, data];][[<span class="number">1</span>]]]</span><br></pre></td></tr></table></figure>
+<p>观察一下不同迭代次数下的需要耗费的时间</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SetDirectory</span>[<span class="keyword">NotebookDirectory</span>[]];</span><br><span class="line">data = <span class="keyword">Table</span>[&#123;n, testfunc[n]&#125;, &#123;n, <span class="number">10000</span>, <span class="number">100000</span>, <span class="number">10000</span>&#125;];</span><br><span class="line"><span class="keyword">ListLinePlot</span>[data]</span><br></pre></td></tr></table></figure>
+<p>从计算时间上可以看到，耗费时间与迭代次数并非线性增加，因此再操作大型数组的术后 <code>AppendTo</code> 就退下吧。</p>
+<p>看到这里好像有点跑题？其实这里主要是想说明：通过 <code>AppendTo</code> 追加数组，最终再使用 <code>Export</code> 自动输出科学计数法的数值的方案不可行。另外，<code>PutAppend</code> 函数也类似，不适用大型数组叠加输出。</p>
+<h2 id="填坑"><a href="#填坑" class="headerlink" title="填坑"></a>填坑</h2><p>这时候只能想原始一点的办法了，想来 Mathematica 应该会提供类似 c++ 文件流的方式，查找一下帮助文档里面的方案：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="keyword">OpenWrite</span>[<span class="string">"test.csv"</span>];</span><br><span class="line">test = <span class="number">1.2</span> <span class="number">10</span>^<span class="number">-7</span>;</span><br><span class="line"><span class="keyword">WriteString</span>[str, test];</span><br><span class="line"><span class="keyword">Close</span>[str];</span><br></pre></td></tr></table></figure>
+<p>但是这时候导出的结果只能用混乱来形容。。。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">      -7</span><br><span class="line">1.2 10</span><br></pre></td></tr></table></figure>
+<p>得想办法如何转换成想要的数值格式，在帮助文档 <code>NumberFormat</code> 函数中给出了一个例子，经过（交流群的混乱讨论），加工一下</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test = <span class="number">1.2</span> <span class="number">10</span>^<span class="number">-7</span>;</span><br><span class="line"><span class="keyword">ScientificForm</span>[test, <span class="number">10</span>, <span class="keyword">NumberFormat</span> -&gt; (<span class="keyword">Row</span>[&#123;#<span class="number">1</span>, <span class="string">"e"</span>, #<span class="number">3</span>&#125;] &amp;)]</span><br></pre></td></tr></table></figure>
+<p>但是注意 <code>WriteString</code> 接收的是字符串格式，加个 <code>ToString</code> 转换一下即可，另外在 1-10 范围内的应该不需要科学计数法表达，再混乱地整理一下，</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Num2Str[num_] := </span><br><span class="line">  <span class="keyword">If</span>[<span class="number">1</span> &gt; =num || num &gt; <span class="number">10</span>, </span><br><span class="line">   <span class="keyword">ScientificForm</span>[num, <span class="number">6</span>, <span class="keyword">NumberFormat</span> -&gt; (<span class="keyword">Row</span>[&#123;#<span class="number">1</span>, <span class="string">"e"</span>, #<span class="number">3</span>&#125;] &amp;)] // </span><br><span class="line">     <span class="keyword">ToString</span> // <span class="keyword">StringReplace</span>[#, <span class="string">".e"</span> -&gt; <span class="string">".0e"</span>] &amp;, <span class="keyword">ToString</span>@num];</span><br></pre></td></tr></table></figure>
+<p>废话有点多了。。。最终再来测试下速度</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">testfunc[num_] := </span><br><span class="line"> <span class="keyword">Block</span>[&#123;data = &#123;&#125;, i, time, str&#125;, </span><br><span class="line">  <span class="keyword">AbsoluteTiming</span>[str = <span class="keyword">OpenWrite</span>[<span class="string">"test.csv"</span>]; i = <span class="number">1</span>; </span><br><span class="line">    <span class="keyword">Do</span>[list = Num2Str /@ &#123;i, <span class="number">10.</span>^<span class="number">-7</span> i&#125;; </span><br><span class="line">     <span class="keyword">WriteString</span>[str, list[[<span class="number">1</span>]] &lt;&gt; <span class="string">","</span> &lt;&gt; list[[<span class="number">2</span>]] &lt;&gt; <span class="string">"\n"</span>]; i++, </span><br><span class="line">     num];</span><br><span class="line">    <span class="keyword">Close</span>[str];][[<span class="number">1</span>]]</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = Table[&#123;n, testfunc[n]&#125;, &#123;n, 10000, 100000, 10000&#125;];</span><br><span class="line">ListLinePlot[data]</span><br></pre></td></tr></table></figure>
+<p>时间明显减少很多，并且线性更强。对比一下 <code>AppendTo</code> 的结果，感动。</p>
+<p>最终敲定，在 Mathematica 循环输出科学计数法数据</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(*数值格式转换*)</span></span><br><span class="line">Num2Str[num_] := </span><br><span class="line">  <span class="keyword">If</span>[<span class="number">1</span> &gt; =num || num &gt; <span class="number">10</span>, </span><br><span class="line">   <span class="keyword">ScientificForm</span>[num, <span class="number">6</span>, <span class="keyword">NumberFormat</span> -&gt; (<span class="keyword">Row</span>[&#123;#<span class="number">1</span>, <span class="string">"e"</span>, #<span class="number">3</span>&#125;] &amp;)] // </span><br><span class="line">     <span class="keyword">ToString</span> // <span class="keyword">StringReplace</span>[#, <span class="string">".e"</span> -&gt; <span class="string">".0e"</span>] &amp;, <span class="keyword">ToString</span>@num];</span><br><span class="line"></span><br><span class="line"><span class="comment">(*文件流写入时间测试函数*)</span></span><br><span class="line">testfunc[num_] := </span><br><span class="line"> <span class="keyword">Block</span>[&#123;data = &#123;&#125;, i, time, str&#125;, </span><br><span class="line">  <span class="keyword">AbsoluteTiming</span>[str = <span class="keyword">OpenWrite</span>[<span class="string">"test.csv"</span>]; i = <span class="number">1</span>; </span><br><span class="line">    <span class="keyword">Do</span>[list = Num2Str /@ &#123;i, <span class="number">10.</span>^<span class="number">-7</span> i&#125;; </span><br><span class="line">     <span class="keyword">WriteString</span>[str, list[[<span class="number">1</span>]] &lt;&gt; <span class="string">","</span> &lt;&gt; list[[<span class="number">2</span>]] &lt;&gt; <span class="string">"\n"</span>]; i++, </span><br><span class="line">     num];</span><br><span class="line">    <span class="keyword">Close</span>[str];][[<span class="number">1</span>]]</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line"><span class="comment">(*性能测试*)</span></span><br><span class="line">data = <span class="keyword">Table</span>[&#123;n, testfunc[n]&#125;, &#123;n, <span class="number">10000</span>, <span class="number">100000</span>, <span class="number">10000</span>&#125;];</span><br><span class="line"><span class="keyword">ListLinePlot</span>[data]</span><br></pre></td></tr></table></figure>
+<p>群友提供的另外一种转换方式 <code>ToString[1.23*^45, CForm]</code></p>
+<hr>
+<p>懒得补图了，就酱🤣。</p>
+
+    </div>
+
+    
+    
+    
+      
+
+        
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/61/" rel="next" title="ABAQUS非线性屈曲">
+                  <i class="fa fa-chevron-left"></i> ABAQUS非线性屈曲
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/63/" rel="prev" title="关于LaTeX公式转换和输入的那些事">
+                  关于LaTeX公式转换和输入的那些事 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zOTQxNi8xNTk0Mw=="></div>
+  </div>
+  
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用方法-Export-函数"><span class="nav-number">1.</span> <span class="nav-text">常用方法: Export 函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挖坑"><span class="nav-number">2.</span> <span class="nav-text">挖坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#填坑"><span class="nav-number">3.</span> <span class="nav-text">填坑</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+        <!-- add qq music to sidebar https://deletelibrary.com/blog/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90.html-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+        <meting-js
+	      auto="https://y.qq.com/n/yqq/playlist/7453291258.html"
+        list-folded= "true"
+    
+</meting-js>
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="https://image.pencilq.com/images/2019/11/03/pic.jpg"
+      alt="小铅笔 & jeff">
+  <p class="site-author-name" itemprop="name">小铅笔 & jeff</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:hqysmail@gmail.com" title="E-Mail &rarr; mailto:hqysmail@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备18138470号 </a>
+  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小铅笔 & jeff</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+<script src="/js/utils.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes: 0,
+          toolbar: 0,
+          statusbar: 0,
+          pagemode: 'thumbs',
+          view: 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+<script src="/js/comment-locate.js"></script>
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+</body>
+</html>

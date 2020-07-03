@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+  <link rel="alternate" href="/atom.xml" title="小铅笔 & jeff" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="从本科的材料成形原理教材上认识了应力张量后，它便一直出现在我们的视野里。初始，仅是一个基本定义接受了它，进而有过疑惑，随着矩阵论的学习又有了新的认识。曾经就有记录下对其理解的想法，但因思路尚未完善而一再搁置；直到今天重新想起，并完成了方向余弦作为线性空间的证明，才终于开始详细记录。 根据我对应力张量的阶段性认识，相应分为三部分进行记录。本文介绍第一部分，应力的基本知识和常规认识。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(转) 应力张量的认识之基本概念">
+<meta property="og:url" content="https://pencilq.com/38/index.html">
+<meta property="og:site_name" content="小铅笔 &amp; jeff">
+<meta property="og:description" content="从本科的材料成形原理教材上认识了应力张量后，它便一直出现在我们的视野里。初始，仅是一个基本定义接受了它，进而有过疑惑，随着矩阵论的学习又有了新的认识。曾经就有记录下对其理解的想法，但因思路尚未完善而一再搁置；直到今天重新想起，并完成了方向余弦作为线性空间的证明，才终于开始详细记录。 根据我对应力张量的阶段性认识，相应分为三部分进行记录。本文介绍第一部分，应力的基本知识和常规认识。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-14T01:42:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(转) 应力张量的认识之基本概念">
+<meta name="twitter:description" content="从本科的材料成形原理教材上认识了应力张量后，它便一直出现在我们的视野里。初始，仅是一个基本定义接受了它，进而有过疑惑，随着矩阵论的学习又有了新的认识。曾经就有记录下对其理解的想法，但因思路尚未完善而一再搁置；直到今天重新想起，并完成了方向余弦作为线性空间的证明，才终于开始详细记录。 根据我对应力张量的阶段性认识，相应分为三部分进行记录。本文介绍第一部分，应力的基本知识和常规认识。">
+  <link rel="canonical" href="https://pencilq.com/38/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>(转) 应力张量的认识之基本概念 | 小铅笔 & jeff</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小铅笔 & jeff</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">力学, 分享</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/38/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小铅笔 & jeff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://image.pencilq.com/images/2019/11/03/pic.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小铅笔 & jeff">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">(转) 应力张量的认识之基本概念
+
+          
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-14 08:52:16 / 修改时间：09:42:27" itemprop="dateCreated datePublished" datetime="2019-10-14T08:52:16+08:00">2019-10-14</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>从本科的材料成形原理教材上认识了应力张量后，它便一直出现在我们的视野里。初始，仅是一个基本定义接受了它，进而有过疑惑，随着矩阵论的学习又有了新的认识。曾经就有记录下对其理解的想法，但因思路尚未完善而一再搁置；直到今天重新想起，并完成了方向余弦作为线性空间的证明，才终于开始详细记录。</p>
+<p>根据我对应力张量的阶段性认识，相应分为三部分进行记录。本文介绍第一部分，应力的基本知识和常规认识。</p>
+<a id="more"></a>
+<h2 id="应力"><a href="#应力" class="headerlink" title="应力"></a>应力</h2><p>初中物理已指出，因外力作用而在物体内部产生的力称为<code>内力</code>。单位面积上的内力即是<code>应力</code>，表征内力的强度。</p>
+<p>为了研究某一点 $P$ 处的应力，用任意截面在 $P$ 点处切开物体，如下图所示。根据定义可以得到 $P$ 点的正应力 $\sigma$ 、切应力 $\tau$ ，他们的合成即为全应力。</p>
+<p><img alt=" " data-src="https://image.pencilq.com/images/2019/10/14/38-1.jpg"></p>
+<p>需要注意的是，一个确定的截面对应了一组正应力和切应力。但是过 $P$ 点有无数的截面，那么如何才能真正描述 $P$  点的应力状态呢？</p>
+<h3 id="应力状态"><a href="#应力状态" class="headerlink" title="应力状态"></a>应力状态</h3><p><code>应力状态</code> 是受力物体某一点各个截面上应力的变化情况。上面已经意识到过一点有无数的截面，只有任意截面上的应力分量都被确定，才能说应力状态是确定的。</p>
+<p>通常在无数的截面中，任意取三个互相垂直的截面，并以他们的法线方向建立笛卡尔坐标系。也即在P 点截取一个无限小的平行六面体，称为  <code>单元体</code> 。</p>
+<p><img alt=" " data-src="https://image.pencilq.com/images/2019/10/13/20191013202811.png"></p>
+<p>单元体无限小，因此单元体上相互平行的两个平面视为过该点的同一平面，也即他俩的应力是相同的。这样只用三个互相垂直的截面上的应力即可分析问题。</p>
+<p>由于单元体处于静力平衡状态，由绕各轴合力矩为零可以得到切应力互等定律。</p>
+<blockquote>
+<p>问题：既然单元体上相互平行的两个平面视为过该点的同一平面，那为什么上图平行的平面上应力是相反的？</p>
+<p>单元体上相互平行的两个平面视为过该点的同一平面，但是分别是被截开的两部分的平面。截开前他们是重合的，截开后成为了两部分各自的表面，而外表面是有方向的。所以，从各自的方向上来看，应力方向还是相同的。</p>
+</blockquote>
+<h3 id="应力张量"><a href="#应力张量" class="headerlink" title="应力张量"></a>应力张量</h3><p>根据上面单元体上的应力分量，是否可以求出下图所示任意截面上的应力分量？</p>
+<p><img alt=" " data-src="https://image.pencilq.com/images/2019/10/14/38-3.jpg"></p>
+<p>答案是肯定的。根据三个方向的静力平衡就可以计算得到上图法向为 $\vec{n}=(n_1,n_2,n_3)$  截面上的应力分量。于是，三个互相垂直的截面上的 9 个应力分量可以确定任意截面的应力，也就是说这一点的应力状态被完全确定了。并且，从这三个正交截面的选取上来看，他们和坐标系无关。</p>
+<p>于是，我们把单元体上的九个应力分量作为一个整体来描述 $P$ 点的应力状态，称作  <code>应力张量</code> ，记作</p>
+<script type="math/tex; mode=display">
+\sigma_{ij} =
+\begin{pmatrix} 
+\sigma_x & \tau_{xy} & \tau_{xz} \\
+\tau_{yx} & \sigma_y & \sigma_{yz} \\
+\tau_{zx} & \tau_{zy} & \sigma_z
+\end{pmatrix}</script><h2 id="主应力"><a href="#主应力" class="headerlink" title="主应力"></a>主应力</h2><p>如果作用在某一截面上的全应力和这一截面垂直，即该截面上只有正应力，则这一截面称为  <code>主平面</code> ，其法线方向称为应力主方向，该截面的应力称为  <code>主应力</code> 。如果三个坐标轴方向都是主方向，则称这一坐标系为  <code>主轴坐标系</code> 。</p>
+<p>确定方法依然是求解静力平衡方程。</p>
+<h3 id="应力张量不变量"><a href="#应力张量不变量" class="headerlink" title="应力张量不变量"></a>应力张量不变量</h3><p>在求解主应力的过程中会得到以主应力为未知数的三次方程，叫做  <code>状态方程</code> 。</p>
+<script type="math/tex; mode=display">
+\sigma^3-I_1\,\sigma^2+I_2\,\sigma-I_3=0</script><p>状态方程的三个系数由主应力唯一确定，而一点的主应力是唯一的，这样就得到了不随坐标系变化的三个量，叫作  <code>应力张量不变量</code> </p>
+<script type="math/tex; mode=display">
+\begin{align*}
+I_1 &= \sigma_1 + \sigma_2 + \sigma_3 \\
+I_2 &= \sigma_1 \, \sigma_2 + \sigma_2 \, \sigma_3 + \sigma_3 \, \sigma_1 \\
+I_3 &= \sigma_1 \, \sigma_2 \, \sigma_3
+\end{align*}</script><p>用一般应力表示为</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+I_1 &= \sigma_x + \sigma_y + \sigma_z \\
+I_2 &= \sigma_x \, \sigma_y + \sigma_y \, \sigma_z + \sigma_z \, \sigma_x - \tau_{xy}^2 - \tau_{yz}^2 - \tau_{zx}^2 \\
+I_3 &= \sigma_x \, \sigma_y \, \sigma_z + 2\,\tau_{xy}\,\tau_{yz}\,\tau_{zx} - \sigma_x\,\tau_{yz}^2 - \sigma_y\,\tau_{zx}^2 - \sigma_z\,\tau_{xy}^2
+\end{align*}</script><h3 id="主切应力"><a href="#主切应力" class="headerlink" title="主切应力"></a>主切应力</h3><p>切应力有极值的截面叫主切应力平面，截面上的切应力叫作  <code>主切应力</code> 。六个主切应力中绝对值最大的叫作最大切应力。通过计算可知，主切应力平面与主应力平面成 45° 夹角。下表是主切应力平面上的正应力、切应力值：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>主切应力平面</th>
+<th>切应力</th>
+<th>正应力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\left(0,\,\pm\dfrac{1}{\sqrt{2}},\,\pm\dfrac{1}{\sqrt{2}}\right)$</td>
+<td>$\pm\dfrac{\sigma_2-\sigma_3}{2}$</td>
+<td>$\dfrac{\sigma_2+\sigma_3}{2}$</td>
+</tr>
+<tr>
+<td>$\left(\pm\dfrac{1}{\sqrt{2}},\,0,\,\pm\dfrac{1}{\sqrt{2}}\right)$</td>
+<td>$\pm\dfrac{\sigma_1-\sigma_3}{2}$</td>
+<td>$\dfrac{\sigma_1+\sigma_3}{2}$</td>
+</tr>
+<tr>
+<td>$\left(\pm\dfrac{1}{\sqrt{2}},\,\pm\dfrac{1}{\sqrt{2}}\,0,\right)$</td>
+<td>$\pm\dfrac{\sigma_1-\sigma_2}{2}$</td>
+<td>$\dfrac{\sigma_1+\sigma_2}{2}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>由于塑性变形是由切应力引起的，所以最大切应力可以作为屈服准则。</p>
+<h2 id="应力张量分解"><a href="#应力张量分解" class="headerlink" title="应力张量分解"></a>应力张量分解</h2><p>将三个正应力的平均值叫作平均应力或者静水应力，应力张量减去这部分后得到  <code>应力偏张量</code> 。应力偏张量同样有三个不变量。</p>
+<script type="math/tex; mode=display">
+\sigma_m = \dfrac{1}{3}\left(\sigma_x+\sigma_y+\sigma_z\right) = \dfrac{1}{3}\left(\sigma_{11}+\sigma_{22}+\sigma_{33}\right)</script><script type="math/tex; mode=display">
+\begin{pmatrix}
+\sigma_x & \tau_{xy} & \tau_{xz} \\
+\tau_{yx} & \sigma_y & \sigma_{yz} \\
+\tau_{zx} & \tau_{zy} & \sigma_z
+\end{pmatrix}
+=
+\begin{pmatrix}
+\sigma_m & 0 & 0 \\
+0 & \sigma_m & 0 \\
+0 & 0 & \sigma_m
+\end{pmatrix}
++
+\begin{pmatrix}
+\sigma_x-\sigma_m & \tau_{xy} & \tau_{xz} \\
+\tau_{yx} & \sigma_y-\sigma_m & \sigma_{yz} \\
+\tau_{zx} & \tau_{zy} & \sigma_z-\sigma_m
+\end{pmatrix}</script><blockquote>
+<p>应力张量分解的物理意义在于：</p>
+<p>物体在应力张量作用下的变形分为体积变化和形状变化两部分；前者取决于应力球张量，后者取决于应力偏张量。<br>体积变化表征弹性变形，当应力偏张量满足一定条件后，则物体发生塑性变形。</p>
+</blockquote>
+<h2 id="应力平衡微分方程"><a href="#应力平衡微分方程" class="headerlink" title="应力平衡微分方程"></a>应力平衡微分方程</h2><p>以上说明的都是一点的应力状态，而物体内部不同点的应力状态一般是不同的，那么如何描述相邻点间的应力变化关系呢？</p>
+<p>以物体内某一点 $P(x,y,z)$ 为顶点截取边长分别为 $dx,dy,dz$ 的直角平行六面体微元，如下图所示，则另一顶点的坐标为 $(x+dx,y+dy,z+dz)$。</p>
+<p><img alt=" " data-src="https://image.pencilq.com/images/2019/10/14/38-4.jpg"></p>
+<p>根据静力平衡方程，并处理掉高阶小量，得到应力平衡微分方程：</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\dfrac{\partial\sigma_x}{\partial\,x}+\dfrac{\partial\tau_{yx}}{\partial\,y}+\dfrac{\partial\tau_{zx}}{\partial\,z} &= 0 \\
+\dfrac{\partial\tau_{xy}}{\partial\,x}+\dfrac{\partial\sigma_y}{\partial\,y}+\dfrac{\partial\tau_{zy}}{\partial\,z} &= 0 \\
+\dfrac{\partial\tau_{xz}}{\partial\,x}+\dfrac{\partial\tau_{yz}}{\partial\,y}+\dfrac{\partial\sigma_z}{\partial\,z} &= 0
+\end{align*}</script><blockquote>
+<p>问题：这部分微六面体应力状态分析图与之前点的应力状态图即为相似，却有不同，如何理解？<br>二者的涵义完全不同。点的应力状态图强调的是同一个点在不同截面下的状态，而微六面体应力状态分析强调的是相邻两个点之间的应力关系。可以说前者是静态的，后者揭示的是相互作用的关系。</p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这一部分梳理了我们常规学习的内容，可以概括为两点：</p>
+<ul>
+<li>应力张量 —— 某点的应力状态</li>
+<li>应力平衡方程 —— 相邻点的相互作用</li>
+</ul>
+<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><p><a href="https://pencilq.com/39">(转) 应力张量的认识之线性变换</a><br><a href="https://pencilq.com/40">(转) 应力张量的认识之线性变换的证明</a></p>
+<hr>
+<p>转载声明：</p>
+<ul>
+<li>本文转自：<a href="https://dothinking.github.io/blog/2013/07/30/%E5%BA%94%E5%8A%9B%E5%BC%A0%E9%87%8F%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B9%8B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html" target="_blank" rel="noopener">格致</a></li>
+<li>由原授权网址 <code>huangqy.pw</code> （已弃用）搬运至 <a href="https://pencilq.com">pencilq.com</a></li>
+<li>对文章内容有任何质疑或建议，请邮件联系 <a href="mailto:train8808@gmail.com" target="_blank" rel="noopener">train8808@gmail.com</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+      
+
+        
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/37/" rel="next" title="Mathematica 中的 feff 字符">
+                  <i class="fa fa-chevron-left"></i> Mathematica 中的 feff 字符
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/39/" rel="prev" title="(转) 应力张量的认识之线性变换">
+                  (转) 应力张量的认识之线性变换 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zOTQxNi8xNTk0Mw=="></div>
+  </div>
+  
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#应力"><span class="nav-number">1.</span> <span class="nav-text">应力</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应力状态"><span class="nav-number">1.1.</span> <span class="nav-text">应力状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应力张量"><span class="nav-number">1.2.</span> <span class="nav-text">应力张量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主应力"><span class="nav-number">2.</span> <span class="nav-text">主应力</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应力张量不变量"><span class="nav-number">2.1.</span> <span class="nav-text">应力张量不变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主切应力"><span class="nav-number">2.2.</span> <span class="nav-text">主切应力</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应力张量分解"><span class="nav-number">3.</span> <span class="nav-text">应力张量分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应力平衡微分方程"><span class="nav-number">4.</span> <span class="nav-text">应力平衡微分方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关文章"><span class="nav-number">6.</span> <span class="nav-text">相关文章</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+        <!-- add qq music to sidebar https://deletelibrary.com/blog/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90.html-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+        <meting-js
+	      auto="https://y.qq.com/n/yqq/playlist/7453291258.html"
+        list-folded= "true"
+    
+</meting-js>
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="https://image.pencilq.com/images/2019/11/03/pic.jpg"
+      alt="小铅笔 & jeff">
+  <p class="site-author-name" itemprop="name">小铅笔 & jeff</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:hqysmail@gmail.com" title="E-Mail &rarr; mailto:hqysmail@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备18138470号 </a>
+  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小铅笔 & jeff</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+<script src="/js/utils.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes: 0,
+          toolbar: 0,
+          statusbar: 0,
+          pagemode: 'thumbs',
+          view: 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+
+
+
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['[mhchem]/mhchem.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+<script src="/js/comment-locate.js"></script>
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+</body>
+</html>

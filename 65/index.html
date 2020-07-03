@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+  <link rel="alternate" href="/atom.xml" title="小铅笔 & jeff" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="一直想给 Quicker 的沙拉查词动作加个划词小图标，实现真正的划词翻译。 类似的划词翻译：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Quicker+C#实现划词翻译">
+<meta property="og:url" content="https://pencilq.com/65/index.html">
+<meta property="og:site_name" content="小铅笔 &amp; jeff">
+<meta property="og:description" content="一直想给 Quicker 的沙拉查词动作加个划词小图标，实现真正的划词翻译。 类似的划词翻译：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-03T14:37:39.106Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Quicker+C#实现划词翻译">
+<meta name="twitter:description" content="一直想给 Quicker 的沙拉查词动作加个划词小图标，实现真正的划词翻译。 类似的划词翻译：">
+  <link rel="canonical" href="https://pencilq.com/65/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Quicker+C#实现划词翻译 | 小铅笔 & jeff</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小铅笔 & jeff</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">力学, 分享</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/65/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小铅笔 & jeff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://image.pencilq.com/images/2019/11/03/pic.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小铅笔 & jeff">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">Quicker+C#实现划词翻译
+
+          
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-07-03 16:06:07 / 修改时间：22:37:39" itemprop="dateCreated datePublished" datetime="2020-07-03T16:06:07+08:00">2020-07-03</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>一直想给 Quicker 的<a href="https://getquicker.net/sharedaction?code=b0d1a134-8284-4a44-d1be-08d746da5869" target="_blank" rel="noopener">沙拉查词动作</a>加个划词小图标，实现真正的划词翻译。</p>
+<p><strong>类似的划词翻译：</strong></p>
+<a id="more"></a>
+<ul>
+<li><p>知云文献翻译：选中文本之后就自动显示翻译<br><img alt=" " data-src="https://image.pencilq.com/images/2020/07/03/zhiyun.gif"></p>
+</li>
+<li><p>有道词典，欧路词典，金山词霸等：选中文本后在鼠标旁边出现一个小图标，点击图标就可以翻译<br><img alt data-src="https://image.pencilq.com/images/2020/07/03/youdao.gif"></p>
+</li>
+</ul>
+<p>目前实现的效果：<br><video src="https://file.pencilq.com/videos/quicker_select_icon.mp4" preload="metadata" controls playsinline poster>Sorry, your browser does not support the video tag.</video><br>体验跟有道差太多了😭用的话勉强能用。。。。</p>
+<p>下面就简单记录下实现的思路(→_→)</p>
+<h2 id="识别划词"><a href="#识别划词" class="headerlink" title="识别划词"></a>识别划词</h2><p>网上有的说使用系统接口，或者调用金山词霸的 dll。看得有点混乱，难下手。</p>
+<p>于是决定换一个简单但不完美的思路——<strong>监听鼠标的左键事件</strong>。 Quicker 恰好提供了按键检测模块，现成的轮子美滋滋(￣y▽,￣)╭ </p>
+<p>划词一共有两种状态，满足下面这两种状态则模拟 Ctrl+C 获取文本，获取文本成功就是划词成功了。</p>
+<ul>
+<li>鼠标移动划词<ul>
+<li>鼠标左键长时间按下</li>
+<li>鼠标位置变化</li>
+</ul>
+</li>
+<li>鼠标双击取词<ul>
+<li>鼠标左键短时间按下两次</li>
+<li>鼠标位置不变</li>
+</ul>
+</li>
+</ul>
+<p>按照上面的思路，简单画一个实现流程<br><img alt=" " data-src="https://image.pencilq.com/images/2020/07/03/mouse_left.png"></p>
+<p><img alt="太长我也没眼看了😳 " data-src="https://image.pencilq.com/images/2020/07/03/Quicker_select.png"></p>
+<p>到这一步的话大概就是知云文献翻译的效果。<br><video src="https://file.pencilq.com/videos/quicker_select_Noicon.mp4" preload="metadata" controls playsinline poster>Sorry, your browser does not support the video tag.</video></p>
+<h2 id="划词图标"><a href="#划词图标" class="headerlink" title="划词图标"></a>划词图标</h2><p>划词小图标简单的实现想法：在划词后，弹出一个小窗口，小窗口的位置在鼠标附近。</p>
+<p>在 Quicker 动作中写窗口的话首选 C# 了（Quicker 支持运行 C# 代码，并且动作库中也有不少 C#实现的动作），于是决定尝试下 C#，写一个小窗口就溜。</p>
+<blockquote>
+<p>零基础第一步：以前看到 C# 脑里会变成 C 井 🤣，查了下原来叫 C Sharp。（菜鸡说起都是泪）</p>
+<p>第二步：B 站白嫖入门教程。一开始看 B 站的<a href="https://www.bilibili.com/video/BV1wx411K7rb" target="_blank" rel="noopener">C#语言入门详解</a>，没看一点就原地螺旋升天睡着了。不过好歹也知道自己需要的是 C# 的 WinForm 程序。</p>
+<p>第三步：C# WinForm 教程。再次来到学习网站 B 站，<a href="https://www.bilibili.com/video/BV1d7411F7PG" target="_blank" rel="noopener">C# WinForm 图形界面 GUI 编程<em>62 集视频教程 (桌面开发)</em>阿发你好</a>🤣🤣。实际上也没看多少，看了前面几个就差不多弄一个比较理想的窗口了。</p>
+<p>第四步：特定问题。一些特定的问题，直接搜索参考（抄袭）别人的解决方案就行。</p>
+</blockquote>
+<p>程序中只涉及两个部分，主窗口和按钮。</p>
+<ul>
+<li><p>主窗口：大小约在 40*40 像素，隐藏顶部标题栏，背景透明，鼠标附近弹出置顶。</p>
+</li>
+<li><p>按钮：铺满主窗口，设置背景图片。</p>
+</li>
+</ul>
+<p>实现逻辑：</p>
+<ol>
+<li>检测到划词操作成功后，则运行 C# 程序，在鼠标附近弹出且置顶。</li>
+<li>如果鼠标点击划词图标（按钮），那么关闭窗口，并且给 Quicker 返回成功触发值。</li>
+<li>如果鼠标点击了图标外部，使得图标失去了焦点，那么关闭窗口，并且给 Quicker 返回未成功触发值。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引用必要的命名空间</span></span><br><span class="line"><span class="keyword">using</span> System.Drawing;</span><br><span class="line"><span class="keyword">using</span> System.Windows.Forms;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Quicker将会调用的函数</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Exec</span><span class="params">(Quicker.Public.IStepContext context)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    var getBitmp = context.GetVarValue(<span class="string">"saladictImg"</span>);  <span class="comment">// 读取动作里的变量值</span></span><br><span class="line">    Image pic = getBitmp as Image;</span><br><span class="line">    Saladict.icon = pic;</span><br><span class="line">    Saladict form = <span class="keyword">new</span> Saladict();</span><br><span class="line">    form.ShowDialog();</span><br><span class="line">    <span class="keyword">bool</span> trigger = Saladict.triggerSuccess;</span><br><span class="line">    context.SetVarValue(<span class="string">"CSharpTrigger"</span>, trigger); <span class="comment">// 向变量里输出值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> partial <span class="class"><span class="keyword">class</span> <span class="title">Saladict</span> :</span> Form</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> triggerSuccess = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Image icon;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Saladict</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        InitializeComponent();</span><br><span class="line">        <span class="keyword">this</span>.CloseButton.BackgroundImage = icon;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Saladict_Load</span><span class="params">(object sender, EventArgs e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        var _point = <span class="keyword">new</span> System.Drawing.Point(Cursor.Position.X, Cursor.Position.Y);</span><br><span class="line">        Top = _point.Y;</span><br><span class="line">        Left = _point.X;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.BackColor = Color.Black;</span><br><span class="line">        <span class="keyword">this</span>.TransparencyKey = Color.Black;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Clicked</span><span class="params">(object sender, EventArgs e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        triggerSuccess = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">this</span>.Deactivate -= LoseFocus;</span><br><span class="line">        <span class="comment">// MessageBox.Show(triggerSuccess.ToString());</span></span><br><span class="line">        <span class="keyword">this</span>.Close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">LoseFocus</span><span class="params">(object sender, EventArgs e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        triggerSuccess = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">this</span>.Deactivate -= LoseFocus;</span><br><span class="line">        <span class="comment">// MessageBox.Show(triggerSuccess.ToString());</span></span><br><span class="line">        <span class="keyword">this</span>.Close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/// &lt;summary&gt;</span></span><br><span class="line">    <span class="comment">/// 必需的设计器变量。</span></span><br><span class="line">    <span class="comment">/// &lt;/summary&gt;</span></span><br><span class="line">    <span class="keyword">private</span> System.ComponentModel.IContainer components = null;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// &lt;summary&gt;</span></span><br><span class="line">    <span class="comment">/// 清理所有正在使用的资源。</span></span><br><span class="line">    <span class="comment">/// &lt;/summary&gt;</span></span><br><span class="line">    <span class="comment">/// &lt;param name="disposing"&gt;如果应释放托管资源，为 true；否则为 false。&lt;/param&gt;</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> override <span class="keyword">void</span> <span class="title">Dispose</span><span class="params">(<span class="keyword">bool</span> disposing)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (disposing &amp;&amp; (components != null))</span><br><span class="line">        &#123;</span><br><span class="line">            components.Dispose();</span><br><span class="line">        &#125;</span><br><span class="line">        base.Dispose(disposing);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#region Windows 窗体设计器生成的代码</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/// &lt;summary&gt;</span></span><br><span class="line">    <span class="comment">/// 设计器支持所需的方法 - 不要修改</span></span><br><span class="line">    <span class="comment">/// 使用代码编辑器修改此方法的内容。</span></span><br><span class="line">    <span class="comment">/// &lt;/summary&gt;</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">InitializeComponent</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.CloseButton = <span class="keyword">new</span> System.Windows.Forms.Button();</span><br><span class="line">        <span class="keyword">this</span>.SuspendLayout();</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">// CloseButton</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="keyword">this</span>.CloseButton.BackColor = System.Drawing.Color.Transparent;</span><br><span class="line">        <span class="keyword">this</span>.CloseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;</span><br><span class="line">        <span class="keyword">this</span>.CloseButton.FlatAppearance.BorderSize = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.CloseButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;</span><br><span class="line">        <span class="keyword">this</span>.CloseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;</span><br><span class="line">        <span class="keyword">this</span>.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;</span><br><span class="line">        <span class="keyword">this</span>.CloseButton.ForeColor = System.Drawing.Color.Transparent;</span><br><span class="line">        <span class="keyword">this</span>.CloseButton.Location = <span class="keyword">new</span> System.Drawing.Point(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">this</span>.CloseButton.Margin = <span class="keyword">new</span> System.Windows.Forms.Padding(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">this</span>.CloseButton.MaximumSize = <span class="keyword">new</span> System.Drawing.Size(<span class="number">40</span>, <span class="number">40</span>);</span><br><span class="line">        <span class="keyword">this</span>.CloseButton.MinimumSize = <span class="keyword">new</span> System.Drawing.Size(<span class="number">30</span>, <span class="number">30</span>);</span><br><span class="line">        <span class="keyword">this</span>.CloseButton.Name = <span class="string">"CloseButton"</span>;</span><br><span class="line">        <span class="keyword">this</span>.CloseButton.Size = <span class="keyword">new</span> System.Drawing.Size(<span class="number">40</span>, <span class="number">40</span>);</span><br><span class="line">        <span class="keyword">this</span>.CloseButton.TabIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.CloseButton.UseVisualStyleBackColor = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">this</span>.CloseButton.Click += <span class="keyword">new</span> System.EventHandler(<span class="keyword">this</span>.Clicked);</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">// Saladict</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="keyword">this</span>.AutoScaleDimensions = <span class="keyword">new</span> System.Drawing.SizeF(<span class="number">8F</span>, <span class="number">15F</span>);</span><br><span class="line">        <span class="keyword">this</span>.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;</span><br><span class="line">        <span class="keyword">this</span>.AutoSize = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">this</span>.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;</span><br><span class="line">        <span class="keyword">this</span>.ClientSize = <span class="keyword">new</span> System.Drawing.Size(<span class="number">40</span>, <span class="number">40</span>);</span><br><span class="line">        <span class="keyword">this</span>.Controls.Add(<span class="keyword">this</span>.CloseButton);</span><br><span class="line">        <span class="keyword">this</span>.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;</span><br><span class="line">        <span class="keyword">this</span>.MaximumSize = <span class="keyword">new</span> System.Drawing.Size(<span class="number">40</span>, <span class="number">40</span>);</span><br><span class="line">        <span class="keyword">this</span>.MinimumSize = <span class="keyword">new</span> System.Drawing.Size(<span class="number">30</span>, <span class="number">30</span>);</span><br><span class="line">        <span class="keyword">this</span>.Name = <span class="string">"Saladict"</span>;</span><br><span class="line">        <span class="keyword">this</span>.ShowInTaskbar = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">this</span>.StartPosition = System.Windows.Forms.FormStartPosition.Manual;</span><br><span class="line">        <span class="keyword">this</span>.TopMost = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">this</span>.Deactivate += <span class="keyword">new</span> System.EventHandler(<span class="keyword">this</span>.LoseFocus);</span><br><span class="line">        <span class="keyword">this</span>.Load += <span class="keyword">new</span> System.EventHandler(<span class="keyword">this</span>.Saladict_Load);</span><br><span class="line">        <span class="keyword">this</span>.ResumeLayout(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#endregion</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> System.Windows.Forms.Button CloseButton;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其实还存在几个令人非常不爽的问题</p>
+<ol>
+<li>弹出的窗口会抢占焦点</li>
+<li>图标显示有锯齿</li>
+<li>没有处理高分屏显示的问题。（主要是贫穷如我没有高分屏😅）</li>
+</ol>
+<p>简陋就是这么简陋的了，只能靠着简陋才能度日这样子。写好了就溜了，只能等什么时候有动力再回来完善下这样子。</p>
+<p>实现过程中一个小插曲——这图标文件怎么存。想了两个方案</p>
+<ol>
+<li>检查电脑特定路径中是否存在图标文件，不存在就后台下载一份。</li>
+<li>把图标转成 base64 编码，以文本形式存在 Quicker 变量中，要用的时候再转回图片，传入 C#。</li>
+</ol>
+<p>还是第二个方案比较好一点，免得下载文件了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>需求才是学习的最大动力啊，用着 Quicker 附带着学了其他东西。下面总结下划词的实现。</p>
+<p><strong>实现过程：</strong></p>
+<ol>
+<li>首先要判断是否划词成功——通过监控鼠标左键状态实现。</li>
+<li>其次要在划词成功后弹出划词图标——通过 C# WinForm 画一个小窗口。</li>
+</ol>
+<p><strong>存在问题：</strong></p>
+<ol>
+<li>纯粹通过鼠标左键来判断划词容易误判；并且模拟 Ctrl+C 获取文本也容易在某些窗口引起误操作（例如终端窗口）。</li>
+<li>划词图标抢占焦点；图标显示有锯齿；高分屏不友好。</li>
+</ol>
+<p>不过目前来说已经够用了（够用就好，够用就好 (￣ y▽,￣)╭</p>
+
+    </div>
+
+    
+    
+    
+      
+
+        
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/64/" rel="next" title="通过LaTeX发行版直接转换和查看EPS">
+                  <i class="fa fa-chevron-left"></i> 通过LaTeX发行版直接转换和查看EPS
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zOTQxNi8xNTk0Mw=="></div>
+  </div>
+  
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#识别划词"><span class="nav-number">1.</span> <span class="nav-text">识别划词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#划词图标"><span class="nav-number">2.</span> <span class="nav-text">划词图标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+        <!-- add qq music to sidebar https://deletelibrary.com/blog/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90.html-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+        <meting-js
+	      auto="https://y.qq.com/n/yqq/playlist/7453291258.html"
+        list-folded= "true"
+    
+</meting-js>
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="https://image.pencilq.com/images/2019/11/03/pic.jpg"
+      alt="小铅笔 & jeff">
+  <p class="site-author-name" itemprop="name">小铅笔 & jeff</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:hqysmail@gmail.com" title="E-Mail &rarr; mailto:hqysmail@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备18138470号 </a>
+  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小铅笔 & jeff</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+<script src="/js/utils.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes: 0,
+          toolbar: 0,
+          statusbar: 0,
+          pagemode: 'thumbs',
+          view: 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+<script src="/js/comment-locate.js"></script>
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+</body>
+</html>
