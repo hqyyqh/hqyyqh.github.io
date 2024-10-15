@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-p.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-p.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-p.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pencilq.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="SublimeText 3207 破解  参考 https:&#x2F;&#x2F;www.xiaomcm.com&#x2F;249.html  添加 Windows 右键 Sublime Text 打开文件夹  https:&#x2F;&#x2F;gist.github.com&#x2F;roundand&#x2F;9367852">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sublimetext 相关配置">
+<meta property="og:url" content="https://pencilq.com/27/">
+<meta property="og:site_name" content="小铅笔 &amp; Jeff">
+<meta property="og:description" content="SublimeText 3207 破解  参考 https:&#x2F;&#x2F;www.xiaomcm.com&#x2F;249.html  添加 Windows 右键 Sublime Text 打开文件夹  https:&#x2F;&#x2F;gist.github.com&#x2F;roundand&#x2F;9367852">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-24T10:24:22.000Z">
+<meta property="article:modified_time" content="2024-10-15T15:34:57.968Z">
+<meta property="article:author" content="小铅笔 &amp; Jeff">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pencilq.com/27/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pencilq.com/27/","path":"/27/","title":"sublimetext 相关配置"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>sublimetext 相关配置 | 小铅笔 & Jeff</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">小铅笔 & Jeff</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sublimetext-3207-%E7%A0%B4%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">SublimeText 3207 破解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-windows-%E5%8F%B3%E9%94%AE-sublime-text-%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">2.</span> <span class="nav-text">添加 Windows 右键
+Sublime Text 打开文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%8F%9C%E5%8D%95%E6%A0%8F%E5%8F%8A%E4%BE%A7%E6%A0%8F%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F"><span class="nav-number">3.</span> <span class="nav-text">修改菜单栏及侧栏字体大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#latex-tools-%E9%A2%84%E8%A7%88%E5%85%AC%E5%BC%8F%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">LaTeX-Tools
+预览公式失败的问题</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小铅笔 & Jeff"
+      src="/images/favicon-pancilq.png">
+  <p class="site-author-name" itemprop="name">小铅笔 & Jeff</p>
+  <div class="site-description" itemprop="description">一个分享日常的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hqyyqh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hqyyqh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hqysmail@gmail.com" title="E-Mail → mailto:hqysmail@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/27/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon-pancilq.png">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+      <meta itemprop="description" content="一个分享日常的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="sublimetext 相关配置 | 小铅笔 & Jeff">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          sublimetext 相关配置<a href="https://github.com/hqyyqh/blog_source/tree/master/source/_posts/27-sublimetext3207%E5%AE%89%E8%A3%85%E4%BF%AE%E6%94%B9.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-07-24 10:24:22" itemprop="dateCreated datePublished" datetime="2019-07-24T10:24:22+00:00">2019-07-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-15 15:34:57" itemprop="dateModified" datetime="2024-10-15T15:34:57+00:00">2024-10-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="sublimetext-3207-破解">SublimeText 3207 破解</h2>
+<blockquote>
+<p>参考 <a
+target="_blank" rel="noopener" href="https://www.xiaomcm.com/249.html">https://www.xiaomcm.com/249.html</a></p>
+</blockquote>
+<h2 id="添加-windows-右键-sublime-text-打开文件夹">添加 Windows 右键
+Sublime Text 打开文件夹</h2>
+<blockquote>
+<p><a
+target="_blank" rel="noopener" href="https://gist.github.com/roundand/9367852">https://gist.github.com/roundand/9367852</a></p>
+</blockquote>
+<span id="more"></span>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">SET</span> st3Path=D:\Program Files\Sublime Text <span class="number">3</span>\sublime_text.exe</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">rem add it for all file types</span></span><br><span class="line">@reg add &quot;HKEY_CLASSES_ROOT\*\shell\Open with Sublime Text <span class="number">3</span>&quot;         /t REG_SZ /v &quot;&quot; /d &quot;Open with Sublime Text <span class="number">3</span>&quot;   /f</span><br><span class="line">@reg add &quot;HKEY_CLASSES_ROOT\*\shell\Open with Sublime Text <span class="number">3</span>&quot;         /t REG_EXPAND_SZ /v &quot;Icon&quot; /d &quot;<span class="variable">%st3Path%</span>,<span class="number">0</span>&quot; /f</span><br><span class="line">@reg add &quot;HKEY_CLASSES_ROOT\*\shell\Open with Sublime Text <span class="number">3</span>\command&quot; /t REG_SZ /v &quot;&quot; /d &quot;<span class="variable">%st3Path%</span> \&quot;<span class="variable">%%1</span>\&quot;&quot; /f</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">rem add it for folders</span></span><br><span class="line">@reg add &quot;HKEY_CLASSES_ROOT\Folder\shell\Open with Sublime Text <span class="number">3</span>&quot;         /t REG_SZ /v &quot;&quot; /d &quot;Open with Sublime Text <span class="number">3</span>&quot;   /f</span><br><span class="line">@reg add &quot;HKEY_CLASSES_ROOT\Folder\shell\Open with Sublime Text <span class="number">3</span>&quot;         /t REG_EXPAND_SZ /v &quot;Icon&quot; /d &quot;<span class="variable">%st3Path%</span>,<span class="number">0</span>&quot; /f</span><br><span class="line">@reg add &quot;HKEY_CLASSES_ROOT\Folder\shell\Open with Sublime Text <span class="number">3</span>\command&quot; /t REG_SZ /v &quot;&quot; /d &quot;<span class="variable">%st3Path%</span> \&quot;<span class="variable">%%1</span>\&quot;&quot; /f</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure>
+<p>修改路径 st3Path，保存为
+xxx.bat，以管理员身份运行，运行后即可在菜单看到相应选项。打开目录树
+<code>先按 ctrl+k 再 ctrl+b</code> <img
+src="https://image.pencilq.com/images/2019/07/03/sublimetext3-folder.png" /></p>
+<h2 id="修改菜单栏及侧栏字体大小">修改菜单栏及侧栏字体大小</h2>
+<p><a
+target="_blank" rel="noopener" href="https://www.jianshu.com/p/906c48f2da5c">https://www.jianshu.com/p/906c48f2da5c</a></p>
+<h2 id="latex-tools-预览公式失败的问题">LaTeX-Tools
+预览公式失败的问题</h2>
+<blockquote>
+<p>参考 <a
+target="_blank" rel="noopener" href="https://github.com/SublimeText/LaTeXTools/issues/1148#issuecomment-314762160">https://github.com/SublimeText/LaTeXTools/issues/1148#issuecomment-314762160</a></p>
+</blockquote>
+<p>新建环境变量 <code>GS_LIB</code>，根据 texlive 安装路径进行修改
+<code>path\to\texlive\tlpkg\tlgs\Resource\Init;path\to\texlive\tlpkg\tlgs\kanji</code>，重启
+Sublime Text。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/25/" rel="prev" title="获取知网学位论文 pdf 版本">
+                  <i class="fa fa-angle-left"></i> 获取知网学位论文 pdf 版本
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/29/" rel="next" title="自建 rss 服务——tinytinyrss">
+                  自建 rss 服务——tinytinyrss <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Pencilq</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-p.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-p.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-p.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pencilq.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言 趁着618入手了NAS和几块硬盘，想着把照片和视频存一份在NAS里面。日常的照片全都是通过pixel一代同步到谷歌相册中，总体积达460G+。在把这些照片备份下来的过程中一步一个坑😶‍🌫️，接下来我来好好挖挖这些槽点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="老坑新踩：谷歌相册导出照片到本地">
+<meta property="og:url" content="https://pencilq.com/68/">
+<meta property="og:site_name" content="小铅笔 &amp; Jeff">
+<meta property="og:description" content="前言 趁着618入手了NAS和几块硬盘，想着把照片和视频存一份在NAS里面。日常的照片全都是通过pixel一代同步到谷歌相册中，总体积达460G+。在把这些照片备份下来的过程中一步一个坑😶‍🌫️，接下来我来好好挖挖这些槽点。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pencilq.com/images/%E6%95%99%E7%A8%8B/%E8%B0%B7%E6%AD%8C%E7%9B%B8%E5%86%8C%E5%AF%BC%E5%87%BA1.jpg">
+<meta property="og:image" content="https://pencilq.com/images/%E6%95%99%E7%A8%8B/%E8%B0%B7%E6%AD%8C%E7%9B%B8%E5%86%8C%E5%AF%BC%E5%87%BA2.jpg">
+<meta property="og:image" content="https://pencilq.com/images/%E6%95%99%E7%A8%8B/%E8%B0%B7%E6%AD%8C%E7%9B%B8%E5%86%8C%E5%AF%BC%E5%87%BA5.jpg">
+<meta property="og:image" content="https://pencilq.com/images/%E6%95%99%E7%A8%8B/%E8%B0%B7%E6%AD%8C%E7%9B%B8%E5%86%8C%E5%AF%BC%E5%87%BA3.jpg">
+<meta property="og:image" content="https://pencilq.com/images/%E6%95%99%E7%A8%8B/%E8%B0%B7%E6%AD%8C%E7%9B%B8%E5%86%8C%E5%AF%BC%E5%87%BA4.jpg">
+<meta property="article:published_time" content="2022-07-03T13:42:21.000Z">
+<meta property="article:modified_time" content="2024-10-15T15:34:57.970Z">
+<meta property="article:author" content="小铅笔 &amp; Jeff">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pencilq.com/images/%E6%95%99%E7%A8%8B/%E8%B0%B7%E6%AD%8C%E7%9B%B8%E5%86%8C%E5%AF%BC%E5%87%BA1.jpg">
+
+
+<link rel="canonical" href="https://pencilq.com/68/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pencilq.com/68/","path":"/68/","title":"老坑新踩：谷歌相册导出照片到本地"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>老坑新踩：谷歌相册导出照片到本地 | 小铅笔 & Jeff</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">小铅笔 & Jeff</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%B3%E5%A6%A5%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">稳妥的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%B7%E6%AD%8C%E7%9B%B8%E5%86%8C%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD%E5%AF%BC%E5%87%BA"><span class="nav-number">2.1.</span> <span class="nav-text">谷歌相册数据备份导出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%8C%85%E8%A7%A3%E5%8E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">压缩包解压</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%85%A5exif%E4%BF%A1%E6%81%AF"><span class="nav-number">2.3.</span> <span class="nav-text">写入exif信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E6%96%87%E4%BB%B6"><span class="nav-number">2.4.</span> <span class="nav-text">检查文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">踩坑操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9D%91%E4%B8%80%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5"><span class="nav-number">3.0.1.</span> <span class="nav-text">坑一：电子邮件下载链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9D%91%E4%BA%8C%E7%9B%B4%E6%8E%A5%E5%AF%BC%E5%87%BA%E5%88%B0onedrive"><span class="nav-number">3.0.2.</span> <span class="nav-text">坑二：直接导出到Onedrive</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9D%91%E4%B8%89%E6%9C%AC%E5%9C%B0%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3"><span class="nav-number">4.</span> <span class="nav-text">坑三：本地磁盘空间不足</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小铅笔 & Jeff"
+      src="/images/favicon-pancilq.png">
+  <p class="site-author-name" itemprop="name">小铅笔 & Jeff</p>
+  <div class="site-description" itemprop="description">一个分享日常的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hqyyqh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hqyyqh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hqysmail@gmail.com" title="E-Mail → mailto:hqysmail@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/68/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon-pancilq.png">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+      <meta itemprop="description" content="一个分享日常的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="老坑新踩：谷歌相册导出照片到本地 | 小铅笔 & Jeff">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          老坑新踩：谷歌相册导出照片到本地<a href="https://github.com/hqyyqh/blog_source/tree/master/source/_posts/68-%E8%80%81%E5%9D%91%E6%96%B0%E8%B8%A9%EF%BC%9A%E8%B0%B7%E6%AD%8C%E7%9B%B8%E5%86%8C%E5%AF%BC%E5%87%BA%E7%85%A7%E7%89%87%E5%88%B0%E6%9C%AC%E5%9C%B0.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-07-03 13:42:21" itemprop="dateCreated datePublished" datetime="2022-07-03T13:42:21+00:00">2022-07-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-15 15:34:57" itemprop="dateModified" datetime="2024-10-15T15:34:57+00:00">2024-10-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="前言">前言</h2>
+<p>趁着618入手了NAS和几块硬盘，想着把照片和视频存一份在NAS里面。日常的照片全都是<a
+target="_blank" rel="noopener" href="https://www.coolapk.com/feed/26931317?shareKey=YzFkOWU3Nzg2Mzg0NjJjMTJjNGE">通过pixel一代同步到谷歌相册中</a>，总体积达460G+。在把这些照片备份下来的过程中一步一个坑😶‍🌫️，接下来我来好好挖挖这些槽点。</p>
+<span id="more"></span>
+<h2 id="稳妥的操作">稳妥的操作</h2>
+<h3 id="谷歌相册数据备份导出">谷歌相册数据备份导出</h3>
+<blockquote>
+<p>几番摸索下来，在数据量比较大的情况下，推荐以下方法。</p>
+</blockquote>
+<p>谷歌账号的数据可以在 <code>https://takeout.google.com/</code>
+导出，选择<code>Google相册</code>后<code>下一步</code></p>
+<p><img src="../images/教程/谷歌相册导出1.jpg" /></p>
+<p><code>提供方式</code>选择<code>添加到Onedrive</code>，文件的大小选择上限值<code>50GB</code>，</p>
+<blockquote>
+<p><strong>但是</strong></p>
+<ol type="1">
+<li><p>Onedrive需为个人账号，校园账号和企业账号无法关联导出。我拼车了家庭版
+Office365，OneDrive有1T空间；</p></li>
+<li><p>且剩余空间要足够谷歌相册文件的总体积，否则最后会有部分压缩包无法导出。</p></li>
+</ol>
+<p>BB：即使如此，我这导出的压缩包足足也有10个😭</p>
+</blockquote>
+<p><img src="../images/教程/谷歌相册导出2.jpg" /></p>
+<p>关联Onedrive账号后，静待导出完成即可。</p>
+<h3 id="压缩包解压">压缩包解压</h3>
+<p>从谷歌相册的Takeout页面导出，并且把所有压缩包同步到本地后，将所有压缩包解压，合并，得到一个<code>takeout\google相册</code>目录，里面的照片和视频以年份和自定义相册分类在不同的文件夹中。这些媒体文件已经“净身出户”，丢失了原有的exif信息，这些exif信息被存到了同名的<code>.json</code>文件中。下一步关键的操作就是把这些<code>.json</code>文件重新合并到媒体文件中。</p>
+<p><img src="../images/教程/谷歌相册导出5.jpg" /></p>
+<h3 id="写入exif信息">写入exif信息</h3>
+<p>现在已经有不少现成工具可以批量把<code>.json</code>文件合并到媒体文件中，有免费的，有收费的，如</p>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://sspai.com/post/63675">如何导出 Google Photos
+的照片</a>，评论区提到<a
+target="_blank" rel="noopener" href="https://github.com/TheLastGimbus/GooglePhotosTakeoutHelper">GooglePhotosTakeoutHelper</a>，<a
+target="_blank" rel="noopener" href="https://github.com/mattwilson1024/google-photos-exif">google-photos-exif</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/65210140/how-to-merge-json-and-google-takeout-photos-to-get-the-right-dates-back"
+class="uri">https://stackoverflow.com/questions/65210140/how-to-merge-json-and-google-takeout-photos-to-get-the-right-dates-back</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/42024255/bulk-join-json-with-jpg-from-google-takeout"
+class="uri">https://stackoverflow.com/questions/42024255/bulk-join-json-with-jpg-from-google-takeout</a></li>
+</ol>
+<p>对安装编程环境不熟悉的用户可以下载<a
+target="_blank" rel="noopener" href="https://github.com/TheLastGimbus/GooglePhotosTakeoutHelper">GooglePhotosTakeoutHelper</a>编译好的可执行文件<a
+target="_blank" rel="noopener" href="https://github.com/TheLastGimbus/GooglePhotosTakeoutHelper/releases">takeout-helper.exe</a>，在命令行中输入</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;E:\temp\takeout-helper.exe&quot; -i &quot;E:\temp\takeout\Google相册&quot; -o &quot;E:\temp\谷歌相册导出&quot;</span><br></pre></td></tr></table></figure>
+<p>根据自己电脑的情况替换上面的路径，建议带上双引号""，防止路径中包含空格等特殊符号导致命令错误</p>
+<ol type="1">
+<li><code>E:\temp\takeout-helper.exe</code>：<code>takeout-helper.exe</code>所在的路径</li>
+<li><code>E:\temp\takeout\Google相册</code>：压缩包解压合并后得到的文件夹</li>
+<li><code>E:\temp\谷歌相册导出</code>：处理完成后照片和视频的导出路径</li>
+</ol>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/TheLastGimbus/GooglePhotosTakeoutHelper">GooglePhotosTakeoutHelper</a>和<a
+target="_blank" rel="noopener" href="https://github.com/mattwilson1024/google-photos-exif">google-photos-exif</a>的命令行版本使用也比较简单，参考主页说明即可。</p>
+<h3 id="检查文件">检查文件</h3>
+<p>如果你不确认是否所有的文件都顺利处理好，对比下源文件夹跟输出文件夹是否有文件重复就可以。类似的查找重复文件的软件很多，例如<a
+target="_blank" rel="noopener" href="https://masuit.com/1776">Duplicate Cleaner</a></p>
+<h2 id="踩坑操作">踩坑操作</h2>
+<h4 id="坑一电子邮件下载链接">坑一：电子邮件下载链接</h4>
+<p><img src="../images/教程/谷歌相册导出3.jpg" /></p>
+<p>首先图中的Google云端硬盘和Dropbox免费空间都很小，付费版本价格较高，且访问需要梯。文件体积过大无法全部导出，并且拉回本地还需要消耗较多流量。
+在国内，还是导出到OneDrive更适合，价格便宜更不需要梯。</p>
+<p>选择<code>通过电子邮件发送下载链接</code>，谷歌会提供单独的压缩包下载链接（最后悔的尝试），要注意的问题如下：</p>
+<ol type="1">
+<li><strong>梯流量要足够</strong>（花了近500G的流量下载，心痛）；</li>
+<li><strong>压缩包下载卡99.9%进度</strong>，如鲠在喉，如果你有自信打破卡99.9%的诅咒，尽管尝试；</li>
+<li>谷歌提供的压缩包<strong>下载链接只能访问7次</strong>（大概），如果你因为各种原因点击了7次还没下载完成，恭喜你，重新导出吧😡；</li>
+<li><strong>尽量选择文件上限50GB导出</strong>，减少压缩包的数量。初次尝试我选择了2GB，结果得到了118个压缩包下载链接，让人头皮发麻。</li>
+</ol>
+<h4 id="坑二直接导出到onedrive">坑二：直接导出到Onedrive</h4>
+<p>当然，细心的你还会发现另一个导出选项</p>
+<p><img src="../images/教程/谷歌相册导出4.jpg" /></p>
+<p>这居然是直接把照片导出到OneDrive（不是压缩包）。然而，这也是一个大坑</p>
+<ol type="1">
+<li><strong>真的仅仅是导出照片</strong>，多么精准的描述，视频是无法通过这个途径导出的😊；</li>
+<li>导出的照片放在OneDrive的<code>图片</code>文件夹。<code>图片</code>文件夹也是手机相册默认上传的位置，<strong>谷歌导出的图片会混在一起</strong>；</li>
+<li><strong>导出的照片丢失exif信息，并且无附带<code>.json</code>文件</strong>，例如拍摄时间，地点等。(众所周知)，谷歌Takeout页面导出的媒体文件原本的exif信息单独存放于同名的<code>.json</code>文件，然而直接导出到Onedrive的时候并不包含<code>.json</code>文件，这意味着你的照片无法以正确的时间序列展示，并且其它常用于分析归类照片的exif信息也全都无了。</li>
+</ol>
+<h2 id="坑三本地磁盘空间不足">坑三：本地磁盘空间不足</h2>
+<p>本地磁盘空间是很容易忽略的一点</p>
+<ol type="1">
+<li>从Onedrive把压缩包同步到本地，若本地缓存空间不足，同样会卡下载；</li>
+<li>压缩包解压同上；</li>
+<li>写入exif信息的时候，同样会自动把文件复制一遍到输出文件夹中，空间不足程序会中止。</li>
+</ol>
+<hr />
+<p>谷歌相册还是很好用的，但有备无患，毕竟照片和视频记录了我人生中无数重要的时刻，怎么备份都不为过。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/67/" rel="prev" title="综述：电子膨胀阀制冷剂流量特征模型">
+                  <i class="fa fa-angle-left"></i> 综述：电子膨胀阀制冷剂流量特征模型
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/69/" rel="next" title="NAS初体验：极空间新Z4">
+                  NAS初体验：极空间新Z4 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Pencilq</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

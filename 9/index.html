@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-p.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-p.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-p.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pencilq.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="需求：近期有一批图由于图例太小，需要重新绘制，但只有 pdf 文件 解决方案：用 PPT 画图例，再通过 PDF-XChange 将新图例覆盖上去。 问题来了：LaTeX 编译时无法显示我覆盖的图片。于是推测直接写入的图片是注释的形式，而 LaTeX 编译时会忽略这部分。  测试：将带注释的 pdf 重新打印后，LaTeX 编译得到了想要的效果。所以最后的解决方案是将 pdf 全部另存一遍就好了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在命令行中批处理 pdf">
+<meta property="og:url" content="https://pencilq.com/9/">
+<meta property="og:site_name" content="小铅笔 &amp; Jeff">
+<meta property="og:description" content="需求：近期有一批图由于图例太小，需要重新绘制，但只有 pdf 文件 解决方案：用 PPT 画图例，再通过 PDF-XChange 将新图例覆盖上去。 问题来了：LaTeX 编译时无法显示我覆盖的图片。于是推测直接写入的图片是注释的形式，而 LaTeX 编译时会忽略这部分。  测试：将带注释的 pdf 重新打印后，LaTeX 编译得到了想要的效果。所以最后的解决方案是将 pdf 全部另存一遍就好了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-01T11:14:29.000Z">
+<meta property="article:modified_time" content="2024-10-15T15:34:57.971Z">
+<meta property="article:author" content="小铅笔 &amp; Jeff">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pencilq.com/9/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pencilq.com/9/","path":"/9/","title":"在命令行中批处理 pdf"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>在命令行中批处理 pdf | 小铅笔 & Jeff</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">小铅笔 & Jeff</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#imagemagick"><span class="nav-number">1.</span> <span class="nav-text">imagemagick</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mupdf"><span class="nav-number">2.</span> <span class="nav-text">mupdf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pdfpngjpgpdf"><span class="nav-number">3.</span> <span class="nav-text">pdf→png→jpg→pdf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小铅笔 & Jeff"
+      src="/images/favicon-pancilq.png">
+  <p class="site-author-name" itemprop="name">小铅笔 & Jeff</p>
+  <div class="site-description" itemprop="description">一个分享日常的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hqyyqh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hqyyqh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hqysmail@gmail.com" title="E-Mail → mailto:hqysmail@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon-pancilq.png">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+      <meta itemprop="description" content="一个分享日常的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="在命令行中批处理 pdf | 小铅笔 & Jeff">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在命令行中批处理 pdf<a href="https://github.com/hqyyqh/blog_source/tree/master/source/_posts/9-%E5%9C%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%AD%E6%89%B9%E5%A4%84%E7%90%86%20pdf.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-09-01 11:14:29" itemprop="dateCreated datePublished" datetime="2019-09-01T11:14:29+00:00">2019-09-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-15 15:34:57" itemprop="dateModified" datetime="2024-10-15T15:34:57+00:00">2024-10-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><code>需求</code>：近期有一批图由于图例太小，需要重新绘制，但只有 pdf
+文件</p>
+<p><code>解决方案</code>：用 PPT 画图例，再通过 PDF-XChange
+将新图例覆盖上去。 <div class="note warning"><p>问题来了：LaTeX
+编译时无法显示我覆盖的图片。于是推测直接写入的图片是注释的形式，而 LaTeX
+编译时会忽略这部分。</p>
+</div></p>
+<p>测试：将带注释的 pdf 重新打印后，LaTeX
+编译得到了想要的效果。所以最后的解决方案是将 pdf
+全部另存一遍就好了。需要另存的 pdf 数量约 90
+个，一个个操作繁琐难当。下面主要记录这次 pdf 批处理的坑爹过程。
+<span id="more"></span></p>
+<h2 id="imagemagick">imagemagick</h2>
+<p>首先想到的是 imagemagick。但是直接运行命令</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">magick <span class="built_in">convert</span> input.pdf output.pdf</span><br></pre></td></tr></table></figure>
+<p>但是提示 <mark class="label danger">convert: PDFDelegateFailed \`系统找不到指定的文件</mark>。按照 <a
+target="_blank" rel="noopener" href="https://xbuba.com/questions/48834749">这里
+<i class="fa fa-external-link fa-fw"></i></a>的说法，是因为我计算机中的
+64 位 imagemagick 和 32 位的 gs
+不兼容。但几经尝试仍无法解决，遂放弃这个方案。</p>
+<h2 id="mupdf">mupdf</h2>
+<p>mupdf 是在查找解决方法的时候找到的新工具，处理 pdf 更加得心应手，查看
+<a target="_blank" rel="noopener" href="https://mupdf.com/docs/manual-mutool-convert.html">官方文档
+<i class="fa fa-external-link fa-fw"></i></a>，最简单用法</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mutool <span class="built_in">convert</span> [options] -o output input [pages]</span><br></pre></td></tr></table></figure>
+<p>对于 pdf 另存，最简单的即以下命令（output 参数放在前面🤣）</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mutool <span class="built_in">convert</span> -o output.pdf input.pdf</span><br></pre></td></tr></table></figure>
+<p>接着借助批处理命令进行批量转换，开启了新手接触批处理语法的踩坑之路。</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">rem 关闭输出</span></span><br><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="comment">rem 获取当前目录下的所有 pdf 文件</span></span><br><span class="line"><span class="keyword">for</span> /f <span class="variable">%%i</span> <span class="keyword">in</span> (&#x27;<span class="built_in">dir</span> /b *.pdf&#x27;) <span class="keyword">do</span> (</span><br><span class="line"><span class="comment">	rem 输出 pdf 文件名</span></span><br><span class="line">	@<span class="built_in">echo</span> <span class="variable">%%i</span></span><br><span class="line"><span class="comment">	rem 使用 mutool 进行转换</span></span><br><span class="line">	mutool <span class="built_in">convert</span> -o a<span class="variable">%%~</span>nib.pdf <span class="variable">%%i</span></span><br><span class="line">	)</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure>
+<p><code>rem</code> 表示注释，与 <code>::</code> 相同。
+<code>mutool convert -o %%i %%i</code>
+输出文件与输入文件同名，直接覆盖掉源文件，需要前缀后缀直接在
+<code>%%~ni</code> 追加，例如
+<code>mutool convert -o a%%~nib.pdf %%i</code>。<code>%%~ni</code>
+表示文件名（无后缀）。</p>
+<mark class="label success">至此完成任务</mark>
+<h2 id="pdfpngjpgpdf">pdf→png→jpg→pdf</h2>
+<p>imagemagick 没用上总感觉有些可惜。终于在<a
+target="_blank" rel="noopener" href="https://mupdf.com/docs/manual-mutool-convert.html">查看 mupdf
+文档</a>的时候发现 mupdf 不支持转成 jpg 格式。</p>
+<div class="note success"><p>The following single page image formats are also supported: PNG, PNM,
+PAM, PBM, PKM. Each page is written to a separate file.</p>
+</div>
+<p><img
+src="https://image.pencilq.com/images/2019/09/01/64006a47a40a198135a90d.jpg" /></p>
+<p>直接试一下 pdf to png to jpg to pdf，然后再删掉 png 和 jpg</p>
+<p>第一步 pdf 转 png: mupdf</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">rem 关闭输出</span></span><br><span class="line">@<span class="built_in">echo</span> off </span><br><span class="line"><span class="comment">rem 获取当前目录下的所有 pdf 文件</span></span><br><span class="line"><span class="keyword">for</span> /f <span class="variable">%%i</span> <span class="keyword">in</span> (&#x27;<span class="built_in">dir</span> /b *.pdf&#x27;) <span class="keyword">do</span> (</span><br><span class="line"><span class="comment">	rem 输出 pdf 文件名</span></span><br><span class="line">	@<span class="built_in">echo</span> <span class="variable">%%i</span></span><br><span class="line"><span class="comment">	rem 使用 mutool  pdf 转 png</span></span><br><span class="line">	mutool <span class="built_in">convert</span> -o <span class="variable">%%~</span>ni.png <span class="variable">%%i</span></span><br><span class="line">	)</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure>
+<p>使用 <code>mutool convert -o output.png input.pdf</code> 得到的 png
+文件文件名并非 <code>output.png</code>，而是 <code>output1.png</code>，1
+是对应 pdf 的页码。我的 pdf 都只有一页，在循环中，使用
+<code>%%~ni1</code> 就可以匹配文件名。</p>
+<p>第二步 png 转 jpg: imagemagick</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">rem 关闭输出</span><br><span class="line">@echo off </span><br><span class="line">rem 获取当前目录下的所有 pdf 文件</span><br><span class="line">for /f %%i in (&#x27;dir /b *.pdf&#x27;) do (</span><br><span class="line">	rem 输出 pdf 文件名</span><br><span class="line">	@echo %%i</span><br><span class="line">	rem 使用 mutool  pdf 转 png</span><br><span class="line">	mutool convert -o %%~ni.png %%i</span><br><span class="line"><span class="addition">+	rem 使用 imagemagick png 转 jpg</span></span><br><span class="line"><span class="addition">+	magick convert %%~ni1.png %%~ni.jpg</span></span><br><span class="line">	)</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+<p>第三步 jpg 转 pdf，覆盖原 pdf 文件，完成后删除 png jpg</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">rem 关闭输出</span><br><span class="line">@echo off </span><br><span class="line">rem 获取当前目录下的所有 pdf 文件</span><br><span class="line">for /f %%i in (&#x27;dir /b *.pdf&#x27;) do (</span><br><span class="line">	rem 输出 pdf 文件名</span><br><span class="line">	@echo %%i</span><br><span class="line">	rem mutool  pdf 转 png</span><br><span class="line">	mutool convert -o %%~ni.png %%i</span><br><span class="line">	rem imagemagick png 转 jpg</span><br><span class="line">	magick convert %%~ni1.png %%~ni.jpg</span><br><span class="line"><span class="addition">+	rem imagemagick jpg 转 pdf</span></span><br><span class="line"><span class="addition">+	magick convert %%~ni.jpg %%i</span></span><br><span class="line"><span class="addition">+	rem 删除 png jpg</span></span><br><span class="line"><span class="addition">+	del %%~ni1.png %%~ni.jpg</span></span><br><span class="line">	)</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+<mark class="label success">完成</mark>
+<p>伪😏 第四步 当我把 mutools 转换得到文件名储存在变量中的时候
+<code>temp=%%~ni1</code>，在 for 里面调用 <code>%temp%.png</code>
+出错</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">rem 关闭输出</span><br><span class="line">@echo off </span><br><span class="line">rem 获取当前目录下的所有 pdf 文件</span><br><span class="line">for /f %%i in (&#x27;dir /b *.pdf&#x27;) do (</span><br><span class="line">	rem 输出 pdf 文件名</span><br><span class="line">	@echo %%i</span><br><span class="line">	rem mutool  pdf 转 png</span><br><span class="line">	mutool convert -o %%~ni.png %%i</span><br><span class="line"><span class="addition">+	set temp=%%~ni1</span></span><br><span class="line">	rem imagemagick png 转 jpg</span><br><span class="line"><span class="deletion">-	magick convert %%~ni1.png %%~ni.jpg</span></span><br><span class="line"><span class="addition">+	magick convert %temp%.png %%~ni.jpg</span></span><br><span class="line">	)</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+<p>查找资料后发现这跟<a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/ini_always/archive/2012/02/16/2355031.html">变量延迟扩展</a>有关，需要开启变量延迟
+<code>setlocal enabledelayedexpansion</code>，并且使用
+<code>!temp!</code> 来引用变量。</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">rem 关闭输出</span><br><span class="line">@echo off </span><br><span class="line"><span class="addition">+ rem 开启变量延迟</span></span><br><span class="line"><span class="addition">+ setlocal enabledelayedexpansion</span></span><br><span class="line">rem 获取当前目录下的所有 pdf 文件</span><br><span class="line">for /f %%i in (&#x27;dir /b *.pdf&#x27;) do (</span><br><span class="line">	rem 输出 pdf 文件名</span><br><span class="line">	@echo %%i</span><br><span class="line">	rem mutool  pdf 转 png</span><br><span class="line">	mutool convert -o %%~ni.png %%i</span><br><span class="line">	set temp=%%~ni1</span><br><span class="line">	rem imagemagick png 转 jpg</span><br><span class="line"><span class="deletion">-	magick convert %temp%.png %%~ni.jpg</span></span><br><span class="line"><span class="addition">+	rem 开启变量延迟后使用 !temp!</span></span><br><span class="line"><span class="addition">+	magick convert !temp!.png %%~ni.jpg</span></span><br><span class="line">	)</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+<p>最终结果</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">rem 关闭输出</span></span><br><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="comment">rem 开启变量延迟</span></span><br><span class="line"><span class="built_in">setlocal</span> enabledelayedexpansion</span><br><span class="line"><span class="comment">rem 获取当前目录下的所有 pdf 文件</span></span><br><span class="line"><span class="keyword">for</span> /f <span class="variable">%%i</span> <span class="keyword">in</span> (&#x27;<span class="built_in">dir</span> /b *.pdf&#x27;) <span class="keyword">do</span> (</span><br><span class="line"><span class="comment">	rem 输出 pdf 文件名</span></span><br><span class="line">	@<span class="built_in">echo</span> <span class="variable">%%i</span></span><br><span class="line"><span class="comment">	rem mutool  pdf 转 png</span></span><br><span class="line">	mutool <span class="built_in">convert</span> -o <span class="variable">%%~</span>ni.png <span class="variable">%%i</span></span><br><span class="line">	<span class="built_in">set</span> temp=<span class="variable">%%~</span>ni1</span><br><span class="line"><span class="comment">	rem imagemagick png 转 jpg</span></span><br><span class="line"><span class="comment">	rem 开启变量延迟后使用 !temp!</span></span><br><span class="line">	magick <span class="built_in">convert</span> <span class="variable">!temp!</span>.png <span class="variable">%%~</span>ni.jpg</span><br><span class="line"><span class="comment">	rem imagemagick jpg 转 pdf</span></span><br><span class="line">	magick <span class="built_in">convert</span> <span class="variable">%%~</span>ni.jpg <span class="variable">%%i</span></span><br><span class="line"><span class="comment">	rem 删除 png jpg</span></span><br><span class="line">	<span class="built_in">del</span> <span class="variable">%%~</span>ni1.png <span class="variable">%%~</span>ni.jpg</span><br><span class="line">	)</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure>
+<h2 id="总结">总结</h2>
+<p>这次 pdf 批量处理经历，主要收获了</p>
+<ol type="1">
+<li>mupdf 这个顺手的工具</li>
+<li>明白了一点基本批处理语法</li>
+<li>遇到了变量延迟扩展的坑</li>
+<li>没解决 imagemagick 报错的问题 😭😭😭</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/30/" rel="prev" title="一些个人下载页">
+                  <i class="fa fa-angle-left"></i> 一些个人下载页
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/10/" rel="next" title="有趣的东西">
+                  有趣的东西 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Pencilq</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

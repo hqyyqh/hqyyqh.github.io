@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-p.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-p.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-p.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pencilq.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="冯元桢的连续介质力学公理 冯元桢将经典物理学中的公理均视为连续介质力学的公理，尤其是牛顿第一和第二定律在连续介质力学中的应用。此外，冯元桢还给出了连续介质力学的三个附加公理： 公理一 连续介质在力的作用下仍然保持为连续介质 (A material continuum remains a continuum under the action of forces)。所以，在某一时刻相邻的两个致电在任何">
+<meta property="og:type" content="article">
+<meta property="og:title" content="力学概念">
+<meta property="og:url" content="https://pencilq.com/6/">
+<meta property="og:site_name" content="小铅笔 &amp; Jeff">
+<meta property="og:description" content="冯元桢的连续介质力学公理 冯元桢将经典物理学中的公理均视为连续介质力学的公理，尤其是牛顿第一和第二定律在连续介质力学中的应用。此外，冯元桢还给出了连续介质力学的三个附加公理： 公理一 连续介质在力的作用下仍然保持为连续介质 (A material continuum remains a continuum under the action of forces)。所以，在某一时刻相邻的两个致电在任何">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-10-25T00:01:37.000Z">
+<meta property="article:modified_time" content="2024-10-15T15:34:57.970Z">
+<meta property="article:author" content="小铅笔 &amp; Jeff">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pencilq.com/6/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pencilq.com/6/","path":"/6/","title":"力学概念"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>力学概念 | 小铅笔 & Jeff</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">小铅笔 & Jeff</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%AF%E5%85%83%E6%A1%A2%E7%9A%84%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6%E5%85%AC%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">冯元桢的连续介质力学公理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AC%E7%90%86%E4%B8%80"><span class="nav-number">1.1.</span> <span class="nav-text">公理一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AC%E7%90%86%E4%BA%8C"><span class="nav-number">1.2.</span> <span class="nav-text">公理二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AC%E7%90%86%E4%B8%89"><span class="nav-number">1.3.</span> <span class="nav-text">公理三</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6%E7%A0%94%E7%A9%B6%E8%8C%83%E5%9B%B4"><span class="nav-number">2.</span> <span class="nav-text">连续介质力学研究范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%84%E5%90%91%E5%90%8C%E6%80%A7%E6%9D%90%E6%96%99%E5%BC%B9%E6%80%A7%E5%B8%B8%E6%95%B0%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">3.</span> <span class="nav-text">各向同性材料弹性常数之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%BA%94%E5%8A%9B%E7%AD%89%E6%95%88%E6%96%B9%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">常见应力等效方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E5%8A%9B%E5%BC%A0%E9%87%8F"><span class="nav-number">4.1.</span> <span class="nav-text">应力张量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%BA%94%E5%8A%9B%E5%92%8C%E5%BA%94%E5%8A%9B%E4%B8%8D%E5%8F%98%E9%87%8F"><span class="nav-number">4.2.</span> <span class="nav-text">主应力和应力不变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E5%8A%9B%E5%81%8F%E5%BC%A0%E9%87%8F"><span class="nav-number">4.3.</span> <span class="nav-text">应力偏张量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%89%E6%95%88%E5%BA%94%E5%8A%9B"><span class="nav-number">4.4.</span> <span class="nav-text">等效应力</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A1%91%E6%80%A7%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80"><span class="nav-number">5.</span> <span class="nav-text">塑性理论框架基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A3%E7%BB%B4%E5%8D%97%E5%8E%9F%E7%90%86"><span class="nav-number">6.</span> <span class="nav-text">圣维南原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E6%B3%95%E4%B8%80"><span class="nav-number">6.1.</span> <span class="nav-text">提法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E6%B3%95%E4%BA%8C"><span class="nav-number">6.2.</span> <span class="nav-text">提法二</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小铅笔 & Jeff"
+      src="/images/favicon-pancilq.png">
+  <p class="site-author-name" itemprop="name">小铅笔 & Jeff</p>
+  <div class="site-description" itemprop="description">一个分享日常的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hqyyqh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hqyyqh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hqysmail@gmail.com" title="E-Mail → mailto:hqysmail@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon-pancilq.png">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+      <meta itemprop="description" content="一个分享日常的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="力学概念 | 小铅笔 & Jeff">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          力学概念<a href="https://github.com/hqyyqh/blog_source/tree/master/source/_posts/6-%E5%8A%9B%E5%AD%A6%E6%A6%82%E5%BF%B5.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-10-25 00:01:37" itemprop="dateCreated datePublished" datetime="2018-10-25T00:01:37+00:00">2018-10-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-15 15:34:57" itemprop="dateModified" datetime="2024-10-15T15:34:57+00:00">2024-10-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="冯元桢的连续介质力学公理">冯元桢的连续介质力学公理</h2>
+<p>冯元桢将经典物理学中的公理均视为连续介质力学的公理，尤其是牛顿第一和第二定律在连续介质力学中的应用。此外，冯元桢还给出了连续介质力学的三个附加公理：</p>
+<h3 id="公理一">公理一</h3>
+<p>连续介质在力的作用下仍然保持为连续介质 (A material continuum remains
+a continuum under the action of
+forces)。所以，在某一时刻相邻的两个致电在任何时刻都保持相邻。允许物体发生破裂，但断裂面必须被认为是新产生的外表面。在有生命的物体中，允许新的生长。</p>
+<span id="more"></span>
+<h3 id="公理二">公理二</h3>
+<p>在物体中处处可以定义应力和应变 (The stress and strain described in
+the textbook can be defined everywhere in the body)。</p>
+<h3 id="公理三">公理三</h3>
+<p>一点处的应力与该点处的应变和应变随时间的变化(应变)率相关 (The stress
+at a point is related to the strain and the rate of change of strain
+with respect to time at the same point)。</p>
+<h2 id="连续介质力学研究范围">连续介质力学研究范围</h2>
+<p><img
+src="https://image.pencilq.com/images/2019/05/02/0069RVTdgy1fv6jed6sjtj31kw1g4nlw.jpg" /></p>
+<h2
+id="各向同性材料弹性常数之间的关系">各向同性材料弹性常数之间的关系</h2>
+<table>
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 18%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 15%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(\lambda, \; G\)</span></th>
+<th><span class="math inline">\(E, \; \nu\)</span></th>
+<th><span class="math inline">\(G, \; \nu\)</span></th>
+<th><span class="math inline">\(E, \; G\)</span></th>
+<th><span class="math inline">\(K, \; \nu\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\lambda\)</span></td>
+<td><span class="math inline">\(\lambda\)</span></td>
+<td><span class="math inline">\(\dfrac{E \nu}{\left( {1+ \nu} \right)
+\left( {1-2 \nu} \right)}\)</span></td>
+<td><span class="math inline">\(\dfrac{2 G \nu}{1- 2 \nu}\)</span></td>
+<td><span class="math inline">\(\dfrac{G \left( {E - 2 G} \right)}{3 G
+-E }\)</span></td>
+<td><span class="math inline">\(\dfrac{3 K \nu}{1+\nu}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(G\)</span></td>
+<td><span class="math inline">\(G\)</span></td>
+<td><span class="math inline">\(\dfrac{E}{2 \left( {1+ \nu}
+\right)}\)</span></td>
+<td><span class="math inline">\(G\)</span></td>
+<td><span class="math inline">\(G\)</span></td>
+<td><span class="math inline">\(\dfrac{3K\left( {1- 2\nu} \right)}{2
+\left( {1+\nu} \right)}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(K\)</span></td>
+<td><span class="math inline">\(\dfrac{1}{3} \left( {3 \lambda + 2G}
+\right)\)</span></td>
+<td><span class="math inline">\(\dfrac{E}{3 \left( {1- 2 \nu}
+\right)}\)</span></td>
+<td><span class="math inline">\(\dfrac{2 G \left( {1+\nu} \right)}{3
+\left( {1- 2\nu} \right)}\)</span></td>
+<td><span class="math inline">\(\dfrac{G E}{3 \left( {3 G -E}
+\right)}\)</span></td>
+<td><span class="math inline">\(K\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(E\)</span></td>
+<td><span class="math inline">\(\dfrac{3 \lambda+2 G}{2 \left( {\lambda
++G} \right)}\)</span></td>
+<td><span class="math inline">\(E\)</span></td>
+<td><span class="math inline">\(2 G \left( {1+\nu} \right)\)</span></td>
+<td><span class="math inline">\(E\)</span></td>
+<td><span class="math inline">\(3K\left( {1-2 \nu} \right)\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\nu\)</span></td>
+<td><span class="math inline">\(\dfrac{\lambda}{2 \left( {\lambda +G}
+\right)}\)</span></td>
+<td><span class="math inline">\(\nu\)</span></td>
+<td><span class="math inline">\(\nu\)</span></td>
+<td><span class="math inline">\(\dfrac{E}{2 G}-1\)</span></td>
+<td><span class="math inline">\(\nu\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="常见应力等效方式">常见应力等效方式</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">含义</th>
+<th style="text-align: center;">符号</th>
+<th style="text-align: center;">含义</th>
+<th style="text-align: center;">符号</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">应力</td>
+<td style="text-align: center;"><span
+class="math inline">\(\sigma_{ij}\)</span></td>
+<td style="text-align: center;">应力不变量</td>
+<td style="text-align: center;"><span
+class="math inline">\(J\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">偏应力</td>
+<td style="text-align: center;"><span
+class="math inline">\(s_{ij}\)</span></td>
+<td style="text-align: center;">应力偏量不变量</td>
+<td style="text-align: center;"><span
+class="math inline">\(J&#39;\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">八面体正应力</td>
+<td style="text-align: center;"><span
+class="math inline">\(\sigma_8\)</span></td>
+<td style="text-align: center;">八面体切应力</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tau_8\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">等效应力</td>
+<td style="text-align: center;"><span
+class="math inline">\(\bar{\sigma}\)</span></td>
+<td style="text-align: center;">等效剪应力</td>
+<td style="text-align: center;"><span
+class="math inline">\(\bar{\sigma}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><img
+src="https://image.pencilq.com/images/2019/08/31/stress.jpg" /></p>
+<h3 id="应力张量">应力张量</h3>
+<p>应力分解： <span class="math display">\[
+\sigma_{ij} = \sigma_m \delta_{ij} + s_{ij}
+\]</span></p>
+<h3 id="主应力和应力不变量">主应力和应力不变量</h3>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \left| {\sigma_{ij} - \lambda \delta_{ij}} \right| = 0 \\
+\Rightarrow &amp; \lambda^3 - J_1 \lambda^2 - j_2 \lambda - J_3 = 0
+\end{aligned}
+\]</span></p>
+<p>其中 <span class="math display">\[
+\begin{aligned}
+&amp; J_1 = \sigma_{kk} = \sigma_1 + \sigma_2 + \sigma_3 \\
+&amp; J_2 = -\dfrac{1}{2} \left( {\sigma_{ii} \sigma_{kk} - \sigma_{ik}
+\sigma_{ki}} \right) = - \left( {\sigma_1 \sigma_2 + \sigma_2 \sigma_3 +
+\sigma_3 \sigma_1 } \right) \\
+&amp; J_3 = \left| {\sigma_{ij}} \right| = \sigma_1 \sigma_2 \sigma_3
+\end{aligned}
+\]</span></p>
+<h3 id="应力偏张量">应力偏张量</h3>
+<p><span class="math display">\[
+s_j = \sigma_j - \sigma_m
+\]</span> 不变量 <span class="math display">\[
+J_2&#39; = \left\{
+\begin{aligned}
+   &amp; s_{ij}s_{ij}/2 \\
+   &amp; -(s_1 s_2 + s_2 s_3 + s_3 s_1) = (s_1^2 + s_2^2 + s_3^2)/2 \\
+   &amp; \left[ {\left( {\sigma_1 - \sigma_2} \right)^2+\left( {\sigma_2
+- \sigma_3} \right)^2+\left( {\sigma_3 - \sigma_1} \right)^2} \right]
+/6    
+\end{aligned}
+\right.
+\]</span></p>
+<h3 id="等效应力">等效应力</h3>
+<p><span class="math display">\[
+\begin{split}
+   \bar{\sigma} &amp; = \sqrt{3J_2&#39;} \\
+    &amp; = \sqrt{\dfrac{3}{2}s_{ij}s_{ij} }\\
+    &amp; = \sqrt{\dfrac{1}{2} \left[ {\left( \sigma_{11}-\sigma_{22}
+\right)^2 + \left( \sigma_{22}-\sigma_{33} \right)^2 + \left(
+\sigma_{33}-\sigma_{11} \right)^2 + 6 \left(
+\sigma_{23}^2+\sigma_{31}^2+\sigma_{12}^2 \right)} \right] }\\
+    &amp; = \sqrt{\dfrac{1}{2}\left[ {\left( \sigma_{1}-\sigma_{2}
+\right)^2 + \left( \sigma_{2}-\sigma_{3} \right)^2 + \left(
+\sigma_{3}-\sigma_{1} \right)^2 } \right] }
+\end{split}
+\]</span></p>
+<p>可参考<a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Von_Mises_yield_criterion">维基百科</a></p>
+<h2 id="塑性理论框架基础">塑性理论框架基础</h2>
+<p><img
+src="https://image.pencilq.com/images/2019/08/31/006tNbRwgy1fvgarb7x5dj30x90ltq3w.jpg" /></p>
+<h2 id="圣维南原理">圣维南原理</h2>
+<p>是弹性力学中一个重要的原理，它一般意义上有两种提法。</p>
+<h3 id="提法一">提法一</h3>
+<p>把物体一小部分上的面力，变换为分布不同但静力等效的力，那么只影响近处的应力分布，远处受到的影响可以忽略不计。</p>
+<p><img
+src="https://image.pencilq.com/images/2019/09/06/v2-96f08b77d9989813947cf46d9672c72b_hd.jpg" /></p>
+<h3 id="提法二">提法二</h3>
+<p>如果物体一小部分边界上的面力一个是平衡力系，那么就只会使近处产生显著应力
+远处可以忽略不计。</p>
+<p><img
+src="https://image.pencilq.com/images/2019/09/06/v2-7279b3c79cb2deaf7436110d5968bb17_hd.jpg" /></p>
+<p>​理解一下，外力的具体分布只影响作用区域附近的应力分布，即图中虚线以内部分，剩余区域则影响不到。</p>
+<p>​其实就是一种对载荷的处理手段，因为在PDE的边界处，集中力、集中力偶这种形式是非常难以描述的，描述出来也没有办法解答，所以对于小边界（相对次要的边界），可以采用静力学的方法进行等效，一般等效成分布力，使得这个分布力系相对于原来的集中力，集中力偶有相同的静力学特征，即分布力系具有与集中力（偶）对应的相同的主矢、主矩。这么做，对替换力系处有显著的影响，但是对于其余的位置，几乎没有影响。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/3/" rel="prev" title="软件: LaTeX 常用符号">
+                  <i class="fa fa-angle-left"></i> 软件: LaTeX 常用符号
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/4/" rel="next" title="Mathematica-绘制瑞利波">
+                  Mathematica-绘制瑞利波 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Pencilq</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

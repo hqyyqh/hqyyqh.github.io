@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-p.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-p.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-p.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pencilq.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="转自仿真科技论坛，点击进入原网址，作者师访  首先做一点说明，这里所说的子程序大致分为两类：一类是用户子程序，即可以被用户修改的、多以 User 或 u 开头的、可以在安装文件夹下找到（如下图所示）的、需要重新编译连接的 Fortran 子程序；另一类是一般的子程序，ANSYS 提供给用户方便 ansys 二次开发的，包括子程序（subroutine，无返回值，使用时需要 external 声明">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ANSYS UPFs 子程序简单介绍及实例">
+<meta property="og:url" content="https://pencilq.com/18/">
+<meta property="og:site_name" content="小铅笔 &amp; Jeff">
+<meta property="og:description" content="转自仿真科技论坛，点击进入原网址，作者师访  首先做一点说明，这里所说的子程序大致分为两类：一类是用户子程序，即可以被用户修改的、多以 User 或 u 开头的、可以在安装文件夹下找到（如下图所示）的、需要重新编译连接的 Fortran 子程序；另一类是一般的子程序，ANSYS 提供给用户方便 ansys 二次开发的，包括子程序（subroutine，无返回值，使用时需要 external 声明">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-08-24T23:30:48.000Z">
+<meta property="article:modified_time" content="2024-10-15T15:34:57.967Z">
+<meta property="article:author" content="小铅笔 &amp; Jeff">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pencilq.com/18/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pencilq.com/18/","path":"/18/","title":"ANSYS UPFs 子程序简单介绍及实例"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ANSYS UPFs 子程序简单介绍及实例 | 小铅笔 & Jeff</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">小铅笔 & Jeff</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%90%E6%96%99%E6%9C%AC%E6%9E%84%E6%A8%A1%E5%9E%8B%E5%BC%80%E5%8F%91%E7%94%A8%E6%88%B7%E5%AD%90%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">材料本构模型开发用户子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E5%BC%80%E5%8F%91%E7%94%A8%E6%88%B7%E5%AD%90%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.</span> <span class="nav-text">单元开发用户子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E5%BC%80%E5%8F%91%E6%94%AF%E6%8C%81%E5%AD%90%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">单元开发支持子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%92%8C%E7%9B%91%E8%A7%86%E5%B7%B2%E5%AD%98%E5%9C%A8%E5%8D%95%E5%85%83%E7%9A%84%E7%94%A8%E6%88%B7%E5%AD%90%E7%A8%8B%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text">修改和监视已存在单元的用户子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%BD%E8%8D%B7%E7%94%A8%E6%88%B7%E5%AD%90%E7%A8%8B%E5%BA%8F"><span class="nav-number">5.</span> <span class="nav-text">载荷用户子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%B9%B2%E9%A2%84%E7%94%A8%E6%88%B7%E5%AD%90%E7%A8%8B%E5%BA%8F"><span class="nav-number">6.</span> <span class="nav-text">计算干预用户子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE-ansys-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AD%90%E7%A8%8B%E5%BA%8F"><span class="nav-number">7.</span> <span class="nav-text">访问 ANSYS 数据库的子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E4%BE%BF%E7%94%A8%E6%88%B7%E5%BC%80%E5%8F%91%E7%9A%84%E5%AD%90%E7%A8%8B%E5%BA%8F"><span class="nav-number">8.</span> <span class="nav-text">方便用户开发的子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BE%8B%E5%AD%90-%E7%BA%BF%E5%BC%B9%E6%80%A7%E6%9D%90%E6%96%99%E6%A8%A1%E5%9E%8B-usermat-%E5%BC%80%E5%8F%91"><span class="nav-number">9.</span> <span class="nav-text">简单例子 线弹性材料模型
+usermat 开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#usermat-fortran-%E7%94%A8%E6%88%B7%E5%AD%90%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">9.1.</span> <span class="nav-text">usermat fortran
+用户子程序的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%8F%98%E9%87%8F%E8%AF%B4%E6%98%8E"><span class="nav-number">9.2.</span> <span class="nav-text">输入输出变量说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#apdl-%E5%91%BD%E4%BB%A4%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9D%90%E6%96%99%E6%A8%A1%E5%9E%8B"><span class="nav-number">9.3.</span> <span class="nav-text">APDL 命令自定义材料模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E5%BC%B9%E6%80%A7%E6%9C%AC%E6%9E%84-usermat"><span class="nav-number">9.4.</span> <span class="nav-text">线弹性本构 usermat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usermat.f"><span class="nav-number">9.5.</span> <span class="nav-text">usermat.F</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uniaxial-tension_ansys.inp"><span class="nav-number">9.6.</span> <span class="nav-text">uniaxial tension_ANSYS.inp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uniaxial-tension_user.inp"><span class="nav-number">9.7.</span> <span class="nav-text">uniaxial tension_user.inp</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usermat-%E7%9A%84%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">10.</span> <span class="nav-text">usermat 的参考文档</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小铅笔 & Jeff"
+      src="/images/favicon-pancilq.png">
+  <p class="site-author-name" itemprop="name">小铅笔 & Jeff</p>
+  <div class="site-description" itemprop="description">一个分享日常的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hqyyqh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hqyyqh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hqysmail@gmail.com" title="E-Mail → mailto:hqysmail@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/18/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon-pancilq.png">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+      <meta itemprop="description" content="一个分享日常的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ANSYS UPFs 子程序简单介绍及实例 | 小铅笔 & Jeff">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ANSYS UPFs 子程序简单介绍及实例<a href="https://github.com/hqyyqh/blog_source/tree/master/source/_posts/18-ANSYS-%20UPFs-%E5%AD%90%E7%A8%8B%E5%BA%8F%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%AE%9E%E4%BE%8B.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-08-24 23:30:48" itemprop="dateCreated datePublished" datetime="2018-08-24T23:30:48+00:00">2018-08-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-15 15:34:57" itemprop="dateModified" datetime="2024-10-15T15:34:57+00:00">2024-10-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p><strong>转自仿真科技论坛</strong>，<a
+target="_blank" rel="noopener" href="http://forum.simwe.com/thread-1021888-1-1.html">点击进入原网址，作者师访</a></p>
+</blockquote>
+<p>首先做一点说明，这里所说的子程序大致分为两类：一类是用户子程序，即可以被用户修改的、多以
+User 或 u
+开头的、可以在安装文件夹下找到（如下图所示）的、需要重新编译连接的
+Fortran 子程序；另一类是一般的子程序，ANSYS 提供给用户方便 ansys
+二次开发的，包括子程序（subroutine，无返回值，使用时需要 external
+声明语句）和函数（Function，有返回值，使用时不需要 External
+声明语句）。</p>
+<span id="more"></span>
+<p><img
+src="https://image.pencilq.com/images/2019/08/31/UPFs-subroutine.jpg" /></p>
+<h2 id="材料本构模型开发用户子程序">材料本构模型开发用户子程序</h2>
+<ol type="1">
+<li><strong>usermat</strong>：在所有用于本构模型开发的子程序中，usermat
+是使用范围最广的子程序，单元的每个积分点在每个载荷子步的每次迭代均会调用
+usermat。usermat 支持所有最新技术单元（Current-technology
+Elements），最新技术单元区别于传统单元。</li>
+<li><strong>UserHyper</strong>：虽然 usermat
+功能强大，但其无法用于开发超弹性材料，若想实现超弹性材料本构的开发，必须利用
+UserHyper 用户子程序。</li>
+<li><strong>usercreep</strong> 及 usercr：ANSYS 提供了两个用户子程序
+usercreep 及 usercr
+来定义用户蠕变方程，这两个用户子程序可用来模拟材料的时间相关粘塑性 /
+蠕变行为。usercreep 利用隐式时间积分算法，而 usercr
+利用的是显示时间积分算法。usercreep
+用于较长时间段的蠕变分析，如岩石及金属的长期蠕变分析；usercr
+用于瞬态蠕变分析。</li>
+<li><strong>user_tbelastic</strong>：用来定义线弹性材料特征，允许将弹性材料参数定义成温度或坐标的函数，支持大多数最新技术单元。user_tbelastic
+仅仅用于定义弹性阶段的材料本构，它可用来与许多非线性材料模型联合使用，例如
+BISO、BKIN、MISO、KINH、NLSIO、PLASTIC、CHABOCHE、CAST
+IRON、CREEP、EDP（Drucker-Prager 模型）、SMA（形状记忆合金）、PRONY 及
+GURSON 等。</li>
+<li><strong>userpl</strong>：如果用户想利用传统单元定义塑性或粘塑性本构关系，则可以使用
+userpl。适用于
+LINK1、LINK8、PIPE20、BEAM23、BEAM24、PLANE42、SOLID45、PIPE60、SOLID62、SOLID65、PLANE82、SOLID92
+及 SOLID95。</li>
+<li><strong>usersw</strong>：用户膨胀子程序 usersw
+用于编写用户自定义的膨胀律，其调用方式是设置 C72=10。</li>
+<li><strong>UserVisLaw</strong>：定义粘性模型，仅用于 FLUID141 及
+FLUID142 单元。</li>
+<li><strong>userfic</strong>：用于定义用户摩擦模型，用于接触单元：CONTA171、CONTA172、CONTA173、CONTA174、CONTA175、CONTA176、CONTA177、CONTA178。</li>
+<li><strong>userfc</strong>：定义层合板类材料的破坏准则。</li>
+</ol>
+<h2 id="单元开发用户子程序">单元开发用户子程序</h2>
+<p>开发单元有两种方法：用户子程序（1）和（2）联合使用是一种方法，通过
+UserElem 用户子程序可以方便的建立新单元，ElemGetMat
+为新单元处理材料本构部分，难度适中；（3）和（4）联合使用是另外一种方法，该方法直接访问
+ANSYS 单元相关数据库和文件，难度较大。 1. <strong>UserElem</strong>：从
+ANSYS 11.0 开始新增的。使用该子程序创建单元无需直接访问 ANSYS 数据库。
+2. <strong>ElemGetMat</strong>：用于调用 ANSYS 标准结构材料库，与
+UserElem 结合使用。 3.
+<strong>uec100-uec105</strong>：在通过直接访问单元相关数据库和文件的方式创建单元时，用于定义单元特征参数。
+4.
+<strong>uel100-uel105</strong>：在通过直接访问单元相关数据库和文件的方式创建单元时，用于计算各种单元矩阵（刚度矩阵、比热矩阵等）、单元载荷向量（力载荷、热流载荷等）以及所有单元输出变量。此外还要完成单元输出过程，计算需要保存的各个变量并储存在结果文件中。</p>
+<h2 id="单元开发支持子程序">单元开发支持子程序</h2>
+以下子程序（注意不是用户子程序）用于单元开发： 1.
+<strong>nminfo</strong>：给单元特征向量定义单元名称，输入变量为单元特征向量
+ielc（见  ANSYS Inc20
+<p>文件夹下的
+echprm.inc），单元参考名称，输出变量为加入了单元参考名称的单元特征向量。
+2. <strong>svgidx</strong>：获得保存的变量的索引。 3.
+<strong>svrget</strong>：获得单元保存的变量。 4.
+<strong>mreuse</strong>：决定在迭代过程中哪些单元矩阵及向量可被重复使用，哪些单元矩阵及向量需要重新计算。
+5. <strong>rvrget</strong>：获得单元实常数。 6.
+<strong>propev</strong>：计算一组材料特性参数。 7.
+<strong>prope1</strong>：计算某一个材料特性参数，若要计算多个材料参数，可使用
+propev 子程序。 8. <strong>pstev1</strong>：计算 1
+维单元的材料特性参数。 9.
+<strong>plast1</strong>：更新单元塑性历史，用于具有一个应力（应变）分量的单元，包括
+LINK1、LINK8、BEAM23、BEAM24 和 SOLID65（增强型）单元。 10.
+<strong>plast3</strong>：更新单元塑性历史，用于具有 4 或 6
+应力（应变）分量的单元，包括
+PLANE02、PLANE13、PIPE20、SHELL43、SHELL51、PIPE60、SOLID62、SOLID65、SHELL91、SHELL93、SHELL143、SOLID191。
+11. <strong>creep1</strong>：更新单元蠕变历史，用于 1 维单元，包括
+LINK1、LINK8、BEAM23、BEAM24 和 SOLID65 单元。 12.
+<strong>creep3</strong>：更新单元蠕变历史，用于 3 维单元，包括
+PLANE02、PLANE13、PIPE20、PLANE42、SHELL43、SOLID45、SHELL51、PIPE60、SOLID62、SOLID65、PLANE82、SHELL91、SOLID92、SHELL93、SOLID95、SHELL143
+及 SOLID191。 13. <strong>swell1</strong>：更新单元的膨胀历史，用于 1
+维单元，包括 LINK1、LINK8、BEAM23、BEAM24。 14.
+<strong>swell3</strong>：更新单元的膨胀历史，用于 3 维单元，包括
+PLANE02、PLANE13、PIPE20、PLANE42、SHELL43、SOLID45、SHELL51、PIPE60、SOLID62、PLANE82、SHELL91、SOLID92、SHELL93、SOLID95、SHELL143
+和 SOLID191。 15.
+<strong>usereo</strong>：在不可累加杂项数据（NMISC）中存储数据。 16.
+<strong>eldwrtL</strong>：将单元数据写入文件。 17.
+<strong>eldwrnL</strong>：将单元不可累加杂项数据写入结果文件。 18.
+<strong>tmpget</strong>：子程序 temget 用于定义当前温度载荷。 19.
+<strong>prsget</strong>：定义当前压力载荷。 20.
+<strong>cnvget</strong>：定义当前对流载荷。 21.
+<strong>prinst</strong>：可用于计算主应力和应力强度。其输入输出输出变量只有一个
+s（长度为 11 的数组），s(1)、s(2)、s(3)、s(4)、s(5) 和 s(6) 分别存放σx
+、σy 、σz 、σxy 、σyz 和 σzx，经子程序计算后输出主应力σ1、σ2 和σ3 保存在
+s(7)、s(8) 和 s(9) 内，应力强度保存在 s(10) 内，s(11) 内输出的是 Mises
+等效应力。也可用来计算主应变（ε1 、ε2 和ε3
+）的大小。提醒大家，这是一个很重要的子程序。</p>
+<h2
+id="修改和监视已存在单元的用户子程序">修改和监视已存在单元的用户子程序</h2>
+<ol type="1">
+<li><strong>userou</strong>：用于存储用户提供的单元输出，对于需要将单元数据存入
+nmisc 记录的所有单元，都要调用该用户子程序。该子程序通过 USRCAL
+命令激活：USRCAL,USEROU</li>
+<li><strong>useran</strong>：单元坐标系控制，修改
+shell43、shell63、shell91、shell93、shell99，以及
+solid46、solid64、solid191
+单元材料性能参数和应力的方向，可通过单元关键选项调用。</li>
+<li><strong>userrc</strong>：对 COMBIN7 和 COMBIN37
+单元的参数进行操作。当设置单元的 keyopt(9) = 1 时调用该子程序，且 C1 或
+C3 必须为非零值。</li>
+<li><strong>UElMatx</strong>：访问单元矩阵和载荷向量，如频域分析的载荷向量等。主要目的是监视（或修改）单元矩阵和载荷向量。</li>
+<li><strong>UTHICK</strong>：定义 SHELL181、SHELL208、SHELL209 以及
+SHELL281 单元的初始厚度。</li>
+<li><strong>Us_Surf_Str</strong>：获取 PLANE2、PLANE42、PLANE82 以及
+SOLID45、SOLID92 和 SOLOD95 单元的单元面应力。</li>
+<li><strong>uflex</strong>：计算单元 PIPE288 和 PIPE289
+的柔性系数。当输入单元的轴向柔性系数为 - 10 时调用该用户子程序。</li>
+<li><strong>usflex</strong>：计算单元 PIPE16、PIPE17、PIPE18 和 PIPE60
+的柔性系数。当输入单元的轴向柔性系数为负数时调用该用户子程序。</li>
+</ol>
+<h2 id="载荷用户子程序">载荷用户子程序</h2>
+<p>以下用户子程序用于定义载荷： 1.
+<strong>usrefl</strong>：可将一些标量表示的载荷（如温度、流量、热生成量、含水量等）修改成用户定义的值，该子程序在每个使用标量场载荷的载荷步及载荷子步内、每次平衡迭代过程中均会被调用，在进入该子程序之前，已获得
+ANSYS 输入的单元或节点值信息。 2.
+<strong>userpr</strong>：用于改变单元压力，该子程序在每个使用单元压力的载荷步及载荷子步内、每次平衡迭代过程中均会被调用，每个单元调用一次。在进入该子程序之前，已获得
+ANSYS 输入的单元或节点值信息。 3.
+<strong>usercv</strong>：用于改变单元面对流信息，该子程序在每个载荷步及载荷子步内的每次平衡迭代过程中均会被调用，每个单元调用一次。在进入该子程序之前，已获得标准
+ANSYS
+输入的对流面信息，因此利用这些信息可以随意按照用户意愿修改对流信息。 4.
+<strong>userfx</strong>：用于改变单元面热流信息，该子程序在每个载荷步及载荷子步内的每次平衡迭代过程中均会被调用，每个单元调用一次。仅在热流载荷形成阶段调用，热流计算阶段不调用。</p>
+<h2 id="计算干预用户子程序">计算干预用户子程序</h2>
+<table>
+<thead>
+<tr class="header">
+<th>用户子程序</th>
+<th>对应的情况</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>UAnBeg</td>
+<td>ANSYS 启动时执行</td>
+</tr>
+<tr class="even">
+<td>USolBeg</td>
+<td>求解开始前执行</td>
+</tr>
+<tr class="odd">
+<td>ULdBeg</td>
+<td>载荷步开始前执行</td>
+</tr>
+<tr class="even">
+<td>USsBeg</td>
+<td>载荷子步开始前执行</td>
+</tr>
+<tr class="odd">
+<td>UItBeg</td>
+<td>迭代步开始前执行</td>
+</tr>
+<tr class="even">
+<td>UItFin</td>
+<td>迭代步结束后执行</td>
+</tr>
+<tr class="odd">
+<td>USsFin</td>
+<td>载荷子步结束后执行</td>
+</tr>
+<tr class="even">
+<td>ULdFin</td>
+<td>载荷步结束后执行</td>
+</tr>
+<tr class="odd">
+<td>USolFin</td>
+<td>求解结束后执行</td>
+</tr>
+<tr class="even">
+<td>UAnFin</td>
+<td>ANSYS 结束前执行</td>
+</tr>
+</tbody>
+</table>
+<h2 id="访问-ansys-数据库的子程序">访问 ANSYS 数据库的子程序</h2>
+<p>这部分内容包括选择或获得节点及单元的子程序、节点信息相关子程序、单元特征相关子程序、耦合及约束相关子程序、节点载荷子程序、单元载荷子程序、结果信息子程序，由于内容较多，参见附件：<a class="btn" target="_blank" rel="noopener" href="https://file.pencilq.com/file_and_note/Access%20the%20ANSYS%20database%20subroutine.pdf"><i class="fa fa-download fa-lg fa-fw"></i>下载</a></p>
+<div class="pdf-container" data-target="https://file.pencilq.com/file_and_note/Access%20the%20ANSYS%20database%20subroutine.pdf" data-height="500px"></div>
+<h2 id="方便用户开发的子程序">方便用户开发的子程序</h2>
+<p>内容包括通用子程序、向量操作子程序和矩阵操作子程序，见附件：<a class="btn" target="_blank" rel="noopener" href="https://file.pencilq.com/file_and_note/User-friendly%20subroutine.pdf"><i class="fa fa-download fa-lg fa-fw"></i>下载</a></p>
+<div class="pdf-container" data-target="https://file.pencilq.com/file_and_note/User-friendly%20subroutine.pdf" data-height="500px"></div>
+<h2 id="简单例子-线弹性材料模型-usermat-开发">简单例子 线弹性材料模型
+usermat 开发</h2>
+<p>材料的本构行为体现为应力 - 应变关系，usermat
+子程序的主要任务是定义材料的应力 -
+应变关系，具体分为两个方面。首先由给定的应变增量计算得到应力增量
+，从而得到新的应力 ，称做应力更新过程。其次还要求 usermat
+给出雅可比矩阵，学名是一致切线算子矩阵。usermat 用户子程序仅用于最新技术单元，不支持传统单元。</p>
+<h3 id="usermat-fortran-用户子程序的结构">usermat fortran
+用户子程序的结构</h3>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">*deck,usermat      USERDISTRIB  parallel                                gal</span><br><span class="line"><span class="function"><span class="keyword">subroutine</span></span> usermat(</span><br><span class="line">     &amp;                   matId, elemId,kDomIntPt, kLayer, kSectPt,</span><br><span class="line">     &amp;                   ldstep,isubst,keycut,</span><br><span class="line">     &amp;                   nDirect,nShear,ncomp,nStatev,nProp,</span><br><span class="line">     &amp;                   Time,dTime,Temp,dTemp,</span><br><span class="line">     &amp;                   stress,statev,dsdePl,sedEl,sedPl,epseq,</span><br><span class="line">     &amp;                   Strain,dStrain, epsPl, prop, coords,</span><br><span class="line">     &amp;                   var0, defGrad_t, defGrad,</span><br><span class="line">     &amp;                   tsstif, epsZZ,</span><br><span class="line">     &amp;                   var1, var2, var3, var4, var5,</span><br><span class="line">     &amp;                   var6, var7, var8)</span><br><span class="line">c*************************************************************************</span><br><span class="line">#<span class="keyword">include</span> <span class="string">&quot;impcom.inc&quot;</span></span><br><span class="line"><span class="comment">c</span></span><br><span class="line">      <span class="keyword">INTEGER</span>         </span><br><span class="line">     &amp;                 matId, elemId,</span><br><span class="line">     &amp;                 kDomIntPt, kLayer, kSectPt,</span><br><span class="line">     &amp;                 ldstep,isubst,keycut,</span><br><span class="line">     &amp;                 nDirect,nShear,ncomp,nStatev,nProp</span><br><span class="line">      <span class="keyword">DOUBLE</span> <span class="keyword">PRECISION</span></span><br><span class="line">     &amp;                 Time,    dTime,   Temp,    dTemp,</span><br><span class="line">     &amp;                 sedEl,   sedPl,   epseq,   epsZZ</span><br><span class="line">      <span class="keyword">DOUBLE</span> <span class="keyword">PRECISION</span></span><br><span class="line">     &amp;                 stress  (ncomp), statev  (nStatev),</span><br><span class="line">     &amp;                 dsdePl  (ncomp,ncomp),</span><br><span class="line">     &amp;                 Strain  (ncomp), dStrain (ncomp  ),</span><br><span class="line">     &amp;                 epsPl   (ncomp), prop    (nProp  ),</span><br><span class="line">     &amp;                 coords  (<span class="number">3</span>),       rotateM (<span class="number">3</span>,<span class="number">3</span>),</span><br><span class="line">     &amp;                 defGrad (<span class="number">3</span>,<span class="number">3</span>),     defGrad_t(<span class="number">3</span>,<span class="number">3</span>),</span><br><span class="line">     &amp;                 tsstif  (<span class="number">2</span>)</span><br><span class="line"><span class="comment">c</span></span><br><span class="line">c***************** 用户定义部分 *************************************</span><br><span class="line">c*                                                                  *</span><br><span class="line">c*                                                                  *</span><br><span class="line">c***************** 用户定义部分 *************************************</span><br><span class="line"><span class="keyword">return</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h3 id="输入输出变量说明">输入输出变量说明</h3>
+<p><strong>usermat 输入变量及其数据类型：</strong></p>
+<ul>
+<li><p>matId：材料号；整型。</p></li>
+<li><p>elemId：单元号；整型。</p></li>
+<li><p>kDomIntPt：材料积分点号；整型。</p></li>
+<li><p>kLayer：单元层号，仅用于分层单元，用于 usermat 的 18x 族单元中仅
+SHELL181 有分层功能；整型。</p></li>
+<li><p>kSectPt：单元截面号；整型。</p></li>
+<li><p>ldstep：载荷步数；整型。</p></li>
+<li><p>isubst：载荷子步数；整型。</p></li>
+<li><p>nDirect：正应力或正应变分量的个数，与单元类型有关；整型。</p></li>
+<li><p>nShear：剪应力或剪应变分量的个数，与单元类型有关；整型。</p></li>
+<li><p>ncomp：应力分量或应变分量个数，ncomp= nDirect +
+nShear；整型。</p></li>
+<li><p>nStatev：状态变量个数，通过 TB,STATE 命令定义；整型。</p></li>
+<li><p>nProp：材料常数个数，通过 TB,USER 命令定义；整型。</p></li>
+<li><p>Temp：增量步开始时的温度；双精度。</p></li>
+<li><p>dTemp：增量步内的温度增量；双精度。</p></li>
+<li><p>Time：增量步开始时的时间，但并非真正的时间，仅仅是计算过程的标记；双精度。</p></li>
+<li><p>dTime：增量步内的时间增量；双精度。</p></li>
+<li><p>Strain(ncomp)：增量步开始时的应变分量，包括机械应变及温度应变两部分；双精度数组。</p></li>
+<li><p>dStrain(ncomp)：应变增量，仅包含机械应变，温度应变成分已被去除；双精度数组。</p></li>
+<li><p>prop(nProp)：材料常数数组，由 TB,USER 及 TB,DATA
+命令定义，可定义不同温度下的材料常数；双精度数组。</p></li>
+<li><p>coords(3)：当前材料积分点的坐标；双精度数组。</p></li>
+<li><p>rotateM(3,3)：大变形分析（NLGEOM,ON）时考虑刚体转动用到的增量型旋转矩阵，小变形分析时为单位矩阵；双精度矩阵。该矩阵老版本中存在，现已被废除（本贴第七部分提供了计算转动矩阵
+R 的代码）。</p></li>
+<li><p>defGrad_t(3,3)：增量步开始时的变形梯度矩阵；双精度矩阵。</p></li>
+<li><p>defGrad(3,3)：增量步结束时的变形梯度矩阵；双精度矩阵。</p></li>
+</ul>
+<p><strong>usermat 输出变量及其数据类型：</strong></p>
+<ul>
+<li><p>keycut：载荷切分控制参数，0—不切分，1—切分，默认情况下不进行载荷切分，当
+ANSYS 主程序检测到收敛困难时进行载荷切分，并输出
+keycut=1；整型。</p></li>
+<li><p>epsZZ：平面应力状态时垂直于平面方向的应变，仅在平面单元或壳单元考虑厚度变化时使用；双精度。</p></li>
+<li><p>tsstif
+(2)：横观剪切刚度，tssif(1)-GXZ，tssif(2)-GYZ；双精度数组。</p></li>
+<li><p>dsdePl(ncomp,ncomp)：一致切线算子矩阵，dsdePl(i,j)
+表示增量步结束时由第 j 个应变分量的改变引起的第 i
+个应力分量的变化。ANSYS
+默认一致切线算子矩阵是对称的，若要使用非对称的一致切线算子矩阵（对于采用非关联流动法则的塑性材料模型，一致切线算子矩阵往往是非对称的），需要使用
+NROP,UNSYM 命令打开非对称求解器；双精度矩阵。</p></li>
+</ul>
+<p><strong>usermat 输入输出变量及其数据类型：</strong></p>
+<ul>
+<li><p>stress(ncomp)：应力分量，增量步开始时由 ANSYS 主程序传入，需要在
+usermat 中更新为增量步结束时的值；双精度数组。</p></li>
+<li><p>statev(nStatev)：状态变量，用于存储与材料模型有关的变量，如塑性因子、强化参数、损伤变量等，增量步开始时由
+ANSYS 主程序传入，需要在 usermat
+中更新为增量步结束时的值；双精度数组。</p></li>
+<li><p>epsPl(ncomp)：塑性应变分量，增量步开始时由 ANSYS
+主程序传入，需要在 usermat
+中更新为增量步结束时的值；双精度数组。</p></li>
+<li><p>sedEl：弹性功，仅用于后处理，对计算过程无影响；双精度。</p></li>
+<li><p>sedPl：塑性功，仅用于后处理，对计算过程无影响；双精度</p></li>
+<li><p>epsep：等效塑性应变</p></li>
+</ul>
+<h3 id="apdl-命令自定义材料模型">APDL 命令自定义材料模型</h3>
+<p>通过 APDL
+命令很容易使用自定义材料模型。只需在前处理部分使用下列语句即可：
+<code>TB, USER, matId, NTEMPS, NPTS</code> 关键字 USER
+表示使用用户定义材料模型；关键字 matId 表示材料号；NTEMPS
+为温度点的个数，即可定义不同温度下的多组材料常数；NPTS
+表示每一温度下材料常数个数</p>
+<h3 id="线弹性本构-usermat">线弹性本构 usermat</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\bf{\sigma} &amp; = \bf{D}_e \bf{\varepsilon}\\
+\bf{\sigma} &amp; = \left[ {\sigma_x \; \sigma_y \; \sigma_z \;
+\sigma_{xy} \; \sigma_{yz} \; \sigma_{xz}} \right]^T \\
+\bf{\varepsilon} &amp; = \left[ {\varepsilon_x \; \varepsilon_y \;
+\varepsilon_z \; \varepsilon_{xy} \; \varepsilon_{yz} \;
+\varepsilon_{xz}} \right]^T \\
+\\
+\bf{D}_e &amp; = \left[ {\begin{array}{*{20}{c}}
+{\lambda  + 2G}&amp;\lambda &amp;\lambda &amp;0&amp;0&amp;0\\
+\lambda &amp;{\lambda  + 2G}&amp;\lambda &amp;0&amp;0&amp;0\\
+\lambda &amp;\lambda &amp;{\lambda  + 2G}&amp;0&amp;0&amp;0\\
+0&amp;0&amp;0&amp;G&amp;0&amp;0\\
+0&amp;0&amp;0&amp;0&amp;G&amp;0\\
+0&amp;0&amp;0&amp;0&amp;0&amp;G
+\end{array}} \right]
+\end{aligned}
+\]</span></p>
+<blockquote>
+<p>以下是线弹性本构的<code>usermat</code>源代码及测试用的命令流。代码格式显示可能有误，仅供参考。<a class="btn" target="_blank" rel="noopener" href="https://file.pencilq.com/file_and_note/elastic.rar"><i class="fa fa-download fa-lg fa-fw"></i>下载源文件</a></p>
+</blockquote>
+<h3 id="usermat.f">usermat.F</h3>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">*deck,usermat      USERDISTRIB  parallel                                gal</span><br><span class="line">      <span class="function"><span class="keyword">subroutine</span></span> usermat(</span><br><span class="line">     &amp;                   matId, elemId,kDomIntPt, kLayer, kSectPt,</span><br><span class="line">     &amp;                   ldstep,isubst,keycut,</span><br><span class="line">     &amp;                   nDirect,nShear,ncomp,nStatev,nProp,</span><br><span class="line">     &amp;                   Time,dTime,Temp,dTemp,</span><br><span class="line">     &amp;                   stress,statev,dsdePl,sedEl,sedPl,epseq,</span><br><span class="line">     &amp;                   Strain,dStrain, epsPl, prop, coords, </span><br><span class="line">     &amp;                   var0, defGrad_t, defGrad,</span><br><span class="line">     &amp;                   tsstif, epsZZ,</span><br><span class="line">     &amp;                   var1, var2, var3, var4, var5,</span><br><span class="line">     &amp;                   var6, var7, var8)</span><br><span class="line">c*************************************************************************</span><br><span class="line"></span><br><span class="line">#<span class="keyword">include</span> <span class="string">&quot;impcom.inc&quot;</span></span><br><span class="line"><span class="comment">c</span></span><br><span class="line">      <span class="keyword">INTEGER</span>          </span><br><span class="line">     &amp;                 matId, elemId,</span><br><span class="line">     &amp;                 kDomIntPt, kLayer, kSectPt,</span><br><span class="line">     &amp;                 ldstep,isubst,keycut,</span><br><span class="line">     &amp;                 nDirect,nShear,ncomp,nStatev,nProp</span><br><span class="line">      <span class="keyword">DOUBLE</span> <span class="keyword">PRECISION</span> </span><br><span class="line">     &amp;                 Time,    dTime,   Temp,    dTemp,</span><br><span class="line">     &amp;                 sedEl,   sedPl,   epseq,   epsZZ</span><br><span class="line">      <span class="keyword">DOUBLE</span> <span class="keyword">PRECISION</span> </span><br><span class="line">     &amp;                 stress  (ncomp  ), statev (nStatev),</span><br><span class="line">     &amp;                 dsdePl  (ncomp,ncomp),</span><br><span class="line">     &amp;                 Strain  (ncomp  ), dStrain (ncomp  ), </span><br><span class="line">     &amp;                 epsPl   (ncomp  ), prop    (nProp  ), </span><br><span class="line">     &amp;                 coords  (<span class="number">3</span>),       rotateM (<span class="number">3</span>,<span class="number">3</span>),</span><br><span class="line">     &amp;                 defGrad (<span class="number">3</span>,<span class="number">3</span>),     defGrad_t(<span class="number">3</span>,<span class="number">3</span>),</span><br><span class="line">     &amp;                 tsstif  (<span class="number">2</span>)</span><br><span class="line"><span class="comment">c</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      <span class="keyword">DOUBLE</span> <span class="keyword">PRECISION</span> var0, var1, var2, var3, var4, var5,</span><br><span class="line">     &amp;                 var6, var7, var8</span><br><span class="line">      </span><br><span class="line"><span class="comment">c</span></span><br><span class="line">c************************用户定义部分*************************************</span><br><span class="line"><span class="comment">c     	</span></span><br><span class="line">      <span class="keyword">INTEGER</span>          K1, K2</span><br><span class="line">      <span class="keyword">DOUBLE</span> <span class="keyword">PRECISION</span> ONE, TWO</span><br><span class="line">	<span class="keyword">PARAMETER</span> (ONE=<span class="number">1.0D0</span>, TWO=<span class="number">2.0D0</span>)</span><br><span class="line">	<span class="keyword">DOUBLE</span> <span class="keyword">PRECISION</span> EMOD, ENU, EG, EG2, ELAM</span><br><span class="line">	<span class="keyword">DOUBLE</span> <span class="keyword">PRECISION</span> SesSrn(<span class="number">6</span>,<span class="number">6</span>)</span><br><span class="line"><span class="comment">C</span></span><br><span class="line"><span class="comment">C 相关弹性常数</span></span><br><span class="line"><span class="comment">C</span></span><br><span class="line">	EMOD  =  prop(<span class="number">1</span>)</span><br><span class="line">	ENU   =  prop(<span class="number">2</span>)</span><br><span class="line">	EG    =  EMOD/(TWO*(ONE+ENU))</span><br><span class="line">	EG2   =  TWO*EG</span><br><span class="line">	ELAM=EMOD*ENU/(ONE+ENU)/(ONE-TWO*ENU)</span><br><span class="line">      <span class="keyword">DO</span> K1=<span class="number">1</span>,<span class="number">6</span></span><br><span class="line">	    <span class="keyword">DO</span> K2=<span class="number">1</span>,<span class="number">6</span></span><br><span class="line">	    SesSrn(K1,K2)=<span class="number">0.0D0</span></span><br><span class="line">	    <span class="keyword">END</span> <span class="keyword">DO</span></span><br><span class="line">	<span class="keyword">END</span> <span class="keyword">DO</span></span><br><span class="line">	</span><br><span class="line"><span class="comment">C</span></span><br><span class="line"><span class="comment">C 获得应力应变矩阵</span></span><br><span class="line"><span class="comment">C</span></span><br><span class="line">	<span class="keyword">DO</span> K1=<span class="number">1</span>, <span class="number">3</span></span><br><span class="line">	    <span class="keyword">DO</span> K2=<span class="number">1</span>, <span class="number">3</span></span><br><span class="line">	    SesSrn(K2, K1)=ELAM</span><br><span class="line">	    <span class="keyword">END</span> <span class="keyword">DO</span></span><br><span class="line">	    SesSrn(K1, K1)=EG2+ELAM</span><br><span class="line">	<span class="keyword">END</span> <span class="keyword">DO</span></span><br><span class="line">	<span class="keyword">DO</span> K1=<span class="number">4</span>, <span class="number">6</span></span><br><span class="line">	    SesSrn(K1 ,K1)=EG</span><br><span class="line">	<span class="keyword">END</span> <span class="keyword">DO</span></span><br><span class="line">c	</span><br><span class="line"><span class="comment">C 更新应力</span></span><br><span class="line"><span class="comment">C</span></span><br><span class="line">	<span class="keyword">DO</span> K1=<span class="number">1</span>, <span class="number">6</span></span><br><span class="line">	    <span class="keyword">DO</span> K2=<span class="number">1</span>, <span class="number">6</span></span><br><span class="line">	    stress(K2)=stress(K2)+SesSrn(K2, K1)*dStrain(K1)</span><br><span class="line">	    <span class="keyword">END</span> <span class="keyword">DO</span></span><br><span class="line">	<span class="keyword">END</span> <span class="keyword">DO</span></span><br><span class="line"><span class="comment">c</span></span><br><span class="line">c一致切线算子矩阵</span><br><span class="line"><span class="comment">c</span></span><br><span class="line">      <span class="keyword">DO</span> K1=<span class="number">1</span>,<span class="number">6</span></span><br><span class="line">	    <span class="keyword">DO</span> K2=<span class="number">1</span>,<span class="number">6</span></span><br><span class="line">	    dsdePl(K1,K2)=SesSrn(K1,K2)</span><br><span class="line">	    <span class="keyword">END</span> <span class="keyword">DO</span></span><br><span class="line">	<span class="keyword">END</span> <span class="keyword">DO</span></span><br><span class="line"><span class="comment">c</span></span><br><span class="line">	</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">      <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h3 id="uniaxial-tension_ansys.inp">uniaxial tension_ANSYS.inp</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">!<span class="variable constant_">ANSYS</span>自带线弹性材料——单轴拉伸</span><br><span class="line">finish</span><br><span class="line">/clear</span><br><span class="line">/prep7</span><br><span class="line"></span><br><span class="line">!单元类型</span><br><span class="line">et,<span class="number">1</span>,<span class="number">45</span></span><br><span class="line"></span><br><span class="line">!设置弹性模量及泊松比</span><br><span class="line">ex,<span class="number">1</span>,<span class="number">180e9</span></span><br><span class="line">prxy,<span class="number">1</span>,<span class="number">0.3</span> </span><br><span class="line"></span><br><span class="line">!调整视角</span><br><span class="line">/view,<span class="number">1</span>,-<span class="number">1</span></span><br><span class="line">/ang,<span class="number">1</span> </span><br><span class="line"></span><br><span class="line">!建立几何模型</span><br><span class="line">cyl4,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.005</span>, , , ,<span class="number">0.1</span> </span><br><span class="line"></span><br><span class="line">!网格划分</span><br><span class="line">lsel, s , , , <span class="number">1</span>, <span class="number">8</span></span><br><span class="line">lesize, all, , ,<span class="number">4</span></span><br><span class="line">allsel,all</span><br><span class="line">lsel, s , , , <span class="number">9</span>, <span class="number">10</span></span><br><span class="line">lesize, all, , ,<span class="number">20</span></span><br><span class="line">allsel,all</span><br><span class="line">vsweep, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>           !进行扫略网格划分</span><br><span class="line"></span><br><span class="line">!设置边界条件</span><br><span class="line">da, <span class="number">1</span>, all                        !约束其中一个端面</span><br><span class="line">!施加外载荷</span><br><span class="line">sfa, <span class="number">2</span>, <span class="number">1</span>, pres, -<span class="number">200e6</span>      !钢棒另一端面施加拉伸载荷</span><br><span class="line">finish</span><br><span class="line"></span><br><span class="line">/solu                             !进入求解器</span><br><span class="line">solve </span><br><span class="line"></span><br><span class="line">/post1                          !进入后处理器</span><br><span class="line">pldisp, <span class="number">1</span>                     !变形图</span><br></pre></td></tr></table></figure>
+<h3 id="uniaxial-tension_user.inp">uniaxial tension_user.inp</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">!用户自定义线弹性材料——单轴拉伸</span><br><span class="line">finish</span><br><span class="line">/clear</span><br><span class="line">/prep7</span><br><span class="line"></span><br><span class="line">!单元类型</span><br><span class="line">et,<span class="number">1</span>,<span class="number">185</span></span><br><span class="line"></span><br><span class="line">!选择用户自定义材料类型</span><br><span class="line">tb,user,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span></span><br><span class="line">tbdata,<span class="number">1</span>,<span class="number">180e9</span>,<span class="number">0.3</span>    !给弹性模量及泊松比赋值</span><br><span class="line"></span><br><span class="line">!调整视角</span><br><span class="line">/view,<span class="number">1</span>,-<span class="number">1</span></span><br><span class="line">/ang,<span class="number">1</span> </span><br><span class="line"></span><br><span class="line">!建立几何模型</span><br><span class="line">cyl4,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.005</span>, , , ,<span class="number">0.1</span></span><br><span class="line"></span><br><span class="line">!网格划分</span><br><span class="line">lsel, s , , , <span class="number">1</span>, <span class="number">8</span></span><br><span class="line">lesize, all, , ,<span class="number">4</span></span><br><span class="line">allsel,all</span><br><span class="line">lsel, s , , , <span class="number">9</span>, <span class="number">10</span></span><br><span class="line">lesize, all, , ,<span class="number">20</span></span><br><span class="line">allsel,all</span><br><span class="line">vsweep, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>         !进行扫略网格划分</span><br><span class="line"></span><br><span class="line">!设置边界条件</span><br><span class="line">da, <span class="number">1</span>, all                     !约束其中一个端面</span><br><span class="line"></span><br><span class="line">!施加外载荷</span><br><span class="line">sfa, <span class="number">2</span>, <span class="number">1</span>, pres, -<span class="number">200e6</span>        !钢棒另一端面施加拉伸载荷</span><br><span class="line">finish</span><br><span class="line"></span><br><span class="line">/solu                         !进入求解器</span><br><span class="line">time,<span class="number">1</span></span><br><span class="line">pred,on                   !打开线性预测</span><br><span class="line">nsubst,<span class="number">10</span>,<span class="number">50</span>,<span class="number">5</span>          !定义载荷子步数</span><br><span class="line">outres,all,all              !输出所有子步结果</span><br><span class="line">solve</span><br><span class="line"></span><br><span class="line">/post1                       !进入后处理器</span><br><span class="line">pldisp, <span class="number">1</span>                    !变形图</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="usermat-的参考文档">usermat 的参考文档</h2>
+<a class="btn" target="_blank" rel="noopener" href="http://ansys.net/ansys/papers/nonlinear/usermat.pdf "><i class="fa fa-download fa-lg fa-fw"></i>下载</a>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/19/" rel="prev" title="Ansys 二次开发系列之一：ANSYS15-0-Win764位安装及UPFs二次开发环境设置">
+                  <i class="fa fa-angle-left"></i> Ansys 二次开发系列之一：ANSYS15-0-Win764位安装及UPFs二次开发环境设置
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/5/" rel="next" title="书籍推荐">
+                  书籍推荐 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Pencilq</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-p.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-p.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-p.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pencilq.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="阀的结构分类和功能  （本文）针阀 (Neddle valve)：高精度调节 球阀 (Ball valve)：用于快速关闭或者控制 蝶阀 (Butterfly valve)：用于大管道流量调节，如自来水管道 止回阀 (Check valve)：气体或流体单向通过  本文来源  译自 Hanlong Wan, Yunho Hwang, and Saikee Oh, “A Review of Elec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="综述：电子膨胀阀制冷剂流量特征模型">
+<meta property="og:url" content="https://pencilq.com/67/">
+<meta property="og:site_name" content="小铅笔 &amp; Jeff">
+<meta property="og:description" content="阀的结构分类和功能  （本文）针阀 (Neddle valve)：高精度调节 球阀 (Ball valve)：用于快速关闭或者控制 蝶阀 (Butterfly valve)：用于大管道流量调节，如自来水管道 止回阀 (Check valve)：气体或流体单向通过  本文来源  译自 Hanlong Wan, Yunho Hwang, and Saikee Oh, “A Review of Elec">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pencilq.com/images/%E5%B7%A5%E7%A8%8B/%E7%94%B5%E5%AD%90%E8%86%A8%E8%83%80%E9%98%80%E7%9A%84%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84.png">
+<meta property="article:published_time" content="2022-05-30T22:47:16.000Z">
+<meta property="article:modified_time" content="2024-10-15T15:34:57.970Z">
+<meta property="article:author" content="小铅笔 &amp; Jeff">
+<meta property="article:tag" content="阀">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pencilq.com/images/%E5%B7%A5%E7%A8%8B/%E7%94%B5%E5%AD%90%E8%86%A8%E8%83%80%E9%98%80%E7%9A%84%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84.png">
+
+
+<link rel="canonical" href="https://pencilq.com/67/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pencilq.com/67/","path":"/67/","title":"综述：电子膨胀阀制冷剂流量特征模型"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>综述：电子膨胀阀制冷剂流量特征模型 | 小铅笔 & Jeff</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">小铅笔 & Jeff</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%80%E7%9A%84%E7%BB%93%E6%9E%84%E5%88%86%E7%B1%BB%E5%92%8C%E5%8A%9F%E8%83%BD"><span class="nav-number">1.</span> <span class="nav-text">阀的结构分类和功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E6%9D%A5%E6%BA%90"><span class="nav-number">2.</span> <span class="nav-text">本文来源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E5%AD%90%E8%86%A8%E8%83%80%E9%98%80%E9%92%88%E9%98%80%E7%BB%93%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text">电子膨胀阀(针阀结构)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%82%E7%9B%B8%E5%85%B3%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">幂相关法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%9B%B8%E5%85%B3%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">多项式相关法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">人工神经网络相关法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小铅笔 & Jeff"
+      src="/images/favicon-pancilq.png">
+  <p class="site-author-name" itemprop="name">小铅笔 & Jeff</p>
+  <div class="site-description" itemprop="description">一个分享日常的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hqyyqh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hqyyqh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hqysmail@gmail.com" title="E-Mail → mailto:hqysmail@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/67/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon-pancilq.png">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+      <meta itemprop="description" content="一个分享日常的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="综述：电子膨胀阀制冷剂流量特征模型 | 小铅笔 & Jeff">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          综述：电子膨胀阀制冷剂流量特征模型<a href="https://github.com/hqyyqh/blog_source/tree/master/source/_posts/67-%E9%98%80.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-30 22:47:16" itemprop="dateCreated datePublished" datetime="2022-05-30T22:47:16+00:00">2022-05-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-15 15:34:57" itemprop="dateModified" datetime="2024-10-15T15:34:57+00:00">2024-10-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="阀的结构分类和功能">阀的结构分类和功能</h2>
+<ul>
+<li>（本文）针阀 (Neddle valve)：高精度调节</li>
+<li>球阀 (Ball valve)：用于快速关闭或者控制</li>
+<li>蝶阀 (Butterfly valve)：用于大管道流量调节，如自来水管道</li>
+<li>止回阀 (Check valve)：气体或流体单向通过</li>
+</ul>
+<h2 id="本文来源">本文来源</h2>
+<blockquote>
+<p>译自 Hanlong Wan, Yunho Hwang, and Saikee Oh, “A Review of Electronic
+Expansion Valve Correlations for Air-Conditioning and Heat Pump
+Systems,” International Refrigeration and Air Conditioning Conference,
+January 1, 2018, <a target="_blank" rel="noopener" href="https://docs.lib.purdue.edu/iracc/1984"
+class="uri">https://docs.lib.purdue.edu/iracc/1984</a>.</p>
+</blockquote>
+<span id="more"></span>
+<p>有感：文献中虽然总结了多种用于预测电子膨胀阀质量流量的模型，但压力、温度、几何结构、制冷剂物理性质、膨胀阀的开度等等都是影响质量流量的因素，全面考虑过于复杂，模型实际上都进行了或多或少的简化。幂相关法、多项式相关法实际上就是数学中常见用于近似的级数；而人工神经网络相关法则是放弃建立近似的表达式，改用概率的思路来预测结果，减轻了确定物理原理关系的负担，但需要针对不同的情况给出大量的训练数据，在电子膨胀阀制冷剂流量方面的研究和应用相对较少。</p>
+<h2 id="电子膨胀阀针阀结构">电子膨胀阀(针阀结构)</h2>
+<p>分体式空调可通过该改变制冷剂流量来调节供热或者制冷能力，该功能一般通过控制压缩机转速和控制电子膨胀阀的开度来实现（也有通过结构上变容实现的，例如双缸变容、单缸变容）。</p>
+<p>在电子膨胀阀之外，还有<a
+target="_blank" rel="noopener" href="https://zh-cn.lambdageeks.com/thermostatic-expansion-valve-concepts-and-2-faqs/">恒温膨胀阀和毛细管</a>。毛细管的开度是固定的，恒温膨胀阀的开度取决于压力，电子膨胀阀依靠温度传感器计算所需的过热。因此电子膨胀阀响应更快，性能更佳。</p>
+<p>下图为电子膨胀阀的基础结构，针阀的位置由步进控制器调节，步进的程度也称为开度。通过改变针阀的位置，可以控制通过电子膨胀阀的制冷剂流量。
+<img src="../images/工程/电子膨胀阀的基础结构.png"
+alt="图1 电子膨胀阀的基础结构" />
+其中，基于伯努利方程导出的单相流模型，已被广泛应用于描述电子膨胀阀中单向流的特性，其中质量流量
+<span class="math inline">\(q\)</span> <span class="math display">\[ q =
+C A \sqrt{2\rho_i (p_i - p_o)} \]</span></p>
+<blockquote>
+<p>$ _i $ 入口密度</p>
+<p><span class="math inline">\(p_i\)</span> 入口压力</p>
+<p><span class="math inline">\(p_o\)</span> 出口压力</p>
+<p><span class="math inline">\(C\)</span>
+流量系数，与压力、几何结构、制冷剂物理性质等有关</p>
+<p><span class="math inline">\(A\)</span> 流动面积</p>
+<p><span class="math display">\[ A = \frac{\pi d_c^2}{4} - \pi (H_c -
+H)^2 \tan^2\alpha = \frac{\pi D^2}{4} \]</span></p>
+<p><span class="math inline">\(d_c, H_c, H, \alpha\)</span>
+如图所示，<span class="math inline">\(D\)</span>
+为孔口直径，描述流动面积。 j 膨胀阀的开度→孔口直径<span
+class="math inline">\(D\)</span>→质量流量<span
+class="math inline">\(q\)</span></p>
+</blockquote>
+<p>关于制冷剂通过电子膨胀阀的流动特性的模型，主要基于以下三种方法建立：幂相关法、多项式拟合相关法、人工神经网络相关法。</p>
+<h2 id="幂相关法">幂相关法</h2>
+<p>幂相关法的核心在于用几个无量纲 <span
+class="math inline">\(\pi\)</span> 群，推导出质量流量系数 <span
+class="math inline">\(C\)</span> 的幂函数关联式。</p>
+<p><span class="math display">\[C = a_0 \prod\limits^n_{i=1}
+\pi^{a_i}_i\]</span> &gt; <span class="math inline">\(a_i (i = 0, 1,
+..., n)\)</span> 为常数</p>
+<p>下表为现有文献中常用的无量纲 <span class="math inline">\(\pi\)</span>
+群</p>
+<table>
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 18%" />
+<col style="width: 17%" />
+<col style="width: 11%" />
+<col style="width: 16%" />
+<col style="width: 17%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Chen et al. <br/>(2009, 2017)</th>
+<th style="text-align: center;">Tian et al. <br/>(2015)</th>
+<th style="text-align: center;">Park et al. <br/>(2007)</th>
+<th style="text-align: center;">Ye et al. <br/>(2007)</th>
+<th style="text-align: center;">Zhifang et al. <br/>(2007)</th>
+<th style="text-align: center;">Zhang et al<br/>(2006)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span
+class="math inline">\(\pi_1\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{p_i}{p_c}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{p_i-p_0}{p_c}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{p_i-p_{sat}}{p_c}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{p_i-p_{sat}}{p_c}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{(p_i
+- p_o)\sqrt{A}}{\sigma}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{p_i}{p_c}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span
+class="math inline">\(\pi_2\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{T_{sub}}{T_c}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{T_{sub}}{T_c}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{T_{sub}}{T_c}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{T_{sub}}{T_c}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{\mu_f}{D_e \sqrt{\rho_i p_i}}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{T_{sub}}{T_c}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span
+class="math inline">\(\pi_3\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{C_{p_i}T_c \rho_i}{p_i}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{\rho_i}{\rho_o}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{\rho_i}{\rho_o}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{C_{p_i}T_c \rho_i}{p_c}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{p_o}{p_c}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span
+class="math inline">\(\pi_4\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{\mu_f}{D_{eq} \sqrt{\rho_i
+p_c}}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{D_e
+\sqrt{p_c \rho_i}}{\mu_i}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{H}{D}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{\mu_f}{\sqrt{\rho_i p_c A}}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{\mu_f}{\rho_i p_c D^2_e}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span
+class="math inline">\(\pi_5\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{D_{eq}}{D}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{D_{eq}}{D}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{D_{eq}}{D}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{\alpha}{\pi}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{p_{sat}}{p_c}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span
+class="math inline">\(\pi_6\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{p_{th}}{p_c}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{D_e
+p_i}{\sigma}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{D_ep_i}{\sigma}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{\sigma}{p_c \sqrt{A}}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{D_e
+p_i}{\sigma}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span
+class="math inline">\(\pi_7\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{c_{p_i} T_c}{h_i}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{p_i -
+p_o}{p_c}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span
+class="math inline">\(\pi_8\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span
+class="math inline">\(x\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span
+class="math inline">\(x\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>方法因作者和制冷剂而异，相关性通常用下面定义的相对偏差（Relative
+Deviation, RD）来评估。 <span class="math display">\[RD = \frac{q_{pre}
+- q_{exp}}{q_{exp}}\]</span> &gt; <span
+class="math inline">\(q_{pre}\)</span> 预测质量流量 <span
+class="math inline">\(q_{exp}\)</span> 试验质量流量</p>
+<p>下表为不同模型的相对偏差</p>
+<table>
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 19%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 13%" />
+<col style="width: 17%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Chen et al. <br/>(2009, 2017)</th>
+<th>Tian et al. <br/>(2015)</th>
+<th>Park et al.<br/> (2007)</th>
+<th>Ye et al. <br/>(2007)</th>
+<th>Zhifang et al. <br/>(2007)</th>
+<th>Zhang et al. <br/>(2006)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R22</td>
+<td>[-5.8%, 6.2%]</td>
+<td></td>
+<td>[-14.5%, 14.2%]</td>
+<td></td>
+<td></td>
+<td>[-10.7%, 9.3%]</td>
+</tr>
+<tr class="even">
+<td>R407C</td>
+<td>[-6.8%, 9.8%]</td>
+<td></td>
+<td></td>
+<td>[-9.7%, 8.7%]</td>
+<td></td>
+<td>[-14.2%, 22.1%]</td>
+</tr>
+<tr class="odd">
+<td>R410A</td>
+<td>[-6.1%, 8.5%]</td>
+<td></td>
+<td>[-4.2%, 11.4%]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>R134a</td>
+<td></td>
+<td>[-17.2%, 40.3%]</td>
+<td></td>
+<td></td>
+<td>[-6.8%, 6.8%]</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>R245fa</td>
+<td>[-15%, 15%]</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="多项式相关法">多项式相关法</h2>
+<p>多项式相关法为幂相关法的简化模型，该模型认为流量系数 <span
+class="math inline">\(C\)</span>
+主要受过冷度和阀门开度的影响。基于该简化的质量流相关模型如下 <span
+class="math display">\[ C = a_0 + a_1 x + a_2 x^2 + a_3 x \left(
+\frac{T_{sub}}{T_c} \right) + a_4 \left( \frac{T_{sub}}{T_c} \right) +
+a_5 \left( \frac{T_{sub}}{T_c} \right)^2 \]</span></p>
+<p>用于评估的标准为相对误差(Relative Error, RE)和均方根值(Root Mean
+Square, RMS)</p>
+<p><span class="math display">\[ RE = \frac{C_{pre}}{C_{exp}} \]</span>
+<span class="math display">\[ RMS = \sqrt{\frac{1}{n}\sum\limits^n_{i =
+1}(RE)^2} \]</span></p>
+<p>对于98%的数据，预测的 RE 值精度为 5%；在不同的情况下，RMS 值为
+2%~3%。</p>
+<h2 id="人工神经网络相关法">人工神经网络相关法</h2>
+<p>人工神经网络(Artificial Neural Network, ANN)
+常被用于建立几个输入和输出参数之间的未知关系。由于ANN能够在不需要显式方程的情况下解决工程应用中的物理问题，因而常被用于各个工程领域。</p>
+<p>ANN
+结构由一个输入层、几个隐藏层(实际上通常是一个或两个)和一个输出层组成。理论上输入神经元可以包括尽可能多的参数，但为了减少训练时间，需适当限制输入参数的数量。为确保确保变量的等价性，输入值(<span
+class="math inline">\(X_i\)</span>)和输出值(<span
+class="math inline">\(Y_k\)</span>)由下式归一化(<span
+class="math inline">\(x_i\)</span>和<span
+class="math inline">\(y_k\)</span>)</p>
+<p><span class="math display">\[ x_i = 2 \left( \frac{X_i -
+X_{i.min}}{X_{i, max} - X_{i.min}} \right) - 1 \]</span> <span
+class="math display">\[ y_k = 2 \left( \frac{Y_k - Y_{k.min}}{Y_{k, max}
+- Y_{k.min}} \right) - 1 \]</span></p>
+<p>如果只有一个隐藏层，ANN 的过程可以由下式表示</p>
+<p><span class="math display">\[ y_k = g_{output}  \left\{ \sum^n_{j =
+1} w&#39;_{jk} \times \left[ g_{hidden} \left( \sum^n_{i = 1} w_{ij} x_i
++ b_j \right) \right] + b&#39;_k \right\}\]</span> &gt; 归一化的输入参数
+<span class="math inline">\(x_i\)</span> 乘以权重 <span
+class="math inline">\(w_ij\)</span>，再加上偏差 <span
+class="math inline">\(b_j\)</span>，得到一个新的值 <span
+class="math inline">\(x&#39;\)</span>； &gt; &gt; 通过隐藏层的传递函数
+<span class="math inline">\(g_{hidden}\)</span>，获得每个隐神经元的值
+<span class="math inline">\(g_{hidden}(x&#39;)\)</span>； &gt; &gt;
+类似地，隐藏层的值也可以诚意另一组权重因子 <span
+class="math inline">\(w&#39;_{jk}\)</span>，并于另一组偏差<span
+class="math inline">\(b&#39;_k\)</span>相加，经传递函数<span
+class="math inline">\(g_{output}\)</span>获取第 <span
+class="math inline">\(k\)</span>个输出参数。</p>
+<p>下一步是训练过程，通过重复训练得到每个神经元权重系数 <span
+class="math inline">\(w_ij, w&#39;_{jk}\)</span>和 偏差<span
+class="math inline">\(b_j,
+b&#39;_k\)</span>的优化组，使预测数据与原始数据(如实测数据)的偏差最小，较常用的训练方法为反向传播(Back
+Propagation, BP)。</p>
+<p>同济大学<a
+target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S1359431115009837">张春路教授团队使用了
+BP 算法作为 ANN
+的训练方法</a>，采用一个隐藏层。其中输入参数四个：膨胀阀的入口压力、出口压力、入口过冷度和开度。隐层传递函数则选取了流行的
+Tan-sigmoid 函数和具有较高精度的 <span class="math inline">\(n\)</span>
+阶多项式</p>
+<blockquote>
+<p>Tan-sigmoid 函数 <span class="math display">\[ g_{hiden}(x) =
+\frac{2}{1+e^{-2x}}-1 \]</span> <span class="math inline">\(n\)</span>
+阶多项式 <span class="math display">\[ g_{hidden}(x) = x^n\]</span></p>
+</blockquote>
+<p>另外，上海交通大学<a
+target="_blank" rel="noopener" href="https://www.infona.pl/resource/bwmeta1.element.elsevier-8b73d71e-44ab-3e7a-a2bb-c3bd95dcbd61">谷波教授团队使用了
+Levenberg Marquardt BP 算法作为训练算法</a>，选择的隐藏层传递函数为
+Tan-sigmoid 函数和 Log-sigmoid 函数</p>
+<blockquote>
+<p>Log-sigmoid 函数 <span class="math display">\[ g_{hiden}(x) =
+\frac{1}{1+e^{-x}} \]</span></p>
+</blockquote>
+<p>输入参数为 8 和无量纲的参数</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\pi_2\)</span></th>
+<th><span class="math inline">\((p_{in}-p_{out})/p_c\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\pi_3\)</span></td>
+<td><span class="math inline">\(t_{sub}/t_c\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pi_4\)</span></td>
+<td><span class="math inline">\(\rho_{in}/\rho_{out}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\pi_5\)</span></td>
+<td><span class="math inline">\(d_e
+\sqrt{p_c\rho_{in}}/\mu_{in}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pi_6\)</span></td>
+<td><span class="math inline">\(d_e p_{in} / \sigma\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\pi_7\)</span></td>
+<td><span class="math inline">\(c_{pin}t_c/h_{in}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pi_8\)</span></td>
+<td><span class="math inline">\(d_e/d\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\pi_9\)</span></td>
+<td><span class="math inline">\(x\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>无量纲输出参数为 <span class="math display">\[ y = \pi_1 =
+\frac{q}{d^2_c \sqrt{\rho_i}(p_i-p_o)} \]</span></p>
+<p>每次移除一个输入参数，保留7个参数进行训练后发现，<span
+class="math inline">\(\pi_6\)</span> 是影响 ANN
+灵敏度和准确性的最重要因素，因为<span
+class="math inline">\(\pi_6\)</span>在中包含表明张力 <span
+class="math inline">\(\sigma\)</span>，代表亚稳态流。</p>
+<p>两个团队评价 ANN 相关性的标准如下</p>
+<blockquote>
+<p>平均相对误差(mean relative error, MRE) <span
+class="math display">\[MRE= \frac{1}{n}\sum
+_{i=1}^{n}\frac{y_{pre}-y_{exp}}{y_{exp}}\]</span> 均方根误差 (Root Mean
+Square Error, RMSE) <span class="math display">\[RMSE=
+\sqrt{\frac{1}{n}\sum _{i=1}^{n}(y_{pre}-y_{exp})^{2}}\]</span> 标准偏差
+(Standard Deviation, SD) <span class="math display">\[S.D.=
+\sqrt{\frac{1}{N-1}\sum_{i=1}^{n}(\frac{y_{pre}-y_{exp}}{y_{exp}}-MRE)^{2}}\]</span></p>
+</blockquote>
+<h2 id="总结">总结</h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>复杂度</th>
+<th>精确度</th>
+<th>使用程度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>幂相关法</td>
+<td>中</td>
+<td>中</td>
+<td>广泛使用</td>
+</tr>
+<tr class="even">
+<td>多项式相关法</td>
+<td>低</td>
+<td>低</td>
+<td>很少使用</td>
+</tr>
+<tr class="odd">
+<td>人工神经网络相关法</td>
+<td>高</td>
+<td>高</td>
+<td>很少使用</td>
+</tr>
+</tbody>
+</table>
+<p>最常用为幂相关法；多项式相关法为模型简化较多，使用方便，但偏差较大；人工神经网络相关法精度较高，但目前研究及应用较少。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%98%80/" rel="tag"># 阀</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/66/" rel="prev" title="制冷小知识">
+                  <i class="fa fa-angle-left"></i> 制冷小知识
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/68/" rel="next" title="老坑新踩：谷歌相册导出照片到本地">
+                  老坑新踩：谷歌相册导出照片到本地 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Pencilq</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

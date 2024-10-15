@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-p.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-p.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-p.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pencilq.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="这一部分主要是对应力张量数学本质的理解。 相似矩阵 通过基础知识我们已经认识到，应力张量代表点的应力状态，它不依赖于坐标系的选取，并且对应着同一主应力状态。用矩阵的观点理解为：  同一点的应力张量矩阵是相似矩阵，并且可以对角化。  然而问题是为什么会这样？ 我们可以这么理解，同一点不同截面下的应力张量描述的都是相同的应力状态，因此他们存在内在联系（例如受约束于静力平衡方程）。由切应力互等定律可知应">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(转) 应力张量的认识之线性变换">
+<meta property="og:url" content="https://pencilq.com/39/">
+<meta property="og:site_name" content="小铅笔 &amp; Jeff">
+<meta property="og:description" content="这一部分主要是对应力张量数学本质的理解。 相似矩阵 通过基础知识我们已经认识到，应力张量代表点的应力状态，它不依赖于坐标系的选取，并且对应着同一主应力状态。用矩阵的观点理解为：  同一点的应力张量矩阵是相似矩阵，并且可以对角化。  然而问题是为什么会这样？ 我们可以这么理解，同一点不同截面下的应力张量描述的都是相同的应力状态，因此他们存在内在联系（例如受约束于静力平衡方程）。由切应力互等定律可知应">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-14T08:52:39.000Z">
+<meta property="article:modified_time" content="2024-10-15T15:34:57.968Z">
+<meta property="article:author" content="小铅笔 &amp; Jeff">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pencilq.com/39/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pencilq.com/39/","path":"/39/","title":"(转) 应力张量的认识之线性变换"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>(转) 应力张量的认识之线性变换 | 小铅笔 & Jeff</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">小铅笔 & Jeff</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E4%BC%BC%E7%9F%A9%E9%98%B5"><span class="nav-number">1.</span> <span class="nav-text">相似矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text">线性变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E"><span class="nav-number">3.</span> <span class="nav-text">举例说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0"><span class="nav-number">5.</span> <span class="nav-text">相关文章</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小铅笔 & Jeff"
+      src="/images/favicon-pancilq.png">
+  <p class="site-author-name" itemprop="name">小铅笔 & Jeff</p>
+  <div class="site-description" itemprop="description">一个分享日常的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hqyyqh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hqyyqh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hqysmail@gmail.com" title="E-Mail → mailto:hqysmail@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/39/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon-pancilq.png">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+      <meta itemprop="description" content="一个分享日常的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="(转) 应力张量的认识之线性变换 | 小铅笔 & Jeff">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          (转) 应力张量的认识之线性变换<a href="https://github.com/hqyyqh/blog_source/tree/master/source/_posts/39-(%E8%BD%AC)%20%E5%BA%94%E5%8A%9B%E5%BC%A0%E9%87%8F%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-10-14 08:52:39" itemprop="dateCreated datePublished" datetime="2019-10-14T08:52:39+00:00">2019-10-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-15 15:34:57" itemprop="dateModified" datetime="2024-10-15T15:34:57+00:00">2024-10-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>这一部分主要是对应力张量数学本质的理解。</p>
+<h2 id="相似矩阵">相似矩阵</h2>
+<p>通过基础知识我们已经认识到，应力张量代表点的应力状态，它不依赖于坐标系的选取，并且对应着同一主应力状态。用矩阵的观点理解为：</p>
+<blockquote>
+<p>同一点的应力张量矩阵是相似矩阵，并且可以对角化。</p>
+</blockquote>
+<p>然而问题是为什么会这样？</p>
+<p>我们可以这么理解，同一点不同截面下的应力张量描述的都是相同的应力状态，因此他们存在内在联系（例如受约束于静力平衡方程）。由切应力互等定律可知应力张量矩阵是实对称矩阵，而实对称矩阵必定可以对角化，即不同截面应力张量对相似于一个主应力张量；而同一点的主应力状态是确定的。于是由相似矩阵的传递性可知，不同截面下的应力张量矩阵是相似的。</p>
+<span id="more"></span>
+<h2 id="线性变换">线性变换</h2>
+<p>由应力张量是相似矩阵再进一步，因为
+<strong>相似矩阵的本质是同一线性变换在不同基下表示的矩阵</strong>
+，我们就可以从更根本的角度看待应力张量了：</p>
+<blockquote>
+<p>应力张量代表一个线性变换！</p>
+</blockquote>
+<p>这是一个抽象的认识，或者说是从相似矩阵推论出来的。那么接下来让他具体化：</p>
+<p>从基础知识已经知道，利用三个相互垂直的截面截取一点 <span
+class="math inline">\(P\)</span>，各个截面上的应力分量组成应力张量。以这三个截面的法线方向为正方向建立笛卡尔坐标系，如下图所示。</p>
+<p><img
+src="https://image.pencilq.com/images/2019/10/13/2013-07-30-05.png" /></p>
+<p>对于任意法向 <span
+class="math inline">\(\vec{n}=(n_1,\,n_2,\,n_3)\)</span>
+的截面，可以得到截面上的应力分量</p>
+<p><span class="math display">\[
+p_i = \sigma_{ij}\,n_j
+\]</span></p>
+<p>改写为矩阵表达式</p>
+<p><span class="math display">\[
+A\,x = y
+\]</span></p>
+<p>其中，</p>
+<p><span class="math display">\[
+A =
+\begin{pmatrix}
+\sigma_{11} &amp; \tau_{12} &amp; \tau_{13} \\
+\tau_{21} &amp; \sigma_{22} &amp; \sigma_{23} \\
+\tau_{31} &amp; \tau_{32} &amp; \sigma_{33}
+\end{pmatrix}\,,
+x = n_j =
+\begin{pmatrix} n_1 \\  n_2 \\  n_3
+\end{pmatrix}\,,
+y = p_i =
+\begin{pmatrix}
+p_1 \\  p_2 \\  p_3
+\end{pmatrix}
+\]</span></p>
+<p>根据线性变换与矩阵的一一对应关系可知，应力张量代表一个线性变换（确切的说是线性映射）——
+<strong>应力张量将截面位置映射到截面应力</strong> 。其数学表述为：</p>
+<p><span class="math display">\[
+\sigma\,\in \, Hom(U,\,V),\,\sigma:\,x \rightarrow y \quad
+x=\left(n_1,\,n_2,\,n_3\right)^T \quad y=\left(p_1,\,p_2,\,p_3\right)^T
+\]</span></p>
+<p>其中， <span class="math inline">\(U\)</span>
+是截面方向余弦组成的线性空间， <span class="math inline">\(V\)</span>
+是截面应力作成的线性空间。</p>
+<h2 id="举例说明">举例说明</h2>
+<p>以下说明这个线性映射是如何与力学描述相一致的。</p>
+<p>之前多次提及，用三个互相垂直的截面截取 <span
+class="math inline">\(P\)</span>
+点，并以其法向建立笛卡尔坐标系。这样的截面有无数多对，这样的坐标系也有无数多个。为了区分他们，先确定一个
+<code>全局坐标系</code> <span class="math inline">\(S:Oxyz\)</span>
+，那么其他任意的 <code>局部坐标系</code> <span
+class="math inline">\(S′:O′x′y′z′\)</span>
+就可以用它的坐标轴方向在全局坐标系下的方向余弦来描述了。</p>
+<p>例如，局部系 <span class="math inline">\(x′\)</span>
+轴在全局坐标系下的方向余弦为</p>
+<p><span class="math display">\[
+\alpha_x =
+\left(\cos\langle{x&#39;,\,x}\rangle,\,\cos\langle{x&#39;,\,y}\rangle,\,\cos\langle{x&#39;,\,z}\rangle\right)
+\]</span></p>
+<p>进而，局部坐标系 <span class="math inline">\(S′\)</span>
+可以描述为</p>
+<p><span class="math display">\[
+\alpha = \left(\alpha_x,\,\alpha_y,\,\alpha_z\right) =
+\begin{pmatrix}
+\cos\langle{x’,\,x}\rangle &amp; \cos\langle{y’,\,x}\rangle &amp;
+\cos\langle{z’,\,x}\rangle \\
+\cos\langle{x’,\,y}\rangle &amp; \cos\langle{y’,\,y}\rangle &amp;
+\cos\langle{z’,\,y}\rangle \\  
+\cos\langle{x’,\,z}\rangle &amp; \cos\langle{y’,\,z}\rangle &amp;
+\cos\langle{z’,\,z}\rangle
+\end{pmatrix}
+\]</span></p>
+<p>在局部坐标系内，截面 <span class="math inline">\(\vec{n}\)</span>
+用方向余弦表示为</p>
+<p><span class="math display">\[
+\vec{n}=\left(n_1,\,n_2,\,n_3\right)^T =
+\left(\cos\langle{\vec{n},\,x&#39;}\rangle,\,\cos\langle{\vec{n},\,y&#39;}\rangle,\,\cos\langle{\vec{n},\,z&#39;}\rangle\right)^T
+\]</span></p>
+<blockquote>
+<p><span class="math inline">\(\alpha\)</span>
+表示局部坐标系在全局坐标系空间下的基。 <span
+class="math inline">\(\vec{n}\)</span>
+表示任意截面在局部坐标系下的坐标。</p>
+</blockquote>
+<p>局部坐标系任意截面上的应力分布也是类似的情况，其坐标系方向一致，坐标的描述也类似，只是属于不同的空间而已。如此一来，力学描述和数学描述是相互统一的：</p>
+<blockquote>
+<p><strong>力学描述</strong> 用任意相互垂直的三个平面截取 <span
+class="math inline">\(P\)</span>
+点，以截面法向为正方向建立笛卡尔坐标系，得到三个截面上的应力状态即应力张量
+<span class="math inline">\(\sigma\)</span>
+。以此为基础，可以求得当前坐标系下任意截面<span
+class="math inline">\(\vec{n}\)</span>上的应力分布<span
+class="math inline">\(\vec{p}\)</span> 。</p>
+</blockquote>
+<blockquote>
+<p><strong>数学描述</strong> 任意给定一组基<span
+class="math inline">\(\alpha\)</span>后，可以用坐标 <span
+class="math inline">\(\left(n_1,\,n_2,\,n_3\right)^T\)</span>
+描述截面位置，用坐标 <span
+class="math inline">\(\left(p_1,\,p_2,\,p_3\right)^T\)</span>
+描述截面应力。在这组基下，存在一个线性变换 <span
+class="math inline">\(\sigma\)</span> ，将截面位置<span
+class="math inline">\(\vec{n}\)</span>映射到截面应力<span
+class="math inline">\(\vec{p}\)</span>。</p>
+</blockquote>
+<h2 id="总结">总结</h2>
+<p>这一部分从相似矩阵及线性变换的角度来认识应力张量，应力张量是从截面位置到截面应力的线性变换所对应的矩阵。</p>
+<h2 id="相关文章">相关文章</h2>
+<p><a href="https://pencilq.com/38">(转) 应力张量的认识之基本概念</a> <a
+href="https://pencilq.com/40">(转)
+应力张量的认识之线性变换的证明</a></p>
+<hr />
+<p>转载声明： - 本文转自：<a
+target="_blank" rel="noopener" href="https://dothinking.github.io/blog/2013/07/30/%E5%BA%94%E5%8A%9B%E5%BC%A0%E9%87%8F%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2.html">格致</a>
+- 由原授权网址 <code>huangqy.pw</code> （已弃用）搬运至 <a
+href="https://pencilq.com">pencilq.com</a> -
+对文章内容有任何质疑或建议，请邮件联系 <a
+href="mailto:train8808@gmail.com">train8808@gmail.com</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/38/" rel="prev" title="(转) 应力张量的认识之基本概念">
+                  <i class="fa fa-angle-left"></i> (转) 应力张量的认识之基本概念
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/40/" rel="next" title="(转) 应力张量的认识之线性变换的证明">
+                  (转) 应力张量的认识之线性变换的证明 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Pencilq</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

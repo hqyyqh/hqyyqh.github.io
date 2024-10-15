@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-p.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-p.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-p.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pencilq.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="完整的教程说明：技巧分享：Quicker 调用 Saladict 实现全局『文本翻译、截图翻译、复制翻译、触边翻译』 沙拉查词+Quicker文本截图划词翻译复制翻译触边翻译">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文献翻译利器：沙拉查词+ Quicker，这或许是 Windows上最强的聚合翻译方案">
+<meta property="og:url" content="https://pencilq.com/54/">
+<meta property="og:site_name" content="小铅笔 &amp; Jeff">
+<meta property="og:description" content="完整的教程说明：技巧分享：Quicker 调用 Saladict 实现全局『文本翻译、截图翻译、复制翻译、触边翻译』 沙拉查词+Quicker文本截图划词翻译复制翻译触边翻译">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-12T00:09:26.000Z">
+<meta property="article:modified_time" content="2024-10-15T15:34:57.969Z">
+<meta property="article:author" content="小铅笔 &amp; Jeff">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pencilq.com/54/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pencilq.com/54/","path":"/54/","title":"文献翻译利器：沙拉查词+ Quicker，这或许是 Windows上最强的聚合翻译方案"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>文献翻译利器：沙拉查词+ Quicker，这或许是 Windows上最强的聚合翻译方案 | 小铅笔 & Jeff</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">小铅笔 & Jeff</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="nav-number">3.</span> <span class="nav-text">使用技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">相关参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小铅笔 & Jeff"
+      src="/images/favicon-pancilq.png">
+  <p class="site-author-name" itemprop="name">小铅笔 & Jeff</p>
+  <div class="site-description" itemprop="description">一个分享日常的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hqyyqh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hqyyqh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hqysmail@gmail.com" title="E-Mail → mailto:hqysmail@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/54/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon-pancilq.png">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+      <meta itemprop="description" content="一个分享日常的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="文献翻译利器：沙拉查词+ Quicker，这或许是 Windows上最强的聚合翻译方案 | 小铅笔 & Jeff">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          文献翻译利器：沙拉查词+ Quicker，这或许是 Windows上最强的聚合翻译方案<a href="https://github.com/hqyyqh/blog_source/tree/master/source/_posts/54-%E6%B2%99%E6%8B%89%E6%9F%A5%E8%AF%8D+Quicker%20%E8%BF%99%E6%88%96%E8%AE%B8%E6%98%AFWindows%E4%B8%8A%E6%9C%80%E5%BC%BA%E7%9A%84%E8%81%9A%E5%90%88%E7%BF%BB%E8%AF%91%E6%96%B9%E6%A1%88.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-12 00:09:26" itemprop="dateCreated datePublished" datetime="2020-02-12T00:09:26+00:00">2020-02-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-15 15:34:57" itemprop="dateModified" datetime="2024-10-15T15:34:57+00:00">2024-10-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>完整的教程说明：<a
+target="_blank" rel="noopener" href="https://github.com/crimx/ext-saladict/discussions/493">技巧分享：Quicker
+调用 Saladict 实现全局『文本翻译、截图翻译、复制翻译、触边翻译』</a></p>
+<div class="tabs" id="四种模式演示"><ul class="nav-tabs"><li class="tab active"><a href="#四种模式演示-1">沙拉查词+Quicker</a></li><li class="tab"><a href="#四种模式演示-2">文本截图</a></li><li class="tab"><a href="#四种模式演示-3">划词翻译</a></li><li class="tab"><a href="#四种模式演示-4">复制翻译</a></li><li class="tab"><a href="#四种模式演示-5">触边翻译</a></li></ul><div class="tab-content"><div class="tab-pane active" id="四种模式演示-1"><iframe src="//player.bilibili.com/player.html?aid=540562830&amp;bvid=BV1ki4y1x7EN&amp;cid=185784827&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">
+</iframe></div><div class="tab-pane" id="四种模式演示-2"><p><img
+src="https://user-images.githubusercontent.com/38676455/93342947-7ca6a180-f862-11ea-8103-c35fc635c65b.gif" /></p></div><div class="tab-pane" id="四种模式演示-3"><p><img
+src="https://user-images.githubusercontent.com/38676455/93343002-90520800-f862-11ea-8d8b-f0be79500d6b.gif" /></p></div><div class="tab-pane" id="四种模式演示-4"><p><img
+src="https://user-images.githubusercontent.com/38676455/93343054-a19b1480-f862-11ea-9f9c-530940a6ce81.gif" /></p></div><div class="tab-pane" id="四种模式演示-5"><p><img
+src="https://user-images.githubusercontent.com/38676455/93343111-b24b8a80-f862-11ea-8c1b-26484f481a38.gif" /></p></div></div></div>
+<span id="more"></span>
+<h2 id="前言">前言</h2>
+<ul>
+<li>一大堆英文 PDF 要概览？</li>
+<li>PDF 复制出来全是乱七八糟的断行短句？</li>
+<li>遇到扫描的英文书籍，只能一个个单词手打翻译？</li>
+<li>CNKI 翻译、朗文、牛津词典等专业词典查生词和例句？</li>
+<li>谷歌翻译、腾讯翻译、有道翻译、百度翻译、搜狗翻译等整个段落？</li>
+</ul>
+<p><img
+src="https://pic3.zhimg.com/80/v2-ebd46b0bdd5c6decb52dee3357425c22_720w.jpg" /></p>
+<p>对论文党来说，以上重(dàn)要(téng)的需求是比较常见的。而这篇教程，就是为了解决这些重要的需求而生。给你<mark class="label success">30+词典聚合对比翻译、翻译情景模式一键切换、划词&&截图&&复制&&触边翻译</mark></p>
+<div class="note danger"><p>警告：过度依赖翻译工具弊大于利，该啃的硬骨头还是要啃的。</p>
+</div>
+<h3 id="介绍">介绍</h3>
+<p>沙拉查词+Quicker
+的组合，就能够完美解决上述大部分的翻译需求。关于沙拉查词扩展的使用，可以参考文章：<a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/82773763">别找了，这才是你要的英文文献翻译神器！</a>。本文主要解决浏览器外调用沙拉查词进行翻译的问题。</p>
+<p><img
+src="https://pic3.zhimg.com/v2-7b9945ee917a71c85dd16746bf5b87e2_r.jpg"
+alt="多种翻译模式" /> <img
+src="https://pic1.zhimg.com/v2-bc10e03ea9a8f8a6eccf1d138be2de98_r.jpg"
+alt="丰富的词典和翻译引擎" /> <img
+src="https://pic2.zhimg.com/v2-e5acc559e79c47459acc6dc5e2ab0fb9_r.jpg" /></p>
+<h2 id="安装">安装</h2>
+<blockquote>
+<p>五星满分的<a
+target="_blank" rel="noopener" href="https://saladict.crimx.com/">沙拉查词</a>以及作为快捷入口的<a
+target="_blank" rel="noopener" href="https://getquicker.net/">Quicker</a>都是非常优秀的工具，使用上手简单，并且官网都有详细的中文使用说明。</p>
+</blockquote>
+<ol type="1">
+<li>安装 Quicker 以及 Quicker 动作【<a
+target="_blank" rel="noopener" href="https://getquicker.net/sharedaction?code=b0d1a134-8284-4a44-d1be-08d746da5869">文本
+/ 截图翻译</a>】</li>
+<li>Chrome 浏览器安装【<a
+target="_blank" rel="noopener" href="https://saladict.crimx.com/">沙拉查词扩展</a>】</li>
+<li>浏览器打开 【chrome://extensions/shortcuts】 → 找到【沙拉查词 -
+聚合词典划词翻译扩展】设置 ，在【独立窗口中搜索剪贴板内容】 设置快捷键
+alt+L，右侧选择全局。</li>
+<li>保持上述浏览器运行，在 Quicker 面板点击【文本 /
+截图翻译】动作即可翻译。</li>
+</ol>
+<blockquote>
+<p>可能出现的问题 1. 扩展安装有困难，可以直接下载配置好沙拉查词的懒人版
+Chrome，打开即用。https://www.jianguoyun.com/p/DTdoMoEQytvsBhj65ekC
+(访问密码 : ymaxgt) 2. 如果需要科学上网安装扩展，可以使用【<a
+target="_blank" rel="noopener" href="http://googlehelper.net/">谷歌上网助手</a>】来安装沙拉查词扩展。
+3. 如果需要保持浏览器在后台运行，可以使用<a
+target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/%E5%90%8E%E5%8F%B0%E5%B8%B8%E9%A9%BB/mhbibamplfmiaglgnombmmlmcpbocfag">后台常驻扩展</a>
+4. 大部分基于 Chromium
+的浏览器都可以安装配置。原则上只要能够为沙拉查词配置全局快捷键就可以。</p>
+</blockquote>
+<p><img
+src="https://pic3.zhimg.com/v2-c665fc38031599f21635c3ff582ad156_r.jpg" /></p>
+<h2 id="使用技巧">使用技巧</h2>
+<ul>
+<li><strong>善用情景模式</strong>：可以满足不同场合的需求。在需要句子或者段落翻译，又需要详细的单词释义时，可以一键切换。</li>
+</ul>
+<p><img
+src="https://image.pencilq.com/images/2020/02/12/saladict_profile.gif" /></p>
+<ul>
+<li><p><strong>模仿划词翻译1</strong>：在【复制翻译】模式下，选中文本后点击
+pdf 软件内置的复制按钮，就可以直接翻译。（类似于划词翻译的效果） <img
+src="https://user-images.githubusercontent.com/38676455/93343412-09515f80-f863-11ea-932e-ce42e45656d9.gif" /></p></li>
+<li><p><strong>模仿划词翻译2</strong>：在【复制翻译】模式下，选中文本后，也利用
+Quicker
+的【按住左键】同时【点右键】复制功能来复制文本，进而自动触发翻译。</p></li>
+</ul>
+<p><img
+src="https://user-images.githubusercontent.com/38676455/72629006-6de1b500-398a-11ea-981f-689078ca396b.gif" /></p>
+<ul>
+<li><strong>段落排版</strong>：PDF
+文本的一堆断行怎么搞？翻译之前的文本都会经过自动分段处理，尽可能还原为理想的分段。动作针对英文的排版进行了大量优化，用来处理文本也是很不错的。分段后的文本会输出到剪贴板中，Ctrl+V
+就可以获取。可以在动作【高级设置】中将【翻译方式】设置为【不翻译（复制到剪贴板）】。</li>
+</ul>
+<p><img
+src="https://user-images.githubusercontent.com/38676455/67873384-599dd100-fb6e-11e9-872e-c698027de2be.jpg" /></p>
+<ul>
+<li><strong>连续截图</strong>：在默认的截图 OCR 模式下（即 Quicker
+自带的截图方式），可以按住 Ctrl 连续截图识别。</li>
+</ul>
+<p><img
+src="https://image.pencilq.com/images/2020/04/28/ctrl-multi-ocr.gif" /></p>
+<h2 id="相关参考">相关参考</h2>
+<ol type="1">
+<li><a
+target="_blank" rel="noopener" href="https://getquicker.net/sharedaction?code=42abae81-ed41-4f16-269a-08d668af12c8">xiuluoc
+沙拉查词</a> （参考调用沙拉查词）</li>
+<li><a
+target="_blank" rel="noopener" href="https://getquicker.net/sharedaction?code=7feab952-5a24-4aa8-39e9-08d6dd213093">天若幽心
+段落排版</a> （参考文本排版）</li>
+<li><a
+target="_blank" rel="noopener" href="https://getquicker.net/sharedaction?code=ba82e11a-f845-4ca3-44ee-08d690b5076c">Marcus
+截图 OCR</a> （取用了 OCR 模块）</li>
+<li><a target="_blank" rel="noopener" href="https://copytranslator.github.io/">CopyTranslator</a>
+（借鉴复制翻译的模式）</li>
+<li><a
+target="_blank" rel="noopener" href="https://getquicker.net/sharedaction?code=74fc2052-d397-47a3-a1cd-08d6c790cedc">治钧
+剪库</a> （参考编写了复制翻译模式）</li>
+<li><a
+target="_blank" rel="noopener" href="https://getquicker.net/sharedaction?code=32315d1a-bcf5-4515-bdd8-08d78cdfb917">果然君2
+OCR (高精度)</a> （取用了高精度识别模块）</li>
+<li><a
+target="_blank" rel="noopener" href="https://getquicker.net/sharedaction?code=5722879e-da80-4f59-1748-08d7ab07e287">果然君2
+OCR (多重识别)</a> （参考了多重截图实现）</li>
+<li><a
+target="_blank" rel="noopener" href="https://getquicker.net/sharedaction?code=6bd460bf-6fbf-4a7a-f7cd-08d7b41fb3e2">Ever
+边缘触发</a>(取用了边缘触发动作)</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/53/" rel="prev" title="2019 中科院期刊分区">
+                  <i class="fa fa-angle-left"></i> 2019 中科院期刊分区
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/55/" rel="next" title="PDF文本自动分段——Powershell 脚本">
+                  PDF文本自动分段——Powershell 脚本 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Pencilq</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

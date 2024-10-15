@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-p.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-p.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-p.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pencilq.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="转自仿真科技论坛，点击进入原网址，作者师访  本部分给出Win7系统下UPFs二次开发环境设置方法。本部分所提供的方法仅用于个人研究学习，商业用途请购买正版软件，并按照软件商提供的方法操作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ansys 二次开发系列之一：ANSYS15-0-Win764位安装及UPFs二次开发环境设置">
+<meta property="og:url" content="https://pencilq.com/19/">
+<meta property="og:site_name" content="小铅笔 &amp; Jeff">
+<meta property="og:description" content="转自仿真科技论坛，点击进入原网址，作者师访  本部分给出Win7系统下UPFs二次开发环境设置方法。本部分所提供的方法仅用于个人研究学习，商业用途请购买正版软件，并按照软件商提供的方法操作。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-08-24T23:12:28.000Z">
+<meta property="article:modified_time" content="2024-10-15T15:34:57.967Z">
+<meta property="article:author" content="小铅笔 &amp; Jeff">
+<meta property="article:tag" content="软件">
+<meta property="article:tag" content="ANSYS">
+<meta property="article:tag" content="二次开发">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pencilq.com/19/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pencilq.com/19/","path":"/19/","title":"Ansys 二次开发系列之一：ANSYS15-0-Win764位安装及UPFs二次开发环境设置"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Ansys 二次开发系列之一：ANSYS15-0-Win764位安装及UPFs二次开发环境设置 | 小铅笔 & Jeff</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">小铅笔 & Jeff</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">2. 软件的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">3. 系统环境变量的设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-anscust.bat-%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">4. 修改 ANSCUST.BAT 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E8%BF%9E%E6%8E%A5%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">4.</span> <span class="nav-text">5. 编译连接注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%AE%BE%E7%BD%AE%E5%A4%B1%E8%B4%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">6. 安装设置失败的解决办法！！！</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小铅笔 & Jeff"
+      src="/images/favicon-pancilq.png">
+  <p class="site-author-name" itemprop="name">小铅笔 & Jeff</p>
+  <div class="site-description" itemprop="description">一个分享日常的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hqyyqh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hqyyqh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hqysmail@gmail.com" title="E-Mail → mailto:hqysmail@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pencilq.com/19/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon-pancilq.png">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小铅笔 & Jeff">
+      <meta itemprop="description" content="一个分享日常的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Ansys 二次开发系列之一：ANSYS15-0-Win764位安装及UPFs二次开发环境设置 | 小铅笔 & Jeff">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ansys 二次开发系列之一：ANSYS15-0-Win764位安装及UPFs二次开发环境设置<a href="https://github.com/hqyyqh/blog_source/tree/master/source/_posts/19-ANSYS15-Win764%E4%BD%8D%E5%AE%89%E8%A3%85%E5%8F%8AUPFs%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-08-24 23:12:28" itemprop="dateCreated datePublished" datetime="2018-08-24T23:12:28+00:00">2018-08-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-15 15:34:57" itemprop="dateModified" datetime="2024-10-15T15:34:57+00:00">2024-10-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p><strong>转自仿真科技论坛</strong>，<a
+target="_blank" rel="noopener" href="http://forum.simwe.com/thread-1021888-1-1.html">点击进入原网址，作者师访</a></p>
+</blockquote>
+<p>本部分给出Win7系统下UPFs二次开发环境设置方法。本部分所提供的方法仅用于个人研究学习，商业用途请购买正版软件，并按照软件商提供的方法操作。
+<span id="more"></span> ## 1. 相关环境及软件</p>
+<ol type="1">
+<li>本文操作系统 win7_64bit</li>
+<li>64位ANSYS15.0</li>
+<li>Visual Studio 2010</li>
+<li>Intel Fortran Composer XE 2013 SP1</li>
+</ol>
+<h2 id="软件的安装">2. 软件的安装</h2>
+<blockquote>
+<p>（可参考帖子：http://forum.simwe.com/thread-1094988-1-1.html，建议安装在D盘）</p>
+</blockquote>
+<ol type="1">
+<li>安装<code>ansys</code>，将ANSYS15.0安装在D盘。 <a
+target="_blank" rel="noopener" href="http://forum.simwe.com/forum.php?mod=attachment&amp;aid=NDM3ODkyfDA0Y2NkNzJmfDE1MzE0NDQ4MTd8NzgzMjAxfDEwMjE4ODg%3D">ansys15.0种子</a>
+，破解文件 <a
+target="_blank" rel="noopener" href="http://forum.simwe.com/forum.php?mod=attachment&amp;aid=NDM3ODkxfGNmYzc1NjQxfDE1MzE0NDQ4MTd8NzgzMjAxfDEwMjE4ODg%3D">ansys_crack</a></li>
+</ol>
+<p>安装方法如下（注意安装过程中别忘了选择安装<strong>customalize文件夹</strong>）：
+<img
+src="https://image.pencilq.com/images/2019/05/02/006tNbRwgy1fukikzwp9ej30g903cglm.jpg" /></p>
+<p>​ <strong>Step 1</strong> If you have installed an earlier version of
+ANSYS, please make sure to uninstall it, the ANSYS License Manager in
+especial (This can be done by deleting the"IncFiles" folder, if it can
+not be deleted,then end the related processes in the task manager and
+try again!).</p>
+<p>​ <strong>Step 2</strong> Install only ANSYS products on disk D, do
+not install ANSYS License Manager. <strong>When askfor Hostname
+1</strong>, just select <strong>Skip this configuration!</strong></p>
+<p>​ <strong>Step 3</strong> After installation, Put
+<strong>ansyslmd.ini</strong> and license.dat into the
+followingdirectory:<br />
+<code>D:\Program Files\ANSYS Inc\SharedFiles\Licensing\</code> Modify
+thesecond line of the <strong>ansyslmd.ini</strong> into the following
+line:
+<code>LICKEYFIL=D:\Program Files\ANSYS Inc\SharedFiles\Licensing\license.dat</code></p>
+<ol type="1">
+<li>安装 Visual Studio 2010，下载地址：百度网盘，<a
+target="_blank" rel="noopener" href="http://pan.baidu.com/s/1ntjr3dB"
+class="uri">http://pan.baidu.com/s/1ntjr3dB</a>。安装在 C
+盘，默认安装设置。安装完成后<strong>切勿进行关于 Visual Studio
+2010的Windows Update 更新</strong>。</li>
+<li>安装Intel Fortran Composer XE 2013 SP1，下载地址：百度网盘，<a
+target="_blank" rel="noopener" href="http://pan.baidu.com/s/1hq88u2K"
+class="uri">http://pan.baidu.com/s/1hq88u2K</a>。安装在C盘，默认安装设置。</li>
+</ol>
+<h2 id="系统环境变量的设置">3. 系统环境变量的设置</h2>
+<blockquote>
+<p>这是本文安装环境的环境变量，按照本文安装方式，以下环境变量直接添加即可。（win10、win7
+）</p>
+</blockquote>
+<ol type="1">
+<li><p>Path 环境变量用如下path
+环境变量替换（每一行表示一条环境变量，各条环境变量之间用分号(;)隔开），以下环境变量基于本文安装路径，若安装路径不同，请进行相关调整：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">%INTEL_DEV_REDIST%redist\intel64\mpirt</span><br><span class="line">%INTEL_DEV_REDIST%redist\intel64\compiler</span><br><span class="line">%INTEL_DEV_REDIST%redist\ia32\mpirt</span><br><span class="line">%INTEL_DEV_REDIST%redist\ia32\compiler</span><br><span class="line">%SystemRoot%\system32</span><br><span class="line">%SystemRoot%</span><br><span class="line">%SystemRoot%\System32\Wbem</span><br><span class="line">%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\</span><br><span class="line">C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x86</span><br><span class="line">C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x64</span><br><span class="line">C:\Program Files (x86)\Microsoft SQL Server\90\Tools\binn\</span><br><span class="line">C:\Program Files (x86)\Intel\Composer XE 2013 SP1\bin</span><br><span class="line">C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin</span><br><span class="line">C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin</span><br><span class="line">c:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\</span><br><span class="line">c:\Program Files\Microsoft SQL Server\100\Tools\Binn\</span><br><span class="line">c:\Program Files\Microsoft SQL Server\100\DTS\Binn\</span><br><span class="line">C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE</span><br></pre></td></tr></table></figure>
+<p>可直接复制以下内容粘贴： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%INTEL_DEV_REDIST%redist\intel64\mpirt;%INTEL_DEV_REDIST%redist\intel64\compiler;%INTEL_DEV_REDIST%redist\ia32\mpirt;%INTEL_DEV_REDIST%redist\ia32\compiler;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x64;C:\Program Files (x86)\Microsoft SQL Server\90\Tools\binn\;C:\Program Files (x86)\Intel\Composer XE 2013 SP1\bin;C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin;C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin;c:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE</span><br></pre></td></tr></table></figure></p></li>
+<li><p>新增 <strong>Lib</strong> 环境变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Lib\x64;</span><br><span class="line">C:\Program Files (x86)\Intel\Composer XE 2013 SP1\compiler\lib\intel64;</span><br><span class="line">C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\amd64</span><br></pre></td></tr></table></figure>
+<p>可直接复制以下内容粘贴：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Lib\x64;C:\Program Files (x86)\Intel\Composer XE 2013 SP1\compiler\lib\intel64;C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\amd64</span><br></pre></td></tr></table></figure></li>
+<li><p>新增 <strong>Include</strong> 环境变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files (x86)\Intel\Composer XE 2013 SP1\compiler\include\intel64;</span><br><span class="line">C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Include;</span><br><span class="line">C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include</span><br></pre></td></tr></table></figure>
+<p>可直接复制以下内容粘贴：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files (x86)\Intel\Composer XE 2013 SP1\compiler\include\intel64;C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Include;C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="修改-anscust.bat-文件">4. 修改 ANSCUST.BAT 文件</h2>
+<p>本步骤不是必须步骤，但为了保证成功编译，需要将编译文件夹
+<code>D:\ProgramFiles\ANSYS Inc\v150\ansys\custom\user\winx64</code>下的
+<code>ANSCUST.BAT</code> 的第<strong>28</strong>行由：</p>
+<p>​
+<code>call "%IFORT_COMPILER12%\bin\compilervars.bat" %IFORT_PLATFORM% vs2010</code>
+改为： ​
+<code>call "C:\Program Files (x86)\Intel\Composer XE 2013 SP1\bin\compilervars.bat" %IFORT_PLATFORM% vs2010</code></p>
+<h2 id="编译连接注意事项">5. 编译连接注意事项</h2>
+<ul>
+<li><p>复制<code>D:\ProgramFiles\ANSYS Inc\v150\ansys\custom\user\winx64</code>
+文件夹中的文件<code>ANSCUST.BAT</code>、<code>ansys.lrf</code>、<code>ansysex.def</code>，与用户编写的程序(包含<code>xxx.F</code>)放在一个文件夹下，注意路径应为全英文，运行批处理文件<code>ANSCUST.BAT</code>进行编译。</p></li>
+<li><p>当编译程序询问 Do you want to link the Wind Turbine
+Aeroelasticlibrary with Mechanical APDL? (Y or N):
+时，输入<strong>Y</strong>。编译连接完成后，将出现 “LINK WASSUCCESSFUL!”
+的提示。最后，当编译程序询问 Do you want to copythe runtime DLLs? (Y or
+N): ，在第一次编译时需要输入<strong>Y</strong>，程序将自动把 ansys.exe
+运行所需的 <code>D:\Program Files\ANSYS Inc\v150\ansys\bin\winx64</code>
+下的dll动态链接库文件拷贝到编译目录下，以后的编译过程中无需再次拷贝。</p></li>
+<li><p>编译完成后，运行运行生成的 <code>ANSYS.exe</code>，出现 This
+ANSYS was linked by License 即为成功编译。 <img
+src="https://image.pencilq.com/images/2019/08/31/link-license.jpg" /></p></li>
+</ul>
+<h2 id="安装设置失败的解决办法">6. 安装设置失败的解决办法！！！</h2>
+<ol type="1">
+<li><p><strong>初次运行</strong> <code>ANSYS.exe</code> 会出现找不到
+<code>*dll</code>
+文件等问题。原因：环境变量设置问题。解决办法：在计算机中搜索该文件，将其路径添加到path环境变量，若不起作用，直接将其拷贝到编译路径下。(文件搜索推荐
+everything，<a
+target="_blank" rel="noopener" href="https://en.softonic.com/download/everything/windows/post-download?sl=1#">下载地址:</a>https://en.softonic.com/download/everything/windows/post-download?sl=1#)</p></li>
+<li><p>拒绝访问，无法连接到ANSYS等问题。将
+<code>D:\ProgramFiles\ANSYS Inc\v150\ansys\custom\user\winx64</code>
+文件夹拷贝到其它地方（比如 C 盘或 D 盘根目录），再单击其中的 ANSCUST.BAT
+即可。</p></li>
+<li><p>提示”转换到coff期间失败“。原因：系统中存在多个不同版本的
+cvtres.exe
+文件从而产生冲突。共有4个解决方案（优先尝试解决方案1和方案2）。</p>
+<p><strong>解决方案1</strong>：<code>C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin</code>
+和<code>C:\Windows\Microsoft.NET\Framework\v4.0.30319</code>
+这两个文件夹里 的 cvtres.exe 冲突，删除前者。</p>
+<p><strong>解决方案2</strong>：搜索c盘下的cvtres.exe文件，仅保留
+<code>C:\Windows\Microsoft.NET\Framework64\v4.0.30319</code>
+下的cvtres.exe，其余搜到的cvtres.exe全部删除！</p>
+<p><strong>解决方案3</strong>：重装系统，安装Win7官方原版镜像，ANSYS安装时仅仅选择二次开发必要的组件，即：
+<img
+src="https://image.pencilq.com/images/2019/08/31/ansys-install.jpg" />
+<strong>解决方案4</strong>：直接将 Win7 升级到 Win10 可解决该问题。</p>
+<hr /></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag"># 软件</a>
+              <a href="/tags/ANSYS/" rel="tag"># ANSYS</a>
+              <a href="/tags/%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/" rel="tag"># 二次开发</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/15/" rel="prev" title="Mathematica: 自定义中文词云">
+                  <i class="fa fa-angle-left"></i> Mathematica: 自定义中文词云
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/18/" rel="next" title="ANSYS UPFs 子程序简单介绍及实例">
+                  ANSYS UPFs 子程序简单介绍及实例 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Pencilq</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
