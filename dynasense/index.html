@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f9fb">
+  <title>DynaSense — 让 K 文件编辑顺手起来</title>
+  <meta name="description" content="面向 LS-DYNA 的 VS Code 扩展。按字段修改卡片，随手查阅参数与手册，沿着文件和对象关系找到需要的内容。">
+  <link rel="icon" href="./assets/extension-icon.png">
+  <script type="module" crossorigin src="./assets/main-D4AI-ZZ8.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/language-D3Ums2T3.js">
+  <link rel="stylesheet" crossorigin href="./assets/main-HyPGfuhM.css">
+</head>
+<body id="top">
+  <a href="#main-content" class="skip-link" data-i18n="skip">跳至主要内容</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="DynaSense"><img src="./assets/extension-icon.png" alt="" width="30" height="30"><span>DynaSense</span></a>
+      <div class="header-actions">
+        <div class="language-switch" role="group" aria-label="界面语言" data-i18n-aria="language"><button type="button" data-language="zh" aria-pressed="true">中文</button><button type="button" data-language="en" aria-pressed="false">EN</button></div>
+        <a class="button button-small button-secondary" data-online href="https://mybinder.org/v2/gh/hqyyqh/dynasense-binder/c425f73949abf228ee187c7feb8a4f3531aeac7e?urlpath=vscode-zh%2F" target="_blank" rel="noopener noreferrer"><span data-i18n="tryShort">在浏览器中试用</span></a>
+        <details class="download-menu">
+          <summary class="button button-small button-secondary"><span data-i18n="download">下载</span></summary>
+          <div class="download-options">
+            <a href="https://open-vsx.org/extension/hqyyqh/dynasense" target="_blank" rel="noopener noreferrer">Open VSX</a>
+            <a href="https://github.com/hqyyqh/vscode-lsdyna/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a>
+          </div>
+        </details>
+        <a class="button button-small header-install" href="https://marketplace.visualstudio.com/items?itemName=hqyyqh.dynasense" target="_blank" rel="noopener noreferrer" data-i18n="installShort">安装</a>
+        <a class="button button-small button-secondary header-video" href="https://www.bilibili.com/video/BV1Hcn26DEu6/" target="_blank" rel="noopener noreferrer">视频演示</a>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <section class="hero">
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <div class="hero-eyebrow"><span class="eyebrow-dot"></span><span data-i18n="identity">面向 LS-DYNA 的 VS Code 扩展</span></div>
+          <h1><span data-i18n="heroLine1">让 K 文件编辑</span><span data-i18n="heroLine2">顺手起来。</span></h1>
+          <p class="hero-lead" data-i18n="heroLead">面向 LS-DYNA 的开源免费 VS Code 扩展，支持本地离线使用。</p>
+          <div class="hero-specs"><span class="spec-item"><span class="spec-check">✓</span><span data-i18n="heroSpec1">100% 离线可用</span></span><span class="spec-divider">·</span><span class="spec-item"><span class="spec-check">✓</span><span data-i18n="heroSpec2">本地安全解析</span></span><span class="spec-divider">·</span><span class="spec-item"><span class="spec-check">✓</span><span data-i18n="heroSpec3">开源免费</span></span></div>
+        </div>
+        <figure class="hero-visual overview-visual">
+          <img data-image="overview" src="./assets/overview-zh-cn.png" alt="DynaSense 的文件导航、字段帮助、关键字管理器与手册工作区" data-i18n-alt="heroImageAlt" width="1920" height="1400" fetchpriority="high">
+          <div class="hero-callouts" aria-label="工作区功能标注">
+            <span class="callout callout-tree"><span class="callout-dot"></span><span data-i18n="badgeTree">引用文件树</span></span>
+            <span class="callout callout-index"><span class="callout-dot"></span><span data-i18n="badgeIndex">关键字索引</span></span>
+            <span class="callout callout-catalog"><span class="callout-dot"></span><span data-i18n="badgeCatalog">手册快速检索</span></span>
+            <span class="callout callout-refs"><span class="callout-dot"></span><span data-i18n="badgeRefs">对象引用反查</span></span>
+            <span class="callout callout-hover"><span class="callout-dot"></span><span data-i18n="badgeHover">参数悬停释义</span></span>
+            <span class="callout callout-ruler"><span class="callout-dot"></span><span data-i18n="badgeRuler">字段标尺</span></span>
+            <span class="callout callout-manager"><span class="callout-dot"></span><span data-i18n="badgeManager">关键字管理器</span></span>
+            <span class="callout callout-field-doc"><span class="callout-dot"></span><span data-i18n="badgeFieldDoc">字段实时说明</span></span>
+            <span class="callout callout-manual"><span class="callout-dot"></span><span data-i18n="badgeManual">手册章节</span></span>
+          </div>
+        </figure>
+      </div>
+    </section>
+    <section class="workflows container" id="workflows" aria-label="功能场景" data-i18n-aria="scenes">
+
+      <article class="workflow workflow-edit" id="field-editing">
+        <div class="workflow-copy">
+
+          <h2 data-i18n="editTitle">按字段编辑</h2>
+          <p data-i18n="editBody">直接按字段修改，或在关键字管理器中编辑卡片，再应用回 K 文件。</p>
+          <ul class="feature-checklist">
+            <li><span class="check-icon">✦</span><div><strong data-i18n="editFeature1Title">字段选中与替换</strong><span data-i18n="editFeature1Desc">Tab / Shift+Tab 切换字段，选中后直接输入新值</span></div></li>
+            <li><span class="check-icon">✦</span><div><strong data-i18n="editFeature2Title">字段标尺与网格</strong><span data-i18n="editFeature2Desc">对照字段位置和列宽，查看卡片中的参数排列</span></div></li>
+            <li><span class="check-icon">✦</span><div><strong data-i18n="editFeature3Title">卡片表单编辑</strong><span data-i18n="editFeature3Desc">在管理器中查看字段说明、修改数值，点击应用写回文件</span></div></li>
+          </ul>
+        </div>
+        <figure class="workflow-visual video-visual"><video data-clip="field-editing" tabindex="0" controls playsinline muted loop preload="none" poster="./assets/clips/field-editing.jpg" aria-label="字段编辑" data-i18n-aria="field-editingVideo"><source src="./assets/clips/field-editing.mp4" type="video/mp4"><track kind="captions" src="./assets/clips/field-editing.zh.vtt" srclang="zh" label="中文" default><track kind="captions" src="./assets/clips/field-editing.en.vtt" srclang="en" label="English"></video></figure>
+      </article>
+      <article class="workflow workflow-help" id="field-help">
+        <div class="workflow-copy">
+
+          <h2 data-i18n="helpTitle">直达手册章节</h2>
+          <p data-i18n="helpBody">无需在数千页 PDF 中反复翻找。从当前关键字打开对应章节，参数定义、公式与中英对照就在代码旁。</p>
+          <ul class="feature-checklist">
+            <li><span class="check-icon">✦</span><div><strong data-i18n="helpFeature1Title">字段悬停提示</strong><span data-i18n="helpFeature1Desc">查看字段名称、类型和取值说明，并打开相关帮助</span></div></li>
+            <li><span class="check-icon">✦</span><div><strong data-i18n="helpFeature2Title">手册章节定位</strong><span data-i18n="helpFeature2Desc">从关键字打开对应章节，在编辑器旁查阅正文、公式与图片</span></div></li>
+            <li><span class="check-icon">✦</span><div><strong data-i18n="helpFeature3Title">外部 PDF 跳转</strong><span data-i18n="helpFeature3Desc">从帮助入口打开本地 PDF，查看对应手册内容</span></div></li>
+          </ul>
+        </div>
+        <figure class="workflow-visual video-visual"><video data-clip="manual-locate" tabindex="0" controls playsinline muted loop preload="none" poster="./assets/clips/focused/manual-locate-zh-desktop.jpg" aria-label="手册定位切换" data-i18n-aria="bilingual-manualVideo"><source src="./assets/clips/focused/manual-locate-zh-desktop.mp4" type="video/mp4"><track kind="captions" src="./assets/clips/focused/manual-locate.zh.vtt" srclang="zh" label="中文" default><track kind="captions" src="./assets/clips/focused/manual-locate.en.vtt" srclang="en" label="English"></video></figure>
+      </article>
+      <article class="workflow workflow-navigate" id="model-navigation">
+        <div class="workflow-copy">
+
+          <h2 data-i18n="navigateTitle">查找定义与对象引用</h2>
+          <p data-i18n="navigateBody">从文件层级、关键字索引或对象引用出发，找到需要修改的卡片。</p>
+          <ul class="feature-checklist">
+            <li><span class="check-icon">✦</span><div><strong data-i18n="navFeature1Title">引用文件树</strong><span data-i18n="navFeature1Desc">沿主文件与 Include 层级浏览，打开引用的文件</span></div></li>
+            <li><span class="check-icon">✦</span><div><strong data-i18n="navFeature2Title">关键字索引</strong><span data-i18n="navFeature2Desc">按关键字浏览模型卡片，点击条目定位代码</span></div></li>
+            <li><span class="check-icon">✦</span><div><strong data-i18n="navFeature3Title">对象定义与引用</strong><span data-i18n="navFeature3Desc">按对象 ID 查找定义与引用位置，在相关卡片间跳转</span></div></li>
+          </ul>
+        </div>
+        <figure class="workflow-visual video-visual"><video data-clip="model-navigation" tabindex="0" controls playsinline muted loop preload="none" poster="./assets/clips/model-navigation.jpg" aria-label="模型导航" data-i18n-aria="model-navigationVideo"><source src="./assets/clips/model-navigation.mp4" type="video/mp4"><track kind="captions" src="./assets/clips/model-navigation.zh.vtt" srclang="zh" label="中文" default><track kind="captions" src="./assets/clips/model-navigation.en.vtt" srclang="en" label="English"></video></figure>
+      </article>
+    </section>
+    <section class="editing-details container" id="editing-details" aria-label="编辑操作演示" data-i18n-aria="operationTabs"></section>
+    <section class="github-card container" aria-label="GitHub">
+      <a class="github-repository" href="https://github.com/hqyyqh/vscode-lsdyna" target="_blank" rel="noopener noreferrer"><img src="./assets/github-avatar.png" alt="hqyyqh" width="48" height="48" loading="lazy"><div><span class="repo-owner">hqyyqh /</span> <strong>vscode-lsdyna</strong></div></a>
+      <p data-i18n="starNote">如果 DynaSense 对你有帮助，欢迎点个 Star。</p>
+      <a class="text-link" href="https://github.com/hqyyqh/vscode-lsdyna" target="_blank" rel="noopener noreferrer">☆ Star on GitHub ↗</a>
+    </section>
+    <p class="large-file-note container" data-i18n="largeFileNote">大文件提示：受 VS Code 文档同步限制，单个 K 文件超过约 50 MB 时，普通编辑器内的补全、字段帮助等辅助功能可能不可用。</p>
+  </main>
+  <p id="launch-status" class="launch-status" role="status" aria-live="polite"></p>
+</body>
+</html>

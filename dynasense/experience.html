@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f6f7f9"><title>DynaSense · 在线体验</title><link rel="icon" href="./assets/extension-icon.png">  <script type="module" crossorigin src="./assets/experience-CJF2cxMO.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/language-D3Ums2T3.js">
+  <link rel="stylesheet" crossorigin href="./assets/experience-DSgU4zjf.css">
+</head>
+<body>
+<div id="workspace">
+  <header class="experience-bar">
+    <a class="back-home" href="./index.html"><img src="./assets/extension-icon.png" alt=""><span>DynaSense</span><span class="back-label" data-text="back">返回产品页</span></a>
+    <button id="task-menu" class="task-menu"><span data-text="tasks">体验任务</span><span>⌄</span></button>
+    <div class="experience-actions"><button id="guide-toggle" aria-pressed="false" data-text="guide">开启引导</button><button id="language">EN</button><a class="install" href="https://marketplace.visualstudio.com/items?itemName=hqyyqh.dynasense" target="_blank" rel="noopener" data-text="install">安装</a></div>
+  </header>
+  <div class="workspace-title"><span id="project-title">Drop Test</span><button id="command-open"><span>⌕</span><span data-text="command">搜索操作</span><kbd>F1</kbd></button><button id="more-open" data-text="workspaceMenu">工作区菜单</button></div>
+  <main class="workbench">
+    <nav class="activity-bar" aria-label="Workspace"><button data-view="files" class="active" aria-label="Files">▱</button><button data-view="keywords" aria-label="Keywords">≡</button><button data-view="references" aria-label="References">⌘</button><button data-view="manual" aria-label="Manual">▤</button><div class="activity-spacer"></div><button id="settings-open" aria-label="Settings">⚙</button></nav>
+    <aside id="sidebar"><div class="sidebar-heading"><strong id="sidebar-title"></strong><button id="sidebar-close" aria-label="Close">×</button></div><div id="sidebar-content"></div><div class="sample-credit"><span data-text="sample">公开案例</span><a href="https://www.dynaexamples.com/show-cases/drop-test" target="_blank" rel="noopener">DYNAmore · Drop Test ↗</a></div></aside>
+    <section class="editor-area" aria-label="Editor">
+      <div id="file-tabs" role="tablist"></div>
+      <div class="editor-toolbar"><div id="breadcrumb"></div><div class="editor-tools"><button data-action="undo" title="Undo">↶</button><button data-action="redo" title="Redo">↷</button><button data-action="save" data-text="save">保存</button><button data-action="help" data-text="fieldHelp">字段帮助</button><button data-action="manage" data-text="manager">卡片管理器</button></div></div>
+      <div id="editor-stage"><div id="editor-host"></div><textarea id="text-editor" spellcheck="false" aria-label="样例编辑器"></textarea><div id="editor-loading" data-text="loading">正在打开工作区…</div></div>
+      <div class="touch-toolbar"><button data-action="previousField" data-text="previousField">上一字段</button><button data-action="nextField" data-text="nextField">下一字段</button><button data-action="suggest" data-text="complete">补全</button><button data-action="clearField" data-text="clearField">清空字段</button><button data-action="format" data-text="format">整理卡片</button></div>
+
+    </section>
+    <aside id="detail-panel" hidden><header><strong id="detail-title"></strong><button id="detail-close" aria-label="Close">×</button></header><div id="detail-content"></div></aside>
+  </main>
+  <section id="guide" hidden aria-label="Guide"><div class="guide-progress"><span id="guide-step"></span><div><i id="guide-progress-fill"></i></div></div><div class="guide-copy"><strong id="guide-title"></strong><p id="guide-description"></p></div><div class="guide-actions"><button id="guide-locate" data-text="locate">定位到这里</button><button id="guide-previous" aria-label="Previous">←</button><button id="guide-next" data-text="skip">跳过</button><button id="guide-close" aria-label="Close">×</button></div></section>
+  <nav class="mobile-nav"><button data-mobile="files" data-text="files">文件</button><button data-mobile="editor" class="active" data-text="editor">编辑</button><button data-mobile="detail" data-text="information">资料</button><button id="mobile-actions" data-text="actions">操作</button></nav>
+  <footer class="status-bar"><span>LS-DYNA</span><span id="status-message" role="status" aria-live="polite"></span><span id="position"></span><button id="mode-toggle" data-text="textMode">文本模式</button></footer>
+</div>
+<dialog id="task-dialog"><div class="dialog-heading"><div><span class="overline">DYNASENSE</span><h2 data-text="chooseTask">从一个小任务开始</h2></div><button data-close-dialog aria-label="Close">×</button></div><p data-text="taskIntro">打开同一个模型，体验不同的编辑方式。</p><div id="task-list"></div><button id="free-explore" class="wide-button" data-text="explore">自由探索工作区 →</button></dialog>
+<dialog id="command-dialog"><label for="command-search" data-text="command">搜索操作</label><input id="command-search" autocomplete="off" placeholder="输入操作名称…"><div id="command-list"></div><button data-close-dialog data-text="close">关闭</button></dialog>
+<dialog id="reset-dialog"><h2 data-text="restoreTitle">恢复整个样例？</h2><p data-text="restoreDescription">当前编辑将被原始案例内容替换。</p><div class="dialog-actions"><button data-close-dialog data-text="cancel">取消</button><button id="confirm-reset" class="primary" data-text="restore">恢复样例</button></div></dialog>
+</body></html>
