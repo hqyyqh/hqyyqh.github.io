@@ -1,0 +1,36 @@
+DynaSense product screenshots and icon
+Source: https://github.com/hqyyqh/vscode-lsdyna
+Release: v3.2.0
+Commit: c24d06cfd75ca41d4f345286f845c7a3e22ec3f7
+The PNG files in assets/ are unmodified copies from images/ in that public commit.
+The repository's GPL-3.0 license is included in DynaSense-LICENSE.txt.
+Screenshots illustrate product features with example decks. They are not evidence
+of an OEM vehicle model, a solver validation or a performance benchmark.
+
+Drop Test numerical excerpt
+Publisher: DYNAmore GmbH, an Ansys Company
+Source: https://www.dynaexamples.com/show-cases/drop-test
+Section: Reduced Input; *DEFINE_CURVE, LCID 2
+Accessed: 2026-10-14
+The page uses nine numerical A1/O1 pairs from the public educational example.
+It does not redistribute the complete model, source figures or result animation.
+Numbers are displayed without card scaling, offset or assumed physical units.
+The interactive chart is a website data explorer, not a solver or a browser
+version of the DynaSense extension. No endorsement is implied.
+
+Interactive demo code and editor
+DynaSense field definitions and line alignment functions are extracted from the
+same v3.2.0 commit above, under GPL-3.0. The limited demo adapter is not the full
+extension formatting command. Sources, changes and hashes are documented in the
+product-page project's docs/demo-source-manifest.json and docs/demo-round1.md.
+The public Drop Test card header is also included; only whitespace is changed
+in the alignment sample, and the completion sample shortens the keyword.
+Edits made by visitors are not original case results and are never solver output.
+
+Monaco Editor 0.57.0 — Microsoft, MIT. See licenses/Monaco-LICENSE.txt and
+licenses/Monaco-ThirdPartyNotices.txt. DOMPurify and Marked notices are included
+in licenses/. All runtime editor assets are served locally, without a CDN.
+
+Additional product screenshots (2026-10-16): assets/manual-live-zh-cn.png and assets/manual-live-en.png are unaltered captures of the DynaSense manual reader in the real online demo. The owner authorized public demonstration of the bilingual manual pack. Source and SHA-256 records: docs/homepage-asset-manifest.json in the project source.
+
+Real operation recordings (2026-10-16): assets/clips/*.mp4 and their JPEG posters show the running DynaSense release in code-server, using the DYNAmore Drop Test excerpts above and the authorized bilingual manual. Subtitles are authored for this site. Recording workflow, transformations and SHA-256: docs/video-asset-manifest.json.
